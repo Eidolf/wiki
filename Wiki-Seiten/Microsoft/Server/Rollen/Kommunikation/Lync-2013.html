@@ -1,0 +1,53 @@
+<!--
+title: Lync 2013
+description: 
+published: true
+date: 2023-12-10T10:26:11.302Z
+tags: lync, microsoft, kommunikation
+editor: ckeditor
+dateCreated: 2023-12-10T10:26:11.302Z
+-->
+
+<h2>Installation</h2>
+<h3><strong>Voraussetzungen</strong></h3>
+<ul>
+  <li>Domänenmitglied</li>
+  <li>Kein Core Server (Benutzeroberfläche)</li>
+  <li>Silverlight (optional, aber sinnvoll)</li>
+  <li>Rollen und Features<ul>
+      <li>Rollen<ol>
+          <li>Internet Information Service (IIS)</li>
+        </ol>
+      </li>
+      <li>Features<ol>
+          <li>Statischer Inhalt</li>
+          <li>Standarddokument</li>
+          <li>HTTP-Fehler</li>
+          <li>ASP.NET</li>
+          <li>.NET-Erweiterbarkeit</li>
+          <li>ISAPI-Erweiterungen (Internet Server API)</li>
+          <li>ISAPI-Filter</li>
+          <li>HTTP-Protokollierung</li>
+          <li>Protokollierungstools</li>
+          <li>Ablaufverfolgung</li>
+          <li>Authentifizierung über Clientzertifikatzuordnung</li>
+          <li>Windows-Authentifizierung, Anforderungsfilterung</li>
+          <li>Komprimierung statischer Inhalte</li>
+          <li>IIS-Verwaltungskonsole</li>
+          <li>IIS-Verwaltungsskripts und -Tools</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h2>Firewall Regeln</h2>
+<h3><strong>Quelle:</strong></h3>
+<p><a href="http://jsilverdrake.blogspot.se/2012/04/publishing-lync-with-forefront-tmg-part_26.html">http://jsilverdrake.blogspot.se/2012/04/publishing-lync-with-forefront-tmg-part_26.html</a></p>
+<p>
+</p>
+<h2>DNS Einstellungen</h2>
+<p>Hier gibt ein Powershell Script für die Abfrage aller benötigten DNS Einträge zu finden <a href="https://onedrive.live.com/?authkey=%21AEbcGCBo0OUyXMs&amp;id=803B0FB94DB8D132%21105&amp;cid=803B0FB94DB8D132#authkey=%21AEbcGCBo0OUyXMs&amp;id=803B0FB94DB8D132%21126&amp;cid=803B0FB94DB8D132">LyncDNSTesterTool1.00</a></p>
+<h2>Fehler:</h2>
+<h3><strong>meet.xxx 404 Error</strong></h3>
+<p>Es kann passieren das nach Updates die meet.fqdn nicht mehr erreichbar ist mit dem Fehler "404 - Datei oder Verzeichnis wurde nicht gefunden"<br>Meist muss man nur folgenden Befehl am Lync Server ausführen.</p>
+<p>Enable-CSComputer</p>
