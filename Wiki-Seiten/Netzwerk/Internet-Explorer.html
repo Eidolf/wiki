@@ -1,0 +1,295 @@
+<!--
+title: Internet-Explorer
+description: 
+published: true
+date: 2023-12-10T10:05:04.902Z
+tags: 
+editor: ckeditor
+dateCreated: 2023-12-10T09:52:24.892Z
+-->
+
+<p>&lt;!DOCTYPE html&gt;</p><div>
+
+
+</div>
+<title>
+&lt;p&gt;Internet Explorer – Eidolf Wiki&lt;/p&gt;
+</title>
+
+
+
+
+
+
+
+
+
+
+<div>
+
+
+</div><div class="noprint" id="mw-page-base">
+</div>
+<div class="noprint" id="mw-head-base">
+</div>
+<div role="main" class="mw-body" id="content">
+<p><code>&nbsp;&nbsp;&nbsp;</code><a id="top"></a><br>
+<code>&nbsp;&nbsp;&nbsp;</code></p>
+<div id="siteNotice">
+</div>
+<div class="mw-indicators">
+</div>
+<h1 class="firstHeading toc-header" id="firstHeading"> 
+<p>Internet Explorer</p>
+</h1>
+<div class="vector-body" id="bodyContent">
+<div class="noprint" id="siteSub">
+<p>Aus Eidolf Wiki</p>
+</div>
+<div id="contentSub">
+</div>
+<div id="contentSub2">
+</div>
+<div id="jump-to-nav">
+</div>
+<p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><a href="#mw-head" class="mw-jump-link"><code>Zur&nbsp;Navigation&nbsp;springen</code></a><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><a href="#searchInput" class="mw-jump-link"><code>Zur&nbsp;Suche&nbsp;springen</code></a><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></p>
+<div dir="ltr" lang="de" class="mw-body-content mw-content-ltr" id="mw-content-text">
+<div class="mw-parser-output">
+<div aria-labelledby="mw-toc-heading" role="navigation" class="toc" id="toc">
+<input style="display:none" class="toctogglecheckbox" id="toctogglecheckbox" role="button" type="checkbox">
+<div dir="ltr" lang="de" class="toctitle">
+<h2 class="toc-header" id="mw-toc-heading"> 
+<p>Inhaltsverzeichnis</p>
+</h2>
+<p><span class="toctogglespan"><label for="toctogglecheckbox" class="toctogglelabel"></label></span></p>
+</div>
+<ul>
+<li><a href="#Internet_Explorer_(_Browser_/_Internet_)_Beschreibung"><span class="tocnumber">1</span><br>
+<span class="toctext">Internet Explorer ( Browser / Internet )<br>
+Beschreibung</span></a></li>
+<li><a href="#Tipps_und_Tricks"><span class="tocnumber">2</span><br>
+<span class="toctext">Tipps und Tricks</span></a>
+<ul>
+<li><a href="#Passive_FTP_Verbindung_abschalten"><span class="tocnumber">2.1</span><br>
+<span class="toctext">Passive FTP Verbindung abschalten</span></a></li>
+</ul>
+</li>
+<li><a href="#Quellen:"><span class="tocnumber">3</span><br>
+<span class="toctext">Quellen:</span></a></li>
+</ul>
+</div>
+<h2 class="toc-header" id="internetexplorer-browser-internet-beschreibung"> 
+<p><span id="Internet_Explorer_.28_Browser_.2F_Internet_.29_Beschreibung"></span><span id="Internet_Explorer_(_Browser_/_Internet_)_Beschreibung" class="mw-headline">Internet<br>
+Explorer ( Browser / Internet ) Beschreibung</span></p>
+</h2>
+<p>Der Windows Internet Explorer (früher Microsoft Internet Explorer;<br>
+Abkürzung: IE oder MSIE) ist ein Webbrowser vom Softwarehersteller<br>
+Microsoft für das Betriebssystem Microsoft Windows. Seit Windows 95 A<br>
+ist der Internet Explorer fester Bestandteil von<br>
+Windows-Betriebssystemen. Bei älteren Windows-Versionen kann er<br>
+nachinstalliert werden. Die aktuelle Version ist Windows Internet<br>
+Explorer 8.<br>
+Seit dem Erscheinen der siebten Generation des Webbrowsers, erschienen<br>
+im Jahre 2006, lautet der Produktname Windows Internet Explorer.<br>
+Den Microsoft Internet Explorer gab es für einige Zeit auch in Versionen<br>
+für Mac OS und Unix-Derivate wie Solaris und HP-UX.</p>
+<h2 class="toc-header" id="tipps-und-tricks"> 
+<p><span id="Tipps_und_Tricks" class="mw-headline">Tipps und Tricks</span></p>
+</h2>
+<h3 class="toc-header" id="passiveftp-verbindung-abschalten"> 
+<p><span id="Passive_FTP_Verbindung_abschalten" class="mw-headline">Passive<br>
+FTP Verbindung abschalten</span></p>
+</h3>
+<ul>
+<li>Entweder den Haken unter " Extras → Internetoptionen → Erweitert →<br>
+Abschnitt: Browsen → Passives FTP verwenden " herausnehmen</li>
+<li>Oder als VB Script Speichern für den automatischen Einsatz z.B. in den<br>
+Gruppenrichtlinien.</li>
+</ul>
+
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">Const HKEY_CURRENT_USER = &amp;amp;H80000001
+
+strComputer = "."
+
+Set objRegistry=GetObject("winmgmts:\\" &amp;amp; _ 
+strComputer &amp;amp; "\root\default:StdRegProv")
+
+strKeyPath = "Software\Microsoft\Ftp"
+strValueName = "Use PASV"
+strValue = "no"
+objRegistry.SetStringValue HKEY_CURRENT_USER,strKeyPath, _
+strValueName,strValue
+</code></pre>
+<h2 class="toc-header" id="quellen"> 
+<p><span id="Quellen:" class="mw-headline">Quellen:</span></p>
+</h2>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">&lt;a rel="nofollow" class="external free" href="http://de.wikipedia.org/wiki/Internet_Explorer"&gt;http://de.wikipedia.org/wiki/Internet_Explorer&lt;/a&gt;
+&lt;a rel="nofollow" class="external free" href="http://gallery.technet.microsoft.com/ScriptCenter/de-DE/628be64c-ec61-4d0e-9d62-dccd5fe0a096?persist=True"&gt;http://gallery.technet.microsoft.com/ScriptCenter/de-DE/628be64c-ec61-4d0e-9d62-dccd5fe0a096?persist=True&lt;/a&gt;
+</code></pre>
+<p>--<a title="Benutzer:Eidolf (Seite nicht vorhanden)" class="new is-asset-link" href="/index.php?title=Benutzer:Eidolf&amp;action=edit&amp;redlink=1">Eidolf</a><br>
+21:40, 16. Nov. 2009 (UTC)</p>
+</div>
+<div class="printfooter">
+<p>Abgerufen von<br>
+„<a class="is-external-link" href="http://wiki.eidolf.de/index.php?title=Internet_Explorer&amp;oldid=57" dir="ltr"></a><a class="is-external-link" href="http://wiki.eidolf.de/index.php?title=Internet_Explorer&amp;oldid=57">http://wiki.eidolf.de/index.php?title=Internet_Explorer&amp;oldid=57</a>“</p>
+</div>
+</div>
+<div data-mw="interface" class="catlinks catlinks-allhidden" id="catlinks">
+</div>
+</div>
+</div>
+<div id="mw-navigation">
+<h2 class="toc-header" id="navigationsmenü"> 
+<p>Navigationsmenü</p>
+</h2>
+<div id="mw-head">
+<nav role="navigation" aria-labelledby="p-personal-label" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu" id="p-personal">
+<h3 class="vector-menu-heading toc-header" id="p-personal-label"> 
+<p><span>Meine Werkzeuge</span></p>
+</h3>
+<div class="vector-menu-content">
+<ul>
+<li><a class="is-asset-link" title="Sich anzumelden wird gerne gesehen, ist jedoch nicht zwingend erforderlich. [o]" href="/index.php?title=Spezial:Anmelden&amp;returnto=Internet+Explorer">Anmelden</a></li>
+</ul>
+</div>
+</nav>
+<div id="left-navigation">
+<nav role="navigation" aria-labelledby="p-namespaces-label" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" id="p-namespaces">
+<h3 class="vector-menu-heading toc-header" id="p-namespaces-label"> 
+<p><span>Namensräume</span></p>
+</h3>
+<div class="vector-menu-content">
+<ul>
+<li><a class="is-asset-link" title="Seiteninhalt anzeigen [c]" href="/index.php/Internet_Explorer">Seite</a></li>
+<li><a class="is-asset-link" title="Diskussion zum Seiteninhalt (Seite nicht vorhanden) [t]" rel="discussion" href="/index.php?title=Diskussion:Internet_Explorer&amp;action=edit&amp;redlink=1">Diskussion</a></li>
+</ul>
+</div>
+</nav>
+<nav role="navigation" aria-labelledby="p-variants-label" class="mw-portlet mw-portlet-variants emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" id="p-variants">
+<p><code>&nbsp;&nbsp;&nbsp;</code><input aria-labelledby="p-variants-label" class="vector-menu-checkbox" data-event-name="ui.dropdown-p-variants" aria-haspopup="true" role="button" id="p-variants-checkbox" type="checkbox"><br>
+<code>&nbsp;&nbsp;&nbsp;</code></p>
+<h3 class="vector-menu-heading toc-header" id="p-variants-label"> 
+<p><span>Varianten</span></p>
+<p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="vector-menu-checkbox-expanded"><code>ausgeklappt</code></span><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="vector-menu-checkbox-collapsed"><code>eingeklappt</code></span><br>
+<code>&nbsp;&nbsp;&nbsp;</code></p>
+</h3>
+<div class="vector-menu-content">
+</div>
+</nav>
+</div>
+<div id="right-navigation">
+<nav role="navigation" aria-labelledby="p-views-label" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" id="p-views">
+<h3 class="vector-menu-heading toc-header" id="p-views-label"> 
+<p><span>Ansichten</span></p>
+</h3>
+<div class="vector-menu-content">
+<ul>
+<li><a class="is-asset-link" href="/index.php/Internet_Explorer">Lesen</a></li>
+<li><a class="is-asset-link" title="Diese Seite ist geschützt. Ihr Quelltext kann dennoch angesehen und kopiert werden. [e]" href="/index.php?title=Internet_Explorer&amp;action=edit">Quelltext<br>
+anzeigen</a></li>
+<li><a class="is-asset-link" title="Frühere Versionen dieser Seite [h]" href="/index.php?title=Internet_Explorer&amp;action=history">Versionsgeschichte</a></li>
+</ul>
+</div>
+</nav>
+<nav title="Weitere Optionen" role="navigation" aria-labelledby="p-cactions-label" class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" id="p-cactions">
+<p><code>&nbsp;&nbsp;&nbsp;</code><input aria-labelledby="p-cactions-label" class="vector-menu-checkbox" data-event-name="ui.dropdown-p-cactions" aria-haspopup="true" role="button" id="p-cactions-checkbox" type="checkbox"><br>
+<code>&nbsp;&nbsp;&nbsp;</code></p>
+<h3 class="vector-menu-heading toc-header" id="p-cactions-label"> 
+<p><span>Weitere</span></p>
+<p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="vector-menu-checkbox-expanded"><code>ausgeklappt</code></span><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="vector-menu-checkbox-collapsed"><code>eingeklappt</code></span><br>
+<code>&nbsp;&nbsp;&nbsp;</code></p>
+</h3>
+<div class="vector-menu-content">
+</div>
+</nav>
+<div class="vector-search-box" role="search" id="p-search">
+<div>
+<h3 class="toc-header" id="suche"> 
+<p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><label for="searchInput"><code>Suche</code></label><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></p>
+</h3>
+<form id="searchform" action="/index.php">
+<div data-search-loc="header-navigation" id="simpleSearch">
+<p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><input id="searchInput" title="Eidolf Wiki durchsuchen [f]" autocapitalize="sentences" placeholder="Eidolf Wiki durchsuchen" name="search" type="search"><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><input value="Spezial:Suche" type="hidden"><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><input class="searchButton mw-fallbackSearchButton" id="mw-searchButton" title="Suche nach Seiten, die diesen Text enthalten" value="Suchen" name="fulltext" type="submit"><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><input class="searchButton" id="searchButton" title="Gehe direkt zu der Seite mit genau diesem Namen, falls sie vorhanden ist." value="Seite" name="go" type="submit"><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div id="mw-panel">
+<div role="banner" id="p-logo">
+<p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><a title="Hauptseite" href="/index.php/Hauptseite" class="mw-wiki-logo is-asset-link"></a><br>
+<code>&nbsp;&nbsp;&nbsp;</code></p>
+</div>
+<nav role="navigation" aria-labelledby="p-navigation-label" class="mw-portlet mw-portlet-navigation vector-menu vector-menu-portal portal" id="p-navigation">
+<h3 class="vector-menu-heading toc-header" id="p-navigation-label"> 
+<p><span>Navigation</span></p>
+</h3>
+<div class="vector-menu-content">
+<ul>
+<li><a class="is-asset-link" title="Hauptseite besuchen [z]" href="/index.php/Hauptseite">Hauptseite</a></li>
+<li><a class="is-asset-link" title="Liste der letzten Änderungen in diesem Wiki [r]" href="/index.php/Spezial:Letzte_%C3%84nderungen">Letzte<br>
+Änderungen</a></li>
+<li><a class="is-asset-link" title="Zufällige Seite aufrufen [x]" href="/index.php/Spezial:Zuf%C3%A4llige_Seite">Zufällige<br>
+Seite</a></li>
+<li><a class="is-external-link" href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents">Hilfe<br>
+zu MediaWiki</a></li>
+</ul>
+</div>
+</nav>
+<nav role="navigation" aria-labelledby="p-tb-label" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" id="p-tb">
+<h3 class="vector-menu-heading toc-header" id="p-tb-label"> 
+<p><span>Werkzeuge</span></p>
+</h3>
+<div class="vector-menu-content">
+<ul>
+<li><a class="is-asset-link" title="Liste aller Seiten, die hierher verlinken [j]" href="/index.php/Spezial:Linkliste/Internet_Explorer">Links<br>
+auf diese Seite</a></li>
+<li><a class="is-asset-link" title="Letzte Änderungen an Seiten, die von hier verlinkt sind [k]" rel="nofollow" href="/index.php/Spezial:%C3%84nderungen_an_verlinkten_Seiten/Internet_Explorer">Änderungen<br>
+an verlinkten Seiten</a></li>
+<li><a class="is-asset-link" title="Liste aller Spezialseiten [q]" href="/index.php/Spezial:Spezialseiten">Spezialseiten</a></li>
+<li><a class="is-internal-link is-invalid-page" title="Druckansicht dieser Seite [p]" rel="alternate" href="/de/Wiki-Seiten/Netzwerk/Internet-Explorer/javascript:print();">Druckversion</a></li>
+<li><a class="is-asset-link" title="Dauerhafter Link zu dieser Seitenversion" href="/index.php?title=Internet_Explorer&amp;oldid=57">Permanenter<br>
+Link</a></li>
+<li><a class="is-asset-link" title="Weitere Informationen über diese Seite" href="/index.php?title=Internet_Explorer&amp;action=info">Seiten­informationen</a></li>
+<li><a class="is-asset-link" title="Hinweise, wie diese Seite zitiert werden kann" href="/index.php?title=Spezial:Zitierhilfe&amp;page=Internet_Explorer&amp;id=57&amp;wpFormIdentifier=titleform">Seite<br>
+zitieren</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</div>
+<footer role="contentinfo" class="mw-footer" id="footer">
+<ul>
+<li>Diese Seite wurde zuletzt am 31. März 2018 um 00:28 Uhr bearbeitet.</li>
+<li>Der Inhalt ist verfügbar unter der Lizenz<br>
+<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow" class="external is-external-link"><em>Creative<br>
+Commons</em> „Namensnennung – Weitergabe unter gleichen Bedingungen“</a>,<br>
+sofern nicht anders angegeben.</li>
+</ul>
+
+<ul>
+<li><a class="is-asset-link" title="Eidolf Wiki:Datenschutz" href="/index.php/Eidolf_Wiki:Datenschutz">Datenschutz</a></li>
+<li><a class="is-asset-link" title="Eidolf Wiki:Über Eidolf Wiki" href="/index.php/Eidolf_Wiki:%C3%9Cber_Eidolf_Wiki">Über<br>
+Eidolf Wiki</a></li>
+<li><a class="is-asset-link" title="Eidolf Wiki:Impressum" href="/index.php/Eidolf_Wiki:Impressum">Haftungsausschluss</a></li>
+</ul>
+
+<ul>
+<li><a class="is-external-link" href="https://creativecommons.org/licenses/by-sa/4.0/"><img loading="lazy" height="31" width="88" alt="''Creative Commons'' „Namensnennung – Weitergabe unter gleichen Bedingungen“" src="/resources/assets/licenses/cc-by-sa.png"></a></li>
+<li><a class="is-external-link" href="https://www.mediawiki.org/"><img loading="lazy" height="31" width="88" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" alt="Powered by MediaWiki" src="/resources/assets/poweredby_mediawiki_88x31.png"></a></li>
+</ul>
+</footer>
+<div>
+
+
+</div>
