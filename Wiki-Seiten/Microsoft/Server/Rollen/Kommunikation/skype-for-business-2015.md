@@ -1,3 +1,13 @@
+---
+title: skype-for-business-2015
+description: 
+published: true
+date: 2023-12-27T12:21:56.676Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-10T10:19:00.479Z
+---
+
 # Skype for Business 2015
 
 ## <span class="mw-headline" id="bkmrk-installation-1">Installation</span>
@@ -79,9 +89,9 @@ In der Quelle ist eine gute Beschreibung zu finden für die komplette Neuintegra
 #### <span class="mw-headline" id="bkmrk-fehler-500-bei-neuei-1">Fehler 500 bei Neueinrichtung</span>
 
 Falls folgender Fehler erscheint nachdem man versucht den Exchange als Partnerapplikation hinzuzufügen  
-[![NewCSPartnerApp-Error500.png](/media/NewCSPartnerApp-Error500.png)]
+![NewCSPartnerApp-Error500.png](/media/NewCSPartnerApp-Error500.png)
 Kann man über einen modernen Browser testen ob das Signatur Zertifikat ungültig geworden ist, beim IE wird einfach nur ein Fehler 500 angezeigt.  
-[![SignaturZertUngueltig.png](https://wiki.eidolf.de/images/thumb/e/eb/SignaturZertUngueltig.png/750px-SignaturZertUngueltig.png)](https://wiki.eidolf.de/index.php/Datei:SignaturZertUngueltig.png)  
+![SignaturZertUngueltig.png](/media/SignaturZertUngueltig.png)  
 Der angezeigte Fingerabdruck ist von einem Zertifikat das auf dem Exchange Server nicht mehr vorhanden ist.  
 Mit `Get-AuthConfig` kann man diesen hinterlegten (falschen) Wert über die Exchange Shell nochmal gegenprüfen.  
 Um das Zertifikat zu aktualisieren muss man folgende Punkte durchgehen.
