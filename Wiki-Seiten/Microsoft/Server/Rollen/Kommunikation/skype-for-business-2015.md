@@ -79,7 +79,7 @@ In der Quelle ist eine gute Beschreibung zu finden für die komplette Neuintegra
 #### <span class="mw-headline" id="bkmrk-fehler-500-bei-neuei-1">Fehler 500 bei Neueinrichtung</span>
 
 Falls folgender Fehler erscheint nachdem man versucht den Exchange als Partnerapplikation hinzuzufügen  
-[![NewCSPartnerApp-Error500.png](https://wiki.eidolf.de/images/thumb/0/01/NewCSPartnerApp-Error500.png/750px-NewCSPartnerApp-Error500.png)](https://wiki.eidolf.de/index.php/Datei:NewCSPartnerApp-Error500.png)  
+[![NewCSPartnerApp-Error500.png](/media/NewCSPartnerApp-Error500.png)]
 Kann man über einen modernen Browser testen ob das Signatur Zertifikat ungültig geworden ist, beim IE wird einfach nur ein Fehler 500 angezeigt.  
 [![SignaturZertUngueltig.png](https://wiki.eidolf.de/images/thumb/e/eb/SignaturZertUngueltig.png/750px-SignaturZertUngueltig.png)](https://wiki.eidolf.de/index.php/Datei:SignaturZertUngueltig.png)  
 Der angezeigte Fingerabdruck ist von einem Zertifikat das auf dem Exchange Server nicht mehr vorhanden ist.  
