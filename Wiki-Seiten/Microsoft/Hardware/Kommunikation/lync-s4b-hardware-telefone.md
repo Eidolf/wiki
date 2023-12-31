@@ -1,3 +1,13 @@
+---
+title: lync-s4b-hardware-telefone
+description: 
+published: true
+date: 2023-12-31T12:00:53.743Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T11:55:27.032Z
+---
+
 # Lync / S4B Hardware Telefone
 
 ## <span class="mw-headline" id="bkmrk-dhcp-voraussetzungen-1">DHCP Voraussetzungen</span>
@@ -29,6 +39,4 @@
 
 ### <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
 
-```
-<a class="external free" href="https://blog.valeconsulting.co.uk/2015/03/06/configuring-dhcp-options-for-lync-phone-edition-manually/" rel="nofollow">https://blog.valeconsulting.co.uk/2015/03/06/configuring-dhcp-options-for-lync-phone-edition-manually/</a>
-```
+https://blog.valeconsulting.co.uk/2015/03/06/configuring-dhcp-options-for-lync-phone-edition-manually/
