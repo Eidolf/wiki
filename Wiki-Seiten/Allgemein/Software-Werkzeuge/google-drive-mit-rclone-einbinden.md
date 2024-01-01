@@ -2,7 +2,7 @@
 title: google-drive-mit-rclone-einbinden
 description: 
 published: true
-date: 2024-01-01T17:00:05.145Z
+date: 2024-01-01T17:11:28.374Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:27:53.746Z
@@ -14,13 +14,13 @@ dateCreated: 2023-12-31T13:27:53.746Z
 
 Es soll ein google Drive für alle Anwendungen im Netzwerk zur Verfügung stehen. Mit allen nativen Google Anwendungen ist es leider nicht möglich z.B. eine Freigabe für das Netzwerk zu erstellen oder es als Speicher für Backupanwendungen zu verwenden.
 
-# <span class="mw-headline" id="bkmrk-voraussetzungen-1">Voraussetzungen</span>
+# Voraussetzungen
 
-<div class="vector-body" id="bkmrk-rclone-wird-f%C3%BCr-den-"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. rclone <dl><dd>Wird für den Zugriff auf die Clouddienste benötigt</dd><dd>[https://rclone.org/downloads/](https://rclone.org/downloads/)</dd></dl>
+1. rclone <dl><dd>Wird für den Zugriff auf die Clouddienste benötigt</dd><dd>[https://rclone.org/downloads/](https://rclone.org/downloads/)</dd></dl>
 2. winfsp <dl><dd>Wird nur auf Windows benötigt um einfach den Ordner als Laufwerk zu mounten</dd><dd>[http://www.secfs.net/winfsp/download/](http://www.secfs.net/winfsp/download/)</dd></dl>
 3. nssm <dl><dd>Wird benötigt um das gemountete Laufwerk als System Dienst allen Konten am Server zur Verfügung zu stellen.</dd><dd>[https://nssm.cc/download](https://nssm.cc/download)</dd></dl>
 
-</div></div></div># <span class="mw-headline" id="bkmrk-installation-1">Installation</span>
+# Installation
 
 1. Google API Key erstellen <dl><dd>Es wird im späteren Verlauf eine Google Drive API Zugriff benötigt, deshalb kann man das gleich als erstes erstellen.</dd><dd>Da ich den Key vor der Anleitung erstellt habe werde ich nur auf einen gut beschriebenen Artikel verlinken.</dd><dd>[https://github.com/Cloudbox/Cloudbox/wiki/Google-Drive-API-Client-ID-and-Client-Secret](https://github.com/Cloudbox/Cloudbox/wiki/Google-Drive-API-Client-ID-and-Client-Secret)</dd></dl>
 2. Den entpackten RClone Ordner auf einen Fileserver unter **C:\\Program Files** kopieren
