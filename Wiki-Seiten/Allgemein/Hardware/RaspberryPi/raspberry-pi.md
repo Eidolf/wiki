@@ -1,3 +1,13 @@
+---
+title: raspberry-pi
+description: 
+published: true
+date: 2024-01-01T15:49:27.725Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:27:35.311Z
+---
+
 # Raspberry Pi
 
 # <span class="mw-headline" id="bkmrk-fehler-1">Fehler</span>
@@ -16,7 +26,4 @@ zu
 ändern.
 
 ### <span class="mw-headline" id="bkmrk-quelle-1">Quelle</span>
-
-```
-<a class="external free" href="https://andrewgdotcom.wordpress.com/2007/09/28/avahi-and-dot-local-addresses-on-ubuntu-gutsy/" rel="nofollow">https://andrewgdotcom.wordpress.com/2007/09/28/avahi-and-dot-local-addresses-on-ubuntu-gutsy/</a>
-```
+https://andrewgdotcom.wordpress.com/2007/09/28/avahi-and-dot-local-addresses-on-ubuntu-gutsy/

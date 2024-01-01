@@ -1,15 +1,25 @@
+---
+title: linux-webserver-verwalten
+description: 
+published: true
+date: 2024-01-01T16:33:06.670Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:36:59.517Z
+---
+
 # Linux Webserver verwalten
 
-# <span class="mw-headline" id="bkmrk-erstkonfiguration-1">Erstkonfiguration</span>
+# Erstkonfiguration
 
-<div class="vector-body" id="bkmrk-voraussetzung%3A-ubunt"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Voraussetzung: Ubuntu mit LAMP installiert
+1. Voraussetzung: Ubuntu mit LAMP installiert
 2. Unter dem Pfad `/etc/apache2/sites-available` eine neue Konfiguration anlegen mit untenstehenden VirtualHost Inhalt. Diese Datei muss unbedingt mit **.conf** enden, z.B. **MEIN\_Irgendwas.conf**
 3. In dem angegebenen DocumentRoot Pfad sollte die gewünschte Anwendung liegen
 4. Mit `sudo a2ensite MEIN_Irgendwas.conf` den virtual Host aktivieren. 
     - Hinweis: Mit **a2dissite** kann der Host wieder deaktiviert werden.
 5. Folgende PHP-Module sind für viele Anwendungen zu empfehlen `apt-get install php-imap;php-xml;php-gd;php-mbstring;php-intl;php-apcu;php-ldap`
 
-</div></div></div>```
+```
 <VirtualHost irgendwas.eidolf.de:80>
 	ServerAdmin E-Mail
 	ServerName irgendwas.eidolf.de
@@ -19,28 +29,27 @@
 </VirtualHost>
 ```
 
-## <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
+## Quelle:
+https://wiki.ubuntuusers.de/Apache/Virtual_Hosts/
 
-```
-<a class="external free" href="https://wiki.ubuntuusers.de/Apache/Virtual_Hosts/" rel="nofollow">https://wiki.ubuntuusers.de/Apache/Virtual_Hosts/</a>
-```
+## SSL Konfiguration
 
-## <span class="mw-headline" id="bkmrk-ssl-konfiguration-1">SSL Konfiguration</span>
-
-<div class="vector-body" id="bkmrk-selbstsignierte-zert"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Selbstsignierte Zertifikate ausstellen
+1. Selbstsignierte Zertifikate ausstellen
 
 `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/NameVirtualWebSite-selfsigned.key -out /etc/ssl/certs/NameVirtualWebSite-selfsigned.crt`  
 1. Ab jetzt werden ein paar Abfragen zum Zertifikat gestellt, diese einfach ausfüllen.
 2. Einen starken Verschlüsselungsalgorythmus erstellen.
 
-`sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048`1. SSL Konfiguration erstellen
+`sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048`
+
+1. SSL Konfiguration erstellen
 
 `sudo nano /etc/apache2/conf-available/ssl-params.conf`  
   
 1. Inhalt:
 
   
-</div></div></div>```
+```
 # from https://cipherli.st/
 # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html
 
@@ -62,14 +71,14 @@ SSLStaplingCache "shmcb:logs/stapling-cache(150000)"
 SSLOpenSSLConfCmd DHParameters "/etc/ssl/certs/dhparam.pem"
 ```
 
-<div class="vector-body" id="bkmrk-ssl-virtual-host-fil"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. SSL Virtual Host File anlegen (kann auch in das Port 80 Virtual Host File eingefügt werden)
+1. SSL Virtual Host File anlegen (kann auch in das Port 80 Virtual Host File eingefügt werden)
 
 `sudo nano /etc/apache2/sites-available/NameVirtualWebSite-ssl.conf`  
   
 1. Inhalt: (Nur ein Beispiel, kann verbessert werden)
 
   
-</div></div></div>```
+```
 <VirtualHost *:443>
     DocumentRoot /var/www/your-domain-root
     ServerName your-domain.com
@@ -81,14 +90,14 @@ SSLOpenSSLConfCmd DHParameters "/etc/ssl/certs/dhparam.pem"
 </VirtualHost>
 ```
 
-<div class="vector-body" id="bkmrk-ssl-in-apache-aktivi"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. SSL in Apache aktivieren
+1. SSL in Apache aktivieren
 
-</div></div></div>```
+```
 sudo a2enmod ssl
 sudo a2enmod headers
 ```
 
-<div class="vector-body" id="bkmrk-apache-neu-starten-s"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Apache neu starten
+1. Apache neu starten
 
 `service apache2 restart`1. Site aktivieren
 
@@ -96,19 +105,17 @@ sudo a2enmod headers
 
 `sudo a2enconf ssl-params`1. Apache Konfiguration neu laden
 
-`service apache2 reload`</div></div></div>### <span class="mw-headline" id="bkmrk-quelle%3A-3">Quelle:</span>
+`service apache2 reload`
+### Quelle:
+https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-16-04"
 
-```
-<a class="external free" href="https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-16-04" rel="nofollow">https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-16-04</a>
-```
+# Dateiupload
 
-# <span class="mw-headline" id="bkmrk-dateiupload-1">Dateiupload</span>
-
-<div class="vector-body" id="bkmrk-mit-winscp-den-webse"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Mit WinSCP den Webserver öffnen und die Dateien in den Zielordner schieben
+1. Mit WinSCP den Webserver öffnen und die Dateien in den Zielordner schieben
 2. Mit einem FTP Programm in den Zielordner schieben (falls FTP Server Software am Zielsystem installiert ist)
 3. Mit SSH auf den Server verbinden und mit `wget <a class="external free" href="http://link_zur_software/" rel="nofollow">http://Link_zur_Software</a>`
 
-</div></div></div># <span class="mw-headline" id="bkmrk-httpd-config-bearbei-1">httpd config bearbeiten</span>
+# httpd config bearbeiten
 
 Mit **vi** oder **nano** die httpd.conf öffnen  
 `sudo vi /etc/httpd/conf/httpd.conf`
