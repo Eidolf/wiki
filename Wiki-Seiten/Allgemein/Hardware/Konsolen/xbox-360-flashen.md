@@ -2,7 +2,7 @@
 title: xbox-360-flashen
 description: 
 published: true
-date: 2024-01-01T15:30:54.580Z
+date: 2024-01-01T15:34:34.385Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:27:16.632Z
@@ -31,8 +31,8 @@ Und was bringt dieses „Stealth“? Das Stealth wird benötigt, um der Xbox 360
 Wie erkennt man dieses „Stealth“ im Image und wie bei einer schon fertiggebrannten DVD? Zur Überprüfung, ob die Kopie auch wirklich unverkennbar zum Original ist gibt es zwei Tools:
 
 - Schtrom
-- [XDVDMulleter](https://wiki.eidolf.de/index.php?title=XBox_360_Stealth_Sicherheitskopien&action=edit&redlink=1 "XBox 360 Stealth Sicherheitskopien (Seite nicht vorhanden)")
+- [XDVDMulleter](/de/Wiki-Seiten/Allgemein/Hardware/Konsolen/xbox-360-sicherheitskopien)
 
-Grundsätzlich unterscheiden sich die beiden Programme bei der Vielfalt ihrer „Stealth“ Prüfung: Schtrom ist eher für Images geeignet (kann aber nicht jedes Image öffnen), während [XDVDMulleter](https://wiki.eidolf.de/index.php?title=XBox_360_Stealth_Sicherheitskopien&action=edit&redlink=1 "XBox 360 Stealth Sicherheitskopien (Seite nicht vorhanden)") mehr Formate unterstützt und auch schon bereits gebrannte DVDs nach einem „Stealth“ Fix überprüfen kann. Nun wird gezeigt, wie man mit dem jeweiligen Programm die Kopien prüfen kann:
+Grundsätzlich unterscheiden sich die beiden Programme bei der Vielfalt ihrer „Stealth“ Prüfung: Schtrom ist eher für Images geeignet (kann aber nicht jedes Image öffnen), während [XDVDMulleter](/de/Wiki-Seiten/Allgemein/Hardware/Konsolen/xbox-360-sicherheitskopien) mehr Formate unterstützt und auch schon bereits gebrannte DVDs nach einem „Stealth“ Fix überprüfen kann. Nun wird gezeigt, wie man mit dem jeweiligen Programm die Kopien prüfen kann:
 
 Hier noch der Link[\[1\]](http://board.gulli.com/thread/777203-tut-stealth-von-image-und-dvd-berprfen-und-wie-man-ein-image-stealth-macht/) dazu.
