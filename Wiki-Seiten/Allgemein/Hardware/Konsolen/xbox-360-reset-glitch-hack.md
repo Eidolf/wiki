@@ -1,3 +1,13 @@
+---
+title: xbox-360-reset-glitch-hack
+description: 
+published: true
+date: 2024-01-01T15:40:55.443Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:27:21.550Z
+---
+
 # XBox 360 Reset Glitch Hack
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-anleitung-f%C3%BCr%C2%A0phat%C2%A0k-1">Anleitung für **Phat** Konsolen</span>
@@ -19,9 +29,10 @@ Sekundär: Diese Software wird nur im Fehlerfall benötigt
 
 ## <span class="mw-headline" id="bkmrk-hardware-arbeiten-1">Hardware Arbeiten</span>
 
-1\. Die Konsole so weit zerlegen bis man das Mainboard wie im untenstehenden Bild herausnehmen kann  
+1\. Die Konsole so weit zerlegen bis man das Mainboard wie im untenstehenden Bild herausnehmen kann 
 ![360opc_048.jpg](http://www.gamestore24.de/Anleitungen/Bilder/xb360/opencase/360opc_048.jpg)  
-Die komplette Anleitung ist hier zu finden<sup class="reference" id="bkmrk-%5B1%5D">[\[1\]](https://wiki.eidolf.de/index.php/XBox_360_Reset_Glitch_Hack#cite_note-1)</sup>
+Die komplette Anleitung ist hier zu finden
+  [xbox-360-reset-glitch-hack](/de/Wiki-Seiten/Allgemein/Hardware/Konsolen/xbox-360-reset-glitch-hack#cite_note-1)
 
 # <span class="mw-headline" id="bkmrk-quellen-1">Quellen</span>
 
