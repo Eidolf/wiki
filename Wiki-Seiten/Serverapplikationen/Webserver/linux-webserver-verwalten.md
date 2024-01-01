@@ -2,7 +2,7 @@
 title: linux-webserver-verwalten
 description: 
 published: true
-date: 2024-01-01T16:33:06.670Z
+date: 2024-01-01T17:29:10.176Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:59.517Z
@@ -37,18 +37,15 @@ https://wiki.ubuntuusers.de/Apache/Virtual_Hosts/
 1. Selbstsignierte Zertifikate ausstellen
 
 `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/NameVirtualWebSite-selfsigned.key -out /etc/ssl/certs/NameVirtualWebSite-selfsigned.crt`  
-1. Ab jetzt werden ein paar Abfragen zum Zertifikat gestellt, diese einfach ausfüllen.
-2. Einen starken Verschlüsselungsalgorythmus erstellen.
+Ab jetzt werden ein paar Abfragen zum Zertifikat gestellt, diese einfach ausfüllen.
 
+2. Einen starken Verschlüsselungsalgorythmus erstellen.
 `sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048`
 
-1. SSL Konfiguration erstellen
-
+3. SSL Konfiguration erstellen
 `sudo nano /etc/apache2/conf-available/ssl-params.conf`  
-  
-1. Inhalt:
 
-  
+  Inhalt: 
 ```
 # from https://cipherli.st/
 # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html
@@ -71,13 +68,10 @@ SSLStaplingCache "shmcb:logs/stapling-cache(150000)"
 SSLOpenSSLConfCmd DHParameters "/etc/ssl/certs/dhparam.pem"
 ```
 
-1. SSL Virtual Host File anlegen (kann auch in das Port 80 Virtual Host File eingefügt werden)
-
+4. SSL Virtual Host File anlegen (kann auch in das Port 80 Virtual Host File eingefügt werden)
 `sudo nano /etc/apache2/sites-available/NameVirtualWebSite-ssl.conf`  
-  
-1. Inhalt: (Nur ein Beispiel, kann verbessert werden)
 
-  
+Inhalt: (Nur ein Beispiel, kann verbessert werden) 
 ```
 <VirtualHost *:443>
     DocumentRoot /var/www/your-domain-root
@@ -90,22 +84,24 @@ SSLOpenSSLConfCmd DHParameters "/etc/ssl/certs/dhparam.pem"
 </VirtualHost>
 ```
 
-1. SSL in Apache aktivieren
-
+5. SSL in Apache aktivieren
 ```
 sudo a2enmod ssl
 sudo a2enmod headers
 ```
 
-1. Apache neu starten
+6. Apache neu starten
+`service apache2 restart`
 
-`service apache2 restart`1. Site aktivieren
+7. Site aktivieren
+`sudo a2ensite NameVirtualWebSite-ssl`
 
-`sudo a2ensite NameVirtualWebSite-ssl`1. SSL Konfiguration aktivieren
+8. SSL Konfiguration aktivieren
+`sudo a2enconf ssl-params`
 
-`sudo a2enconf ssl-params`1. Apache Konfiguration neu laden
-
+9. Apache Konfiguration neu laden
 `service apache2 reload`
+
 ### Quelle:
 https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-16-04"
 
