@@ -2,7 +2,7 @@
 title: e-mail
 description: 
 published: true
-date: 2024-01-01T15:18:39.573Z
+date: 2024-01-01T15:21:40.760Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:27:07.358Z
@@ -81,5 +81,6 @@ In folgendem Beispiel wollen wir für **subdomain.de** den Bericht an **postmast
     1.3. Wert = `v=DMARC1`
 
 ### <span class="mw-headline" id="bkmrk-quelle%3A-5">Quelle:</span>
-https://www.msxfaq.de/spam/dmarc.htm
-https://de.wikipedia.org/wiki/DMARC
+<a href="https://www.msxfaq.de/spam/dmarc.htm" target="_blank">https://www.msxfaq.de/spam/dmarc.htm</a>
+<a href="https://de.wikipedia.org/wiki/DMARC" target="_blank">https://de.wikipedia.org/wiki/DMARC</a>
+
