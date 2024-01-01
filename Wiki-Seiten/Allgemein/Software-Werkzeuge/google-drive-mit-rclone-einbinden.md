@@ -2,7 +2,7 @@
 title: google-drive-mit-rclone-einbinden
 description: 
 published: true
-date: 2024-01-01T17:11:28.374Z
+date: 2024-01-01T17:19:50.145Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:27:53.746Z
@@ -25,7 +25,7 @@ Es soll ein google Drive für alle Anwendungen im Netzwerk zur Verfügung stehen
 1. Google API Key erstellen <dl><dd>Es wird im späteren Verlauf eine Google Drive API Zugriff benötigt, deshalb kann man das gleich als erstes erstellen.</dd><dd>Da ich den Key vor der Anleitung erstellt habe werde ich nur auf einen gut beschriebenen Artikel verlinken.</dd><dd>[https://github.com/Cloudbox/Cloudbox/wiki/Google-Drive-API-Client-ID-and-Client-Secret](https://github.com/Cloudbox/Cloudbox/wiki/Google-Drive-API-Client-ID-and-Client-Secret)</dd></dl>
 2. Den entpackten RClone Ordner auf einen Fileserver unter **C:\\Program Files** kopieren
 3. winfsp installieren
-![Rclone-001.png](/media/Rclone-001.png)
+![rclone-001.png](/media/rclone-001.png)
 ![Rclone-002.png](/media/Rclone-002.png)
 ![Rclone-003.png](/media/Rclone-003.png)
 4. **Verstärkte Sicherheitskonfiguration für IE** im Server-Manager für Administratoren deaktivieren.
