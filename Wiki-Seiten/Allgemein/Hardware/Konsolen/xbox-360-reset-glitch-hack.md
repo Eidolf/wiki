@@ -2,7 +2,7 @@
 title: xbox-360-reset-glitch-hack
 description: 
 published: true
-date: 2024-01-01T15:40:55.443Z
+date: 2024-01-01T15:43:31.397Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:27:21.550Z
@@ -32,20 +32,18 @@ Sekundär: Diese Software wird nur im Fehlerfall benötigt
 1\. Die Konsole so weit zerlegen bis man das Mainboard wie im untenstehenden Bild herausnehmen kann 
 ![360opc_048.jpg](http://www.gamestore24.de/Anleitungen/Bilder/xb360/opencase/360opc_048.jpg)  
 Die komplette Anleitung ist hier zu finden
-  [xbox-360-reset-glitch-hack](/de/Wiki-Seiten/Allgemein/Hardware/Konsolen/xbox-360-reset-glitch-hack#cite_note-1)
+  [xbox-360-reset-glitch-hack](/de/Wiki-Seiten/Allgemein/Hardware/Konsolen/xbox-360-reset-glitch-hack)
 
 # <span class="mw-headline" id="bkmrk-quellen-1">Quellen</span>
 
-```
+
 <a class="external free" href="http://www.youtube.com/watch?v=OkuhC7exeow" rel="nofollow">http://www.youtube.com/watch?v=OkuhC7exeow</a>
 <a class="external free" href="http://stainedfuture.wordpress.com/category/mods-hacks/360/hardware-mods/rest-glitch-hack/" rel="nofollow">http://stainedfuture.wordpress.com/category/mods-hacks/360/hardware-mods/rest-glitch-hack/</a>
 <a class="external free" href="http://www.gamestore24.de/Anleitungen/xb360/xbox360-opencase.php" rel="nofollow">http://www.gamestore24.de/Anleitungen/xb360/xbox360-opencase.php</a>
 <a class="external free" href="http://team-xecuter.com/forums/showthread.php?t=74857" rel="nofollow">http://team-xecuter.com/forums/showthread.php?t=74857</a>
 <a class="external free" href="http://www.360hacks.de/xexmenu_freestyle_dash_auf_die_interne_memory_unit_der_xbox_slim_kopieren.t21189.html" rel="nofollow">http://www.360hacks.de/xexmenu_freestyle_dash_auf_die_interne_memory_unit_der_xbox_slim_kopieren.t21189.html</a>
-```
 
 # <span class="mw-headline" id="bkmrk-einzelnachweise-1">Einzelnachweise</span>
 
-<div class="vector-body" id="bkmrk-%E2%86%91%C2%A0%22%C3%96ffnen-und-zerleg"><div class="mw-body-content mw-content-ltr" dir="ltr" id="bkmrk-%E2%86%91%C2%A0%22%C3%96ffnen-und-zerleg-1" lang="de"><div class="mw-parser-output"><div class="mw-references-wrap">1. <span class="mw-cite-backlink">[↑](https://wiki.eidolf.de/index.php/XBox_360_Reset_Glitch_Hack#cite_ref-1 "Hochspringen")</span> <span class="reference-text">["Öffnen und Zerlegen der XBOX360"](http://www.gamestore24.de/Anleitungen/xb360/xbox360-opencase.php) Anleitung von Gamestore24</span>
-
-</div></div></div></div>
+https://wiki.eidolf.de/index.php/XBox_360_Reset_Glitch_Hack
+[Öffnen und Zerlegen der XBOX360](http://www.gamestore24.de/Anleitungen/xb360/xbox360-opencase.php) Anleitung von Gamestore24
