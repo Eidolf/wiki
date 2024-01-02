@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-02T15:50:54.442Z
+date: 2024-01-02T15:55:28.210Z
 tags: 
 editor: markdown
 dateCreated: 2024-01-02T15:50:54.442Z
@@ -25,7 +25,7 @@ sudo cp /proc/$$/exe /bin/bash
 ### Source:
 https://askubuntu.com/questions/935528/how-do-i-recover-a-deleted-or-overwritten-bash
 
-## Permission<
+## Permission:
 ### Read Permission
 For a folder with the files in it
 ls -al /FolderPath
