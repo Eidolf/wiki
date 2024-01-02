@@ -2,8 +2,8 @@
 title: linux
 description: 
 published: true
-date: 2024-01-02T16:16:07.315Z
-tags: linux, ubuntu
+date: 2024-01-02T16:17:38.239Z
+tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
 ---
