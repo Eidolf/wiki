@@ -1,12 +1,22 @@
+---
+title: linux
+description: 
+published: true
+date: 2024-01-02T15:30:56.385Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:28:07.229Z
+---
+
 # Linux
 
-# <span class="mw-headline" id="bkmrk-allgemein-1">Allgemein</span>
+# Allgemein
 
-## <span class="mw-headline" id="bkmrk-bash-1">Bash</span>
+## Bash
 
-### <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-%C3%9Cberschriebene-bash--1">Überschriebene Bash wiederherstellen</span>
+### Überschriebene Bash wiederherstellen
 
-<div class="vector-body" id="bkmrk-das-system-mit-gedr%C3%BC"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Das System mit gedrückter shift Taste starten oder bei einer VM ist es besser eine Linux CD einzulegen und den Recover Mode zu starten
+1. Das System mit gedrückter shift Taste starten oder bei einer VM ist es besser eine Linux CD einzulegen und den Recover Mode zu starten
 2. Wenn das System mit shift gestartet wurde muss man **e** drücken und folgendes in der Zeile die mit **Linux** startet hinten einfügen `init=/bin/sh`, danach Strg+X zum speichern.
 3. Bei beidem sollte man in der Dashshell landen
 4. Als nächstes die Standard Bash umändern `chsh username -s /bin/sh`
@@ -15,19 +25,19 @@
 7. Normale Bash neu installieren`sudo apt-get install --reinstall bash`
 8. Die Standard Bash wieder zurückändern auf die normale `sudo chsh username -s /bin/bash`
 
-</div></div></div>#### <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
-
-```
-<a class="external free" href="https://askubuntu.com/questions/935528/how-do-i-recover-a-deleted-or-overwritten-bash" rel="nofollow">https://askubuntu.com/questions/935528/how-do-i-recover-a-deleted-or-overwritten-bash</a>
-```
+#### Quelle:
+https://askubuntu.com/questions/935528/how-do-i-recover-a-deleted-or-overwritten-bash
 
 chsh username -s /bin/sh reboot your system, now you can login successfully and you'll have a dash shell, reinstall your bash:
 
 sudo apt-get install --reinstall bash then change your default shell to bash:
 
-sudo chsh username -s /bin/bash When you still have a running terminal: As a bones, if you ever removed a program which has a running instance you can easily recover it from "procfs", in case of bash if you had a terminal running bash you could fix the bash by running:
+sudo chsh username -s /bin/bash 
 
-sudo cp /proc/$$/exe /bin/bash shareimprove this answer
+**When you still have a running terminal:**
+As a bones, if you ever removed a program which has a running instance you can easily recover it from "procfs", in case of bash if you had a terminal running bash you could fix the bash by running:
+
+sudo cp /proc/$$/exe /bin/bash
 
 ## <span class="mw-headline" id="bkmrk-berechtigung-1">Berechtigung</span>
 
