@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:39:38.613Z
+date: 2024-01-03T09:40:02.501Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -287,3 +287,19 @@ systemctl reset-failed
 
 #### Quelle:
 https://superuser.com/questions/513159/how-to-remove-systemd-services/
+
+## Installation von Hyper-V Integrationsdiensten
+
+Anleitung für Ubuntu 16.04
+
+```
+apt-get update
+apt-get install linux-virtual-lts-xenial
+```
+
+```
+apt-get install linux-tools-virtual-lts-xenial linux-cloud-tools-virtual-lts-xenial
+```
+
+### Quelle:
+https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v
