@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:39:19.952Z
+date: 2024-01-03T09:39:38.613Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -287,54 +287,3 @@ systemctl reset-failed
 
 #### Quelle:
 https://superuser.com/questions/513159/how-to-remove-systemd-services/
-
-## Installation von Hyper-V Integrationsdiensten
-
-Anleitung für Ubuntu 16.04
-
-```
-apt-get update
-apt-get install linux-virtual-lts-xenial
-```
-
-```
-apt-get install linux-tools-virtual-lts-xenial linux-cloud-tools-virtual-lts-xenial
-```
-
-### Quelle:
-https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v/
-
-## Java verwalten
-
-Im Link wird ausführlich die Java Installation erklärt.
-
-### Quelle:
-https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04/
-
-## Windows Share verbinden
-
-1. `sudo apt-get install cifs-utils`
-2. `sudo mkdir /media/windowsshare`
-3. `sudo nano /etc/fstab`
-4. Zeile einfügen **//Dateiserver/cifs-sharename /media/windowsshare cifs username=msusername,password=mspassword,domain=msdomain,iocharset=utf8,sec=ntlm 0 0**<dl><dd><dl><dd>Falls Spezielle Benutzer Rechte benötigen schaut die Zeile folgendermaßen aus</dd><dd>**//Dateiserver/cifs-sharename /media/windowsshare cifs username=msusername,password=mspassword,domain=msdomain,uid=1000,gid=1000,file\_mode=0755,dir\_mode=0770,iocharset=utf8,sec=ntlm 0 0**</dd></dl></dd></dl>
-    - Die gerade eingefügte Zeile ist grundsätzlich unsicher, eine sichere Methode ist in der Quelle zu finden.
-5. Speichern
-6. sudo mount -a
-
-### Quelle:
-https://wiki.ubuntu.com/MountWindowsSharesPermanently/
-https://wiki.ubuntuusers.de/Samba_Client_cifs/
-
-## Upgrade
-
-Grundsätzlich ist es folgender Befehl  
-`sudo do-release-upgrade`  
-Doch kann es bei einer Webserver-Version danach zu Problemen kommen wenn man nicht alles beachtet. In der Quelle ist eine relativ gute Beschreibung die sich beim Upgrade-Vorgang zwar auch unterschieden hat, aber gute Hinweise gibt.  
-  
-Für ein Server Upgrade das nicht auf eine Grafische Oberfläche umgestellt werden soll ist folgender Befehl gedacht  
-`sudo do-release-upgrade --mode=server --allow-third-party --quiet`
-
-### Quelle:
-https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/
-
-fsf
