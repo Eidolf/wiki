@@ -1,0 +1,241 @@
+<!--
+title: linux
+description: 
+published: true
+date: 2024-01-03T09:42:07.191Z
+tags: linux, ubuntu, cronjob, webserver, sudo
+editor: ckeditor
+dateCreated: 2023-12-31T13:28:07.229Z
+-->
+
+<h1 class="toc-header" id="linux"> Linux</h1>
+<h1 class="toc-header" id="allgemein"> Allgemein</h1>
+<h2 class="toc-header" id="bash"> Bash</h2>
+<h3 class="toc-header" id="überschriebene-bash-wiederherstellen"> Überschriebene Bash wiederherstellen</h3>
+<ol>
+<li>Das System mit gedrückter shift Taste starten oder bei einer VM ist es besser eine Linux CD einzulegen und den Recover Mode zu starten</li>
+<li>Wenn das System mit shift gestartet wurde muss man <strong>e</strong> drücken und folgendes in der Zeile die mit <strong>Linux</strong> startet hinten einfügen <code>init=/bin/sh</code>, danach Strg+X zum speichern.</li>
+<li>Bei beidem sollte man in der Dashshell landen</li>
+<li>Als nächstes die Standard Bash umändern <code>chsh username -s /bin/sh</code></li>
+<li>Neustart</li>
+<li>Anmelden</li>
+<li>Normale Bash neu installieren<code>sudo apt-get install --reinstall bash</code></li>
+<li>Die Standard Bash wieder zurückändern auf die normale <code>sudo chsh username -s /bin/bash</code></li>
+</ol>
+<h4 class="toc-header" id="quelle"> Quelle:</h4>
+<p><a class="is-external-link" href="https://askubuntu.com/questions/935528/how-do-i-recover-a-deleted-or-overwritten-bash">https://askubuntu.com/questions/935528/how-do-i-recover-a-deleted-or-overwritten-bash</a></p>
+<p>chsh username -s /bin/sh reboot your system, now you can login successfully and you'll have a dash shell, reinstall your bash:</p>
+<p>sudo apt-get install --reinstall bash then change your default shell to bash:</p>
+<p>sudo chsh username -s /bin/bash</p>
+<p><strong>When you still have a running terminal:</strong><br>
+As a bones, if you ever removed a program which has a running instance you can easily recover it from "procfs", in case of bash if you had a terminal running bash you could fix the bash by running:</p>
+<p>sudo cp /proc/$$/exe /bin/bash</p>
+<h2 class="toc-header" id="berechtigung"> Berechtigung</h2>
+<h3 class="toc-header" id="berechtigung-auslesen"> Berechtigung auslesen</h3>
+<p>Für einen Ordner mit den darin liegenden Dateien<br>
+<code>ls -al /Ordnerpfad</code></p>
+<h3 class="toc-header" id="gruppenberechtigung"> Gruppenberechtigung</h3>
+<h4 class="toc-header" id="gruppenberechtigung-auslesen"> Gruppenberechtigung auslesen</h4>
+<p>Man gibt den Benutzer an von dem man die Gruppenzugehörigkeit auslesen möchte<br>
+<code>groups Benutzer</code></p>
+<h4 class="toc-header" id="berechtigung-auf-gruppe-erteilen"> Berechtigung auf Gruppe erteilen</h4>
+<p><code>sudo useradd -G Gruppe Benutzer</code></p>
+<h4 class="toc-header" id="berechtigung-auf-gruppe-löschen"> Berechtigung auf Gruppe löschen</h4>
+<p><code>sudo gpasswd --delete Benutzer Gruppe</code></p>
+<h2 class="toc-header" id="cronjob"> Cronjob</h2>
+<p>Es gibt viele Beispiele, aber als Merker für OSTicket wird ein Cronjob folgendermaßen eingerichtet<br>
+Beispiel sollte alle 5 Minuten mit dem Benutzer nobody das php Script cron.php ausführen.</p>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">user@server:~$ nano /etc/cron.d/osticket 
+
+*/5 * * * * nobody php /var/www/pfadosticket/api/cron.php
+</code></pre>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-"># ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                   7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * command to execute
+</code></pre>
+<h3 class="toc-header" id="quelle-1"> Quelle:</h3>
+<p><a class="is-external-link" href="https://en.wikipedia.org/wiki/Cron">https://en.wikipedia.org/wiki/Cron</a></p>
+<h2 class="toc-header" id="disk-größe"> Disk Größe</h2>
+<p>Wird der Befehl <strong>df</strong> verwendet<br>
+z.B. <code>df</code> oder <code>df /dev/sda1</code><br>
+Um die Disk in Gigabyte anzuzeigen folgenden Befehl verwenden<br>
+<code>df -BG</code><br>
+Auch ein guter Schalter ist <strong>-h</strong>, hier wird die Übersicht und Größe automatisch eingestellt.<br>
+<code>df -h</code></p>
+<h2 class="toc-header" id="ordner-größe"> Ordner Größe</h2>
+<p>Wird der Befehl <strong>du</strong> verwendet<br>
+Um z.B. für einen Ordner die Gesamtgröße herauszufinden<br>
+<code>du -sh /var/lib/Ordner</code></p>
+<h3 class="toc-header" id="quelle-2"> Quelle:</h3>
+<p><a class="is-external-link" href="http://www.kavoir.com/2009/09/linux-check-how-much-disk-storage-each-directory-takes-up-disk-usage-command-du.html">http://www.kavoir.com/2009/09/linux-check-how-much-disk-storage-each-directory-takes-up-disk-usage-command-du.html</a></p>
+<h2 class="toc-header" id="disk-erweitern"> Disk erweitern</h2>
+<p>Ich habe leider meine Disk immer mit LVM angelegt und wenn es um eine größere Disk ging bisher immer die komplette Maschine neu aufgesetzt.<br>
+Wenn man nicht der Linuxprofi ist und weiterhin das einfache erweitern einer virtuellen Disk in Windows gewohnt ist, würde man am liebsten bei den ganzen verschiedenen Anleitungen und Befehlen das Internet sprengen.<br>
+Mein Weg, der jedenfalls bei mir mit Ubuntu 18.04 funktioniert hat und relativ einfach war ist folgender.<br>
+Eine Vorprüfung der Festplattenstruktur kann mit folgendem Befehl durchgeführt werden <code>sudo lsblk</code><br>
+Falls mit diesem Befehl festgestellt wurde, dass die über dem LVM liegende Disk schon erweitert wurde, kann man alle Punkte bis Punkt 7 überspringen.</p>
+<ol>
+<li>Virtuelle Disk im Hyper-V erweitert.</li>
+<li>gparted ISO geladen und als Startdisk in der VM verwendet</li>
+<li>Bei der gparted Menüauswahl den Punkt mit LVM verwendet.</li>
+<li>Standard Einstellungen wie Sprache und XWindow bestätigt.</li>
+<li>Im grafischen Menü meine Root Disk um den entsprechenden Wert erweitert.</li>
+<li>Nach der erfolgreichen Änderung wieder normal in Ubuntu gestartet.</li>
+<li>Ein kurzer Check mit <strong>df -h</strong> zeigt aber noch die alte Größe und deshalb habe ich noch folgende zwei Befehle durchgeführt, bei denen ich nicht weiß ob beide gleichzeitig nötig waren, die aber zu einem positiven Ergebnis geführt haben. <dl><dd><code>sudo lvextend -L +40G /dev/mapper/XXXX--vg-root</code> (Hiermit wird die Disk um 40 Gigabyte erweitert) <dl><dd><code>sudo lvextend -L 40G /dev/mapper/XXXX--vg-root</code> (Hiermit wird die Disk auf die neue Größe von 40 Gigabyte gesetzt)</dd></dl></dd><dd><code>sudo resize2fs /dev/mapper/XXXX--vg-root</code></dd></dl></li>
+<li>Mit <strong>df -h</strong> positiv nachgeprüft ob die Disk erweitert wurde.</li>
+</ol>
+<p>Quelle für Punkt 7:<br>
+<a class="is-external-link" href="https://unix.stackexchange.com/questions/664486/lvm-root-partition-only-uses-half-the-volume-size">https://unix.stackexchange.com/questions/664486/lvm-root-partition-only-uses-half-the-volume-size</a></p>
+<h2 class="toc-header" id="entpacken"> Entpacken</h2>
+<h3 class="toc-header" id="tar"> TAR</h3>
+<p>In einen bestimmten Ordner:<br>
+<code>tar xf Datei.tar.gz -C /Zielpfad/Zielordner</code></p>
+<h3 class="toc-header" id="gzip"> GZIP</h3>
+<p>In einen bestimmten Ordner:<br>
+<code>gunzip -c Datei.gz &gt; /Zielpfad/Zielordner/Zieldatei.endung</code></p>
+<h3 class="toc-header" id="zip"> ZIP</h3>
+<p>Benötigt das Programm unzip<br>
+<code>sudo apt install unzip</code><br>
+Dann folgendermaßen um es in einen bestimmten Ordner zu entpacken:<br>
+<code>unzip filename.zip -d /pfad/zum/ordner</code></p>
+<h4 class="toc-header" id="quelle-3"> Quelle:</h4>
+<p><a class="is-external-link" href="https://askubuntu.com/questions/45349/how-to-extract-files-to-another-directory-using-tar-command">https://askubuntu.com/questions/45349/how-to-extract-files-to-another-directory-using-tar-command</a><br>
+<a class="is-external-link" href="https://superuser.com/questions/139419/how-do-i-gunzip-to-a-different-destination-directory">https://superuser.com/questions/139419/how-do-i-gunzip-to-a-different-destination-directory</a></p>
+<h2 class="toc-header" id="netzwerk"> Netzwerk</h2>
+<h3 class="toc-header" id="ip-einstellungen-anzeigen"> IP Einstellungen anzeigen</h3>
+<p><code>ifconfig</code></p>
+<h3 class="toc-header" id="gateway-auslesen"> Gateway auslesen</h3>
+<p><code>ip route show</code></p>
+<h3 class="toc-header" id="dns-server"> DNS Server</h3>
+<h4 class="toc-header" id="dns-server-auslesen"> DNS Server auslesen</h4>
+<p><code>systemd-resolve --status</code></p>
+<h4 class="toc-header" id="ping-zu-internen-adressen-schlägt-fehl"> Ping zu internen Adressen schlägt fehl</h4>
+<p>Der Ping zu internen Hostnamen schlägt fehl, auch mit dem FQDN funktioniert es nicht. Ping auf die IP Adresse wiederum funktioniert und auch die Namensauflösung mit nslookup.<br>
+Wenn unter der Konfiguration &gt; <code>/etc/nsswitch.conf</code><br>
+folgendes steht &gt; <code>hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4</code><br>
+Dann kann man probieren die Zeile in folgendes abzuändern und den Test erneut ausführen &gt; <code>hosts: files dns</code><br>
+Wenn dadurch der Ping wieder funktioniert kann man mit folgenden Befehl <strong>mdns</strong> komplett entfernen &gt; <code>apt-get remove libnss-mdns</code></p>
+<h3 class="toc-header" id="dhcp-renew"> DHCP Renew</h3>
+<p><code>sudo dhclient -r</code><br>
+<code>sudo dhclient</code></p>
+<h4 class="toc-header" id="quelle-4"> Quelle:</h4>
+<p><a class="is-external-link" href="https://www.cyberciti.biz/faq/howto-linux-renew-dhcp-client-ip-address/">https://www.cyberciti.biz/faq/howto-linux-renew-dhcp-client-ip-address/</a></p>
+<h3 class="toc-header" id="netplan"> netplan</h3>
+<p>In den neuesten Distributionen wird netplan verwendet, folgend eine funktionierende Beispielkonfiguration für eine Windows Domäne.<br>
+Die Konfigurationsdatei befindet sich unter <code>/etc/netplan/*.yaml</code></p>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses: [192.168.1.99/24]
+      gateway4: 192.168.1.254
+      nameservers:
+        search: [domäne.local]
+        addresses: [192.168.1.1,192.168.1.11]
+</code></pre>
+<p>Folgende Befehle ausführen:<br>
+<code>netplan try</code><br>
+<code>netplan apply</code></p>
+<h4 class="toc-header" id="netplan-microsoft-dhcp"> netplan Microsoft DHCP</h4>
+<p>Falls der netplan nicht geändert wird versucht Ubuntu einen DHCP Lease über eine eindeutige ID zu bekommen.<br>
+Deshalb muss im <strong>netplan</strong> folgender wert eingetragen werden <code>dhcp-identifier: mac</code><br>
+Mit diesem Wert übergibt Ubuntu wieder die MAC Adresse an den DHCP Server und Reservierungen mit der MAC Adresse funktionieren.<br>
+Beispieldatei:</p>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">network:
+  ethernets:
+    eth0:
+      addresses: []
+      dhcp4: true
+      dhcp-identifier: mac
+      optional: true
+   version: 2
+</code></pre>
+<h2 class="toc-header" id="swap"> swap</h2>
+<p>Swap ist für Linux das was für Windows die Auslagerungsdatei (pagefile) ist, ein virtueller Zwischenspeicher auf der Festplatte der genutzt wird um bei Arbeitsspeicherknappheit, Daten auszulagern.<br>
+Um den Zwischenspeicher anzusehen und zu bereinigen kommen folgende Befehle zum Einsatz.</p>
+<ol>
+<li><code>free -m</code> Arbeitsspeicher und Swap prüfen</li>
+<li><code>swapoff -a</code> Swap wird deaktiviert und alles daraus wird in den Arbeitsspeicher verschoben (sollte genug vorhanden sein)</li>
+<li><code>swapon -a</code> Swap wieder aktivieren</li>
+</ol>
+<h3 class="toc-header" id="quelle-5"> &lt;Quelle:</h3>
+<p><a class="is-external-link" href="https://www.redhat.com/sysadmin/clear-swap-linux">https://www.redhat.com/sysadmin/clear-swap-linux</a></p>
+<h2 class="toc-header" id="sudo"> sudo</h2>
+<h3 class="toc-header" id="sudo-su-ohne-passworteingabe"> sudo su ohne Passworteingabe</h3>
+<p>Für einen Bestimmten Benutzer einstellen keine erneute Passwortanfrage zu bekommen, nötig bzw. von Vorteil für WinSCP</p>
+<ol>
+<li>Eine Datei unter /etc/sudoers.d anlegen <dl><dd><code>nano /etc/sudoers.d/Datei</code></dd></dl></li>
+<li>Folgende Zeile eingeben und danach speichern &gt; Benutzer ersetzen mit dem eigens verwendeten. <dl><dd><code>Benutzer ALL=(ALL) NOPASSWD:ALL</code></dd></dl></li>
+</ol>
+<h4 class="toc-header" id="quelle-6"> Quelle:</h4>
+<p><a class="is-external-link" href="https://winscp.net/eng/docs/faq_su">https://winscp.net/eng/docs/faq_su</a></p>
+<h2 class="toc-header" id="taskmanager"> Taskmanager</h2>
+<h3 class="toc-header" id="top-standard"> top (Standard)</h3>
+<p>Standard Prozess Manager<br>
+Arbeitsspeicher auslesen</p>
+<h3 class="toc-header" id="htop-erweitert"> htop (Erweitert)</h3>
+<p>Muss nachinstalliert werden, ist etwas besser grafisch aufbereitet.</p>
+<h2 class="toc-header" id="webserver-verwalten"> Webserver verwalten</h2>
+<p><a class="is-internal-link is-valid-page" href="/de/Wiki-Seiten/Serverapplikationen/Webserver/linux-webserver-verwalten">linux-webserver-verwalten</a></p>
+<h2 class="toc-header" id="version-anzeigen"> Version anzeigen</h2>
+<h3 class="toc-header" id="direkt-ohne-zusatzsoftware"> Direkt ohne Zusatzsoftware</h3>
+<p><code>cat /etc/issue</code></p>
+<h3 class="toc-header" id="mit-zusatzsoftware-inxi"> Mit Zusatzsoftware inxi</h3>
+<p><code>inxi -Sz</code></p>
+<h1 class="toc-header" id="ubuntu"> Ubuntu</h1>
+<h2 class="toc-header" id="dienste"> Dienste</h2>
+<h3 class="toc-header" id="deaktivieren"> Deaktivieren</h3>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">systemctl stop [servicename]
+systemctl disable [servicename]
+rm /etc/systemd/system/[servicename]
+rm /etc/systemd/system/[servicename] symlinks that might be related
+systemctl daemon-reload
+systemctl reset-failed
+</code></pre>
+<h4 class="toc-header" id="quelle-7"> Quelle:</h4>
+<p><a class="is-external-link" href="https://superuser.com/questions/513159/how-to-remove-systemd-services?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">https://superuser.com/questions/513159/how-to-remove-systemd-services?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa</a></p>
+<h2 class="toc-header" id="installation-von-hyper-v-integrationsdiensten"> Installation von Hyper-V Integrationsdiensten</h2>
+<p>Anleitung für Ubuntu 16.04</p>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">apt-get update
+apt-get install linux-virtual-lts-xenial
+</code></pre>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">apt-get install linux-tools-virtual-lts-xenial linux-cloud-tools-virtual-lts-xenial
+</code></pre>
+<h3 class="toc-header" id="quelle-8"> Quelle:</h3>
+<p><a class="is-external-link" href="https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v">https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v</a></p>
+<h2 class="toc-header" id="java-verwalten"> Java verwalten</h2>
+<p>Im Link wird ausführlich die Java Installation erklärt.</p>
+<h3 class="toc-header" id="quelle-9"> Quelle:</h3>
+<p><a class="is-external-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04</a></p>
+<h2 class="toc-header" id="windows-share-verbinden"> Windows Share verbinden</h2>
+<ol>
+<li><code>sudo apt-get install cifs-utils</code></li>
+<li><code>sudo mkdir /media/windowsshare</code></li>
+<li><code>sudo nano /etc/fstab</code></li>
+<li>Zeile einfügen <strong>//Dateiserver/cifs-sharename /media/windowsshare cifs username=msusername,password=mspassword,domain=msdomain,iocharset=utf8,sec=ntlm 0 0</strong><dl><dd><dl><dd>Falls Spezielle Benutzer Rechte benötigen schaut die Zeile folgendermaßen aus</dd><dd><strong>//Dateiserver/cifs-sharename /media/windowsshare cifs username=msusername,password=mspassword,domain=msdomain,uid=1000,gid=1000,file_mode=0755,dir_mode=0770,iocharset=utf8,sec=ntlm 0 0</strong></dd></dl></dd></dl>
+<ul>
+<li>Die gerade eingefügte Zeile ist grundsätzlich unsicher, eine sichere Methode ist in der Quelle zu finden.</li>
+</ul>
+</li>
+<li>Speichern</li>
+<li>sudo mount -a</li>
+</ol>
+<h3 class="toc-header" id="quelle-10"> Quelle:</h3>
+<p><a class="is-external-link" href="https://wiki.ubuntu.com/MountWindowsSharesPermanently">https://wiki.ubuntu.com/MountWindowsSharesPermanently</a><br>
+<a class="is-external-link" href="https://wiki.ubuntuusers.de/Samba_Client_cifs/">https://wiki.ubuntuusers.de/Samba_Client_cifs/</a></p>
+<h2 class="toc-header" id="upgrade"> Upgrade</h2>
+<p>Grundsätzlich ist es folgender Befehl<br>
+<code>sudo do-release-upgrade</code><br>
+Doch kann es bei einer Webserver-Version danach zu Problemen kommen wenn man nicht alles beachtet. In der Quelle ist eine relativ gute Beschreibung die sich beim Upgrade-Vorgang zwar auch unterschieden hat, aber gute Hinweise gibt.</p>
+<p>Für ein Server Upgrade das nicht auf eine Grafische Oberfläche umgestellt werden soll ist folgender Befehl gedacht<br>
+<code>sudo do-release-upgrade --mode=server --allow-third-party --quiet</code></p>
+<h3 class="toc-header" id="quelle-11"> Quelle:</h3>
+<p><a class="is-external-link" href="https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/">https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/</a></p>
