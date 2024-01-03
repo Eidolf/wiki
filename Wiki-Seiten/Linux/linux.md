@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:35:26.868Z
+date: 2024-01-03T09:36:02.919Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -286,4 +286,5 @@ systemctl reset-failed
 ```
 
 #### Quelle:
+https://superuser.com/questions/513159/how-to-remove-systemd-services
 [superuser.com](https://superuser.com/questions/513159/how-to-remove-systemd-services?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
