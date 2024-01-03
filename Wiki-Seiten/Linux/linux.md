@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:10:20.802Z
+date: 2024-01-03T09:11:14.437Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -125,3 +125,111 @@ Falls mit diesem Befehl festgestellt wurde, dass die über dem LVM liegende Disk
 
 Quelle für Punkt 7:
 https://unix.stackexchange.com/questions/664486/lvm-root-partition-only-uses-half-the-volume-size
+
+## Entpacken
+
+### TAR
+
+In einen bestimmten Ordner:  
+`tar xf Datei.tar.gz -C /Zielpfad/Zielordner`
+
+### GZIP
+
+In einen bestimmten Ordner:  
+`gunzip -c Datei.gz > /Zielpfad/Zielordner/Zieldatei.endung`
+
+### ZIP
+
+Benötigt das Programm unzip  
+`sudo apt install unzip`  
+Dann folgendermaßen um es in einen bestimmten Ordner zu entpacken:  
+`unzip filename.zip -d /pfad/zum/ordner`
+
+#### Quelle:
+https://askubuntu.com/questions/45349/how-to-extract-files-to-another-directory-using-tar-command
+https://superuser.com/questions/139419/how-do-i-gunzip-to-a-different-destination-directory
+
+## Netzwerk
+
+### IP Einstellungen anzeigen
+
+`ifconfig`
+
+### Gateway auslesen
+
+`ip route show`
+
+### DNS Server
+
+#### DNS Server auslesen
+
+`systemd-resolve --status`
+
+#### Ping zu internen Adressen schlägt fehl
+
+Der Ping zu internen Hostnamen schlägt fehl, auch mit dem FQDN funktioniert es nicht. Ping auf die IP Adresse wiederum funktioniert und auch die Namensauflösung mit nslookup.  
+Wenn unter der Konfiguration &gt; `/etc/nsswitch.conf`  
+folgendes steht &gt; `hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4`  
+Dann kann man probieren die Zeile in folgendes abzuändern und den Test erneut ausführen &gt; `hosts: files dns`  
+Wenn dadurch der Ping wieder funktioniert kann man mit folgenden Befehl **mdns** komplett entfernen &gt; `apt-get remove libnss-mdns`
+
+### DHCP Renew
+
+`sudo dhclient -r`  
+`sudo dhclient`
+
+#### Quelle:
+https://www.cyberciti.biz/faq/howto-linux-renew-dhcp-client-ip-address/
+
+### netplan
+
+In den neuesten Distributionen wird netplan verwendet, folgend eine funktionierende Beispielkonfiguration für eine Windows Domäne.  
+Die Konfigurationsdatei befindet sich unter `/etc/netplan/*.yaml`
+
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses: [192.168.1.99/24]
+      gateway4: 192.168.1.254
+      nameservers:
+        search: [domäne.local]
+        addresses: [192.168.1.1,192.168.1.11]
+```
+
+Folgende Befehle ausführen:  
+`netplan try`  
+`netplan apply`
+
+#### netplan Microsoft DHCP
+
+Falls der netplan nicht geändert wird versucht Ubuntu einen DHCP Lease über eine eindeutige ID zu bekommen.  
+Deshalb muss im **netplan** folgender wert eingetragen werden `dhcp-identifier: mac`  
+Mit diesem Wert übergibt Ubuntu wieder die MAC Adresse an den DHCP Server und Reservierungen mit der MAC Adresse funktionieren.  
+Beispieldatei:
+
+```
+network:
+  ethernets:
+    eth0:
+      addresses: []
+      dhcp4: true
+      dhcp-identifier: mac
+      optional: true
+   version: 2
+```
+
+## swap
+
+Swap ist für Linux das was für Windows die Auslagerungsdatei (pagefile) ist, ein virtueller Zwischenspeicher auf der Festplatte der genutzt wird um bei Arbeitsspeicherknappheit, Daten auszulagern.  
+Um den Zwischenspeicher anzusehen und zu bereinigen kommen folgende Befehle zum Einsatz.
+
+1. `free -m` Arbeitsspeicher und Swap prüfen
+2. `swapoff -a` Swap wird deaktiviert und alles daraus wird in den Arbeitsspeicher verschoben (sollte genug vorhanden sein)
+3. `swapon -a` Swap wieder aktivieren
+
+### <Quelle:
+https://www.redhat.com/sysadmin/clear-swap-linux
