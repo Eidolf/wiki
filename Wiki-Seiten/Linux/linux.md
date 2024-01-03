@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:30:03.885Z
+date: 2024-01-03T09:30:52.106Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -241,7 +241,7 @@ https://www.redhat.com/sysadmin/clear-swap-linux
 Für einen Bestimmten Benutzer einstellen keine erneute Passwortanfrage zu bekommen, nötig bzw. von Vorteil für WinSCP
 
 1. Eine Datei unter /etc/sudoers.d anlegen <dl><dd>`nano /etc/sudoers.d/Datei`</dd></dl>
-2. Folgende Zeile eingeben und danach speichern &gt; Benutzer ersetzen mit dem eigens verwendeten. <dl><dd>`Benutzer ALL=(ALL) NOPASSWD:ALL`
+2. Folgende Zeile eingeben und danach speichern &gt; Benutzer ersetzen mit dem eigens verwendeten. <dl><dd>`Benutzer ALL=(ALL) NOPASSWD:ALL`</dd></dl>
 
 #### Quelle:
 https://winscp.net/eng/docs/faq_su
@@ -287,43 +287,3 @@ systemctl reset-failed
 
 #### Quelle:
 https://superuser.com/questions/513159/how-to-remove-systemd-services?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-
-## Installation von Hyper-V Integrationsdiensten
-
-Anleitung für Ubuntu 16.04
-
-```
-apt-get update
-apt-get install linux-virtual-lts-xenial
-```
-
-```
-apt-get install linux-tools-virtual-lts-xenial linux-cloud-tools-virtual-lts-xenial
-```
-
-### Quelle:
-https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v
-
-## Java verwalten
-
-Im Link wird ausführlich die Java Installation erklärt.
-
-### Quelle:
-https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04
-
-
-### Quelle:
-https://wiki.ubuntu.com/MountWindowsSharesPermanently
-https://wiki.ubuntuusers.de/Samba_Client_cifs/
-
-## Upgrade
-
-Grundsätzlich ist es folgender Befehl  
-`sudo do-release-upgrade`  
-Doch kann es bei einer Webserver-Version danach zu Problemen kommen wenn man nicht alles beachtet. In der Quelle ist eine relativ gute Beschreibung die sich beim Upgrade-Vorgang zwar auch unterschieden hat, aber gute Hinweise gibt.  
-  
-Für ein Server Upgrade das nicht auf eine Grafische Oberfläche umgestellt werden soll ist folgender Befehl gedacht  
-`sudo do-release-upgrade --mode=server --allow-third-party --quiet`
-
-### Quelle:
-https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/
