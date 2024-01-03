@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:38:53.246Z
+date: 2024-01-03T09:39:19.952Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -309,7 +309,7 @@ https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported
 Im Link wird ausführlich die Java Installation erklärt.
 
 ### Quelle:
-https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04
+https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04/
 
 ## Windows Share verbinden
 
@@ -322,7 +322,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on
 6. sudo mount -a
 
 ### Quelle:
-https://wiki.ubuntu.com/MountWindowsSharesPermanently
+https://wiki.ubuntu.com/MountWindowsSharesPermanently/
 https://wiki.ubuntuusers.de/Samba_Client_cifs/
 
 ## Upgrade
