@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:48:39.863Z
+date: 2024-01-03T09:49:45.875Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -334,20 +334,7 @@ Im Link wird ausführlich die Java Installation erklärt.
 
 [https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04)
 
-## Windows Share verbinden
 
-1.  `sudo apt-get install cifs-utils`
-2.  `sudo mkdir /media/windowsshare`
-3.  `sudo nano /etc/fstab`
-4.  Zeile einfügen **//Dateiserver/cifs-sharename /media/windowsshare cifs username=msusername,password=mspassword,domain=msdomain,iocharset=utf8,sec=ntlm 0 0**
-    
-    Falls Spezielle Benutzer Rechte benötigen schaut die Zeile folgendermaßen aus
-    
-    **//Dateiserver/cifs-sharename /media/windowsshare cifs username=msusername,password=mspassword,domain=msdomain,uid=1000,gid=1000,file\_mode=0755,dir\_mode=0770,iocharset=utf8,sec=ntlm 0 0**
-    
-    -   Die gerade eingefügte Zeile ist grundsätzlich unsicher, eine sichere Methode ist in der Quelle zu finden.
-5.  Speichern
-6.  sudo mount -a
 
 ### Quelle:
 
