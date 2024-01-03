@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:49:45.875Z
+date: 2024-01-03T09:50:14.532Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -307,7 +307,7 @@ systemctl reset-failed
 
 #### Quelle:
 
-[https://superuser.com/questions/513159/how-to-remove-systemd-services?utm\_medium=organic&utm\_source=google\_rich\_qa&utm\_campaign=google\_rich\_qa](https://superuser.com/questions/513159/how-to-remove-systemd-services?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+[https://superuser.com/questions/513159/how-to-remove-systemd-services](https://superuser.com/questions/513159/how-to-remove-systemd-services)
 
 ## Installation von Hyper-V Integrationsdiensten
 
