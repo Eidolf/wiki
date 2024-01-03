@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:28:48.318Z
+date: 2024-01-03T09:30:03.885Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -241,7 +241,7 @@ https://www.redhat.com/sysadmin/clear-swap-linux
 Für einen Bestimmten Benutzer einstellen keine erneute Passwortanfrage zu bekommen, nötig bzw. von Vorteil für WinSCP
 
 1. Eine Datei unter /etc/sudoers.d anlegen <dl><dd>`nano /etc/sudoers.d/Datei`</dd></dl>
-2. Folgende Zeile eingeben und danach speichern &gt; Benutzer ersetzen mit dem eigens verwendeten. <dl><dd>`Benutzer ALL=(ALL) NOPASSWD:ALL`</dd></dl>
+2. Folgende Zeile eingeben und danach speichern &gt; Benutzer ersetzen mit dem eigens verwendeten. <dl><dd>`Benutzer ALL=(ALL) NOPASSWD:ALL`
 
 #### Quelle:
 https://winscp.net/eng/docs/faq_su
