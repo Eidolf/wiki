@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:37:18.127Z
+date: 2024-01-03T09:38:42.108Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -336,3 +336,4 @@ Für ein Server Upgrade das nicht auf eine Grafische Oberfläche umgestellt werd
 
 ### Quelle:
 https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/
+
