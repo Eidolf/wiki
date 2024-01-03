@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:32:29.507Z
+date: 2024-01-03T09:33:10.054Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -269,3 +269,18 @@ Muss nachinstalliert werden, ist etwas besser grafisch aufbereitet.
 ### Mit Zusatzsoftware inxi
 
 `inxi -Sz`
+
+# Ubuntu
+
+## Dienste
+
+### Deaktivieren
+
+```
+systemctl stop [servicename]
+systemctl disable [servicename]
+rm /etc/systemd/system/[servicename]
+rm /etc/systemd/system/[servicename] symlinks that might be related
+systemctl daemon-reload
+systemctl reset-failed
+```
