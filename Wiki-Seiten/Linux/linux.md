@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:36:46.997Z
+date: 2024-01-03T09:37:10.002Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -302,7 +302,7 @@ apt-get install linux-tools-virtual-lts-xenial linux-cloud-tools-virtual-lts-xen
 ```
 
 ### Quelle:
-https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v
+https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v/
 
 ## Java verwalten
 
