@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:33:10.054Z
+date: 2024-01-03T09:33:45.494Z
 tags: linux, ubuntu, cronjob, webserver, sudo
 editor: markdown
 dateCreated: 2023-12-31T13:28:07.229Z
@@ -284,3 +284,6 @@ rm /etc/systemd/system/[servicename] symlinks that might be related
 systemctl daemon-reload
 systemctl reset-failed
 ```
+
+#### Quelle:
+https://superuser.com/questions/513159/how-to-remove-systemd-services?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
