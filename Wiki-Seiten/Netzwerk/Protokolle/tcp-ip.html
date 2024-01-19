@@ -2,20 +2,65 @@
 title: tcp-ip
 description: 
 published: true
-date: 2024-01-19T22:29:56.580Z
+date: 2024-01-19T23:14:44.603Z
 tags: 
 editor: ckeditor
 dateCreated: 2023-12-31T13:36:15.269Z
 -->
 
-<h1 class="toc-header" id="tcp-ip"> TCP-IP</h1>
-<h1 class="toc-header" id="ipv6"> IPv6</h1>
-<h2 class="toc-header" id="registrierung"> Registrierung</h2>
-<p>Es gibt keine offizielle Registrierungsstelle für einen privaten IPv6 Bereich, doch kann man sich auf folgender Seite eintragen und überprüfen ob der gewünschte Bereich schon verwendet wird.<br>
-<a class="is-external-link" href="https://www.sixxs.net/tools/grh/ula/">https://www.sixxs.net/tools/grh/ula/</a></p>
-<h2 class="toc-header" id="aufbau"> Aufbau</h2>
-<p>Eine IPv6 ist 128Bit lang, grobe Unterteilung ist der vordere 64Bit lange Bereich (Netzwerkbereich) und der 64Bit lange hintere Bereich (Geräte Identifikation)</p>
+<h1>TCP-IP</h1>
+<h1>IPv6</h1>
+<h2>Registrierung</h2>
+<p>Es gibt keine offizielle Registrierungsstelle für einen privaten IPv6 Bereich, doch kann man sich auf folgender Seite eintragen und überprüfen ob der gewünschte Bereich schon verwendet wird.<br><a href="https://www.sixxs.net/tools/grh/ula/">https://www.sixxs.net/tools/grh/ula/</a></p>
+<h2>Aufbau</h2>
+<p>Eine IPv6 ist 128Bit lang, grobe Unterteilung ist der vordere 64Bit lange Bereich (Netzwerkbereich) und der 64Bit lange hintere Bereich (Geräte Identifikation).<br>Die Unterteilung ist jeweils 4 stellig, 16Bit groß und mit einem Doppelpunkt getrennt.</p>
 <p>Hier als Beispiel an folgender Adresse.</p>
-<p>2001:0db8:85a3:08d3:1319:8a2e:0370:7347/64</p>
-<h3 class="toc-header" id="quelle"> Quelle:</h3>
-<p><a class="is-external-link" href="https://de.wikipedia.org/wiki/IPv6">https://de.wikipedia.org/wiki/IPv6</a></p>
+<p><mark class="marker-pink">Netzwerkbereich</mark> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<mark class="marker-yellow">Geräte Idendifikation</mark><br><mark class="marker-pink">2001:0db8:85a3:08d3</mark>:<mark class="marker-yellow">1319:8a2e:0370:7347</mark>/64</p>
+<p><mark class="marker-green">ISP Bereich</mark> (maximal 32Bit)<br><mark class="marker-green">2001:0db8</mark>:85a3:08d3:1319:8a2e:0370:7347/64<br>Angabe nur für den Provider Bereich ist folgendermaßen<br><mark class="marker-green">2001:0db8::/32</mark></p>
+<p><mark class="marker-blue">Endkunden Netzbereich</mark> (Variiert von <mark class="marker-blue">48Bit</mark> bis <mark class="pen-green">56Bit</mark>)<br><mark class="marker-blue">2001:0db8:85a3</mark><mark class="pen-green">:08</mark>d3:1319:8a2e:0370:7347/64<br>Genau wie bei IPv4 ist mit einem kleineren Netzbereich, der mögliche Gerätebereich größer und somit können auch mehr Geräte verwendet werden.<br>Hier ein Beispiel für einen ausschließlich 48Bit großen Endkundenbereich<br><mark class="marker-blue">2001:0db8:85a3::/48</mark><br>Und hier ein Beispiel für einen 56Bit großen Endkundenbereich<br><mark class="pen-green">2001:0db8:85a3:0800::/56</mark></p>
+<h3><strong>Besondere Adressen</strong></h3>
+<ul>
+  <li><code>::/128</code> bzw. in der ausgeschriebenen Variante <code>0:0:0:0:0:0:0:0/128</code>, ist die nicht spezifizierte Adresse. Sie darf keinem Host zugewiesen werden, sondern zeigt das Fehlen einer Adresse an. Sie wird beispielsweise von einem initialisierenden Host als Absenderadresse in IPv6-Paketen verwendet, solange er seine eigene Adresse noch nicht mitgeteilt bekommen hat. Jedoch können auch Serverprogramme durch Angabe dieser Adresse bewirken, dass sie auf allen Adressen des Hosts lauschen. Dies entspricht <a href="https://de.wikipedia.org/wiki/0.0.0.0"><code>0.0.0.0</code></a><code>/32</code> unter IPv4.</li>
+  <li><code>::/0</code> bzw. in der ausgeschriebenen Variante <code>0:0:0:0:0:0:0:0/0</code> bezeichnet die Standard-Route (default route), die verwendet wird, wenn in der Routingtabelle kein Eintrag gefunden wird. Dies entspricht <code>0.0.0.0/0</code> unter IPv4.</li>
+  <li><code>::1/128</code> bzw. in der ausgeschriebenen Variante <code>0:0:0:0:0:0:0:1/128</code>, ist die Adresse des eigenen Standortes (loopback-Adresse, die in der Regel mit localhost verknüpft ist). Unter IPv4 wird zu diesem Zweck fast ausschließlich <code>127.0.0.1/32</code> aus dem Adressraum <code>127.0.0.0–127.255.255.255</code> verwendet, wenngleich dort also nicht nur eine IP-Adresse, sondern ein ganzes /8-Subnetz für das Loopback-Netzwerk reserviert ist.</li>
+</ul>
+<h3><strong>Link-Local-Unicast-Adressen</strong></h3>
+<p>Link-Local-Adressen sind nur innerhalb abgeschlossener Netzwerksegmente gültig. Ein Netzwerksegment ist ein lokales Netz, gebildet mit Switches oder Hubs, bis zum ersten Router. Reserviert ist hierfür der Bereich „<code>fe80::/10</code>“. Nach diesen 10 Bits folgen 54 Bits mit dem Wert 0, sodass die Link-Local-Adressen immer das Präfix „<code>fe80::/64</code>“ haben:</p>
+<figure class="table">
+  <table style="background-color:rgb(248, 249, 250);border-bottom:1px solid rgb(162, 169, 177);border-left:1px solid rgb(162, 169, 177);border-right:1px solid rgb(162, 169, 177);border-top:1px solid rgb(162, 169, 177);">
+    <tbody>
+      <tr>
+        <th style="background-color:rgb(234, 236, 240);border-bottom:1px solid rgb(162, 169, 177);border-left:1px solid rgb(162, 169, 177);border-right:1px solid rgb(162, 169, 177);border-top:1px solid rgb(162, 169, 177);padding:0.2em 0.4em;text-align:center;">10 Bits</th>
+        <th style="background-color:rgb(234, 236, 240);border-bottom:1px solid rgb(162, 169, 177);border-left:1px solid rgb(162, 169, 177);border-right:1px solid rgb(162, 169, 177);border-top:1px solid rgb(162, 169, 177);padding:0.2em 0.4em;text-align:center;">54 Bits</th>
+        <th style="background-color:rgb(234, 236, 240);border-bottom:1px solid rgb(162, 169, 177);border-left:1px solid rgb(162, 169, 177);border-right:1px solid rgb(162, 169, 177);border-top:1px solid rgb(162, 169, 177);padding:0.2em 0.4em;text-align:center;">64 Bits</th>
+      </tr>
+      <tr>
+        <th style="border-bottom:1px solid rgb(162, 169, 177);border-left:1px solid rgb(162, 169, 177);border-right:1px solid rgb(162, 169, 177);border-top:1px solid rgb(162, 169, 177);padding:0.2em 0.4em;">1111111010</th>
+        <th style="border-bottom:1px solid rgb(162, 169, 177);border-left:1px solid rgb(162, 169, 177);border-right:1px solid rgb(162, 169, 177);border-top:1px solid rgb(162, 169, 177);padding:0.2em 0.4em;">0</th>
+        <th style="border-bottom:1px solid rgb(162, 169, 177);border-left:1px solid rgb(162, 169, 177);border-right:1px solid rgb(162, 169, 177);border-top:1px solid rgb(162, 169, 177);padding:0.2em 0.4em;">Interface ID</th>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Link-Local-Adressen nutzt man zur Adressierung von Knoten in abgeschlossenen Netzwerksegmenten sowie zur Autokonfiguration oder Neighbour-Discovery. Dadurch muss man in einem Netzwerksegment keinen DHCP-Server zur automatischen Adressvergabe konfigurieren. Link-Local-Adressen sind mit APIPA-Adressen im Netz <code>169.254.0.0/16</code> vergleichbar.</p>
+<p>Soll ein Gerät mittels einer dieser Adressen kommunizieren, so muss die <i>Zone ID</i> mit angegeben werden, da eine Link-Lokale-Adresse auf einem Gerät mehrfach vorhanden sein kann. Bei einer einzigen Netzwerkschnittstelle würde eine Adresse etwa so aussehen: <code>fe80::7645:6de2:ff:1<strong>%1</strong></code> bzw. <code>fe80::7645:6de2:ff:1<strong>%eth0</strong></code></p>
+<h3><strong>Adressnotation</strong></h3>
+<p>Die textuelle Notation von IPv6-Adressen ist in Abschnitt 2.2 von RFC&nbsp;4291 beschrieben:</p>
+<ol>
+  <li>IPv6-Adressen werden für gewöhnlich hexadezimal (IPv4: dezimal) notiert, wobei die Zahl in acht Blöcke zu jeweils 16&nbsp;Bit (4 Hexadezimalstellen) unterteilt wird. Diese Blöcke werden durch Doppelpunkte (IPv4: Punkte) getrennt notiert: <code>2001:0db8:85a3:08d3:1319:8a2e:0370:7344</code>.</li>
+  <li>Führende Nullen innerhalb eines Blockes dürfen ausgelassen werden: <code>2001:0db8:0000:08d3:0000:8a2e:0070:7344</code> ist gleichbedeutend mit <code>2001:db8:0:8d3:0:8a2e:70:7344</code>.</li>
+  <li>Ein oder mehrere aufeinander folgende Blöcke, deren Wert <i>0</i> (bzw. <i>0000</i>) beträgt, dürfen ausgelassen werden. Dies wird durch zwei aufeinander folgende Doppelpunkte angezeigt: <code>2001:db8:0:0:0:0:1428:57ab</code> ist gleichbedeutend mit <code>2001:db8::1428:57ab</code>.</li>
+  <li>Die Reduktion durch Regel 3 darf nur einmal durchgeführt werden, das heißt, es darf höchstens eine zusammenhängende Gruppe aus Null-Blöcken in der Adresse ersetzt werden. Die Adresse <code>2001:0db8:0:0:8d3:0:0:0</code> darf demnach entweder zu <code>2001:db8:0:0:8d3::</code> oder <code>2001:db8::8d3:0:0:0</code> gekürzt werden; <code>2001:db8::8d3::</code> ist unzulässig, da dies mehrdeutig ist und fälschlicherweise z.&nbsp;B. auch als <code>2001:db8:0:0:0:8d3:0:0</code> interpretiert werden könnte. Die Reduktion darf auch dann nicht mehrfach durchgeführt werden, wenn das Ergebnis eindeutig wäre, weil jeweils genau eine einzige 0 gekürzt wurde. Es empfiehlt sich, die Gruppe mit den meisten Null-Blöcken zu kürzen.</li>
+  <li>Ebenfalls darf für die letzten beiden Blöcke (vier Bytes, also 32 Bits) der Adresse die herkömmliche dezimale Notation mit Punkten als Trennzeichen verwendet werden. So ist <code>::ffff:127.0.0.1</code> eine alternative Schreibweise für <code>::ffff:7f00:1</code>. Diese Schreibweise wird vor allem bei Einbettung des IPv4-Adressraums in den IPv6-Adressraum verwendet.</li>
+</ol>
+<h3><strong>URI-Notation von IPv6-Adressen</strong></h3>
+<p>In einem URI wird die IPv6-Adresse in eckige Klammern eingeschlossen, z.&nbsp;B.:</p>
+<ul>
+  <li><code>http://[2001:0db8:85a3:08d3::0370:7344]/</code></li>
+</ul>
+<p>Diese Notation verhindert die fälschliche Interpretation von Portnummern als Teil der IPv6-Adresse:</p>
+<ul>
+  <li><code>http://[2001:0db8:85a3:08d3::0370:7344]:8080/</code></li>
+</ul>
+<h3>Quelle:</h3>
+<p><a href="https://de.wikipedia.org/wiki/IPv6">https://de.wikipedia.org/wiki/IPv6</a></p>
