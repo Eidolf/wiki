@@ -1,20 +1,26 @@
+---
+title: vlan
+description: 
+published: true
+date: 2024-01-30T17:49:24.909Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:36:19.950Z
+---
+
 # VLAN
 
-# <span class="mw-headline" id="bkmrk-vlan-1">VLAN</span>
+## Untagged
 
-## <span class="mw-headline" id="bkmrk-untagged-1">Untagged</span>
-
-<div class="vector-body" id="bkmrk-portbasiertes-vlan-f"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">- Portbasiertes VLAN
+- Portbasiertes VLAN
 - Feste Zuordnung zu einem VLAN
 - Zur Unterteilung eines physischen Switch in mehrere logische Switche
 
-</div></div></div>## <span class="mw-headline" id="bkmrk-tagged-1">Tagged</span>
+## Tagged
 
-<div class="vector-body" id="bkmrk-verbindungen-werden-"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">- Verbindungen werden tagged (Informationen zur VLAN Zugehörigkeit)
+- Verbindungen werden tagged (Informationen zur VLAN Zugehörigkeit)
 - Mehrere tagged Verbindungen können über eine Schnittstelle laufen
 
-</div></div></div>## <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
+## Quelle:
 
-```
-<a class="external free" href="https://www.thomas-krenn.com/de/wiki/VLAN_Grundlagen" rel="nofollow">https://www.thomas-krenn.com/de/wiki/VLAN_Grundlagen</a>
-```
+https://www.thomas-krenn.com/de/wiki/VLAN_Grundlagen
