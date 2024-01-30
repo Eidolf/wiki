@@ -2,7 +2,7 @@
 title: tcp-ip
 description: 
 published: true
-date: 2024-01-30T14:16:08.698Z
+date: 2024-01-30T14:20:33.889Z
 tags: 
 editor: ckeditor
 dateCreated: 2023-12-31T13:36:15.269Z
@@ -17,7 +17,7 @@ dateCreated: 2023-12-31T13:36:15.269Z
 <p>Hier als Beispiel an folgender Adresse.</p>
 <p><mark class="marker-pink">Netzwerkbereich</mark> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<mark class="marker-yellow">Geräte Idendifikation</mark><br><mark class="marker-pink">2001:0db8:85a3:08d3</mark>:<mark class="marker-yellow">1319:8a2e:0370:7347</mark>/64</p>
 <p><mark class="marker-green">ISP Bereich</mark> (maximal 32Bit)<br><mark class="marker-green">2001:0db8</mark>:85a3:08d3:1319:8a2e:0370:7347/64<br>Angabe nur für den Provider Bereich ist folgendermaßen<br><mark class="marker-green">2001:0db8::/32</mark></p>
-<p><mark class="marker-blue">Endkunden Netzbereich</mark> (Variiert von <mark class="marker-blue">48Bit</mark> bis <mark class="pen-green">56Bit</mark>) [Laut Wikipedia, weiteres zu meiner eigenen Implementierung mit dem ISP DG am Ende dieses Absatzes]<br><mark class="marker-blue">2001:0db8:85a3</mark><mark class="pen-green">:08</mark>d3:1319:8a2e:0370:7347/64<br>Genau wie bei IPv4 ist mit einem kleineren Netzbereich, der mögliche Gerätebereich größer und somit können auch mehr Geräte verwendet werden.<br>Hier ein Beispiel für einen ausschließlich 48Bit großen Endkundenbereich<br><mark class="marker-blue">2001:0db8:85a3::/48</mark><br>Und hier ein Beispiel für einen 56Bit großen Endkundenbereich<br><mark class="pen-green">2001:0db8:85a3:0800::/56</mark></p>
+<p><mark class="marker-blue">Endkunden Netzbereich</mark> (Variiert von <mark class="marker-blue">48Bit</mark> bis <mark class="pen-green">56Bit</mark>) [Laut Wikipedia, weiteres zu meiner eigenen Implementierung mit dem ISP DG im <a href="https://wiki.eidolf.de/de/Wiki-Seiten/Netzwerk/Protokolle/tcp-ip#eigener-netzbereich-mit-dg">nächsten Abschnitt</a>]<br><mark class="marker-blue">2001:0db8:85a3</mark><mark class="pen-green">:08</mark>d3:1319:8a2e:0370:7347/64<br>Genau wie bei IPv4 ist mit einem kleineren Netzbereich, der mögliche Gerätebereich größer und somit können auch mehr Geräte verwendet werden.<br>Hier ein Beispiel für einen ausschließlich 48Bit großen Endkundenbereich<br><mark class="marker-blue">2001:0db8:85a3::/48</mark><br>Und hier ein Beispiel für einen 56Bit großen Endkundenbereich<br><mark class="pen-green">2001:0db8:85a3:0800::/56</mark></p>
 <h3>Eigener Netzbereich mit DG</h3>
 <p>Bei der Deutschen Glasfaser bekommt der Endkunde eine /62 Bereich zugewiesen, der anschließend noch in 4 öffentliche /64 Netze unterteilt werden kann.<br>Am einfachsten lässt sich dies mit einem <a href="http://www.gestioip.net/cgi-bin/subnet_calculator.cgi">IPv6 Subnetzrechner</a> umsetzen.<br>In meinem Fall musste ich den mir zugewiesenen Bereich (leicht abgeändert für das Netz)</p>
 <p>2a00:6020:47a4:25fc:: /62</p>
