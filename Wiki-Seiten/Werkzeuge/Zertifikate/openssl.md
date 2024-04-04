@@ -2,7 +2,7 @@
 title: openssl
 description: 
 published: true
-date: 2024-04-04T14:46:01.441Z
+date: 2024-04-04T14:52:59.415Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:37:13.727Z
@@ -28,12 +28,14 @@ dateCreated: 2023-12-31T13:37:13.727Z
 
 ### SAN Zertifikat generieren
 
-1. openssl.cfg Datei kopieren und in openssl-san.cfg umbenennen.  
-Falls keine Config Datei vorhanden ist habe ich hier grob eine zusammengestellt inkl. einem SAN Eintrag.
+1.  openssl.cfg Datei kopieren und in openssl-san.cfg umbenennen.  
+    Falls keine Config Datei vorhanden ist habe ich hier grob eine zusammengestellt inkl. einem SAN Eintrag.
 
-<div class="mw-collapsible mw-collapsed mw-made-collapsible" id="bkmrk-ausklappen"><span aria-expanded="false" class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0"><a class="mw-collapsible-text">Ausklappen</a></span></div>Für Code bitte ausklappen: &gt;&gt;&gt;
+Ausklappen
 
-2. Folgende Änderungen in der .cfg vornehmen
+Für Code bitte ausklappen: >>>
+
+2.  Folgende Änderungen in der .cfg vornehmen
 
 ```
 [req] req_extensions = v3_req
@@ -55,23 +57,17 @@ DNS.5 = mx.yourdomain.tld
 DNS.6 = support.yourdomain.tld
 ```
 
-3. Schlüssel generieren
+3.  Schlüssel generieren
 
-`
-openssl genrsa -out srvr1-yourdomain-tld-2048.key 2048
-`
+`openssl genrsa -out srvr1-yourdomain-tld-2048.key 2048`
 
-4. Request erstellen
+4.  Request erstellen
 
-`
-openssl req -new -out srvr1-yourdomain-tld-2048.csr -key srvr1-yourdomain-tld-2048.key -config openssl-san.cfg
-`
+`openssl req -new -out srvr1-yourdomain-tld-2048.csr -key srvr1-yourdomain-tld-2048.key -config openssl-san.cfg`
 
-5. Gegentest ob die Anforderung stimmt
+5.  Gegentest ob die Anforderung stimmt
 
-`
-openssl req -text -noout -in san_domain_com.csr
-`
+`openssl req -text -noout -in san_domain_com.csr`
 
 #### Quelle:
 
@@ -82,7 +78,7 @@ openssl req -text -noout -in san_domain_com.csr
 
 ### SAN Zertifikat generieren LINUX
 
-1. san.cnf erstellen
+1.  san.cnf erstellen
 
 1.1 Inhalt
 
@@ -105,25 +101,21 @@ DNS.2   = FQDN 2
 DNS.3   = usw. FQDN
 ```
 
-2. CSR und Key Datei erstellen
+2.  CSR und Key Datei erstellen
 
 2.1 Befehl ausführen
 
-`
-openssl req -out sslcert.csr -newkey rsa:2048 -nodes -keyout private.key -config san.cnf
-`
+`openssl req -out sslcert.csr -newkey rsa:2048 -nodes -keyout private.key -config san.cnf`
 
-3. Eventuell noch in eine PEM Datei umwandeln
+3.  Eventuell noch in eine PEM Datei umwandeln
 
 3.1 Befehl ausführen
 
-`
-openssl x509 -in sslcert.csr -outform PEM -out sslcert.pem
-`
+`openssl x509 -in sslcert.csr -outform PEM -out sslcert.pem`
 
 #### Quelle:
 
-https://geekflare.com/san-ssl-certificate/
+[https://geekflare.com/san-ssl-certificate/](https://geekflare.com/san-ssl-certificate/)
 
 ### Keyfile aus PFX/P12 Datei extrahieren
 
@@ -134,35 +126,35 @@ Falls der Zielserver kein PEM Passphrase verträgt kann man dieses mit folgendem
 
 #### Quelle:
 
-https://www.ibm.com/support/knowledgecenter/en/SSVP8U_9.7.0/com.ibm.drlive.doc/topics/r_extratsslcert.html
-https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container
+[https://www.ibm.com/support/knowledgecenter/en/SSVP8U\_9.7.0/com.ibm.drlive.doc/topics/r\_extratsslcert.html](https://www.ibm.com/support/knowledgecenter/en/SSVP8U_9.7.0/com.ibm.drlive.doc/topics/r_extratsslcert.html)  
+[https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container](https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container)
 
 ### Privaten Schlüssel mit Zertifikat und Request vergleichen
 
 Im Falle es gibt ein Zertifikat bei dem man nicht mehr weiß ob der private Schlüssel passend dazu ist kann man mit folgenden Befehlen einen Vergleich ausführen.  
 Alle ausgegebenen MD5 Hash Werte müssen übereinstimmen.
 
-- Zertifikat: `openssl x509 –noout –modulus –in Zertifikat.crt | openssl md5`
-- Schlüsseldatei: `openssl rsa –noout –modulus –in Schlüsseldatei.key | openssl md5`
-- Anforderungsdatei: `openssl req -noout –modulus –in Anforderungsdatei.csr | openssl md5`
+-   Zertifikat: `openssl x509 –noout –modulus –in Zertifikat.crt | openssl md5`
+-   Schlüsseldatei: `openssl rsa –noout –modulus –in Schlüsseldatei.key | openssl md5`
+-   Anforderungsdatei: `openssl req -noout –modulus –in Anforderungsdatei.csr | openssl md5`
 
 #### Quelle:
 
-https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key
+[https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key](https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key)
 
 ## Fehler
 
 ### Fehler bei erstellen eines v3 Zertifikats auf Windows Systemen
 
-**WARNING: can’t open config file: /usr/local/ssl/openssl.cnf**
+**WARNING: can’t open config file: /usr/local/ssl/openssl.cnf**  
 Hier wird der falsche Pfad zu einer .cnf Datei gesucht. Lösung:
 
-1. CMD Fenster öffnen
-2. `set OPENSSL_CONF=c:\[PATH TO YOUR OPENSSL DIRECTORY]\bin\openssl.cfg`
+1.  CMD Fenster öffnen
+2.  `set OPENSSL_CONF=c:\[PATH TO YOUR OPENSSL DIRECTORY]\bin\openssl.cfg`
 
 #### Quelle:
 
-http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/
+[http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/](http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/)
 
 ## Download Link Windows
 
@@ -170,8 +162,8 @@ http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/
 
 ## Quellen für Befehle
 
-http://shib.kuleuven.be/docs/ssl_commands.shtml
-https://www.sslshopper.com/article-most-common-openssl-commands.html
+[http://shib.kuleuven.be/docs/ssl\_commands.shtml](http://shib.kuleuven.be/docs/ssl_commands.shtml)  
+[https://www.sslshopper.com/article-most-common-openssl-commands.html](https://www.sslshopper.com/article-most-common-openssl-commands.html)
 
 ## Linux
 
