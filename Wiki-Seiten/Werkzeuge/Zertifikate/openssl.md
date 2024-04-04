@@ -2,7 +2,7 @@
 title: openssl
 description: 
 published: true
-date: 2024-04-04T14:52:59.415Z
+date: 2024-04-04T15:16:36.742Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:37:13.727Z
@@ -31,11 +31,10 @@ dateCreated: 2023-12-31T13:37:13.727Z
 1.  openssl.cfg Datei kopieren und in openssl-san.cfg umbenennen.  
     Falls keine Config Datei vorhanden ist habe ich hier grob eine zusammengestellt inkl. einem SAN Eintrag.
 
-Ausklappen
-
-Für Code bitte ausklappen: >>>
-
-2.  Folgende Änderungen in der .cfg vornehmen
+	Für Code bitte ausklappen: >>>
+<details>
+  <summary>Ausklappen</summary>
+  Folgende Änderungen in der .cfg vornehmen
 
 ```
 [req] req_extensions = v3_req
@@ -56,16 +55,17 @@ DNS.4 = www.sub.yourdomain.tld
 DNS.5 = mx.yourdomain.tld
 DNS.6 = support.yourdomain.tld
 ```
-
-3.  Schlüssel generieren
+</details>
+  
+2.  Schlüssel generieren
 
 `openssl genrsa -out srvr1-yourdomain-tld-2048.key 2048`
 
-4.  Request erstellen
+3.  Request erstellen
 
 `openssl req -new -out srvr1-yourdomain-tld-2048.csr -key srvr1-yourdomain-tld-2048.key -config openssl-san.cfg`
 
-5.  Gegentest ob die Anforderung stimmt
+4.  Gegentest ob die Anforderung stimmt
 
 `openssl req -text -noout -in san_domain_com.csr`
 
@@ -79,39 +79,33 @@ DNS.6 = support.yourdomain.tld
 ### SAN Zertifikat generieren LINUX
 
 1.  san.cnf erstellen
-
-1.1 Inhalt
-
-```
-[ req ]
-default_bits       = 4096
-distinguished_name = req_distinguished_name
-req_extensions     = req_ext
-[ req_distinguished_name ]
-countryName                 = Country Name (2 letter code)
-stateOrProvinceName         = State or Province Name (full name)
-localityName               = Locality Name (eg, city)
-organizationName           = Organization Name (eg, company)
-commonName                 = Common Name (e.g. server FQDN or YOUR name)
-[ req_ext ]
-subjectAltName = @alt_names
-[alt_names]
-DNS.1   = FQDN 1
-DNS.2   = FQDN 2
-DNS.3   = usw. FQDN
-```
+	1.1 Inhalt 
+  ```
+  [ req ]
+  default_bits       = 4096
+  distinguished_name = req_distinguished_name
+  req_extensions     = req_ext
+  [ req_distinguished_name ]
+  countryName                 = Country Name (2 letter code)
+  stateOrProvinceName         = State or Province Name (full name)
+  localityName               = Locality Name (eg, city)
+  organizationName           = Organization Name (eg, company)
+  commonName                 = Common Name (e.g. server FQDN or YOUR name)
+  [ req_ext ]
+  subjectAltName = @alt_names
+  [alt_names]
+  DNS.1   = FQDN 1
+  DNS.2   = FQDN 2
+  DNS.3   = usw. FQDN
+  ```
 
 2.  CSR und Key Datei erstellen
-
-2.1 Befehl ausführen
-
-`openssl req -out sslcert.csr -newkey rsa:2048 -nodes -keyout private.key -config san.cnf`
+	2.1 Befehl ausführen
+  `openssl req -out sslcert.csr -newkey rsa:2048 -nodes -keyout private.key -config san.cnf`
 
 3.  Eventuell noch in eine PEM Datei umwandeln
-
-3.1 Befehl ausführen
-
-`openssl x509 -in sslcert.csr -outform PEM -out sslcert.pem`
+	3.1 Befehl ausführen
+  `openssl x509 -in sslcert.csr -outform PEM -out sslcert.pem`
 
 #### Quelle:
 
