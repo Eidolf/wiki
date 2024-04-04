@@ -1,13 +1,23 @@
+---
+title: letsencrypt
+description: 
+published: true
+date: 2024-04-04T15:18:38.395Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:37:08.917Z
+---
+
 # Letsencrypt
 
-## <span class="mw-headline" id="bkmrk-certbot-windows-inst-1">Certbot Windows Installation</span>
+## Certbot Windows Installation
 
 Die modernste und einfachste Art ist in aktuellen Windows Versionen eine Installation mit winget
 
 1. PowerShell öffnen
 2. `winget install certbot`
 
-## <span class="mw-headline" id="bkmrk-zertifikat-mit-csr-e-1">Zertifikat mit CSR erstellen</span>
+## Zertifikat mit CSR erstellen
 
 Eigentlich ist es nicht vorgesehen einen CSR an Let's Encrypt einzureichen, doch für Testzwecke manchmal ein gangbarer Weg.
 
@@ -18,33 +28,27 @@ Eigentlich ist es nicht vorgesehen einen CSR an Let's Encrypt einzureichen, doch
 5. Im Wizard wird durch das Flag **"--preferred-challenges dns"** am Ende gefordert einen DNS TXT Eintrag auf **"\_acme-challenge.&lt;YOUR\_DOMAIN&gt;"** zur Autorisierung zu setzen, somit sollte man Zugriff auf einen öffentlichen DNS haben.
 6. Falls alles korrekt durchgelaufen ist, werden die Zertifikate im "Certbot\\bin" Ordner abgelegt. Beschreibung zu den einzelnen Dateien ist am Ende im Wizard sichtbar.
 
-## <span class="mw-headline" id="bkmrk-zertifikate-erneuern-1">Zertifikate erneuern</span>
+## Zertifikate erneuern
 
 Der Vorgang ist relativ einfach, da eigentlich nur der Befehl `certbot` verwendet wird.  
 Doch gibt es folgendes zu beachten falls ein Reverse Proxy verwendet wird und **certbot** / **letsencrypt** somit auf Port 443 das falsche Zertifikat angezeigt bekommt.  
 Der Befehl um eine Abfrage über Port 80 zu erzwingen ist folgender:  
 `certbot --preferred-challenges http`
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
+### Quelle:
 
-```
-<a class="external free" href="https://certbot.eff.org/docs/using.html" rel="nofollow">https://certbot.eff.org/docs/using.html</a>
-```
+https://certbot.eff.org/docs/using.html
 
-## <span class="mw-headline" id="bkmrk-san-zertifikate-erst-1">SAN Zertifikate erstellen</span>
+## SAN Zertifikate erstellen
 
 `certbot -d wiki.eidolf.de -d www.eidolf.de --cert-name Zertifikatsnamen`
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-3">Quelle:</span>
+### Quelle:
 
-```
-<a class="external free" href="https://community.letsencrypt.org/t/adding-san-to-a-certificate/103954/2" rel="nofollow">https://community.letsencrypt.org/t/adding-san-to-a-certificate/103954/2</a>
-```
+https://community.letsencrypt.org/t/adding-san-to-a-certificate/103954/2
 
-## <span class="mw-headline" id="bkmrk-powershell-1">PowerShell</span>
+## PowerShell
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-5">Quelle:</span>
+### Quelle:
 
-```
-<a class="external free" href="https://mssec.wordpress.com/2019/10/25/using-powershell-to-get-wildcard-certificate-from-lets-encrypt/" rel="nofollow">https://mssec.wordpress.com/2019/10/25/using-powershell-to-get-wildcard-certificate-from-lets-encrypt/</a>
-```
+https://mssec.wordpress.com/2019/10/25/using-powershell-to-get-wildcard-certificate-from-lets-encrypt/
