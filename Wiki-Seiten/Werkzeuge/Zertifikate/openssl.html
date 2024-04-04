@@ -1,0 +1,133 @@
+<!--
+title: openssl
+description: 
+published: true
+date: 2024-04-04T14:46:18.338Z
+tags: 
+editor: ckeditor
+dateCreated: 2023-12-31T13:37:13.727Z
+-->
+
+<h1 class="toc-header" id="openssl"> OpenSSL</h1>
+<h2 class="toc-header" id="standard-aufgaben"> Standard Aufgaben</h2>
+<h3 class="toc-header" id="x509-csr-generieren"> X509 CSR generieren</h3>
+<p><code>c:\\OpenSSL-Win64\\bin\\openssl.exe req -config c:\\OpenSSL-Win64\\bin\\openssl.cfg -new -newkey rsa:2048 -nodes -keyout domaenenname.de.key -out domaenenname.de.csr</code></p>
+<h3 class="toc-header" id="pkcs12-export"> PKCS12 Export</h3>
+<p><code>c:\\OpenSSL-Win64\\bin\\openssl.exe pkcs12 -config c:\\OpenSSL-Win64\\bin\\openssl.cfg -export -out certificate(PKCS12).pfx -inkey domaenenname.de.key -in domaenenname.de.crt -certfile CACert(Intermediate).crt</code></p>
+<h3 class="toc-header" id="zertifikate-einer-kette-anzeigen"> Zertifikate einer Kette anzeigen</h3>
+<p><code>c:\\OpenSSL-Win64\\bin\\openssl.exe storeutl -noout -text -certs Zertifikatskette.crt</code></p>
+<h2 class="toc-header" id="erweiterte-aufgaben"> Erweiterte Aufgaben</h2>
+<h3 class="toc-header" id="san-zertifikat-generieren"> SAN Zertifikat generieren</h3>
+<ol>
+<li>openssl.cfg Datei kopieren und in openssl-san.cfg umbenennen.<br>
+Falls keine Config Datei vorhanden ist habe ich hier grob eine zusammengestellt inkl. einem SAN Eintrag.</li>
+</ol>
+<div id="bkmrk-ausklappen" class="mw-collapsible mw-collapsed mw-made-collapsible"><span tabindex="0" role="button" class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" aria-expanded="false"><a class="mw-collapsible-text">Ausklappen</a></span></div><div>Für Code bitte ausklappen: &gt;&gt;&gt;
+</div><ol start="2">
+<li>Folgende Änderungen in der .cfg vornehmen</li>
+</ol>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">[req] req_extensions = v3_req
+
+[ v3_req ]
+
+# Extensions to add to a certificate request
+
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = server1.yourdomain.tld
+DNS.2 = mail.yourdomain.tld
+DNS.3 = www.yourdomain.tld
+DNS.4 = www.sub.yourdomain.tld
+DNS.5 = mx.yourdomain.tld
+DNS.6 = support.yourdomain.tld
+</code></pre>
+<ol start="3">
+<li>Schlüssel generieren</li>
+</ol>
+<p><code>openssl genrsa -out srvr1-yourdomain-tld-2048.key 2048</code></p>
+<ol start="4">
+<li>Request erstellen</li>
+</ol>
+<p><code>openssl req -new -out srvr1-yourdomain-tld-2048.csr -key srvr1-yourdomain-tld-2048.key -config openssl-san.cfg</code></p>
+<ol start="5">
+<li>Gegentest ob die Anforderung stimmt</li>
+</ol>
+<p><code>openssl req -text -noout -in san_domain_com.csr</code></p>
+<h4 class="toc-header" id="quelle"> Quelle:</h4>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">&lt;a class="external free" href="http://apetec.com/support/GenerateSAN-CSR.htm" rel="nofollow"&gt;http://apetec.com/support/GenerateSAN-CSR.htm&lt;/a&gt;
+&lt;a class="external free" href="http://wiki.cacert.org/FAQ/subjectAltName" rel="nofollow"&gt;http://wiki.cacert.org/FAQ/subjectAltName&lt;/a&gt;
+</code></pre>
+<h3 class="toc-header" id="san-zertifikat-generieren-linux"> SAN Zertifikat generieren LINUX</h3>
+<ol>
+<li>san.cnf erstellen</li>
+</ol>
+<p>1.1 Inhalt</p>
+<pre v-pre="true" class="prismjs line-numbers"><code class="language-">[ req ]
+default_bits       = 4096
+distinguished_name = req_distinguished_name
+req_extensions     = req_ext
+[ req_distinguished_name ]
+countryName                 = Country Name (2 letter code)
+stateOrProvinceName         = State or Province Name (full name)
+localityName               = Locality Name (eg, city)
+organizationName           = Organization Name (eg, company)
+commonName                 = Common Name (e.g. server FQDN or YOUR name)
+[ req_ext ]
+subjectAltName = @alt_names
+[alt_names]
+DNS.1   = FQDN 1
+DNS.2   = FQDN 2
+DNS.3   = usw. FQDN
+</code></pre>
+<ol start="2">
+<li>CSR und Key Datei erstellen</li>
+</ol>
+<p>2.1 Befehl ausführen</p>
+<p><code>openssl req -out sslcert.csr -newkey rsa:2048 -nodes -keyout private.key -config san.cnf</code></p>
+<ol start="3">
+<li>Eventuell noch in eine PEM Datei umwandeln</li>
+</ol>
+<p>3.1 Befehl ausführen</p>
+<p><code>openssl x509 -in sslcert.csr -outform PEM -out sslcert.pem</code></p>
+<h4 class="toc-header" id="quelle-1"> Quelle:</h4>
+<p><a class="is-external-link" href="https://geekflare.com/san-ssl-certificate/">https://geekflare.com/san-ssl-certificate/</a></p>
+<h3 class="toc-header" id="keyfile-aus-pfxp12-datei-extrahieren"> Keyfile aus PFX/P12 Datei extrahieren</h3>
+<p>Der erste Befehl exportiert nur das Keyfile aus der PFX Datei, man muss hierbei ein PEM Passphrase eingeben das länger als 4 Zeichen ist<br>
+<code>openssl pkcs12 -in certname.pfx -nocerts -out certname.key -password pass:"Passwort"</code><br>
+Falls der Zielserver kein PEM Passphrase verträgt kann man dieses mit folgendem Befehl entfernen<br>
+<code>openssl rsa -in private.key -out NewKeyFile.key -passin pass:PEMPassphrase</code></p>
+<h4 class="toc-header" id="quelle-2"> Quelle:</h4>
+<p><a class="is-external-link" href="https://www.ibm.com/support/knowledgecenter/en/SSVP8U_9.7.0/com.ibm.drlive.doc/topics/r_extratsslcert.html">https://www.ibm.com/support/knowledgecenter/en/SSVP8U_9.7.0/com.ibm.drlive.doc/topics/r_extratsslcert.html</a><br>
+<a class="is-external-link" href="https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container">https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container</a></p>
+<h3 class="toc-header" id="privaten-schlüssel-mit-zertifikat-und-request-vergleichen"> Privaten Schlüssel mit Zertifikat und Request vergleichen</h3>
+<p>Im Falle es gibt ein Zertifikat bei dem man nicht mehr weiß ob der private Schlüssel passend dazu ist kann man mit folgenden Befehlen einen Vergleich ausführen.<br>
+Alle ausgegebenen MD5 Hash Werte müssen übereinstimmen.</p>
+<ul>
+<li>Zertifikat: <code>openssl x509 –noout –modulus –in Zertifikat.crt | openssl md5</code></li>
+<li>Schlüsseldatei: <code>openssl rsa –noout –modulus –in Schlüsseldatei.key | openssl md5</code></li>
+<li>Anforderungsdatei: <code>openssl req -noout –modulus –in Anforderungsdatei.csr | openssl md5</code></li>
+</ul>
+<h4 class="toc-header" id="quelle-3"> Quelle:</h4>
+<p><a class="is-external-link" href="https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key">https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key</a></p>
+<h2 class="toc-header" id="fehler"> Fehler</h2>
+<h3 class="toc-header" id="fehler-bei-erstellen-eines-v3-zertifikats-auf-windows-systemen"> Fehler bei erstellen eines v3 Zertifikats auf Windows Systemen</h3>
+<p><strong>WARNING: can’t open config file: /usr/local/ssl/openssl.cnf</strong><br>
+Hier wird der falsche Pfad zu einer .cnf Datei gesucht. Lösung:</p>
+<ol>
+<li>CMD Fenster öffnen</li>
+<li><code>set OPENSSL_CONF=c:\[PATH TO YOUR OPENSSL DIRECTORY]\bin\openssl.cfg</code></li>
+</ol>
+<h4 class="toc-header" id="quelle-4"> Quelle:</h4>
+<p><a class="is-external-link" href="http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/">http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/</a></p>
+<h2 class="toc-header" id="download-link-windows"> Download Link Windows</h2>
+<p><a class="is-external-link" href="http://slproweb.com/products/Win32OpenSSL.html">OpenSSL Windows</a></p>
+<h2 class="toc-header" id="quellen-für-befehle"> Quellen für Befehle</h2>
+<p><a class="is-external-link" href="http://shib.kuleuven.be/docs/ssl_commands.shtml">http://shib.kuleuven.be/docs/ssl_commands.shtml</a><br>
+<a class="is-external-link" href="https://www.sslshopper.com/article-most-common-openssl-commands.html">https://www.sslshopper.com/article-most-common-openssl-commands.html</a></p>
+<h2 class="toc-header" id="linux"> Linux</h2>
+<h3 class="toc-header" id="umwandeln-cer-in-pem-der-zu-x509"> Umwandeln cer in pem (DER zu x509)</h3>
+<p><code>openssl x509 -inform DER -in certificate.cer -out certificate.pem</code><br>
+Wird für Linux Apache Server benötigt um von Windows CA ausgestellte Zertifikate lesbar zu machen.</p>
