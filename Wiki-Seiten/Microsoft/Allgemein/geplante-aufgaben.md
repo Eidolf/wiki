@@ -2,7 +2,7 @@
 title: geplante-aufgaben
 description: 
 published: true
-date: 2024-05-06T08:03:17.186Z
+date: 2024-05-06T08:24:51.282Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:28:39.995Z
@@ -18,7 +18,7 @@ dateCreated: 2023-12-31T13:28:39.995Z
 	2.2. Argumente = `-command "C:\Skriptpfad\Skript.ps1"`
 	2.3. Starten in = Pfad wo Dienstkonto zugriff hat
 
-## Neustart einstellen
+# Neustart einstellen
 
 1. Ausführen als lokaler Admin
 2. Unter Aktionen folgendes eingeben 
