@@ -2,7 +2,7 @@
 title: exchange-allgemein
 description: 
 published: true
-date: 2024-05-28T12:22:07.943Z
+date: 2024-05-28T12:34:26.473Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:03.680Z
@@ -178,6 +178,20 @@ https://practical365.com/exchange-server/fix-failed-database-content-index-excha
 ### Quelle:
 http://blogs.technet.com/b/mspfe/archive/2012/09/06/why-exchange-databases-might-remain-dirty-after-eseutil-r-recovery.aspx
 
+## Exchange Version anzeigen / auslesen
+### Mit PowerShell
+#### Hauptversion anzeigen
+`Get-ExchangeServer | ft Name, Edition, AdminDisplayVersion`
+#### Inklusive Security Updates anzeigen
+```
+$ExchangeServers = Get-ExchangeServer | Sort-Object Name
+ForEach ($Server in $ExchangeServers) {
+    Invoke-Command -ComputerName $Server.Name -ScriptBlock { Get-Command Exsetup.exe | ForEach-Object { $_.FileversionInfo } }
+}
+```
+![exchange-detail-version.png](/media/exchange-detail-version.png)
+#### Quelle:
+https://www.alitajran.com/find-exchange-version-with-powershell/
 ## Exchange Zertfikate
 
 ### Let´s Encrypt
