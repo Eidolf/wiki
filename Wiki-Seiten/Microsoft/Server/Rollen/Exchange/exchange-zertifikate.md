@@ -2,7 +2,7 @@
 title: exchange-zertifikate
 description: 
 published: true
-date: 2024-06-03T09:50:33.267Z
+date: 2024-06-03T10:14:49.296Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T14:34:02.899Z
@@ -11,7 +11,7 @@ dateCreated: 2023-12-31T14:34:02.899Z
 # Exchange Zertifikate
 
 ## Exchange Zertifikate ausstellen
-[Exchange-Zertifikate-Erneuern](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-zertifikate)
+[Exchange-Zertifikate-Erneuern](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-zertifikat-erneuern)
 [Neues-Exchange-Zertifikat](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/neues-exchange-zertifikat)
 
 ## Exchange Zertifikat einen Dienst zuordnen
