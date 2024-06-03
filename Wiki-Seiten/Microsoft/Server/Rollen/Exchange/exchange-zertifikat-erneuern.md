@@ -2,7 +2,7 @@
 title: exchange-zertifikat-erneuern
 description: 
 published: true
-date: 2024-06-03T10:13:48.811Z
+date: 2024-06-03T10:19:08.852Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T14:33:58.000Z
@@ -64,6 +64,8 @@ Ab den obengenannten Versionen wurde aus den Exchange Servern die Möglichkeit e
 5. Den Request an der Zertifizierungsstelle einreichen
 6. Das ausgestellte Zertifikat entweder über PowerShell am Exchange importieren oder auch direkt über die Zertifikate MMC
 `Import-ExchangeCertificate -FriendlyName mailserver.beispieldomaene.de -FileData ([System.IO.File]::ReadAllBytes('\\EX-NetBiosName\C$\temp\mailserver.beispieldomaene.de.cer')) -PrivateKeyExportable $true`
+7. Abschließend kann man die Dienste weiterhin über die EAC zuweisen oder wie verlinkt über die PowerShell
+[Exchange-Zertifikat-einen-Dienst-zuordnen](https://wiki.eidolf.de/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-zertifikate#exchange-zertifikat-einen-dienst-zuordnen)
 
 ### Quelle:
 https://supertekboy.com/2023/07/08/renew-a-certificate-in-exchange-2016-2019/
