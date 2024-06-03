@@ -1,28 +1,31 @@
+---
+title: exchange-zertifikate
+description: 
+published: true
+date: 2024-06-03T09:49:28.429Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:34:02.899Z
+---
+
 # Exchange Zertifikate
 
-# <span class="mw-headline" id="bkmrk-exchange-zertifikate-1">Exchange Zertifikate ausstellen</span>
+# Exchange Zertifikate ausstellen
+[Exchange-Zertifikate-Erneuern](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-zertifikate)
+[Neues-Exchange-Zertifikat](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/neues-exchange-zertifikat)
 
-[Exchange Zertifikat erneuern](https://wiki.eidolf.de/index.php/Exchange_Zertifikat_erneuern "Exchange Zertifikat erneuern")  
-[Neues Exchange Zertifikat](https://wiki.eidolf.de/index.php/Neues_Exchange_Zertifikat "Neues Exchange Zertifikat")
-
-# <span class="mw-headline" id="bkmrk-exchange-zertifikat--2">Exchange Zertifikat einen Dienst zuordnen</span>
+# Exchange Zertifikat einen Dienst zuordnen
 
 Um einen Exchange Zertifikat eine bestimmten Dienst zuzuordnen z.B. IIS für OWA und ActiveSync, dann folgenden Befehl eigeben.
 
-```
-Enable-ExchangeCertificate -Thumbprint <String> -Services "None, IMAP, POP, UM, IIS, SMTP"
-```
+`Enable-ExchangeCertificate -Thumbprint <String> -Services "None, IMAP, POP, UM, IIS, SMTP"`
 
 Quelle:
 
-```
-<a class="external free" href="http://technet.microsoft.com/de-de/library/aa997231.aspx" rel="nofollow">http://technet.microsoft.com/de-de/library/aa997231.aspx</a>
-```
+http://technet.microsoft.com/de-de/library/aa997231.aspx
 
-# <span class="mw-headline" id="bkmrk-exchange-zertifikat--4">Exchange Zertifikat mit mehreren beinhalteten Hostnamen</span><span class="mw-editsection"><span class="mw-editsection-bracket">\[</span>[Bearbeiten](https://wiki.eidolf.de/index.php?title=Exchange_Zertifikate&action=edit&section=3 "Abschnitt bearbeiten: Exchange Zertifikat mit mehreren beinhalteten Hostnamen")<span class="mw-editsection-bracket">\]</span></span>
+# Exchange Zertifikat mit mehreren beinhalteten Hostnamen
 
-Quelle:
+## Quelle:
 
-```
-<a class="external free" href="http://technet.microsoft.com/en-us/library/aa995942.aspx" rel="nofollow">http://technet.microsoft.com/en-us/library/aa995942.aspx</a>
-```
+http://technet.microsoft.com/en-us/library/aa995942.aspx
