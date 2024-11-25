@@ -2,7 +2,7 @@
 title: azure
 description: 
 published: true
-date: 2024-11-25T16:58:34.342Z
+date: 2024-11-25T17:13:31.101Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:29:45.707Z
@@ -24,6 +24,4 @@ dateCreated: 2023-12-31T13:29:45.707Z
 
 ### Quelle:
 
-```
-<a class="external free" href="https://cmatskas.com/automate-login-for-azure-powershell-scripts/" rel="nofollow">https://cmatskas.com/automate-login-for-azure-powershell-scripts/</a>
-```
+https://cmatskas.com/automate-login-for-azure-powershell-scripts/
