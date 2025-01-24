@@ -2,7 +2,7 @@
 title: Cloudflare
 description: 
 published: true
-date: 2025-01-24T16:10:29.447Z
+date: 2025-01-24T16:10:54.952Z
 tags: cdn, dns, authentication, hosting, proxy, vpn
 editor: markdown
 dateCreated: 2025-01-24T16:10:29.447Z
@@ -25,4 +25,4 @@ Folgend eine Beschreibung falls der Geheime Schlüssel für die Vertrauensstellu
 ![cloudflare-entraid_002.png](/media/cloudflare-entraid_004.png)
 5. Im Cloudflare Portal den ***App-Secret*** Schlüssel ersetzen.
 ![cloudflare-entraid_002.png](/media/cloudflare-entraid_005.png)
-6. Aschließend mit dem Test Knopf einen Verbindungstest durchführen
+6. Abschließend mit dem Test Knopf einen Verbindungstest durchführen
