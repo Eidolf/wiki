@@ -2,7 +2,7 @@
 title: exchange-zertifikat-erneuern
 description: 
 published: true
-date: 2024-06-03T10:20:53.734Z
+date: 2025-05-05T13:16:59.966Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T14:33:58.000Z
@@ -51,6 +51,9 @@ Wenn man am Exchange 2010 über die Verwaltungskonsole eine Zertifikat verlänge
 http://social.technet.microsoft.com/Forums/en-US/exchangesvrsecuremessaging/thread/f570e4bd-7194-4cf5-92f4-c7ada2f5dc8a
 
 ## Exchange 2016 > CU23 und 2019 > CU12
+
+> Untenstehende Anleitung ist für Zertifikate die nicht vom Exchange selbst ausgestellt wurden, für ein z.B. self signed SMTP Zertifikat kann man immer noch die Anleitung von Exchange 2007 befolgen.
+{.is-info}
 
 Ab den obengenannten Versionen wurde aus den Exchange Servern die Möglichkeit entfernt die Zertifikate über die EAC zu erneuern.
 
