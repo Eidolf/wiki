@@ -2,7 +2,7 @@
 title: uhrzeit
 description: 
 published: true
-date: 2024-07-01T16:04:16.349Z
+date: 2025-06-11T19:37:04.861Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:29:17.839Z
@@ -10,13 +10,19 @@ dateCreated: 2023-12-31T13:29:17.839Z
 
 # Uhrzeit
 
+## Zeitzone konfigurieren
+### Zeitzone mit PowerShell
+`
+Set-TimeZone -Name "Central European Standard Time"
+`
+
 # Zeitsynchronisierung
 
 ## Regeintrag für w32time
 
-```
-HKEY_LOCAL_MACHINE\ SYSTEM\ CurrentControlSet\ Services\ W32Time\ Parameters
-```
+`
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters
+`
 
 <table border="1" class="wikitable"><caption>Parameter</caption>
 <tbody>
