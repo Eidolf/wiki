@@ -2,7 +2,7 @@
 title: exchange-2016
 description: 
 published: true
-date: 2025-07-18T14:14:01.503Z
+date: 2025-07-18T14:14:52.974Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:32:54.175Z
@@ -71,8 +71,7 @@ Exchange CU Updates sind eigentlich ein komplettes neu installieren des Exchange
     2. `Setup.exe /IAcceptExchangeServerLicenseTerms_DiagnosticDataOFF /AddUmLanguagePack:de-DE /SourceDir:"c:\install"`
 
 ## Hybrid
-
-[Exchange 2016 Hybrid Konfiguration](https://wiki.eidolf.de/index.php/Exchange_2016_Hybrid_Konfiguration "Exchange 2016 Hybrid Konfiguration")  
+[Exchange-2016-Hybrid-Konfiguration](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-2016-hybrid-konfiguration)
 Informationen zu Exchange Hybridszenarien in Verbindung mit O365
 
 ## Fehler:
