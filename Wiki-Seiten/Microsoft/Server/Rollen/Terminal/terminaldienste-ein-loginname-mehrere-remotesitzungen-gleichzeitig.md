@@ -1,14 +1,12 @@
 ---
-title: terminaldienste-ein-loginname-mehrere-remotesitzungen-gleichzeitig
+title: Terminaldienste ein Loginname mehrere Remotesitzungen gleichzeitig
 description: 
 published: true
-date: 2025-07-24T15:00:15.171Z
-tags: 
+date: 2025-07-24T15:02:34.520Z
+tags: rdp
 editor: markdown
 dateCreated: 2023-12-31T14:37:03.183Z
 ---
-
-# Terminaldienste ein Loginname mehrere Remotesitzungen gleichzeitig
 
 Bei einem Benutzer der gleichzeit mehrer RDP Sitzungen auf einen Server ausführen will, muss entweder die Lokale Gruppenrichtlinie geändert werden oder bei einem Terminalserver unter der Terminalserverkonfiguration eine Option geändert werden.
 
