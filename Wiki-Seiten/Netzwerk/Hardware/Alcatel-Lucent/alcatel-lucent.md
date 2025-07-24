@@ -2,7 +2,7 @@
 title: Alcatel Lucent
 description: 
 published: true
-date: 2025-07-24T15:16:36.259Z
+date: 2025-07-24T15:17:13.702Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:35:56.378Z
@@ -10,8 +10,8 @@ dateCreated: 2023-12-31T13:35:56.378Z
 
 # Konsolen Kabel
 
-Alcatel verwendet eine eigene Belegung für ihr RJ45 zu DB9 Kabel, folgend die Belegung  
-[![Alcatel-6xxx-Console.png](https://wiki.eidolf.de/images/1/17/Alcatel-6xxx-Console.png)](https://wiki.eidolf.de/index.php/Datei:Alcatel-6xxx-Console.png)
+Alcatel verwendet eine eigene Belegung für ihr RJ45 zu DB9 Kabel, folgend die Belegung 
+![alcatel-6xxx-console.png](/media/alcatel-6xxx-console.png)
 
 # Authentifizierung
 
