@@ -1,14 +1,12 @@
 ---
-title: vlan
+title: VLAN
 description: 
 published: true
-date: 2024-01-30T17:49:24.909Z
+date: 2025-07-24T15:28:47.048Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:19.950Z
 ---
-
-# VLAN
 
 ## Untagged
 
