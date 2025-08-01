@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-07-18T16:21:56.178Z
+date: 2025-08-01T15:41:36.235Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -51,5 +51,6 @@ Meine vorhandene AD 2022 Umgebung ist unterstützt.
 {.is-warning}
 
 ## AD Vorbereitung
-Exchange Installationen benötigen eine AD Schema Erweiterung, diese habe ich unter Exchange 2016 > Update > Punkt 2 beschrieben und verlinke es hier.
+Exchange Installationen benötigen eine AD Schema Erweiterung, diese habe ich unter Exchange 2016 > Update > Punkt 2 beschrieben.
+Ich verlinke es hier, da das gleiche Vorgehen ist.
 [Exchange-2016#update](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-2016#update)
