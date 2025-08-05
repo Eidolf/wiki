@@ -1,32 +1,30 @@
 ---
-title: openssl
+title: OpenSSL
 description: 
 published: true
-date: 2025-08-05T14:20:15.871Z
+date: 2025-08-05T14:21:44.543Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:37:13.727Z
 ---
 
-# OpenSSL
+# Standard Aufgaben
 
-## Standard Aufgaben
-
-### X509 CSR generieren
+## X509 CSR generieren
 
 `c:\\OpenSSL-Win64\\bin\\openssl.exe req -config c:\\OpenSSL-Win64\\bin\\openssl.cfg -new -newkey rsa:2048 -nodes -keyout domaenenname.de.key -out domaenenname.de.csr`
 
-### PKCS12 Export
+## PKCS12 Export
 
 `c:\\OpenSSL-Win64\\bin\\openssl.exe pkcs12 -config c:\\OpenSSL-Win64\\bin\\openssl.cfg -export -out certificate(PKCS12).pfx -inkey domaenenname.de.key -in domaenenname.de.crt -certfile CACert(Intermediate).crt`
 
-### Zertifikate einer Kette anzeigen
+## Zertifikate einer Kette anzeigen
 
 `c:\\OpenSSL-Win64\\bin\\openssl.exe storeutl -noout -text -certs Zertifikatskette.crt`
 
-## Erweiterte Aufgaben
+# Erweiterte Aufgaben
 
-### SAN Zertifikat generieren
+## SAN Zertifikat generieren
 
 1.  openssl.cfg Datei kopieren und in openssl-san.cfg umbenennen.  
     Falls keine Config Datei vorhanden ist habe ich hier grob eine zusammengestellt inkl. einem SAN Eintrag.
@@ -71,12 +69,12 @@ DNS.6 = support.yourdomain.tld
 
 `openssl req -text -noout -in san_domain_com.csr`
 
-#### Quelle:
+### Quelle:
 
 http://apetec.com/support/GenerateSAN-CSR.htm
 http://wiki.cacert.org/FAQ/subjectAltName
 
-### SAN Zertifikat generieren LINUX
+## SAN Zertifikat generieren LINUX
 
 1.  san.cnf erstellen
 	1.1 Inhalt 
@@ -107,23 +105,23 @@ http://wiki.cacert.org/FAQ/subjectAltName
 	3.1 Befehl ausführen
   `openssl x509 -in sslcert.csr -outform PEM -out sslcert.pem`
 
-#### Quelle:
+### Quelle:
 
 https://geekflare.com/san-ssl-certificate/
 
-### Keyfile aus PFX/P12 Datei extrahieren
+## Keyfile aus PFX/P12 Datei extrahieren
 
 Der erste Befehl exportiert nur das Keyfile aus der PFX Datei, man muss hierbei ein PEM Passphrase eingeben das länger als 4 Zeichen ist  
 `openssl pkcs12 -in certname.pfx -nocerts -out certname.key -password pass:"Passwort"`  
 Falls der Zielserver kein PEM Passphrase verträgt kann man dieses mit folgendem Befehl entfernen  
 `openssl rsa -in private.key -out NewKeyFile.key -passin pass:PEMPassphrase`
 
-#### Quelle:
+### Quelle:
 
 https://www.ibm.com/support/knowledgecenter/en/SSVP8U_9.7.0/com.ibm.drlive.doc/topics/r_extratsslcert.html  
 https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container
 
-### Privaten Schlüssel mit Zertifikat und Request vergleichen
+## Privaten Schlüssel mit Zertifikat und Request vergleichen
 
 Im Falle es gibt ein Zertifikat bei dem man nicht mehr weiß ob der private Schlüssel passend dazu ist kann man mit folgenden Befehlen einen Vergleich ausführen.  
 Alle ausgegebenen MD5 Hash Werte müssen übereinstimmen.
@@ -132,11 +130,11 @@ Alle ausgegebenen MD5 Hash Werte müssen übereinstimmen.
 -   Schlüsseldatei: `openssl rsa –noout –modulus –in Schlüsseldatei.key | openssl md5`
 -   Anforderungsdatei: `openssl req -noout –modulus –in Anforderungsdatei.csr | openssl md5`
 
-#### Quelle:
+### Quelle:
 
 https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key
 
-### Privaten Schlüssel mit Passwort überprüfen
+## Privaten Schlüssel mit Passwort überprüfen
 
 Ab und an hat man eine Schlüssel Datei liegen und weiß nicht ob ein Passwort verwendet wurde oder nicht.
 Dies kann mit einem Texteditor deiner Wahl ganz einfach über den Header herausgefunden werden.
@@ -149,9 +147,9 @@ Um zu prüfen ob das Passwort mit der Datei übereinstimmt kann man folgenden Be
 
 ![openssl-002.png](/media/openssl-002.png)
 
-## Fehler
+# Fehler
 
-### Fehler bei erstellen eines v3 Zertifikats auf Windows Systemen
+## Fehler bei erstellen eines v3 Zertifikats auf Windows Systemen
 
 **WARNING: can’t open config file: /usr/local/ssl/openssl.cnf**  
 Hier wird der falsche Pfad zu einer .cnf Datei gesucht. Lösung:
@@ -159,22 +157,22 @@ Hier wird der falsche Pfad zu einer .cnf Datei gesucht. Lösung:
 1.  CMD Fenster öffnen
 2.  `set OPENSSL_CONF=c:\[PATH TO YOUR OPENSSL DIRECTORY]\bin\openssl.cfg`
 
-#### Quelle:
+### Quelle:
 
 http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/
 
-## Download Link Windows
+# Download Link Windows
 
 [OpenSSL Windows](http://slproweb.com/products/Win32OpenSSL.html)
 
-## Quellen für Befehle
+# Quellen für Befehle
 
 http://shib.kuleuven.be/docs/ssl_commands.shtml 
 https://www.sslshopper.com/article-most-common-openssl-commands.html
 
-## Linux
+# Linux
 
-### Umwandeln cer in pem (DER zu x509)
+## Umwandeln cer in pem (DER zu x509)
 
 `openssl x509 -inform DER -in certificate.cer -out certificate.pem`  
 Wird für Linux Apache Server benötigt um von Windows CA ausgestellte Zertifikate lesbar zu machen.
