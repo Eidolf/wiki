@@ -2,7 +2,7 @@
 title: openssl
 description: 
 published: true
-date: 2025-08-05T13:33:28.399Z
+date: 2025-08-05T13:49:05.031Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:37:13.727Z
@@ -133,6 +133,15 @@ Alle ausgegebenen MD5 Hash Werte müssen übereinstimmen.
 #### Quelle:
 
 https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key
+
+### Privaten Schlüssel mit Passwort überprüfen
+
+Ab und an hat man eine Schlüssel Datei liegen und weiß nicht ob ein Passwort verwendet wurde oder nicht.
+Um zu prüfen ob das Passwort mit der Datei übereinstimmt kann man folgenden Befehl verwenden
+
+`openssl rsa -in MyKeyfile.key`
+
+Im Header wird **Encrypted** für eine Passwort verschlüsselte Datei angezeigt oder wenn nicht ist es ohne Passwort.
 
 ## Fehler
 
