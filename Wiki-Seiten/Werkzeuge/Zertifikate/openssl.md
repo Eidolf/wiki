@@ -2,7 +2,7 @@
 title: openssl
 description: 
 published: true
-date: 2025-08-05T13:49:05.031Z
+date: 2025-08-05T14:20:15.871Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:37:13.727Z
@@ -58,8 +58,10 @@ DNS.6 = support.yourdomain.tld
 </details>
   
 2.  Schlüssel generieren
-
+2.1 ohne Passwort
 `openssl genrsa -out srvr1-yourdomain-tld-2048.key 2048`
+2.2. mit Passwort
+`openssl genrsa -aes256 -passout pass:Passwort -out srvr1-yourdomain-tld-2048-with-PW.key 2048`
 
 3.  Request erstellen
 
@@ -137,11 +139,15 @@ https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-pr
 ### Privaten Schlüssel mit Passwort überprüfen
 
 Ab und an hat man eine Schlüssel Datei liegen und weiß nicht ob ein Passwort verwendet wurde oder nicht.
+Dies kann mit einem Texteditor deiner Wahl ganz einfach über den Header herausgefunden werden.
+Wenn hier **Encrypted** enthalten ist, wurde ein Passwort gesetzt.
+![openssl-001.png](/media/openssl-001.png)
+
 Um zu prüfen ob das Passwort mit der Datei übereinstimmt kann man folgenden Befehl verwenden
 
-`openssl rsa -in MyKeyfile.key`
+`openssl rsa -in srvr1-yourdomain-tld-2048-with-PW.key`
 
-Im Header wird **Encrypted** für eine Passwort verschlüsselte Datei angezeigt oder wenn nicht ist es ohne Passwort.
+![openssl-002.png](/media/openssl-002.png)
 
 ## Fehler
 
