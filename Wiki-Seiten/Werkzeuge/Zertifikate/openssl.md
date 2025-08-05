@@ -2,7 +2,7 @@
 title: openssl
 description: 
 published: true
-date: 2024-04-04T15:16:36.742Z
+date: 2025-08-05T13:33:28.399Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:37:13.727Z
@@ -71,10 +71,8 @@ DNS.6 = support.yourdomain.tld
 
 #### Quelle:
 
-```
-<a class="external free" href="http://apetec.com/support/GenerateSAN-CSR.htm" rel="nofollow">http://apetec.com/support/GenerateSAN-CSR.htm</a>
-<a class="external free" href="http://wiki.cacert.org/FAQ/subjectAltName" rel="nofollow">http://wiki.cacert.org/FAQ/subjectAltName</a>
-```
+http://apetec.com/support/GenerateSAN-CSR.htm
+http://wiki.cacert.org/FAQ/subjectAltName
 
 ### SAN Zertifikat generieren LINUX
 
@@ -109,7 +107,7 @@ DNS.6 = support.yourdomain.tld
 
 #### Quelle:
 
-[https://geekflare.com/san-ssl-certificate/](https://geekflare.com/san-ssl-certificate/)
+https://geekflare.com/san-ssl-certificate/
 
 ### Keyfile aus PFX/P12 Datei extrahieren
 
@@ -120,8 +118,8 @@ Falls der Zielserver kein PEM Passphrase verträgt kann man dieses mit folgendem
 
 #### Quelle:
 
-[https://www.ibm.com/support/knowledgecenter/en/SSVP8U\_9.7.0/com.ibm.drlive.doc/topics/r\_extratsslcert.html](https://www.ibm.com/support/knowledgecenter/en/SSVP8U_9.7.0/com.ibm.drlive.doc/topics/r_extratsslcert.html)  
-[https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container](https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container)
+https://www.ibm.com/support/knowledgecenter/en/SSVP8U_9.7.0/com.ibm.drlive.doc/topics/r_extratsslcert.html  
+https://serverfault.com/questions/515833/how-to-remove-private-key-password-from-pkcs12-container
 
 ### Privaten Schlüssel mit Zertifikat und Request vergleichen
 
@@ -134,7 +132,7 @@ Alle ausgegebenen MD5 Hash Werte müssen übereinstimmen.
 
 #### Quelle:
 
-[https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key](https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key)
+https://www.ssl247.de/kb/ssl-certificates/troubleshooting/certificate-matches-private-key
 
 ## Fehler
 
@@ -148,7 +146,7 @@ Hier wird der falsche Pfad zu einer .cnf Datei gesucht. Lösung:
 
 #### Quelle:
 
-[http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/](http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/)
+http://jaspreetchahal.org/warning-cant-open-config-file-usrlocalsslopenssl-cnf/
 
 ## Download Link Windows
 
@@ -156,8 +154,8 @@ Hier wird der falsche Pfad zu einer .cnf Datei gesucht. Lösung:
 
 ## Quellen für Befehle
 
-[http://shib.kuleuven.be/docs/ssl\_commands.shtml](http://shib.kuleuven.be/docs/ssl_commands.shtml)  
-[https://www.sslshopper.com/article-most-common-openssl-commands.html](https://www.sslshopper.com/article-most-common-openssl-commands.html)
+http://shib.kuleuven.be/docs/ssl_commands.shtml 
+https://www.sslshopper.com/article-most-common-openssl-commands.html
 
 ## Linux
 
