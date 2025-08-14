@@ -1,16 +1,22 @@
-# Powershell
+---
+title: Powershell
+description: 
+published: true
+date: 2025-08-14T10:32:13.460Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:29:12.851Z
+---
 
-## <span class="mw-headline" id="bkmrk-skript-signieren-1">Skript signieren</span>
+# Skript signieren
 
 Voraussetzung ein Script zu signieren ist ein gültiges Codesignierungszertifikat im Benutzer Zertifikatsspeicher.
 
-### <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-pr%C3%BCfen-ob-codesignie-1">Prüfen ob Codesignierungszertifikat vorhanden ist</span>
+## Prüfen ob Codesignierungszertifikat vorhanden ist
 
-```
-Get-ChildItem cert:\CurrentUser\My -CodeSigningCert
-```
+`Get-ChildItem cert:\CurrentUser\My -CodeSigningCert`
 
-### <span class="mw-headline" id="bkmrk-skript-signieren-3">Skript Signieren</span>
+## Skript Signieren
 
 Folgender Signiervorgang wird in einer Umgebung mit Root CA bevorzugt, **Achtung:** das ist kein direktes ps1 Script, die Befehle werden nacheinander eingegeben.
 
@@ -21,28 +27,24 @@ $Cert = (Get-ChildItem Cert:\CurrentUser\my -CodeSigningCert)[0]
 Set-AuthenticodeSignature -FilePath "$Filepath" -Certificate $Cert -IncludeChain "All" -TimeStampServer "http://timestamp.fabrikam.com/scripts/timstamper.dll"
 ```
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
+## Quelle:
 
-```
-<a class="external free" href="https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Set-AuthenticodeSignature" rel="nofollow">https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Set-AuthenticodeSignature</a>
-<a class="external free" href="http://www.hanselman.com/blog/SigningPowerShellScripts.aspx" rel="nofollow">http://www.hanselman.com/blog/SigningPowerShellScripts.aspx</a>
-```
+https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Set-AuthenticodeSignature
+http://www.hanselman.com/blog/SigningPowerShellScripts.aspx
 
-## <span class="mw-headline" id="bkmrk-dateien-umbenennen-1">Dateien umbenennen</span>
+# Dateien umbenennen
 
-### <span class="mw-headline" id="bkmrk-mittleren-teil-umben-1">Mittleren Teil umbenennen</span>
+## Mittleren Teil umbenennen
 
 Wenn in einem Beispieldateinamen **( Test-01.test )** das **( -0 )** in **( 01x )** geändert werden soll muss man folgenden Befehl ausführen.  
 Hinweis:  
 In folgendem Befehl wird **"dir"** zur Auflistung alle Dateien in einem Ordner verwendet, wenn man die Auswahl eingrenzen will, kann man z.B. " dir \*.jpg" verwenden, oder einen anderen Befehl wie z.B. "get-childitem"
 
-```
-dir | foreach { move-item -literal $_ $_.name.replace("st-0","st01x")}
-```
+`dir | foreach { move-item -literal $_ $_.name.replace("st-0","st01x")}`
 
-## <span class="mw-headline" id="bkmrk-dateien-verschieben-1">Dateien verschieben</span>
+# Dateien verschieben
 
-### <span class="mw-headline" id="bkmrk-dateien-von-pfad-x-r-1">Dateien von Pfad X Rekursive nach Pfad Y</span>
+## Dateien von Pfad X Rekursive nach Pfad Y
 
 Folgend ein kleines Skript das Dateien aus einem angegebenen Pfad rekursive sucht und diese anschließend an einen anderen Pfad verschiebt. Vor dem verschieben werden nochmal zur Bestätigung die Namen der gefundenen Dateien ausgegeben.  
 Einfach als **".ps1"** abspeichern.
@@ -59,7 +61,7 @@ Pause
 Move-Item -Path $DateiAnzeige -Destination $NachPfad
 ```
 
-## <span class="mw-headline" id="bkmrk-prozess-auf-remote-r-1">Prozess auf Remote-Rechner erzwungen beenden</span>
+# Prozess auf Remote-Rechner erzwungen beenden
 
 1. PowerShell öffnen
 2. Dienst ID herausfinden mit folgenden Befehl für z.B. den Hyper-V Verwaltungsdienst 
@@ -67,18 +69,16 @@ Move-Item -Path $DateiAnzeige -Destination $NachPfad
 3. Den Prozess erzwungen beenden mit zuvor herausgefundener ID 
     - `Invoke-Command -ComputerName w2012-clu-n1 -ScriptBlock {Stop-Process -ID 3096}`
 
-## <span class="mw-headline" id="bkmrk-powershell-web-acces-1">PowerShell Web Access</span>
+# PowerShell Web Access
 
 Hiermit kann man eine Powershell Konsole im Browser öffnen und sich hiermit auf verschiedene Server verbinden.
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-3">Quelle:</span>
+## Quelle:
 
-```
-<a class="external free" href="http://blog.pluralsight.com/configure-powershell-web-access" rel="nofollow">http://blog.pluralsight.com/configure-powershell-web-access</a>
-<a class="external free" href="http://technet.microsoft.com/en-us/library/hh831611.aspx" rel="nofollow">http://technet.microsoft.com/en-us/library/hh831611.aspx</a>
-```
+http://blog.pluralsight.com/configure-powershell-web-access
+http://technet.microsoft.com/en-us/library/hh831611.aspx
 
-## <span class="mw-headline" id="bkmrk-installation-von-v6-1">Installation von v6</span>
+# Installation von v6
 
 ```
 iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
@@ -87,9 +87,6 @@ Install-Module –Name PowerShellGet –Force
 Exit
 ```
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-5">Quelle:</span>
-
-```
-<a class="external free" href="https://www.thomasmaurer.ch/2019/03/how-to-install-and-update-powershell-6/" rel="nofollow">https://www.thomasmaurer.ch/2019/03/how-to-install-and-update-powershell-6/</a>
-<a class="external free" href="https://www.thomasmaurer.ch/2019/02/update-powershellget-and-packagemanagement/" rel="nofollow">https://www.thomasmaurer.ch/2019/02/update-powershellget-and-packagemanagement/</a>
-```
+## Quelle:
+https://www.thomasmaurer.ch/2019/03/how-to-install-and-update-powershell-6/
+https://www.thomasmaurer.ch/2019/02/update-powershellget-and-packagemanagement/
