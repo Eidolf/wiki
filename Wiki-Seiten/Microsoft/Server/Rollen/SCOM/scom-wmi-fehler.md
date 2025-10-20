@@ -1,3 +1,13 @@
+---
+title: scom-wmi-fehler
+description: 
+published: true
+date: 2023-12-31T14:35:40.163Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:35:37.081Z
+---
+
 # SCOM WMI Fehler
 
 Fehlercodes 0x800700a4 / 0x800705af /0x800706BE sollten folgenderweise behoben werden.

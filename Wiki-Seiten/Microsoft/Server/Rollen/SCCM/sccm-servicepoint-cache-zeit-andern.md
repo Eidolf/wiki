@@ -1,3 +1,13 @@
+---
+title: sccm-servicepoint-cache-zeit-andern
+description: 
+published: true
+date: 2023-12-31T13:34:54.945Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:34:51.873Z
+---
+
 # SCCM Servicepoint Cache Zeit ändern
 
 <div class="vector-body" id="bkmrk-"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"></div></div>Der PXE Servicepoint (WDS) unter SCCM speichert(e) Anfragen von Clients eine Stunde lang zwischen, was zu Problemen bei OS Deployments führt(e).

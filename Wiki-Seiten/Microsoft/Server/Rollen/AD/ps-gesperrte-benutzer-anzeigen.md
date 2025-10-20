@@ -1,3 +1,13 @@
+---
+title: ps-gesperrte-benutzer-anzeigen
+description: 
+published: true
+date: 2023-12-31T14:30:38.193Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:30:35.136Z
+---
+
 # PS gesperrte Benutzer anzeigen
 
 Aber die Suche nach den tatsächlich gesperrten und vor allem das Entsperren dieser Benutzerkonten, lässt sich ganz einfach realisieren. Die Lösung ist wieder einmal die AD-PowerShell! Mit diesem State of the Art Werkzeug lässt sich das schnell und einfach mit einem Einzeiler erledigen.  

@@ -2,7 +2,7 @@
 title: neues-exchange-zertifikat
 description: 
 published: true
-date: 2025-05-05T13:26:08.079Z
+date: 2025-05-05T13:26:11.455Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:36.155Z

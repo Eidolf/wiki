@@ -1,3 +1,13 @@
+---
+title: scom-server-2008-100-cpu-auslastung
+description: 
+published: true
+date: 2023-12-31T13:35:32.081Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:35:28.983Z
+---
+
 # SCOM: Server 2008 100% CPU Auslastung
 
 Auf Windows Vista, XP SP3 oder Server 2008 kann es in abständen vorgekommen das die CPU Auslastung der **MonitoringHost.exe** auf 100% steigt.

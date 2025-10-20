@@ -1,3 +1,13 @@
+---
+title: exchange-postfach-trennen
+description: 
+published: true
+date: 2023-12-31T14:33:51.871Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:33:48.757Z
+---
+
 # Exchange Postfach trennen
 
 Das Postfach muss erst deaktiviert werden, erscheint aber nicht sofort unter den getrennten Postfächern. Also entweder warten oder folgenden Befehl ausführen.

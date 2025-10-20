@@ -1,3 +1,13 @@
+---
+title: virtuelle-cpu-leistung
+description: 
+published: true
+date: 2023-12-31T14:34:55.069Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:34:51.900Z
+---
+
 # Virtuelle CPU Leistung
 
 Unter der Quelle wird ausführlich angegeben wieviel Virtuelle CPU´s den Physikalischen Host CPU´s zugeordnet werden können. Bei Server 2008 R2 wird eine Faktor von mindestens 4:1 bis noch Unterstützte 8:1 geboten.

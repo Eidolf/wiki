@@ -1,3 +1,13 @@
+---
+title: sharepoint-migration
+description: 
+published: true
+date: 2023-12-31T14:35:54.272Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:35:51.034Z
+---
+
 # Sharepoint Migration
 
 **Ausgangslage:**

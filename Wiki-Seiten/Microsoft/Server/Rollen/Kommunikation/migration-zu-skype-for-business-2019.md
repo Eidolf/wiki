@@ -1,3 +1,13 @@
+---
+title: migration-zu-skype-for-business-2019
+description: 
+published: true
+date: 2023-12-31T14:35:11.253Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:35:06.664Z
+---
+
 # Migration zu Skype for Business 2019
 
 # <span class="mw-headline" id="bkmrk-voraussetzungen-inst-1">Voraussetzungen installieren</span><span class="mw-editsection"><span class="mw-editsection-bracket">\[</span>[Bearbeiten](https://wiki.eidolf.de/index.php?title=Migration_zu_Skype_for_Business_2019&action=edit&section=1 "Abschnitt bearbeiten: Voraussetzungen installieren")<span class="mw-editsection-bracket">\]</span></span>

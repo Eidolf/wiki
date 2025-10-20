@@ -1,3 +1,13 @@
+---
+title: dpm-update
+description: 
+published: true
+date: 2023-12-31T14:32:28.878Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:32:25.670Z
+---
+
 # DPM Update
 
 Falls SQL, Management und Serverdienst des DPM auf einer Maschine laufen dann das komplett Paket installieren. Wenn alles getrennt installiert ist dann diese Reihenfolge beim installieren einhalten.

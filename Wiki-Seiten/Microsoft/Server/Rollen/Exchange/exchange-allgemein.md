@@ -2,7 +2,7 @@
 title: exchange-allgemein
 description: 
 published: true
-date: 2024-05-28T12:34:26.473Z
+date: 2024-05-28T12:34:30.203Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:03.680Z

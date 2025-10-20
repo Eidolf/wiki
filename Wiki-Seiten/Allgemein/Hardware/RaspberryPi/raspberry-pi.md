@@ -2,7 +2,7 @@
 title: raspberry-pi
 description: 
 published: true
-date: 2024-01-01T15:49:27.725Z
+date: 2024-01-01T15:49:30.896Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:27:35.311Z

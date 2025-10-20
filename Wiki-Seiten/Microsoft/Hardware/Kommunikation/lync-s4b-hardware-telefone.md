@@ -2,7 +2,7 @@
 title: lync-s4b-hardware-telefone
 description: 
 published: true
-date: 2023-12-31T12:00:53.743Z
+date: 2023-12-31T12:00:56.828Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T11:55:27.032Z

@@ -1,3 +1,13 @@
+---
+title: microsoft-sql-server
+description: 
+published: true
+date: 2023-12-31T13:34:07.436Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:34:04.340Z
+---
+
 # Microsoft SQL Server
 
 # <span class="mw-headline" id="bkmrk-sql-reporting-servic-1">SQL Reporting Service</span>

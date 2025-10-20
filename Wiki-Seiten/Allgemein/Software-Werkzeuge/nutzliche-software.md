@@ -1,3 +1,13 @@
+---
+title: nutzliche-software
+description: 
+published: true
+date: 2023-12-31T13:28:01.444Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:27:58.368Z
+---
+
 # Nützliche Software
 
 # <span class="mw-headline" id="bkmrk-iso-creator-1">ISO Creator</span>

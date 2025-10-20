@@ -1,3 +1,13 @@
+---
+title: antivirus-scan-ausnahmen
+description: 
+published: true
+date: 2023-12-31T14:28:07.955Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:28:04.753Z
+---
+
 # Antivirus Scan Ausnahmen
 
 # <span class="mw-headline" id="bkmrk-allgemeine-ausnahmen-1">Allgemeine Ausnahmen</span><span class="mw-editsection"><span class="mw-editsection-bracket">\[</span>[Bearbeiten](https://wiki.eidolf.de/index.php?title=Scan_Ausnahmen&action=edit&section=1 "Abschnitt bearbeiten: Allgemeine Ausnahmen")<span class="mw-editsection-bracket">\]</span></span>

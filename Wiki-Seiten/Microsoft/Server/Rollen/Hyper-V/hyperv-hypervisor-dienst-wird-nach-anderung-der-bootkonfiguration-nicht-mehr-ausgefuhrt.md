@@ -1,3 +1,13 @@
+---
+title: hyperv-hypervisor-dienst-wird-nach-anderung-der-bootkonfiguration-nicht-mehr-ausgefuhrt
+description: 
+published: true
+date: 2023-12-31T14:34:44.571Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:34:41.385Z
+---
+
 # HyperV Hypervisor Dienst wird nach Änderung der Bootkonfiguration nicht mehr ausgeführt
 
 Dieses Problem tritt auf, weil es kein Sysprep-Anbieter für Hyper-V ist. Daher ist der HypervisorLaunchType BCD-Eintrag aus der Datei Startkonfigurationsdatenbank (Boot Configuration Data, BCD) entfernt, wenn Sie Sysprep ausführen.

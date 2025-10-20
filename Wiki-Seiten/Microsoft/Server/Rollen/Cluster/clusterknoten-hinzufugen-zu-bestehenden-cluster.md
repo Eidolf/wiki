@@ -1,3 +1,13 @@
+---
+title: clusterknoten-hinzufugen-zu-bestehenden-cluster
+description: 
+published: true
+date: 2023-12-31T14:31:03.023Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:30:59.736Z
+---
+
 # Clusterknoten hinzufügen zu bestehenden Cluster
 
 <div class="vector-body" id="bkmrk-make-sure-the-third-"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Make sure the third node meets the requirements to run Windows Server 2008 (R2) and Hyper-V

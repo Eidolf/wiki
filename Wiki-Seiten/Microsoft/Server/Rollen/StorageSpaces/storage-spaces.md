@@ -1,3 +1,13 @@
+---
+title: storage-spaces
+description: 
+published: true
+date: 2023-12-31T14:36:13.606Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:36:10.355Z
+---
+
 # Storage Spaces
 
 # <span class="mw-headline" id="bkmrk-anlegen-von-virtual--1">Anlegen von Virtual Disk</span><span class="mw-editsection"><span class="mw-editsection-bracket">\[</span>[Bearbeiten](https://wiki.eidolf.de/index.php?title=Storage_Spaces&action=edit&section=1 "Abschnitt bearbeiten: Anlegen von Virtual Disk")<span class="mw-editsection-bracket">\]</span></span>

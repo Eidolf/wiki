@@ -2,17 +2,15 @@
 title: windows-ca
 description: 
 published: true
-date: 2025-06-27T15:24:36.546Z
+date: 2025-10-20T14:30:48.057Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:31:50.407Z
 ---
 
-# Windows CA
+# Einrichten
 
-## Einrichten
-
-### Server Core
+## Server Core
 
 > **Eine Warnung!** Nach längerem Arbeiten mit einer Server Core Root CA würde ich von so einer Installation abraten, die Root CA sollte mindestens die GUI enthalten, besser auch die Sub CA
 {.is-warning}
@@ -28,11 +26,11 @@ dateCreated: 2023-12-31T13:31:50.407Z
 [enterprise-ca-installieren](/de/Wiki-Seiten/Microsoft/Server/Rollen/CA/enterprise-ca-installieren)
 [enterprise-ca-konfigurieren](/de/Wiki-Seiten/Microsoft/Server/Rollen/CA/enterprise-ca-konfigurieren)
 
-## Standard Aufgaben
+# Standard Aufgaben
 
-### Sub CA Zertifikat erneuern
+## Sub CA Zertifikat erneuern
 
-#### Im Server Core Umfeld
+### Im Server Core Umfeld
 
 Eines der Punkte weshalb ich eine Warnung bei Server Core Installationen hinzugefügt habe ist der umständliche Weg das Sub CA Zertifikat zu erneuern.  
 Es werden leider wichtige Punkte in der Remote MMC ausgeblendet und weiterhin ist es nicht einfach Berechtigungen zu übergeben.  
@@ -56,11 +54,11 @@ Berechtigung ist der nächste wichtige Punkt, um einfach mit certsrv.msc eine Re
 ![install-enterprise-ca_042-01.png](/media/install-enterprise-ca_042-01.png)
 11. Den Certsrv Dienst durchstarten
 
-## Erweiterte Aufgabe
+# Erweiterte Aufgabe
 
-### SAN Zertifikat erstellen
+## SAN Zertifikat erstellen
 
-#### IIS Wizard (certsrv)
+### IIS Wizard (certsrv)
 
 Unter dem Attribut Feld gibt man SAN:DNS=SAN.FQDN ein.  
 Jeder weitere Eintrag wird durch ein kaufmännisches UND "&amp;" getrennt
@@ -71,9 +69,9 @@ Beispiel:
 SAN:DNS=eins.domain.de & DNS=zwei.domain.de
 `
 
-## Einstellungen
+# Einstellungen
 
-### Bestehende SHA1 CA auf SHA256 upgraden
+## Bestehende SHA1 CA auf SHA256 upgraden
 
 1. CMD öffnen
 2. `certutil -setreg ca\csp\CNGHashAlgorithm SHA256`
@@ -81,11 +79,11 @@ SAN:DNS=eins.domain.de & DNS=zwei.domain.de
 4. Eigenschaften der CA überprüfen
 5. CA Zertifikat erneuern
 
-#### Quelle:
+### Quelle:
 
 https://www.frankysweb.de/migration-stammzertifizierungsstelle-sha1-zu-sha256-hashalgorithmus/
 
-### Zertifikat kann nicht unter "Ausstellende Zertifikatsvorlage" ausgewählt werden
+## Zertifikat kann nicht unter "Ausstellende Zertifikatsvorlage" ausgewählt werden
 
 Lösung:
 
@@ -95,6 +93,6 @@ Lösung:
 4. Attribut **flag** von **2** auf **10** setzen
 5. Dienst der betroffenen CA neu starten
 
-#### Quelle:
+### Quelle:
 
 https://serverfault.com/questions/320565/certificate-template-missing-from-certificate-template-to-issue

@@ -1,3 +1,13 @@
+---
+title: sccm-2012-r2-installation
+description: 
+published: true
+date: 2023-12-31T13:34:35.951Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:34:32.812Z
+---
+
 # SCCM 2012 R2 Installation
 
 [![SCCM2012R2Vorauss.001.jpg](https://wiki.eidolf.de/images/1/15/SCCM2012R2Vorauss.001.jpg)](https://wiki.eidolf.de/index.php/Datei:SCCM2012R2Vorauss.001.jpg)

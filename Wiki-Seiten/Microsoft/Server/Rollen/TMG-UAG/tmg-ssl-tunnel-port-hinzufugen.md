@@ -1,3 +1,13 @@
+---
+title: tmg-ssl-tunnel-port-hinzufugen
+description: 
+published: true
+date: 2023-12-31T14:36:56.574Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:36:53.605Z
+---
+
 # TMG SSL Tunnel Port hinzufügen
 
 <div class="vector-body" id="bkmrk-go-to-www.isatools.o"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Go to www.isatools.org and download the isa\_tpr.js file ([http://www.isatools.org/tools/isa\_tpr.js](http://www.isatools.org/tools/isa_tpr.js)) and copy that file to your ISA firewall. Do not use the browser on the firewall. Download the file to a management workstation, scan the file, and then copy the file to removable media and then take it to the ISA firewall. Remember, never use client applications, such as browsers, e-mail clients, etc. on the firewall itself.

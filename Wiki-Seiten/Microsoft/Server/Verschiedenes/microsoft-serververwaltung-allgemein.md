@@ -1,3 +1,13 @@
+---
+title: microsoft-serververwaltung-allgemein
+description: 
+published: true
+date: 2023-12-31T14:37:49.092Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:37:45.926Z
+---
+
 # Microsoft Serververwaltung Allgemein
 
 ## <span class="mw-headline" id="bkmrk-admin-pack%3A">Admin Pack:</span><span class="mw-editsection"><span class="mw-editsection-bracket">\[</span>[Bearbeiten](https://wiki.eidolf.de/index.php?title=Serververwaltung_Allgemein&action=edit&section=1 "Abschnitt bearbeiten: Admin Pack:")<span class="mw-editsection-bracket">\]</span></span>

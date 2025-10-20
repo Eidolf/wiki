@@ -1,3 +1,13 @@
+---
+title: home-assistant
+description: 
+published: true
+date: 2023-12-31T13:36:41.420Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:36:38.302Z
+---
+
 # Home Assistant
 
 # <span class="mw-headline" id="bkmrk-datenbank-1">Datenbank</span>

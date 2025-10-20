@@ -1,3 +1,13 @@
+---
+title: outlook-ldap-adressbuch
+description: 
+published: true
+date: 2023-12-31T13:30:29.274Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:30:26.160Z
+---
+
 # Outlook LDAP Adressbuch
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-%C3%9Cber-eine-outlook-pr-1">Über eine Outlook Profildatei ( .prf ) hinzufügen</span>

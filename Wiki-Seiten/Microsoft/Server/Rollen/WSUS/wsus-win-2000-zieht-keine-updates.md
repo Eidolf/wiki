@@ -1,3 +1,13 @@
+---
+title: wsus-win-2000-zieht-keine-updates
+description: 
+published: true
+date: 2023-12-31T14:37:30.325Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:37:27.242Z
+---
+
 # WSUS Win 2000 zieht keine Updates
 
 An Windows 2000 Clients werden keine WSUS Updates mehr gezogen, in der Ereignisanzeige wird keine Fehlermeldung angezeigt die zur Lösung beitragen kann. Im WindowsUpdate.log unter "C:\\WindowsNT\\WindowsUpdate.log" wird folgendes angezeigt:

@@ -1,3 +1,13 @@
+---
+title: sccm-client-tool
+description: 
+published: true
+date: 2023-12-31T13:34:50.284Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:34:46.923Z
+---
+
 # SCCM Client Tool
 
 # <span class="mw-headline" id="bkmrk-beschreibung%3A-1">Beschreibung:</span>

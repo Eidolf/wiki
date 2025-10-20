@@ -1,3 +1,13 @@
+---
+title: sicherung-von-domaincontrollern
+description: 
+published: true
+date: 2023-12-31T14:30:42.996Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:30:39.797Z
+---
+
 # Sicherung von Domaincontrollern
 
 Es wird nicht empfohlen bei multiplen Domänencontrollern ausschließlich die virtuelle Festplatte zu sichern, da der Status des Sicherungsvorgangs so nicht an das AD weitergegeben wird und somit bei einer Wiederherstellung USN (Update Sequence Number) Rollback Situation auftreten kann, bedeutet alte/falsche Daten werden synchronisiert.

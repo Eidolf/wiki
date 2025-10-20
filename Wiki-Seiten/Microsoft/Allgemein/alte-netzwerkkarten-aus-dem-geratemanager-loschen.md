@@ -1,3 +1,13 @@
+---
+title: alte-netzwerkkarten-aus-dem-geratemanager-loschen
+description: 
+published: true
+date: 2023-12-31T13:28:15.213Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:28:12.252Z
+---
+
 # Alte Netzwerkkarten aus dem Gerätemanager löschen
 
 <div class="vector-body" id="bkmrk-klicken-sie-auf%C2%A0star"><div class="mw-body-content mw-content-ltr" dir="ltr" id="bkmrk-klicken-sie-auf%C2%A0star-1" lang="de"><div class="mw-parser-output">1. Klicken Sie auf **Start** und auf **Ausführen**, geben Sie **cmd.exe** ein, und drücken Sie die \[EINGABETASTE\].

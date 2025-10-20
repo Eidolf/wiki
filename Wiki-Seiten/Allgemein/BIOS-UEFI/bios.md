@@ -1,3 +1,13 @@
+---
+title: bios
+description: 
+published: true
+date: 2023-12-31T13:27:05.942Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:27:02.964Z
+---
+
 # BIOS
 
 # <span class="mw-headline" id="bkmrk-fehler-1">Fehler</span>

@@ -1,3 +1,13 @@
+---
+title: ad-additional-account-info
+description: 
+published: true
+date: 2023-12-31T13:30:57.653Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:30:54.254Z
+---
+
 # AD Additional Account Info
 
 Wenn diese .dll Datei, an einem Client, registriert wird der die AD Benutzer und Computer Verwaltung installiert hat kann man zusätzliche Informationen einzelner Benutzer im AD abrufen.  

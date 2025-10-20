@@ -1,3 +1,13 @@
+---
+title: ps-mit-skript
+description: 
+published: true
+date: 2023-12-31T14:28:49.563Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:28:46.458Z
+---
+
 # PS mit Skript
 
 Um ein Powershellskript auszuführen folgenden Befehl eingeben

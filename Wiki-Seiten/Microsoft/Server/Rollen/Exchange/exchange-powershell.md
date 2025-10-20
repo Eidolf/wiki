@@ -1,3 +1,13 @@
+---
+title: exchange-powershell
+description: 
+published: true
+date: 2023-12-31T13:33:34.690Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:33:31.676Z
+---
+
 # Exchange Powershell
 
 ## <span class="mw-headline" id="bkmrk-skripte-1">Skripte</span>

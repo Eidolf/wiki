@@ -1,3 +1,13 @@
+---
+title: win7-fehler
+description: 
+published: true
+date: 2023-12-31T14:29:54.747Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:29:51.602Z
+---
+
 # Win7 Fehler
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-man-kann-keinen-ipse-1">Man kann keinen IPSec Tunnel über ein NAT Gerät aufbauen</span>

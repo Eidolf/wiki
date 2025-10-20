@@ -1,3 +1,13 @@
+---
+title: microsoft-spynet
+description: 
+published: true
+date: 2023-12-31T14:34:25.816Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:34:21.911Z
+---
+
 # Microsoft SpyNet
 
 Anwendungen können zu Microsoft gesendet werden um zu überprüfen ob diese SpyWare o.ä. sind. Diese Meldung tritt bei Defender, Security Essentials oder Forefront Client Security auf.

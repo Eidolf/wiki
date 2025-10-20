@@ -1,3 +1,13 @@
+---
+title: zeitsynchronisierung
+description: 
+published: true
+date: 2023-12-31T14:29:50.010Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:29:46.757Z
+---
+
 # Zeitsynchronisierung
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-regeintrag-f%C3%BCr-w32ti-1">Regeintrag für w32time</span>

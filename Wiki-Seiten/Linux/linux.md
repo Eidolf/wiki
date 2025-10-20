@@ -2,13 +2,11 @@
 title: linux
 description: 
 published: true
-date: 2024-01-03T09:53:02.649Z
+date: 2025-08-21T13:48:28.636Z
 tags: 
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
 ---
-
-# Linux
 
 # Allgemein
 
@@ -205,7 +203,9 @@ network:
     eth0:
       dhcp4: no
       addresses: [192.168.1.99/24]
-      gateway4: 192.168.1.254
+      routes:
+      	- to: default
+        	via: 192.168.1.254
       nameservers:
         search: [domäne.local]
         addresses: [192.168.1.1,192.168.1.11]
@@ -224,13 +224,13 @@ Beispieldatei:
 
 ```
 network:
+	version: 2
   ethernets:
     eth0:
       addresses: []
       dhcp4: true
       dhcp-identifier: mac
       optional: true
-   version: 2
 ```
 
 ## swap

@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-08-01T15:41:36.235Z
+date: 2025-10-20T15:47:39.694Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -32,6 +32,14 @@ Es sollten getrennte Festplatten für folgende Bereiche existieren
 
 ![ex2019-install-001.png](/media/ex2019-install-001.png)
 
+### Pagefile
+Bei einem Exchange 2019 sollte das Pagefile manuell gesetzt werden und nicht durch das System, automatisch verwaltet werden.
+Das Pagefile sollte 25% des Arbeitsspeichers haben.
+Bei **64GB** Arbeitsspeicher somit **16GB**
+
+#### Quelle:
+https://www.alitajran.com/configure-pagefile-exchange-server/
+
 ### Software und Rollen
 Da ich den Exchange auf einem Server 2025 installieren werde, sollten die Voraussetzungen schon gegeben sein.
 Microsoft schlägt selbst vor eine Server Core Installation für den Exchange zu verwenden, mir ist es aber zu heikel bzw. zu umständlich im Fehlerfall nicht alle Tools direkt auf dem Server zu haben.
@@ -41,16 +49,80 @@ Microsoft schlägt selbst vor eine Server Core Installation für den Exchange zu
 
 Die nötigen Rollen werden mit einem Haken im Installations Wizard mitinstalliert.
 
+Folgende Software muss noch installiert werden.
+- [Unified Communications Managed API 4.0 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=34992){target=_blank}
+- [Visual C++ Redistributable Packages for Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=40784){target=_blank}
+- [URL Rewrite in 64bit](https://www.iis.net/downloads/microsoft/url-rewrite){target=_blank}
+
 ### Active Directory
 
 Das Active Directory muss typischerweise auf einen neuen Exchange Server vorbereitet werden, zu dem komme ich im nächsten Punkt.
 Meine vorhandene AD 2022 Umgebung ist unterstützt.
 <sub> siehe MS Unterstützungsmatrix > https://learn.microsoft.com/de-de/exchange/plan-and-deploy/supportability-matrix#supported-active-directory-environments </sub>
 
-> Eine Gesamtstruktur unter 2012 R2 wird nicht unterstützt und muss erstmal auf aktuellen Stand gebracht werden.
+> Eine Gesamtstruktur niedriger als 2012 R2 wird nicht unterstützt und muss erstmal auf aktuellen Stand gebracht werden.
 {.is-warning}
 
 ## AD Vorbereitung
 Exchange Installationen benötigen eine AD Schema Erweiterung, diese habe ich unter Exchange 2016 > Update > Punkt 2 beschrieben.
 Ich verlinke es hier, da das gleiche Vorgehen ist.
 [Exchange-2016#update](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-2016#update)
+
+## Installation
+1. Den Defender / installierten Antivirus Echtzeitschutz beenden.<span style="color:red">
+Dies ist keine Empfehlung von mir und jeder sollte selbst entscheiden ob er das Risiko eingeht.
+Persönlich hatte ich bei vielen Exchange Installationen durch aktivierte Virenenprogamme hohe zeitliche Verzögerung,
+diese Fehlerquelle möchte ich ausschließen.</span>
+2. Exchange Installations Wizard starten und Lizenbedingungen akzeptieren (Diagnosedaten werden bei mir deaktiviert)
+![exchange2019-001.png](/media/exchange2019-001.png)
+![exchange2019-002.png](/media/exchange2019-002.png)
+3. Bei "Recommended Settings" wähle ich persönlich auch keine Daten an MS zu übertragen.
+![exchange2019-003.png](/media/exchange2019-003.png)
+4. Folgende Rollen werden aktiviert
+- Mailbox role
+- Management tools <sup>(wird automatisch durch die Mailbox Rolle markiert)</sup>
+- Automatische installation von Rollen und Funktionen
+![exchange2019-004.png](/media/exchange2019-004.png)
+5. Installationspfad wählen, bei mir ist es **Laufwerk "E:"**, <br> den Pfad kürze ich nicht ein um bei etwaigen Scripten einfach nur den Laufwerksbuchstaben ändern zu müssen.
+![exchange2019-005.png](/media/exchange2019-005.png)
+6. Antivirus bleibt aktiviert.
+![exchange2019-006.png](/media/exchange2019-006.png)
+7. Jetzt werden die Voraussetzungen geprüft und installiert.
+![exchange2019-007.png](/media/exchange2019-007.png)
+8. Nach der Überprüfung auf installieren klicken
+![exchange2019-008.png](/media/exchange2019-008.png)
+9. Die Installation abschließen, den Antivirus Echzeitschutz wieder aktivieren und neu starten.
+![exchange2019-009.png](/media/exchange2019-009.png)
+
+## Einrichtung
+1. Grundeinstellungen des Exchange Admin Center festlegen
+![exchange2019-010.png](/media/exchange2019-010.png)
+2. Die Installation erkennt bestehende Installationen und ist sofort danach als zusätzlicher Exchange ohne Funktion eingebunden.
+![exchange2019-011.png](/media/exchange2019-011.png)
+3. In meinem Fall erstelle ich ein neues Zertifikat für den Webserver da es kurz vor dem Ablauf ist, ansonsten das bisherige am neuen Server importieren. Wie ein Zertifikat am Exchange erstellt wird steht zwar überall, aber hiermit habe ich es einmal mit Bildern festgehalten.
+3.1. Auf das Plus bei den Zertifikaten klicken
+![exchange2019-012.png](/media/exchange2019-012.png)
+3.2. Anforderung an Zertifizierungstelle erstellen
+![exchange2019-013.png](/media/exchange2019-013.png)
+3.3. Den Anzeigenamen festlegen, ich wähle den bisherigen.
+![exchange2019-014.png](/media/exchange2019-014.png)
+3.4. Bei mir wird es kein Platzhalterzertifikat, somit auf Weiter klicken
+![exchange2019-015.png](/media/exchange2019-015.png)
+3.5. Speicherort auf dem Server auswählen, der CSR wird direkt auf dem Exchange abgelegt und nicht unbedingt dort wo die Konsole geöffnet wurde. Im Beispiel bin ich auf Durchsuchen gegangen und habe den neuen Exchange Server **EIDEX02** ausgewählt.
+Nachtrag: Der Download der Request Datei ist neuerdings nicht ausschließlich auf dem Server sondern wird abschließend in der geöffneten Browsersitzung initiert. 
+![exchange2019-016.png](/media/exchange2019-016.png)
+3.6. Bei der Bearbeitung der alternativen Antragstellernamen habe ich es wie das bisherig eingestellt, in meinem Fall, durch Split-DNS alles nur auf die externen Namen.
+![exchange2019-017.png](/media/exchange2019-017.png)
+![exchange2019-018.png](/media/exchange2019-018.png)
+3.7. Organisationsdaten des Zertifikats angeben.
+![exchange2019-019.png](/media/exchange2019-019.png)
+3.8. Abschließender Hinweis das es sich nur um einen CSR handelt und man diesen an eine CA einreichen muss. Mit dem abschließenden **Fertig stellen** startet der Browser Download der **.req** Datei
+![exchange2019-020.png](/media/exchange2019-020.png)
+4. Request Datei bei der CA einreichen und die nötigen Zertifikate ausstellen (Die Beschreibung dazu überspringe ich)
+5. Die Ausstehende Anforderung abschließen mit dem ausgestellten Zertifikat.
+![exchange2019-021.png](/media/exchange2019-021.png)
+![exchange2019-022.png](/media/exchange2019-022.png)
+6. Danach kann man dem Zertifikat den IIS Dienst zuweisen.
+![exchange2019-023.png](/media/exchange2019-023.png)
+![exchange2019-024.png](/media/exchange2019-024.png)
+

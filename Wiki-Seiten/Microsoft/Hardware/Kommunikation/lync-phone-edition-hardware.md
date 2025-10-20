@@ -1,3 +1,13 @@
+---
+title: lync-phone-edition-hardware
+description: 
+published: true
+date: 2023-12-31T13:30:10.674Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:30:07.703Z
+---
+
 # Lync Phone Edition Hardware
 
 # <span class="mw-headline" id="bkmrk-polycom-1">Polycom</span>

@@ -1,3 +1,13 @@
+---
+title: s4b-mediation-server-einrichten
+description: 
+published: true
+date: 2023-12-31T13:33:57.821Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:33:54.781Z
+---
+
 # S4B Mediation Server Einrichten
 
 <div class="vector-body" id="bkmrk-skype-for-business-s"><div class="mw-body-content mw-content-ltr" dir="ltr" id="bkmrk-skype-for-business-s-1" lang="de"><div class="mw-parser-output">1. Skype for Business Server-Topologie-Generator öffnen und aktuelle Topologie laden

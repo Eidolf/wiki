@@ -1,3 +1,13 @@
+---
+title: anwendung-als-dienst-starten
+description: 
+published: true
+date: 2023-12-31T13:28:19.623Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:28:16.639Z
+---
+
 # Anwendung als Dienst starten
 
 Wenn ein Programm als Dienst gestartet werden soll kann man mit "sc.exe" arbeiten

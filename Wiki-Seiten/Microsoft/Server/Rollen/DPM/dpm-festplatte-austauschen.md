@@ -1,3 +1,13 @@
+---
+title: dpm-festplatte-austauschen
+description: 
+published: true
+date: 2023-12-31T14:31:56.729Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:31:53.619Z
+---
+
 # DPM Festplatte austauschen
 
 Wenn eine Festplatte defekt ist oder einfach eine Neue eingebaut wird, folgendermaßen vorgehen

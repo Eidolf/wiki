@@ -1,3 +1,13 @@
+---
+title: exchange-eigenschaften-von-remotedomanen
+description: 
+published: true
+date: 2023-12-31T13:33:11.670Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:33:08.571Z
+---
+
 # Exchange Eigenschaften von Remotedomänen
 
 Outlook Weiterleitung funktioniert nicht zu externen Adressen

@@ -1,3 +1,13 @@
+---
+title: intune
+description: 
+published: true
+date: 2023-12-31T13:30:01.285Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:29:58.131Z
+---
+
 # Intune
 
 # <span class="mw-headline" id="bkmrk-azure-ad-join-1">Azure AD Join</span>

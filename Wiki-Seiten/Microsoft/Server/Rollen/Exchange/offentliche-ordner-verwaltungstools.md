@@ -1,3 +1,13 @@
+---
+title: offentliche-ordner-verwaltungstools
+description: 
+published: true
+date: 2023-12-31T14:34:15.504Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:34:12.270Z
+---
+
 # Öffentliche Ordner Verwaltungstools
 
 # <span class="mw-headline" id="bkmrk-pfdavadmin%3A">PFDAVADMIN:</span><span class="mw-editsection"><span class="mw-editsection-bracket">\[</span>[Bearbeiten](https://wiki.eidolf.de/index.php?title=%C3%96ffentliche_Ordner_Verwaltungstools&action=edit&section=1 "Abschnitt bearbeiten: PFDAVADMIN:")<span class="mw-editsection-bracket">\]</span></span>

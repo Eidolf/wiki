@@ -1,3 +1,13 @@
+---
+title: powershell-abfragen
+description: 
+published: true
+date: 2023-12-31T13:29:06.961Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:29:03.873Z
+---
+
 # PowerShell Abfragen
 
 # <span class="mw-headline" id="bkmrk-ad%3A-1">AD:</span>

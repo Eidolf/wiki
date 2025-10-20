@@ -2,7 +2,7 @@
 title: Kommandokonsole - CMD
 description: 
 published: true
-date: 2025-08-14T09:47:59.575Z
+date: 2025-08-14T09:48:03.055Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:28:44.725Z

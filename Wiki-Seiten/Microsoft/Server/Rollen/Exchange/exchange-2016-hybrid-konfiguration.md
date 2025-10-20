@@ -1,3 +1,13 @@
+---
+title: exchange-2016-hybrid-konfiguration
+description: 
+published: true
+date: 2023-12-31T14:33:08.406Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:33:05.104Z
+---
+
 # Exchange 2016 Hybrid Konfiguration
 
 Der Microsoft Hybridwizard funktioniert eigentlich ganz gut, doch wenn bei nachträglichen Änderungen Probleme auftreten kann es bei der Fehlersuche richtig nervig werden.

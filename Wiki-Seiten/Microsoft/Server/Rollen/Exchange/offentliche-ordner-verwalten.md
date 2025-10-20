@@ -1,3 +1,13 @@
+---
+title: offentliche-ordner-verwalten
+description: 
+published: true
+date: 2023-12-31T14:34:10.691Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:34:07.485Z
+---
+
 # Öffentliche Ordner verwalten
 
 # <span class="mw-headline" id="bkmrk-ordner-anlegen-1">Ordner anlegen</span>

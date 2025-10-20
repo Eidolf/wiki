@@ -2,7 +2,7 @@
 title: isdn-remote-capi
 description: 
 published: true
-date: 2024-01-01T15:53:03.349Z
+date: 2024-01-01T15:53:06.334Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T14:27:55.427Z

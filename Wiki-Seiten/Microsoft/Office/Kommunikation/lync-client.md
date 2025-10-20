@@ -1,3 +1,13 @@
+---
+title: lync-client
+description: 
+published: true
+date: 2023-12-31T13:30:15.429Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:30:12.118Z
+---
+
 # Lync Client
 
 # <span class="mw-headline" id="bkmrk-webkonferenz-1">Webkonferenz</span>

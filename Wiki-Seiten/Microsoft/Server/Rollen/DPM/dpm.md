@@ -1,3 +1,13 @@
+---
+title: dpm
+description: 
+published: true
+date: 2023-12-31T13:32:33.206Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:28.582Z
+---
+
 # DPM
 
 # <span class="mw-headline" id="bkmrk-dpm-allgemein-1">DPM Allgemein</span>

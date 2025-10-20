@@ -2,7 +2,7 @@
 title: uhrzeit
 description: 
 published: true
-date: 2025-06-11T19:37:04.861Z
+date: 2025-10-13T14:01:05.406Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:29:17.839Z
@@ -43,10 +43,17 @@ http://www.winfaq.de/faq_html/Content/tip1500/onlinefaq.php?h=tip1749.htm
 ## PDC Zeitgeber manuell eingeben
 
 Prüfen welche Konfiguration aktuell hinterlegt ist.
-`w32tm / query / configuration`
+`w32tm /query /configuration`
+
+Um die aktuell hinterlegten Server anzuzeigen kann außerhalb der Konfiguration noch folgender Befehl helfen.
+`w32tm /query /status`
 
 Um einen PDC seinen Zeitgeber Manuell zuzuweisen folgendes eingeben:
 `w32tm /config /manualpeerlist:"peer1, peer2" /syncfromflags:manual /reliable:yes /update`
+> *Fertiges Beispiel mit NTP Deutschland Pool (kann direkt übernommen werden):
+> `w32tm /config /manualpeerlist:"de.pool.ntp.org" /syncfromflags:manual /reliable:yes /update`*
+{.is-info}
+
 
 Im Falle einer Übergabe der PDC FSMO Rolle, kann es sein das der alte PDC weiterhin dazwischen funkt.
 Deshalb müssen am alten PDC folgende Befehle ausgeführt werden (manche Befehle sind zum forcieren vorhanden und deshalb redundant)

@@ -1,3 +1,13 @@
+---
+title: kein-zugriff-auf-ausfuhrbare-dateien
+description: 
+published: true
+date: 2023-12-31T14:28:31.233Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:28:28.051Z
+---
+
 # Kein Zugriff auf ausführbare Dateien
 
 Wenn mit einer Fehlermeldung der Zugriff auf z.B. exe Dateien über Netzwerk geblockt wird, dann liegt es evtl. an den Sicherheitseinstellungen im IE7 und IE8.  

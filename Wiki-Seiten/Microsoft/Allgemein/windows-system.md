@@ -1,3 +1,13 @@
+---
+title: windows-system
+description: 
+published: true
+date: 2023-12-31T13:29:30.147Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:29:26.910Z
+---
+
 # Windows System
 
 # <span class="mw-headline" id="bkmrk-windows-installer-un-1">Windows Installer und SxS bereinigen</span>

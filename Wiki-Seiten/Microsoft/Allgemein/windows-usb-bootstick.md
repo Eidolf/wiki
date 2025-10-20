@@ -1,3 +1,13 @@
+---
+title: windows-usb-bootstick
+description: 
+published: true
+date: 2023-12-31T13:29:39.481Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:29:36.410Z
+---
+
 # Windows USB Bootstick
 
 <div class="vector-body" id="bkmrk-usb-stick-mit-8gb-ei"><div class="mw-body-content mw-content-ltr" dir="ltr" id="bkmrk-usb-stick-mit-8gb-ei-1" lang="de"><div class="mw-parser-output">1. USB Stick mit 8GB einstecken

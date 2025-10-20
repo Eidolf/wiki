@@ -1,3 +1,13 @@
+---
+title: band-formatierungs-probleme
+description: 
+published: true
+date: 2023-12-31T13:32:22.537Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:19.447Z
+---
+
 # Band Formatierungs Probleme
 
 Falls Bänder vom DPM nicht gelöscht werden können, muss man es mit einem Commandshell Tool von MS löschen. Der Programmname ist "mytape1.exe"

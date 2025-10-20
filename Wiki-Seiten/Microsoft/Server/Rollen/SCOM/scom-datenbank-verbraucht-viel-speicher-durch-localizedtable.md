@@ -1,3 +1,13 @@
+---
+title: scom-datenbank-verbraucht-viel-speicher-durch-localizedtable
+description: 
+published: true
+date: 2023-12-31T13:35:23.074Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:35:19.987Z
+---
+
 # SCOM: Datenbank verbraucht viel Speicher durch "localizedtable"
 
 Der Speicherplatz wird durch die Tabelle "localizedtable" auf dem SCOM Server deutlich weniger. Es muss die Datenbank durch ein Skript bereinigt werden.

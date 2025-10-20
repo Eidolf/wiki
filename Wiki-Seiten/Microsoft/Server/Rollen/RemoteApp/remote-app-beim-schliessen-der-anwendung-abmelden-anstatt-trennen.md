@@ -1,3 +1,13 @@
+---
+title: remote-app-beim-schliessen-der-anwendung-abmelden-anstatt-trennen
+description: 
+published: true
+date: 2023-12-31T14:35:25.828Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:35:22.687Z
+---
+
 # Remote App beim schließen der Anwendung abmelden anstatt trennen
 
 Standardmäßig wird beim schließen einer RemoteApp die Verbindung nach ca. 15 - 20sec getrennt und nicht abgemeldet. Das kann man mit folgendem (lokalem) Gruppenrichtlinieneintrag ändern.

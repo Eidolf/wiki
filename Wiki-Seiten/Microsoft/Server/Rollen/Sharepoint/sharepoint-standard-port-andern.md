@@ -1,3 +1,13 @@
+---
+title: sharepoint-standard-port-andern
+description: 
+published: true
+date: 2023-12-31T14:36:04.051Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:36:00.874Z
+---
+
 # Sharepoint Standard Port ändern
 
 <div class="vector-body" id="bkmrk-from-iis-manager%2Crig"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. from IIS Manager,right click on the site,and change the port from the old to the new one.

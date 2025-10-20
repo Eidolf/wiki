@@ -1,3 +1,13 @@
+---
+title: kennwortalter-abfragen
+description: 
+published: true
+date: 2023-12-31T14:28:35.694Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:28:32.692Z
+---
+
 # Kennwortalter abfragen
 
 # <span class="mw-headline" id="bkmrk-additional-account-i-1">Additional Account Info</span>

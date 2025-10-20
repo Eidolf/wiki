@@ -1,3 +1,13 @@
+---
+title: vmm-verwendete-ports
+description: 
+published: true
+date: 2023-12-31T14:37:20.824Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:37:17.766Z
+---
+
 # VMM Verwendete Ports
 
 Quelle:

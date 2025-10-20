@@ -1,3 +1,13 @@
+---
+title: sharepoint-maximalen-upload-vergrossern
+description: 
+published: true
+date: 2023-12-31T14:35:49.471Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:35:46.386Z
+---
+
 # SharePoint Maximalen Upload vergrößern
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-server-2008-und-shar-1">Server 2008 und Sharepoint 3.0 Problem bei Uploads über 28 MB</span>

@@ -2,7 +2,7 @@
 title: exchange-zertifikate
 description: 
 published: true
-date: 2024-06-03T10:14:49.296Z
+date: 2024-06-03T10:14:52.791Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T14:34:02.899Z

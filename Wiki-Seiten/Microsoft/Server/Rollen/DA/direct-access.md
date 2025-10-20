@@ -1,3 +1,13 @@
+---
+title: direct-access
+description: 
+published: true
+date: 2023-12-31T13:32:02.798Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:31:59.546Z
+---
+
 # Direct Access
 
 # <span class="mw-headline" id="bkmrk-client-1">Client</span>

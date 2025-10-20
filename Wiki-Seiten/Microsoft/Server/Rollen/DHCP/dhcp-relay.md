@@ -1,3 +1,13 @@
+---
+title: dhcp-relay
+description: 
+published: true
+date: 2023-12-31T13:32:12.084Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:08.749Z
+---
+
 # DHCP Relay
 
 # <span class="mw-headline" id="bkmrk-aufbau-1">Aufbau</span>

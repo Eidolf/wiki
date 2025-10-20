@@ -1,3 +1,13 @@
+---
+title: sccm-wmi-query-fur-treiberinstallation
+description: 
+published: true
+date: 2023-12-31T13:34:59.574Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:34:56.457Z
+---
+
 # SCCM WMI Query für Treiberinstallation
 
 # <span class="mw-headline" id="bkmrk-am-client-1">Am Client</span>

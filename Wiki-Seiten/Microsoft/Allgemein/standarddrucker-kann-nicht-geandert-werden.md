@@ -1,3 +1,13 @@
+---
+title: standarddrucker-kann-nicht-geandert-werden
+description: 
+published: true
+date: 2023-12-31T14:29:07.718Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:29:04.725Z
+---
+
 # Standarddrucker kann nicht geändert werden
 
 Unter folgenden Registry Einträgen sollte die Berechtigungsstufe des angemeldeten Benutzers überprüft werde, dieser benötigt auf den Windows Schlüssel nämlich "Vollzugriff"

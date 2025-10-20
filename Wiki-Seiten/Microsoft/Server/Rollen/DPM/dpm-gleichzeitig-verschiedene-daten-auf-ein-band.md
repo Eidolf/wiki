@@ -1,3 +1,13 @@
+---
+title: dpm-gleichzeitig-verschiedene-daten-auf-ein-band
+description: 
+published: true
+date: 2023-12-31T14:32:01.694Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:31:58.311Z
+---
+
 # DPM Gleichzeitig Verschiedene Daten auf ein Band
 
 Aktivieren von Gleichzeitigen Daten

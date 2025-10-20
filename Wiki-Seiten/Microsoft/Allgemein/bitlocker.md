@@ -1,3 +1,13 @@
+---
+title: bitlocker
+description: 
+published: true
+date: 2023-12-31T13:28:38.530Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:28:35.326Z
+---
+
 # BitLocker
 
 # <span class="mw-headline" id="bkmrk-pin-abfrage-aktivier-1">PIN Abfrage aktivieren:</span>

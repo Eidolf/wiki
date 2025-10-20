@@ -1,3 +1,13 @@
+---
+title: server-2008-r2-sp1-cluster-hotfixes
+description: 
+published: true
+date: 2023-12-31T14:31:17.273Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:31:14.076Z
+---
+
 # Server 2008 R2 SP1 Cluster Hotfixes
 
 Verschiedene Hotfixes unter dem Quell Link für einen Server 2008 R2 SP1 Cluster

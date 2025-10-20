@@ -1,3 +1,13 @@
+---
+title: dpm-hotfixes
+description: 
+published: true
+date: 2023-12-31T14:32:07.875Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:32:04.545Z
+---
+
 # DPM Hotfixes
 
 # <span class="mw-headline" id="bkmrk-server-2008-r2-hyper-1">Server 2008 R2 Hyper-V</span>

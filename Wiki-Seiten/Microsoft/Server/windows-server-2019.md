@@ -1,3 +1,13 @@
+---
+title: windows-server-2019
+description: 
+published: true
+date: 2023-12-31T11:56:06.323Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T11:56:03.173Z
+---
+
 # Windows Server 2019
 
 # <span class="mw-headline" id="bkmrk-rollen-1">Rollen</span>

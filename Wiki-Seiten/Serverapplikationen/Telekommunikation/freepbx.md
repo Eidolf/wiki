@@ -1,3 +1,13 @@
+---
+title: freepbx
+description: 
+published: true
+date: 2023-12-31T13:36:53.373Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:36:49.163Z
+---
+
 # FreePBX
 
 # <span class="mw-headline" id="bkmrk-freepbx-standard-bef-1">FreePBX Standard Befehle</span>

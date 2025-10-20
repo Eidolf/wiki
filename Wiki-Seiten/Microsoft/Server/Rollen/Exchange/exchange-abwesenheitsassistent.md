@@ -1,3 +1,13 @@
+---
+title: exchange-abwesenheitsassistent
+description: 
+published: true
+date: 2023-12-31T14:33:13.435Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:33:10.067Z
+---
+
 # Exchange Abwesenheitsassistent
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-%C3%9Cbersicht-der-einzel-1">Übersicht der einzelnen Konstellationen</span>

@@ -1,3 +1,13 @@
+---
+title: failover-cluster-virtual-adapter
+description: 
+published: true
+date: 2023-12-31T14:31:07.935Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:31:04.626Z
+---
+
 # Failover Cluster Virtual Adapter
 
 Dieser Adapter der unter ipconfig /all und im Gerätemanager unter ausgeblendete Geräte angezeigt wird und eine IP im APIPA Bereich hat ist für die Verbindung des Clusternetzwerks vorgesehen.

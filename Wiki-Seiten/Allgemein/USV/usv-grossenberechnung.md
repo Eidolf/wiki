@@ -1,3 +1,13 @@
+---
+title: usv-grossenberechnung
+description: 
+published: true
+date: 2023-12-31T14:28:03.223Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:28:00.126Z
+---
+
 # USV Größenberechnung
 
 # <span class="mw-headline" id="bkmrk-info%3A-1">Info:</span>

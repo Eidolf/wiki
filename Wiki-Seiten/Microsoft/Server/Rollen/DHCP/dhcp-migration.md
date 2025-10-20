@@ -1,3 +1,13 @@
+---
+title: dhcp-migration
+description: 
+published: true
+date: 2023-12-31T13:32:07.332Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:04.308Z
+---
+
 # DHCP Migration
 
 # <span class="mw-headline" id="bkmrk-server-2003-zu-serve-1">Server 2003 zu Server 2008</span>

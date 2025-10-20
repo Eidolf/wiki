@@ -1,3 +1,13 @@
+---
+title: docker
+description: 
+published: true
+date: 2023-12-31T13:36:36.836Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:36:33.797Z
+---
+
 # Docker
 
 # <span class="mw-headline" id="bkmrk-beschreibung-1">Beschreibung</span>

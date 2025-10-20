@@ -1,3 +1,13 @@
+---
+title: microsoft-lizenzarten
+description: 
+published: true
+date: 2023-12-31T14:28:44.875Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:28:41.859Z
+---
+
 # Microsoft Lizenzarten
 
 ey type shown in UI Description

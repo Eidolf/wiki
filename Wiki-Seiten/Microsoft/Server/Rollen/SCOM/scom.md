@@ -1,3 +1,13 @@
+---
+title: scom
+description: 
+published: true
+date: 2023-12-31T13:35:36.527Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:35:33.560Z
+---
+
 # SCOM
 
 <div class="vector-body" id="bkmrk-"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output"><div aria-labelledby="mw-toc-heading" class="toc" id="bkmrk--1" role="navigation"></div></div></div></div># <span class="mw-headline" id="bkmrk-client-1">Client</span>

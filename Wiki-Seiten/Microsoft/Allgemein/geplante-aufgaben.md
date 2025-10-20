@@ -2,7 +2,7 @@
 title: geplante-aufgaben
 description: 
 published: true
-date: 2024-05-06T08:24:51.282Z
+date: 2024-05-06T08:24:54.260Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:28:39.995Z

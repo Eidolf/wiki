@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2025-08-14T10:32:13.460Z
+date: 2025-08-14T10:32:16.771Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:29:12.851Z

@@ -2,7 +2,7 @@
 title: office-online-server-installieren
 description: 
 published: true
-date: 2025-05-04T11:43:00.026Z
+date: 2025-05-04T11:43:03.617Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T11:55:44.885Z

@@ -1,3 +1,13 @@
+---
+title: windows-update
+description: 
+published: true
+date: 2023-12-31T13:29:34.933Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:29:31.735Z
+---
+
 # Windows Update
 
 # <span class="mw-headline" id="bkmrk-fehler-1">Fehler</span>

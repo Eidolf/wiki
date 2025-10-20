@@ -1,3 +1,13 @@
+---
+title: windows-server-2012-r2
+description: 
+published: true
+date: 2023-12-31T11:55:56.863Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T11:55:53.927Z
+---
+
 # Windows Server 2012 R2
 
 # <span class="mw-headline" id="bkmrk-fehler-1">Fehler</span>

@@ -2,7 +2,7 @@
 title: nextcloud
 description: 
 published: true
-date: 2024-02-17T12:37:40.819Z
+date: 2024-02-17T12:37:44.001Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z

@@ -1,3 +1,13 @@
+---
+title: managed-service-accounts
+description: 
+published: true
+date: 2023-12-31T13:31:20.698Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:31:17.648Z
+---
+
 # Managed Service Accounts
 
 # <span class="mw-headline" id="bkmrk-managed-service-acco-1">Managed Service Accounts</span>

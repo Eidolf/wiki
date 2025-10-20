@@ -2,7 +2,7 @@
 title: migration-einer-zertifizierungsstelle
 description: 
 published: true
-date: 2025-06-27T15:20:19.761Z
+date: 2025-06-27T15:20:23.014Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T14:30:54.360Z

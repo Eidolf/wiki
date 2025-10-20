@@ -1,3 +1,13 @@
+---
+title: autodiscover-exchange-2010
+description: 
+published: true
+date: 2023-12-31T13:32:38.030Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:34.821Z
+---
+
 # Autodiscover Exchange 2010
 
 # <span class="mw-headline" id="bkmrk-zertifikat-auf-exter-1">Zertifikat auf externe Adresse ausstellen</span>

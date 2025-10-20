@@ -1,3 +1,13 @@
+---
+title: sccm-client-fehler
+description: 
+published: true
+date: 2023-12-31T13:34:45.309Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:34:42.107Z
+---
+
 # SCCM Client Fehler
 
 # <span class="mw-headline" id="bkmrk-sccm-client-findet-k-1">SCCM Client findet kein Boot File</span>

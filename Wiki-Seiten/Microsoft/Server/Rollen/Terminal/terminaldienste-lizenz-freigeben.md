@@ -1,3 +1,13 @@
+---
+title: terminaldienste-lizenz-freigeben
+description: 
+published: true
+date: 2023-12-31T14:37:11.349Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:37:07.911Z
+---
+
 # Terminaldienste Lizenz freigeben
 
 Wenn ein Client eine Terminalserverlizenz freigeben soll muss folgender untenstehender Ablauf eingehalten werden.

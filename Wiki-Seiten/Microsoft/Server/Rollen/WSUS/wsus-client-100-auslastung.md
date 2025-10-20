@@ -1,3 +1,13 @@
+---
+title: wsus-client-100-auslastung
+description: 
+published: true
+date: 2023-12-31T14:37:25.616Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:37:22.474Z
+---
+
 # WSUS Client 100% Auslastung
 
 Bei XP oder 2000 Clients kann es sein das die svhost.exe (eventid 26) den Client bis zu 100% auslastet.  

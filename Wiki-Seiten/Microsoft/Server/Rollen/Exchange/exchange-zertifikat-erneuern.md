@@ -2,7 +2,7 @@
 title: exchange-zertifikat-erneuern
 description: 
 published: true
-date: 2025-05-05T13:16:59.966Z
+date: 2025-05-05T13:17:03.755Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T14:33:58.000Z

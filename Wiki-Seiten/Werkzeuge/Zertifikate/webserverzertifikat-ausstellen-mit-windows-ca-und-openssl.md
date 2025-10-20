@@ -1,3 +1,13 @@
+---
+title: webserverzertifikat-ausstellen-mit-windows-ca-und-openssl
+description: 
+published: true
+date: 2023-12-31T13:37:22.137Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:37:18.791Z
+---
+
 # Webserverzertifikat ausstellen mit Windows CA und OpenSSL
 
 1\. Anforderung über [http://WindowsCA/certsrv](http://windowsca/certsrv) ausstellen und speichern als "Webserver.req"

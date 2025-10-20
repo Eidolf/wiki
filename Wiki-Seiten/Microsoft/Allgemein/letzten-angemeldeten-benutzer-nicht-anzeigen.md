@@ -1,3 +1,13 @@
+---
+title: letzten-angemeldeten-benutzer-nicht-anzeigen
+description: 
+published: true
+date: 2023-12-31T14:28:40.328Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:28:37.282Z
+---
+
 # Letzten angemeldeten Benutzer nicht anzeigen
 
 Bei der Anmeldemaske soll der letzte Benutzer nicht angezeigt werden, dies kann man über eine Gruppenrichtlinie realisieren oder über eine Regeintrag.

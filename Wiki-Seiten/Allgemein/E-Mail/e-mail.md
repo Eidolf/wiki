@@ -2,7 +2,7 @@
 title: e-mail
 description: 
 published: true
-date: 2024-01-01T15:21:40.760Z
+date: 2024-01-01T15:21:44.217Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:27:07.358Z

@@ -2,7 +2,7 @@
 title: azure
 description: 
 published: true
-date: 2024-11-25T17:13:31.101Z
+date: 2024-11-25T17:13:33.925Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:29:45.707Z

@@ -1,3 +1,13 @@
+---
+title: gp-cmd-befehle
+description: 
+published: true
+date: 2023-12-31T14:30:28.829Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:30:25.390Z
+---
+
 # GP CMD Befehle
 
 ## <span class="mw-headline" id="bkmrk-gpupdate-1">gpupdate</span>

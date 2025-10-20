@@ -1,3 +1,13 @@
+---
+title: win7-schreibschutz-auf-festplatte-partition
+description: 
+published: true
+date: 2023-12-31T14:29:35.910Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:29:32.747Z
+---
+
 # Win7 Schreibschutz auf Festplatte / Partition
 
 # <span class="mw-headline" id="bkmrk-info-1">Info</span>

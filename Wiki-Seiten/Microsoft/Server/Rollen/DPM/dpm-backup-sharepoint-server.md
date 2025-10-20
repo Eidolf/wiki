@@ -1,3 +1,13 @@
+---
+title: dpm-backup-sharepoint-server
+description: 
+published: true
+date: 2023-12-31T14:31:32.752Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:31:29.341Z
+---
+
 # DPM Backup Sharepoint Server
 
 Wenn Änderungen am Sharepoint vorgenommen wurden kann es sein, das vorhandene Backupaufträge fehlschlagen. Es werden vom DPM vorschläge gemacht das man den " WSSCmdletsWrapper " neu registriert.

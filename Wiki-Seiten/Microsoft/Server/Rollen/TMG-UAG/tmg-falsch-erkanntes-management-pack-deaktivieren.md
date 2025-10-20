@@ -1,3 +1,13 @@
+---
+title: tmg-falsch-erkanntes-management-pack-deaktivieren
+description: 
+published: true
+date: 2023-12-31T14:36:19.389Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:36:15.198Z
+---
+
 # TMG Falsch erkanntes Management Pack deaktivieren
 
 Wenn man z.B. ein neues Management Pack des Forefront TMG installiert werden neue Skripte auch an ISA Server übergeben mit denen dieser aber nicht umgehen kann. Hier sollen nun die ISA Server von dem neuen Management Pack abgekoppelt werden.

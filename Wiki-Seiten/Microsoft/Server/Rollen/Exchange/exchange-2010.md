@@ -1,3 +1,13 @@
+---
+title: exchange-2010
+description: 
+published: true
+date: 2023-12-31T13:32:47.898Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:44.581Z
+---
+
 # Exchange 2010
 
 ## <span class="mw-headline" id="bkmrk-autodiscover-1">Autodiscover</span>

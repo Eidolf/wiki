@@ -1,3 +1,13 @@
+---
+title: dhcp
+description: 
+published: true
+date: 2023-12-31T13:32:17.855Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:13.534Z
+---
+
 # DHCP
 
 # <span class="mw-headline" id="bkmrk-dhcp-options-1">DHCP Options</span>

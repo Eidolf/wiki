@@ -1,3 +1,13 @@
+---
+title: office-2016
+description: 
+published: true
+date: 2023-12-31T13:30:47.964Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:30:44.717Z
+---
+
 # Office 2016
 
 ## <span class="mw-headline" id="bkmrk-versionen-und-erstel-1">Versionen und Erstellungsnummern</span>

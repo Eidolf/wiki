@@ -2,7 +2,7 @@
 title: xbox-360-reset-glitch-hack
 description: 
 published: true
-date: 2024-01-01T15:43:31.397Z
+date: 2024-01-01T15:43:34.576Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:27:21.550Z

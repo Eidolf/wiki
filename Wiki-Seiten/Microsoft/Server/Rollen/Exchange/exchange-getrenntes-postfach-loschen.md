@@ -1,3 +1,13 @@
+---
+title: exchange-getrenntes-postfach-loschen
+description: 
+published: true
+date: 2023-12-31T14:33:42.570Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:33:39.476Z
+---
+
 # Exchange getrenntes Postfach löschen
 
 <div class="vector-body" id="bkmrk-guid-der-mailbox-her"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. GUID der Mailbox herausfinden ```

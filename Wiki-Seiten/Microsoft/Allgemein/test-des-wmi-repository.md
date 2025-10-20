@@ -1,3 +1,13 @@
+---
+title: test-des-wmi-repository
+description: 
+published: true
+date: 2023-12-31T14:29:21.690Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:29:18.403Z
+---
+
 # Test des WMI Repository
 
 # <span class="mw-headline" id="bkmrk-powershell-skript%3A-1">Powershell Skript:</span>

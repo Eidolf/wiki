@@ -1,3 +1,13 @@
+---
+title: dpm-backupjobs-nacheinander-abarbeiten
+description: 
+published: true
+date: 2023-12-31T14:31:37.393Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:31:34.332Z
+---
+
 # DPM Backupjobs nacheinander abarbeiten
 
 Wenn das SAN keinen Hardware VSS Provider unterstützt kann man dem DPM eine Richtlinie vorgeben das er den MS VSS Software Provider verwendet und dadurch Backupjobs einzeln nacheinander abarbeitet und nicht gleichzeitig versucht zu schreiben.  

@@ -1,3 +1,13 @@
+---
+title: teams
+description: 
+published: true
+date: 2023-12-31T11:55:43.251Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T11:55:40.307Z
+---
+
 # Teams
 
 Falls man im Jahr &gt;= 2021 auf die Idee kommt seine Benutzer nach Teams zu migrieren kommt man mit der GUI nicht mehr weit.  

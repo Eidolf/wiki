@@ -2,7 +2,7 @@
 title: root-ca-konfigurieren
 description: 
 published: true
-date: 2025-06-27T15:03:57.323Z
+date: 2025-06-27T15:04:00.764Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:31:44.810Z

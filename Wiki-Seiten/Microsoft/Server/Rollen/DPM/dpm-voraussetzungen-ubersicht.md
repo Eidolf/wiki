@@ -1,3 +1,13 @@
+---
+title: dpm-voraussetzungen-ubersicht
+description: 
+published: true
+date: 2023-12-31T14:32:33.941Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:32:30.522Z
+---
+
 # DPM Voraussetzungen Übersicht
 
 Die RTM des DPM 2010 ist bereits seit Mitte April fertig und es gibt sie auch als Eval-Version zum freien Download. Es gibt einiges über DPM zu wissen, hier der Versuch eines raschen Überblicks über die wichtigsten Systemvoraussetzungen und weitere Informationen zum DPM 2010!

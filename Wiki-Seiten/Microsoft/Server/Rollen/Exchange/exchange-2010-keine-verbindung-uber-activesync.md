@@ -1,3 +1,13 @@
+---
+title: exchange-2010-keine-verbindung-uber-activesync
+description: 
+published: true
+date: 2023-12-31T14:32:57.952Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:32:54.288Z
+---
+
 # Exchange 2010 keine Verbindung über ActiveSync
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-fehler%3A-ger%C3%A4t-wird-g-1">Fehler: Gerät wird geblockt</span>

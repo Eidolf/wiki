@@ -1,3 +1,13 @@
+---
+title: windows-firewall
+description: 
+published: true
+date: 2023-12-31T13:29:25.471Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:29:22.461Z
+---
+
 # Windows Firewall
 
 # <span class="mw-headline" id="bkmrk-powershell-1">Powershell</span>

@@ -1,3 +1,13 @@
+---
+title: exchange-offlineadressbuch
+description: 
+published: true
+date: 2023-12-31T13:33:30.121Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:33:26.832Z
+---
+
 # Exchange Offlineadressbuch
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-exchange-shell-befeh-1">Exchange Shell Befehl für aktualisierung des Offline Adressbuchs</span>

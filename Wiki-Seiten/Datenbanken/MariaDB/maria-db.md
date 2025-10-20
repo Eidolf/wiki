@@ -1,3 +1,13 @@
+---
+title: maria-db
+description: 
+published: true
+date: 2023-12-31T13:28:05.792Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:28:02.844Z
+---
+
 # Maria DB
 
 # <span class="mw-headline" id="bkmrk-upgrade-1">Upgrade</span>

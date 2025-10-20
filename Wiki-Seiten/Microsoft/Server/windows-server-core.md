@@ -1,3 +1,13 @@
+---
+title: windows-server-core
+description: 
+published: true
+date: 2023-12-31T11:56:11.009Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T11:56:07.954Z
+---
+
 # Windows Server Core
 
 # <span class="mw-headline" id="bkmrk-einrichten-1">Einrichten</span>

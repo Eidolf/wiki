@@ -1,3 +1,13 @@
+---
+title: batch-erstellen-cmd-befehle
+description: 
+published: true
+date: 2023-12-31T13:28:33.862Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:28:30.358Z
+---
+
 # Batch erstellen / CMD Befehle
 
 Die sehr ausführliche Beschreibung ist in der Quelle zu finden, hier nur bei paar zusätze.

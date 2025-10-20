@@ -1,3 +1,13 @@
+---
+title: exchange-2003-keine-verbindung-uber-activesync
+description: 
+published: true
+date: 2023-12-31T14:32:43.337Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:32:40.125Z
+---
+
 # Exchange 2003 keine Verbindung über ActiveSync
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-unterst%C3%BCtzungscode-0-1">Unterstützungscode 0x85010014</span><span class="mw-editsection"><span class="mw-editsection-bracket">\[</span>[Bearbeiten](https://wiki.eidolf.de/index.php?title=Exchange_2003_keine_Verbindung_%C3%BCber_ActiveSync&action=edit&section=1 "Abschnitt bearbeiten: Unterstützungscode 0x85010014")<span class="mw-editsection-bracket">\]</span></span>

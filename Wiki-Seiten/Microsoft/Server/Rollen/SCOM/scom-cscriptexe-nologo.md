@@ -1,3 +1,13 @@
+---
+title: scom-cscriptexe-nologo
+description: 
+published: true
+date: 2023-12-31T13:35:18.496Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:35:15.406Z
+---
+
 # SCOM Cscript.exe //nologo
 
 # <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-scom-agent-unter-dem-1">SCOM Agent unter dem Lokalen Systemkonto auf einem Domänen Kontroller ausführen</span>

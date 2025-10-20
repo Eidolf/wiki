@@ -1,3 +1,13 @@
+---
+title: zeus-verbinden-uber-desktop-link
+description: 
+published: true
+date: 2023-12-31T14:38:07.915Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:38:04.832Z
+---
+
 # Zeus Verbinden über Desktop Link
 
 Wenn ein Link z.B. auf die Seite " [http://zeus.server.local/wwf](http://zeus.server.local/wwf) " auf dem Desktop hinterlegt wird, kann man sich nicht bei der Zeiterfassung anmelden. Über einen Link in einem geöffneten Browser kann es sein das es funktioniert, da der Benutzer übergeben wird.

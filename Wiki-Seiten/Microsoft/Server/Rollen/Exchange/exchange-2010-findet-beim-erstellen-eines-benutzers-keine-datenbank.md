@@ -1,3 +1,13 @@
+---
+title: exchange-2010-findet-beim-erstellen-eines-benutzers-keine-datenbank
+description: 
+published: true
+date: 2023-12-31T14:32:52.638Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:32:49.417Z
+---
+
 # Exchange 2010 Findet beim erstellen eines Benutzers keine Datenbank
 
 # <span class="mw-headline" id="bkmrk-fehlermeldung%3A">Fehlermeldung:</span><span class="mw-editsection"><span class="mw-editsection-bracket">\[</span>[Bearbeiten](https://wiki.eidolf.de/index.php?title=Exchange_2010_Findet_beim_erstellen_eines_Benutzers_keine_Datenbank&action=edit&section=1 "Abschnitt bearbeiten: Fehlermeldung:")<span class="mw-editsection-bracket">\]</span></span>

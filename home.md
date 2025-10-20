@@ -2,7 +2,7 @@
 title: ER-Wiki-Startseite
 description: 
 published: true
-date: 2025-08-14T10:48:22.018Z
+date: 2025-08-14T10:48:25.293Z
 tags: home, start, wiki
 editor: markdown
 dateCreated: 2023-12-10T00:06:10.872Z

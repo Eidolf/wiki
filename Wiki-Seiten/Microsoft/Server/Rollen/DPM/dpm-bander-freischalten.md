@@ -1,3 +1,13 @@
+---
+title: dpm-bander-freischalten
+description: 
+published: true
+date: 2023-12-31T13:32:27.128Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:24.004Z
+---
+
 # DPM Bänder freischalten
 
 Wenn ein Band sich nicht freischalten lässt, weil es mit einer Schutzgruppe verbunden ist, muss folgendes Skript als ".ps1" Datei gespeicher werden und mit der DPM Powershell ausgeführt werden.

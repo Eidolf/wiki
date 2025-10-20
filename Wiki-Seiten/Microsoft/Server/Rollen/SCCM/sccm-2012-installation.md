@@ -1,3 +1,13 @@
+---
+title: sccm-2012-installation
+description: 
+published: true
+date: 2023-12-31T13:34:31.269Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:34:28.120Z
+---
+
 # SCCM 2012 Installation
 
 # <span class="mw-headline" id="bkmrk-voraussetzungen-1">Voraussetzungen</span>

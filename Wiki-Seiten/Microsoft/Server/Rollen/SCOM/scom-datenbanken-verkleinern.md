@@ -1,3 +1,13 @@
+---
+title: scom-datenbanken-verkleinern
+description: 
+published: true
+date: 2023-12-31T13:35:27.503Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:35:24.522Z
+---
+
 # SCOM: Datenbanken verkleinern
 
 Das verkleinern der Datenbanken nennt sich Groomen

@@ -1,3 +1,13 @@
+---
+title: diskpart-festplattenkonfiguration
+description: 
+published: true
+date: 2023-12-31T14:28:12.482Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:28:09.453Z
+---
+
 # DiskPart Festplattenkonfiguration
 
 Um mit dem Programm "DiskPart" Festplatten zu verwalten folgende Vorgehensweise

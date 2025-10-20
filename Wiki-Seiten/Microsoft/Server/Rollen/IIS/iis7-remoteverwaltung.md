@@ -1,3 +1,13 @@
+---
+title: iis7-remoteverwaltung
+description: 
+published: true
+date: 2023-12-31T14:35:05.133Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:35:01.718Z
+---
+
 # IIS7 Remoteverwaltung
 
 Auf dem zu verwalteten Server muss als erstes der WMSVC Dienst (Web Management Servcies / Webverwaltungsdienst) gestartet sein und unter **Site &gt; Verwaltung &gt; Remoteverwaltung** die Remoteverwaltung aktiviert werden.  

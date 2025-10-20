@@ -1,3 +1,13 @@
+---
+title: zeitdienstprobleme
+description: 
+published: true
+date: 2023-12-31T14:29:45.178Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T14:29:41.993Z
+---
+
 # Zeitdienstprobleme
 
 Wenn der net start w32time nicht funktioniert da eine Fehlermeldung angezeigt wird das er eine Datein nicht finden kann. Als erstes w32tm neu registrieren.

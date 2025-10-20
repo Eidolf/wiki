@@ -1,3 +1,13 @@
+---
+title: exchange-adressbuch-synchronisieren
+description: 
+published: true
+date: 2023-12-31T13:33:02.171Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:32:59.009Z
+---
+
 # Exchange Adressbuch synchronisieren
 
 Das Adressbuch sychronisiert sich jedes mal beim anmelden mit seinem Profil und Intervallmäßig zwischen 1min und 60min um eine gute Netzwerkverteilung zu haben. Da der Server Standarmäßig sein Adressbuch mit dem AD um 1:30Uhr Nachts synchronisiert werden den ganzen Tag die gleichen Daten gezogen.

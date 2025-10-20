@@ -1,3 +1,13 @@
+---
+title: zertifikate
+description: 
+published: true
+date: 2023-12-31T13:31:58.021Z
+tags: 
+editor: markdown
+dateCreated: 2023-12-31T13:31:55.001Z
+---
+
 # Zertifikate
 
 # <span class="mw-headline" id="bkmrk-erweiterte-vorg%C3%A4nge-1">Erweiterte Vorgänge</span>

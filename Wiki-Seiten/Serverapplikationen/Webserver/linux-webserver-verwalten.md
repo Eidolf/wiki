@@ -2,13 +2,11 @@
 title: linux-webserver-verwalten
 description: 
 published: true
-date: 2024-01-01T17:29:10.176Z
+date: 2025-10-20T14:36:02.111Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:59.517Z
 ---
-
-# Linux Webserver verwalten
 
 # Erstkonfiguration
 
@@ -116,18 +114,18 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl
 Mit **vi** oder **nano** die httpd.conf öffnen  
 `sudo vi /etc/httpd/conf/httpd.conf`
 
-# <span class="mw-headline" id="bkmrk-php-1">PHP</span>
+# PHP
 
-## <span class="mw-headline" id="bkmrk-php.ini-bearbeiten-1">php.ini bearbeiten</span>
+## php.ini bearbeiten
 
-### <span class="mw-headline" id="bkmrk-pfad-zu-den-dateien-1">Pfad zu den Dateien</span>
+### Pfad zu den Dateien
 
 `/etc/php/7.x/apache2/php.ini`  
 `/etc/php/7.x/cli/php.ini`
 
-## <span class="mw-headline" id="bkmrk-php-upgrade-1">PHP Upgrade</span>
+## PHP Upgrade
 
-### <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-php-ppa-repository-h-1">PHP PPA Repository hinzufügen</span>
+### PHP PPA Repository hinzufügen
 
 ```
 sudo apt-get update
@@ -136,36 +134,34 @@ sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-### <span class="mw-headline" id="bkmrk-installieren-der-neu-1">Installieren der neuen PHP Version</span>
+### Installieren der neuen PHP Version
 
-<div class="vector-body" id="bkmrk-installieren%3A%C2%A0sudo-a"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Installieren: `sudo apt -y install php7.4`
+1. Installieren: `sudo apt -y install php7.4`
 2. Prüfen: `php -v`
-    1. (Optional) Bestimmte Version prüfen:`php7.2 -v`
+2.1. (Optional) Bestimmte Version prüfen: `php7.2 -v`
 
-</div></div></div>### <span class="mw-headline" id="bkmrk-php-module-installie-1">PHP Module installieren</span>
+### PHP Module installieren
 
 `sudo apt-get install -y php7.4-{bcmath,bz2,intl,gd,mbstring,mysql,zip,common}`  
 Module sollten jeweils zur jeweiligen Anwendung gewählt werden.
 
-### <span class="mw-headline" id="bkmrk-php-version-von-lamp-1">PHP Version von LAMP wechseln</span>
+### PHP Version von LAMP wechseln
 
-<div class="vector-body" id="bkmrk-alte-version-deaktiv"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Alte Version deaktivieren: `a2dismod php7.2`
+1. Alte Version deaktivieren: `a2dismod php7.2`
 2. Neue Version aktivieren: `a2enmod php7.2`
 3. Apache durchstarten: `service apache2 restart`
 
-</div></div></div>### <span class="mw-headline" id="bkmrk-quelle%3A-5">Quelle:</span>
+### Quelle:
 
-```
-<a class="external free" href="https://computingforgeeks.com/how-to-install-php-on-ubuntu/" rel="nofollow">https://computingforgeeks.com/how-to-install-php-on-ubuntu/</a>
-```
+https://computingforgeeks.com/how-to-install-php-on-ubuntu/
 
-# <span class="mw-headline" id="bkmrk-webdienst-neu-starte-1">Webdienst neu starten</span>
+# Webdienst neu starten
 
 `sudo service httpd restart`
 
-# <span class="mw-headline" id="bkmrk-zertifikat-von-windo-1">Zertifikat von Windows CA ausstellen</span>
+# Zertifikat von Windows CA ausstellen
 
-<div class="vector-body" id="bkmrk-ordner%C2%A0anlegen%C2%A0etc%2Fa"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Ordner **anlegen etc/apache2/ssl.**<dl><dd>`cd /etc/apache2/ssl`</dd></dl>
+1. Ordner **anlegen etc/apache2/ssl.**<dl><dd>`cd /etc/apache2/ssl`</dd></dl>
 2. Dann den Private Key erstellen: <dl><dd>`openssl genrsa 4096 > server.key`</dd></dl>
 3. ...und die Zertifikats-Anforderung: <dl><dd>`openssl req -new -sha256 -key ./server.key > request.csr`</dd><dd>die Abfragen wie Ort, Servername usw. entsprechend ausfüllen.</dd></dl>
 4. Request.csr ausgeben: <dl><dd>`cat request.csr`</dd><dd>Nun den gesamten Inhalt zwischen "-----BEGIN CERTIFICATE REQUEST-----" und "-----END CERTIFICATE REQUEST-----" in die #:Zwischenablage kopieren. Den brauchen wir nachher bei der Zertifikatsanfoderung.</dd></dl>
@@ -174,8 +170,6 @@ Module sollten jeweils zur jeweiligen Anwendung gewählt werden.
 7. Den Zertifikatsordner würde ich vorsichtshalber noch auf die Berechtigung 600 setzen: <dl><dd>`chmod 600 --recursive /etc/apache2/ssl`</dd></dl>
 8. Danach noch die Konfiguration vom Apache neu einlesen: <dl><dd>`/etc/init.d/apache2 reload`</dd></dl>
 
-</div></div></div>## <span class="mw-headline" id="bkmrk-quelle%3A-7">Quelle:</span>
+## Quelle:
 
-```
-<a class="external free" href="https://itwelt.org/anleitungen-howto/linux-740817696/558-apache-ssl-zertifikat-ueber-eine-windows-pki-anfordern" rel="nofollow">https://itwelt.org/anleitungen-howto/linux-740817696/558-apache-ssl-zertifikat-ueber-eine-windows-pki-anfordern</a>
-```
+https://itwelt.org/anleitungen-howto/linux-740817696/558-apache-ssl-zertifikat-ueber-eine-windows-pki-anfordern
