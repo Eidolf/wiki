@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-10-20T15:47:39.694Z
+date: 2025-10-20T16:52:18.679Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -106,7 +106,7 @@ diese Fehlerquelle möchte ich ausschließen.</span>
 ![exchange2019-013.png](/media/exchange2019-013.png)
 3.3. Den Anzeigenamen festlegen, ich wähle den bisherigen.
 ![exchange2019-014.png](/media/exchange2019-014.png)
-3.4. Bei mir wird es kein Platzhalterzertifikat, somit auf Weiter klicken
+3.4. Bei mir wird es kein Platzhalterzertifikat, somit auf Weiter klicken.
 ![exchange2019-015.png](/media/exchange2019-015.png)
 3.5. Speicherort auf dem Server auswählen, der CSR wird direkt auf dem Exchange abgelegt und nicht unbedingt dort wo die Konsole geöffnet wurde. Im Beispiel bin ich auf Durchsuchen gegangen und habe den neuen Exchange Server **EIDEX02** ausgewählt.
 Nachtrag: Der Download der Request Datei ist neuerdings nicht ausschließlich auf dem Server sondern wird abschließend in der geöffneten Browsersitzung initiert. 
