@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-10-20T16:52:18.679Z
+date: 2025-10-23T16:02:32.745Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -99,30 +99,32 @@ diese Fehlerquelle möchte ich ausschließen.</span>
 ![exchange2019-010.png](/media/exchange2019-010.png)
 2. Die Installation erkennt bestehende Installationen und ist sofort danach als zusätzlicher Exchange ohne Funktion eingebunden.
 ![exchange2019-011.png](/media/exchange2019-011.png)
-3. In meinem Fall erstelle ich ein neues Zertifikat für den Webserver da es kurz vor dem Ablauf ist, ansonsten das bisherige am neuen Server importieren. Wie ein Zertifikat am Exchange erstellt wird steht zwar überall, aber hiermit habe ich es einmal mit Bildern festgehalten.
-3.1. Auf das Plus bei den Zertifikaten klicken
+3. Zu aller erst hinterlege ich den Lizenzschlüssel
+![exchange2019-025.png](/media/exchange2019-025.png)
+4. In meinem Fall erstelle ich ein neues Zertifikat für den Webserver da es kurz vor dem Ablauf ist, ansonsten das bisherige am neuen Server importieren. Wie ein Zertifikat am Exchange erstellt wird steht zwar überall, aber hiermit habe ich es einmal mit Bildern festgehalten.
+4.1. Auf das Plus bei den Zertifikaten klicken
 ![exchange2019-012.png](/media/exchange2019-012.png)
-3.2. Anforderung an Zertifizierungstelle erstellen
+4.2. Anforderung an Zertifizierungstelle erstellen
 ![exchange2019-013.png](/media/exchange2019-013.png)
-3.3. Den Anzeigenamen festlegen, ich wähle den bisherigen.
+4.3. Den Anzeigenamen festlegen, ich wähle den bisherigen.
 ![exchange2019-014.png](/media/exchange2019-014.png)
-3.4. Bei mir wird es kein Platzhalterzertifikat, somit auf Weiter klicken.
+4.4. Bei mir wird es kein Platzhalterzertifikat, somit auf Weiter klicken.
 ![exchange2019-015.png](/media/exchange2019-015.png)
-3.5. Speicherort auf dem Server auswählen, der CSR wird direkt auf dem Exchange abgelegt und nicht unbedingt dort wo die Konsole geöffnet wurde. Im Beispiel bin ich auf Durchsuchen gegangen und habe den neuen Exchange Server **EIDEX02** ausgewählt.
+4.5. Speicherort auf dem Server auswählen, der CSR wird direkt auf dem Exchange abgelegt und nicht unbedingt dort wo die Konsole geöffnet wurde. Im Beispiel bin ich auf Durchsuchen gegangen und habe den neuen Exchange Server **EIDEX02** ausgewählt.
 Nachtrag: Der Download der Request Datei ist neuerdings nicht ausschließlich auf dem Server sondern wird abschließend in der geöffneten Browsersitzung initiert. 
 ![exchange2019-016.png](/media/exchange2019-016.png)
-3.6. Bei der Bearbeitung der alternativen Antragstellernamen habe ich es wie das bisherig eingestellt, in meinem Fall, durch Split-DNS alles nur auf die externen Namen.
+4.6. Bei der Bearbeitung der alternativen Antragstellernamen habe ich es wie das bisherig eingestellt, in meinem Fall, durch Split-DNS alles nur auf die externen Namen.
 ![exchange2019-017.png](/media/exchange2019-017.png)
 ![exchange2019-018.png](/media/exchange2019-018.png)
-3.7. Organisationsdaten des Zertifikats angeben.
+4.7. Organisationsdaten des Zertifikats angeben.
 ![exchange2019-019.png](/media/exchange2019-019.png)
-3.8. Abschließender Hinweis das es sich nur um einen CSR handelt und man diesen an eine CA einreichen muss. Mit dem abschließenden **Fertig stellen** startet der Browser Download der **.req** Datei
+4.8. Abschließender Hinweis das es sich nur um einen CSR handelt und man diesen an eine CA einreichen muss. Mit dem abschließenden **Fertig stellen** startet der Browser Download der **.req** Datei
 ![exchange2019-020.png](/media/exchange2019-020.png)
-4. Request Datei bei der CA einreichen und die nötigen Zertifikate ausstellen (Die Beschreibung dazu überspringe ich)
-5. Die Ausstehende Anforderung abschließen mit dem ausgestellten Zertifikat.
+5. Request Datei bei der CA einreichen und die nötigen Zertifikate ausstellen (Die Beschreibung dazu überspringe ich)
+6. Die Ausstehende Anforderung abschließen mit dem ausgestellten Zertifikat.
 ![exchange2019-021.png](/media/exchange2019-021.png)
 ![exchange2019-022.png](/media/exchange2019-022.png)
-6. Danach kann man dem Zertifikat den IIS Dienst zuweisen.
+7. Danach kann man dem Zertifikat den IIS Dienst zuweisen.
 ![exchange2019-023.png](/media/exchange2019-023.png)
 ![exchange2019-024.png](/media/exchange2019-024.png)
 
