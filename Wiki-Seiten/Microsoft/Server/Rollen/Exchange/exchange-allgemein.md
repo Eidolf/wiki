@@ -1,18 +1,16 @@
 ---
-title: exchange-allgemein
+title: Exchange Allgemein
 description: 
 published: true
-date: 2024-05-28T12:34:30.203Z
+date: 2025-10-24T15:45:58.868Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:03.680Z
 ---
 
-# Exchange Allgemein
+# Anonymous Relay
 
-## Anonymous Relay
-
-### Aktivieren
+## Aktivieren
 
 ```
 New-ReceiveConnector -Name "Anonymous Relay" -Usage Custom -PermissionGroups AnonymousUsers -Bindings ServerIP:25 -RemoteIPRanges AnonymerClient
@@ -24,7 +22,7 @@ Get-ReceiveConnector "Anonymous Relay" | Add-ADPermission -User "NT AUTHORITY\AN
 
 Bei einem deutschen AD muss der Benutzer gegen **NT-AUTORITÄT\\ANONYMOUS-ANMELDUNG** ersetzt werden.
 
-### Abfragen
+## Abfragen
 
 Allgemein Anonym:
 
@@ -38,11 +36,11 @@ Eingrenzen auf Any Recipient:
 Get-ReceiveConnector | Get-ADPermission | where {$_.User -like '*anonymous*' -and $_.ExtendedRights -like 'Ms-Exch-SMTP-Accept-Any-Recipient'} | ft identity,user,extendedrights,accessrights
 ```
 
-### Exchange 2010 (älterer Wiki Eintrag)
+## Exchange 2010 (älterer Wiki Eintrag)
 
 [exchange-2010-zulassen-von-anonymem-relay-fur-einen-empfangsconnector](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-2010-zulassen-von-anonymem-relay-fur-einen-empfangsconnector)
 
-## Datenbanken löschen
+# Datenbanken löschen
 
 Insbesondere geht es in dieser Lösung um die erste Datenbank an einem Exchange Server in der System Mailboxen liegen.  
 Falls die Exchange Server in verschiedenen Domänen sind kann es sein das nur mit folgendem Befehl alle System Mailboxen angezeigt werden.  
@@ -67,13 +65,13 @@ Falls irgendwo noch eine Mailbox zu finden ist kann man sie wie folgt verschiebe
 Danach kann man die Datenbank mit folgendem Befehl löschen.  
 `remove-mailboxdatabase "Mailbox Database"`
 
-## Impersonation Rechte
+# Impersonation Rechte
 
 Erweiterte AD Berechtigung um einem Dienstbenutzer Berechtigung auf Postfächer in deren Namen zu erteilen.
 
-### Anwendungsbeispiele
+## Anwendungsbeispiele
 
-#### Berechtigung eines Service Accounts auf Shared Mailboxen in AD Gruppe
+### Berechtigung eines Service Accounts auf Shared Mailboxen in AD Gruppe
 
 1. Management Scope erstellen (AD Gruppe auswählen) 
     1. Security Group im AD erstellen und als Mitglieder die Ziel Shared Mailboxen hinzufügen.
@@ -90,7 +88,7 @@ Erweiterte AD Berechtigung um einem Dienstbenutzer Berechtigung auf Postfächer 
         
         <dl><dd>[![Exchange-Impersonation-002.png](https://wiki.eidolf.de/images/c/cf/Exchange-Impersonation-002.png)](https://wiki.eidolf.de/index.php/Datei:Exchange-Impersonation-002.png)</dd></dl>
 
-## Exchange ein Neustart ist ausstehend
+# Exchange ein Neustart ist ausstehend
 
 Folgenden Regeintrag löschen:
 
@@ -98,19 +96,19 @@ Folgenden Regeintrag löschen:
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\PendingFileRenameOperations
 ```
 
-### Quelle:
+## Quelle:
 
 ```
 <a class="external free" href="https://technet.microsoft.com/de-de/library/cc164360%28v=exchg.80%29.aspx" rel="nofollow">https://technet.microsoft.com/de-de/library/cc164360%28v=exchg.80%29.aspx</a>
 ```
 
-## Exchange Empfangs Connector EHLO / HELO Server ändern
+# Exchange Empfangs Connector EHLO / HELO Server ändern
 
 [exchange-helo-begrussung-andern](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-helo-begrussung-andern)
 
-## Exchange Queue Pfad ändern
+# Exchange Queue Pfad ändern
 
-### Bestehende Queue verschieben
+## Bestehende Queue verschieben
 
 Auch für eine bestehende Queue kann man die unter **Neue Queue erstellen** beschriebene Version verwenden, doch gibt es ein Script das alle Aufgaben automatisch erledigt.
 
@@ -123,7 +121,7 @@ Auch für eine bestehende Queue kann man die unter **Neue Queue erstellen** besc
     'H:\TransportRoles\data\Queue\Logs' -iPFilterDatabasePath 'H:\TransportRoles\data\IpFilter' -iPFilterDatabaseLoggingPath
     'H:\TransportRoles\data\IpFilter' -temporaryStoragePath 'H:\TransportRoles\data\Temp'`
 
-### Neue Queue erstellen
+## Neue Queue erstellen
 
 1. CMD als Admin öffnen
 2. Befehl eingeben `Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config `
@@ -139,17 +137,17 @@ net stop MSExchangeTransport
 net start MSExchangeTransport 
 ```
 
-### Quelle:
+## Quelle:
 
 http://technet.microsoft.com/en-us/library/bb125177(v=exchg.150).aspx
 
-## Exchange DAG IP ändern
+# Exchange DAG IP ändern
 
-### Quelle:
+## Quelle:
 
 https://blogs.technet.microsoft.com/pfemsgil/2012/08/01/changing-dag-dag-members-ip-addresses/
 
-## Exchange Datenbank Index "Failed and Suspended"
+# Exchange Datenbank Index "Failed and Suspended"
 
 1. Überprüfen aller Datenbanken mit folgendem Befehl <dl><dd>`Get-MailboxDatabaseCopyStatus * | ft -auto`</dd></dl>
 2. Dienste beenden <dl><dd>`stop-service MSExchangeFastSearch`</dd><dd>`stop-service HostControllerService`</dd></dl>
@@ -158,11 +156,11 @@ https://blogs.technet.microsoft.com/pfemsgil/2012/08/01/changing-dag-dag-members
 
 Ich habe festgestellt das es mit dieser Behebung leider nicht getan ist, bei mir hat er erst wieder richtig funktioniert nachdem ich einen Neustart durchgeführt habe.
 
-### Quelle:
+## Quelle:
 
 https://practical365.com/exchange-server/fix-failed-database-content-index-exchange-2013/
 
-## Exchange Datenbank "Dirty Shutdown"
+# Exchange Datenbank "Dirty Shutdown"
 
 1. Exchange Powershell öffnen
 2. Prüfen ob der Status zutrifft: `eseutil /mh "c:\Datenbankpfad\Defekte-Mailbox-Datenbank.edb"` unter dem Punkt **State** sollte Dirty Shutdown stehen.
@@ -175,14 +173,14 @@ https://practical365.com/exchange-server/fix-failed-database-content-index-excha
   /s Pfad zur Datenbankdatei - gilt als **System files** Pfad (optional)
   /d Pfad zur Datenbankdatei - kein Dateiname (verpflichtend)
 
-### Quelle:
+## Quelle:
 http://blogs.technet.com/b/mspfe/archive/2012/09/06/why-exchange-databases-might-remain-dirty-after-eseutil-r-recovery.aspx
 
-## Exchange Version anzeigen / auslesen
-### Mit PowerShell
-#### Hauptversion anzeigen
+# Exchange Version anzeigen / auslesen
+## Mit PowerShell
+### Hauptversion anzeigen
 `Get-ExchangeServer | ft Name, Edition, AdminDisplayVersion`
-#### Inklusive Security Updates anzeigen
+### Inklusive Security Updates anzeigen
 ```
 $ExchangeServers = Get-ExchangeServer | Sort-Object Name
 ForEach ($Server in $ExchangeServers) {
@@ -190,19 +188,19 @@ ForEach ($Server in $ExchangeServers) {
 }
 ```
 ![exchange-detail-version.png](/media/exchange-detail-version.png)
-#### Quelle:
+### Quelle:
 https://www.alitajran.com/find-exchange-version-with-powershell/
-## Exchange Zertfikate
+# Exchange Zertfikate
 
-### Let´s Encrypt
+## Let´s Encrypt
 
 Mit Powershell bei Let´s Encrypt Zertifikate für den Exchange Server anfordern.
 
-#### Quelle:
+### Quelle:
 
 https://www.frankysweb.de/exchange-2016-kostenlose-zertifikate-von-lets-encrypt/
 
-### Zertifikat auf direkt einem SMTP Connector zuweisen
+## Zertifikat auf direkt einem SMTP Connector zuweisen
 
 ```
 Get-ExchangeCertificate
@@ -216,11 +214,11 @@ Get-ReceiveConnector
 Set-ReceiveConnector "EXServer\Client Frontend Connector" -TlsCertificateName $tlscertificatename
 ```
 
-#### Quelle:
+### Quelle:
 
 https://practical365.com/exchange-server/configuring-the-tls-certificate-name-for-exchange-server-receive-connectors/
 
-### Exchange Delegation Federation Zertifikat erneuern
+## Exchange Delegation Federation Zertifikat erneuern
 
 1. Prüfen ob das bisherige Zertifikat abgelaufen ist: `Get-ExchangeCertificate -Thumbprint (Get-FederationTrust).OrgCertificate.Thumbprint | Format-Table -Auto Thumbprint,NotAfter`
 2. Falls das Zertifikat abgelaufen ist sollte man in die Quelle des Eintrags schauen
@@ -236,30 +234,30 @@ https://practical365.com/exchange-server/configuring-the-tls-certificate-name-fo
 9.1 `Get-FederationTrust | Format-List *priv*`
 9.2 `Test-FederationTrust -UserIdentity <E-Mail Adresse aus der eigenen Organisation>`
 
-#### Quelle:
+### Quelle:
 
 https://docs.microsoft.com/en-us/exchange/renew-the-federation-certificate-exchange-2013-help
 
-## Client Zugriff überprüfen
+# Client Zugriff überprüfen
 
 Mit dem im Link angegebenen Script kann überprüft werden welcher Client auf den Exchange zugreift.
 
-### Quelle:
+## Quelle:
 
 http://mikefrobbins.com/2014/09/18/use-powershell-to-determine-what-outlook-client-versions-are-accessing-your-exchange-servers/
 
-## Wiederherstellungsdatenbank (Recovery DB)
+# Wiederherstellungsdatenbank (Recovery DB)
 
-### Quelle:
+## Quelle:
 
 https://www.fpweb.net/blog/creating-a-recovery-database-in-microsoft-exchange-2010/
 http://www.expta.com/2009/10/how-to-use-recovery-database-in.html
 
-## Exchange OAB
+# Exchange OAB
 
 [exchange-offlineadressbuch](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-offlineadressbuch)
 
-### Outlook 2016 kann das Offline Adressbuch nicht aktualisieren
+## Outlook 2016 kann das Offline Adressbuch nicht aktualisieren
 
 Wie bei dem Herren aus der Quelle wurde nach einer Migration auf Exchange 2016 und der Umstellung auf MAPI over HTTP bei Outlook Clients >2016 die Offline Adressliste nicht mehr aktualisiert.  
 Falls man es händisch über **Ordner aktualisieren** versucht kommt folgender generischer Fehler **0x8004010F**.  
@@ -270,10 +268,10 @@ Die Lösung war das Offline Adressbuch über Web zu veröffentlichen. Bisher ist
 2. Setzen der Webveröffentlichung (wenn mehrere Adressbücher vorhanden sind dann davor namentlich angeben mit *-Identity*): `Get-OfflineAddressBook | Set-OfflineAddressBock -GlobalWebDistributionEnabled $true`
 3. Prüfen ob es aktiviert wurde: `Get-OfflineAddressBook | fl name,*Distribution*`
 
-#### Quelle:
+### Quelle:
 
 https://www.stephenwagner.com/2017/11/06/offline-address-book-missing-exchange-2016/
 
-### Global Address List
+## Global Address List
 
 [outlook-zeigt-nicht-die-aktuelle-global-adress-list-gal-an](/de/Wiki-Seiten/Microsoft/Office/Outlook/outlook-zeigt-nicht-die-aktuelle-global-adress-list-gal-an)
