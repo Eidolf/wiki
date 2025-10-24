@@ -1,18 +1,16 @@
 ---
-title: exchange-2016
+title: Exchange 2016
 description: 
 published: true
-date: 2025-07-18T14:14:56.308Z
+date: 2025-10-24T15:40:07.658Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:32:54.175Z
 ---
 
-# Exchange 2016
+# Installation
 
-## Installation
-
-### Sprachpakete
+## Sprachpakete
 
 Erste ein kurzer Hinweis wie man deinstalliert, wird bei Upgrades auf ein neues CU benötigt.
 
@@ -26,7 +24,7 @@ Erste ein kurzer Hinweis wie man deinstalliert, wird bei Upgrades auf ein neues 
 2. Befehl ausführen
 `Setup.com /AddUmLanguagePack:de-DE /s: H:\PfadzumUMPaket /IAcceptExchangeServerLicenseTerms`
 
-### Server
+## Server
 
 1. DotNet 4.8 installieren
 2. UCMA Runtime installieren
@@ -36,25 +34,25 @@ Erste ein kurzer Hinweis wie man deinstalliert, wird bei Upgrades auf ein neues 
 5. Antivierenscanner für den Installationsvorgang kurzzeitig beenden.
 6. Exchange Setup starten.
 
-## Installation Hinweise
+# Installation Hinweise
 
-### Exchange 2016 in 2016 AD
+## Exchange 2016 in 2016 AD
 
 Falls ein Exchange 2016 in einem 2016 AD installiert werden soll wird mindestens ein Installationsmedium **EX 2016 CU3** benötigt.
 
-#### Quelle:
+### Quelle:
 
 https://social.technet.microsoft.com/Forums/azure/de-DE/abeb1b39-6d2d-4faf-9c24-36d3d45f9dc2/installing-exchange-2016-on-server-2016-error-with-gui?forum=Exch2016SD
 
-## Sicherheit erhöhen
+# Sicherheit erhöhen
 
 Persönliche Meinung: Ist bisher mit Vorsicht zu genießen, da Funktionen wie z.B. bei der S4B Integration nicht mehr funktionieren, wie z.B. Sprachverlauf am Smartphone.
 
-### Quelle:
+## Quelle:
 
 https://www.frankysweb.de/exchange-2016-installation-absichern-hardening/
 
-## Update
+# Update
 
 Exchange CU Updates sind eigentlich ein komplettes neu installieren des Exchange Server's und in meiner Umgebung mit folgenden Punkten am Besten durchzuführen.
 
@@ -70,27 +68,27 @@ Exchange CU Updates sind eigentlich ein komplettes neu installieren des Exchange
     1. Exchange Management Shell öffnen (Neuer Befehl ab CU21)
     2. `Setup.exe /IAcceptExchangeServerLicenseTerms_DiagnosticDataOFF /AddUmLanguagePack:de-DE /SourceDir:"c:\install"`
 
-## Hybrid
+# Hybrid
 [Exchange-2016-Hybrid-Konfiguration](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-2016-hybrid-konfiguration)
 Informationen zu Exchange Hybridszenarien in Verbindung mit O365
 
-## Fehler:
+# Fehler:
 
-### Exchange 2016 4096 (0x1000) is an invalid culture identifier
+## Exchange 2016 4096 (0x1000) is an invalid culture identifier
 
-#### Quelle:
+### Quelle:
 
 http://www.kraeg.de/2017/10/30/exchange-2016-4096-0x1000-is-an-invalid-culture-identifier/
 
-### Exchange 2016 Event ID 1010 Fast Search not installed or Corrupted
+## Exchange 2016 Event ID 1010 Fast Search not installed or Corrupted
 
-#### >Beschreibung:
+### >Beschreibung:
 
 Benutzer bekommen keine Ergebnisse bei einer online Suche gegen den Microsoft Exchange Server  
 Die Datenbanken auf dem die Mailbox ist haben beim **Index** den Status auf **Unknown**  
 In der Ereignisanzeige am Server erscheint unter dem **Anwendungs** Event Log **Error ID 1010**
 
-#### Lösung:
+### Lösung:
 
 1. Folgende Dienste beenden: 
     - Microsoft Exchange Search
@@ -114,5 +112,5 @@ In der Ereignisanzeige am Server erscheint unter dem **Anwendungs** Event Log **
 > `start-service MSExchangeFastSearch`
 > `start-service HostControllerService`
 
-#### Quelle:
+### Quelle:
 https://infosham.com/BLOG/exchange-server-2016-fast-search-errors
