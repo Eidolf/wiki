@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-10-28T16:30:03.143Z
+date: 2025-10-28T16:35:03.089Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -49,6 +49,9 @@ Microsoft schlägt selbst vor eine Server Core Installation für den Exchange zu
 Für die Rolleninstallation habe ich ein Script welches prüft ob nötigen Rollen schon vorhanden sind oder installiert werden müssen, somit auch für die Nachinstallation von fehlenden Rollen geeignet.
 
 [Exchange-2019-Roles-Features.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange-2019-Roles-Features.ps1){target=_blank}
+> Dauert eine gewisse Zeit und kann sehr lange bei einer Prozentzahl stehen bleiben, einfach laufen lassen da es keine Einzelüberprüfung der Rollen gibt.
+{.is-warning}
+
 
 Folgende Software muss noch installiert werden.
 - [Unified Communications Managed API 4.0 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=34992){target=_blank}
