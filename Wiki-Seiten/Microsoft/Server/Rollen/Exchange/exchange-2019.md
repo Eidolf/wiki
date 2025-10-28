@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-10-28T16:35:49.980Z
+date: 2025-10-28T16:37:28.707Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -53,7 +53,7 @@ Für die Rolleninstallation habe ich ein Script welches prüft ob nötigen Rolle
 {.is-info}
 
 Folgende Software muss noch installiert werden.
-- [Unified Communications Managed API 4.0 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=34992){target=_blank}
+- [Unified Communications Managed API 4.0 Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=34992){target=_blank} (Hierfür sollte der Webserver installiert sein, daher Rollen als erstes installieren)
 - [Visual C++ Redistributable Packages for Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=40784){target=_blank}
 - [URL Rewrite in 64bit](https://www.iis.net/downloads/microsoft/url-rewrite){target=_blank}
 
