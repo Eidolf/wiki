@@ -1,14 +1,12 @@
 ---
-title: nextcloud
+title: Nextcloud
 description: 
 published: true
-date: 2025-10-29T10:49:50.209Z
+date: 2025-10-29T10:50:11.722Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
 ---
-
-# Nextcloud
 
 # OCC Befehle
 
