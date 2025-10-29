@@ -2,7 +2,7 @@
 title: Nextcloud
 description: 
 published: true
-date: 2025-10-29T10:57:04.825Z
+date: 2025-10-29T10:57:31.433Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -21,6 +21,7 @@ Die Befehle lassen sich am einfachsten ausführen wenn man sich unter dem Nextcl
 ### Wenn die Webseite ein Update anzeigt aber OCC nicht
 Eigentlich ist das der normal Update Befehl wie auf der Webseite. 
 Das **--no-interaction** bewirkt nicht noch nachträglich den **occ upgrade** ausführen zu müssen.
+
 `sudo -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction` 
 
 ## Upgrade der Datenbankstruktur
