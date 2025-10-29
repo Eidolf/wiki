@@ -2,7 +2,7 @@
 title: Nextcloud
 description: 
 published: true
-date: 2025-10-29T10:57:31.433Z
+date: 2025-10-29T11:24:21.346Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -84,7 +84,15 @@ Hiermit hat sich mein Vorgehen etwas geändert, die Alte Version lasse ich als A
 3. *Speichern*
 
 ## Update Vorgang bleibt stehen
+### Bei Punkt 3
+Bei der Prüfung der **write permissions** wurde die package-lock.json erwähnt, dass hierauf kein Schreibzugriff möglich ist.
+Ich habe mir dann unter
+`/var/www/nextcloud`
+alle Rechte angeschaut und gemerkt das die Datei mit root berechtigt war.
+Daher eine Änderung mit folgendem Befehl in dem Ordner durchgeführt.
+`chown www-data:www-data package-lock.json`
 
+### Bei Punkt 5
 Es wird ein Update Vorgang gestartet, dieser bleibt im Punkt 5 hängen **Step 5 is currently in process. Please reload this page later**  
 Der Status ändert sich auch nicht nach einem Neustart.  
 Weiterhin wird mit den OCC Befehl angezeigt das Nextcloud auf dem neuesten Stand ist und kein Update ansteht.  
