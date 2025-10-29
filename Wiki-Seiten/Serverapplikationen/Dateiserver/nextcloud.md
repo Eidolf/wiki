@@ -2,7 +2,7 @@
 title: nextcloud
 description: 
 published: true
-date: 2024-02-17T12:37:44.001Z
+date: 2025-10-29T10:49:50.209Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -23,6 +23,10 @@ Die Befehle lassen sich am einfachsten ausführen wenn man sich unter dem Nextcl
 ## Upgrade der Datenbankstruktur
 
 `sudo -u www-data php occ db:convert-filecache-bigint`
+
+## Aktualisierung der Indizes
+
+`sudo -u www-data php occ db:add-missing-indices`
 
 ## Wartungsmodus aktivieren/deaktivieren
 
