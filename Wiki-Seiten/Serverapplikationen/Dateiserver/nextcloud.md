@@ -2,7 +2,7 @@
 title: Nextcloud
 description: 
 published: true
-date: 2025-10-29T11:24:21.346Z
+date: 2025-10-29T16:45:28.488Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -111,3 +111,108 @@ Nicht für jede Installation!
 Folgende Modulkette kann mit einem Befehl der unter dem Linux Eintrag zu finden ist, installiert werden.  
 `{bcmath,curl,dom,gd,gmp,imagick,intl,ldap,mbstring,mysqli,mysqlnd,SimpleXML,smbclient,xml,xmlreader,xmlwriter,xsl,zip}`  
 bcmath muss evtl. mit folgendem Befehl extra installiert werden &gt; `sudo apt install php7.4-bcmath`
+
+# Sicherheits Verbesserungen
+## Nextcloud: PHP OPcache – Warnung „interned strings buffer fast voll“ beheben
+
+Nextcloud kann folgende Meldung anzeigen:
+
+> Das PHP OPcache-Modul ist nicht ordnungsgemäß konfiguriert. Der „OPcache interned strings“-Puffer ist fast voll. Um sicherzustellen, dass sich wiederholende Strings effektiv zwischengespeichert werden können, wird empfohlen, `opcache.interned_strings_buffer` mit einem Wert größer als `8` zu setzen.
+
+Ziel: `opcache.interned_strings_buffer` (und ggf. weitere OPcache-Werte) erhöhen und den Webserver/PHP-Dienst neu starten.
+
+
+### Schritt 1: PHP-Version ermitteln
+
+```php -v```
+
+Beispiel Ausgabe:
+PHP 8.1.2 (cli) (built: ...)
+
+
+> **Hinweis:** Die für **Apache** (mod_php) oder **PHP-FPM** genutzte PHP-Version kann sich von der CLI-Version unterscheiden. Entscheidend ist die Version/`php.ini`, die dein Webserver für Nextcloud verwendet.
+
+
+### Schritt 2: Richtige `php.ini`-Datei finden
+
+Je nach Setup (ersetze `8.1` durch deine Version):
+
+- **Apache (mod_php):**
+/etc/php/8.1/apache2/php.ini
+
+- **PHP-FPM (häufig bei Apache mit Proxy oder Nginx):**
+/etc/php/8.1/fpm/php.ini
+
+- **CLI (nur zur Anzeige über `php -i`, nicht für Web relevant):**
+/etc/php/8.1/cli/php.ini
+
+> **Wichtig:** Ändere **nicht** nur die CLI-`php.ini`, wenn Nextcloud über Apache/FPM läuft. Passe die Datei der **laufenden SAPI** (apache2 oder fpm) an.
+
+
+### Schritt 3: OPcache-Einstellungen anpassen
+
+Datei mit Root-Rechten öffnen (Beispiel Apache):
+
+`sudo nano /etc/php/8.1/apache2/php.ini`
+
+Im Abschnitt `[opcache]` folgende Werte setzen bzw. ergänzen. Mindestens relevant für die Warnung ist `opcache.interned_strings_buffer`; sinnvoll ist, gleich ein *empfohlenes* Set zu setzen:
+
+```
+[opcache]
+; OPcache aktivieren
+opcache.enable=1
+; Optional: auch für CLI aktivieren (praktisch für Wartungsskripte)
+opcache.enable_cli=1
+
+; Speichergrößen und Tabellen
+opcache.memory_consumption=128
+opcache.interned_strings_buffer=16
+opcache.max_accelerated_files=10000
+
+; Kommentare (für Annotations) erhalten
+opcache.save_comments=1
+
+; Wie oft nach Änderungen gesucht wird (Sekunden)
+opcache.revalidate_freq=60
+```
+
+> **Tipp:** Wenn die Warnung weiterhin erscheint (große Installationen, viele Apps), erhöhe testweise  
+> `opcache.interned_strings_buffer` auf **32** und ggf. `opcache.memory_consumption` auf **192–256**.
+{.is-info}
+
+
+
+### Schritt 4: Dienst neu starten
+
+- **Apache (mod_php):**
+`sudo systemctl restart apache2`
+
+- **PHP-FPM (Version anpassen):**
+`sudo systemctl restart php8.1-fpm`
+
+> Falls du Apache **mit** PHP-FPM nutzt, **beide** neu starten: erst `php8.1-fpm`, dann `apache2`.
+
+
+### Schritt 5: Wirksamkeit prüfen
+
+#### Schnelltest per CLI (nur Anhaltspunkt)
+
+`php -i | grep -E 'opcache\.enable|interned_strings_buffer|max_accelerated_files|memory_consumption|save_comments|revalidate_freq'`
+> Achtung: Das zeigt die **CLI**-Werte, nicht zwingend die Web-Konfiguration.
+
+#### Über die Nextcloud GUI
+
+Prüfen ob der Fehler in der Nextcloud verschwunden ist.
+
+### Häufige Stolperfallen
+
+- **Falsche `php.ini`** angepasst (CLI statt apache2/fpm).  
+- **Dienst nicht neu gestartet**, Änderungen greifen erst danach.  
+- **Mehrere PHP-Versionen installiert** (8.1 und 8.2); die aktive Version für den Webserver prüfen.  
+- **OPcache deaktiviert** (`opcache.enable=0`), dann greifen die anderen Werte nicht.
+
+
+### Quelle:
+
+- Nextcloud Admin Manual → *Server tuning → Enable PHP OPcache*  
+https://docs.nextcloud.com/server/30/admin_manual/installation/server_tuning.html#enable-php-opcache
