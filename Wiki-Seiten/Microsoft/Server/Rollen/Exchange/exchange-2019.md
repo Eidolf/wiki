@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-11-03T15:49:20.068Z
+date: 2025-11-03T15:50:03.980Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -97,15 +97,15 @@ diese Fehlerquelle möchte ich ausschließen.</span>
 9. Die Installation abschließen, den Antivirus Echzeitschutz wieder aktivieren und neu starten.
 ![exchange2019-009.png](/media/exchange2019-009.png)
 
-## Einrichtung
-### Zeitzone und Lizenz
+# Einrichtung
+## Zeitzone und Lizenz
 1. Grundeinstellungen des Exchange Admin Center festlegen
 ![exchange2019-010.png](/media/exchange2019-010.png)
 2. Die Installation erkennt bestehende Installationen und ist sofort danach als zusätzlicher Exchange ohne Funktion eingebunden.
 ![exchange2019-011.png](/media/exchange2019-011.png)
 3. Zu aller erst hinterlege ich den Lizenzschlüssel
 ![exchange2019-025.png](/media/exchange2019-025.png)
-### Zertifikat
+## Zertifikat
 4. In meinem Fall erstelle ich ein neues Zertifikat für den Webserver da es kurz vor dem Ablauf ist, ansonsten das bisherige am neuen Server importieren. Wie ein Zertifikat am Exchange erstellt wird steht zwar überall, aber hiermit habe ich es einmal mit Bildern festgehalten.
 4.1. Auf das Plus bei den Zertifikaten klicken
 ![exchange2019-012.png](/media/exchange2019-012.png)
