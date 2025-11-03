@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-11-03T15:50:03.980Z
+date: 2025-11-03T17:12:17.679Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -106,30 +106,33 @@ diese Fehlerquelle möchte ich ausschließen.</span>
 3. Zu aller erst hinterlege ich den Lizenzschlüssel
 ![exchange2019-025.png](/media/exchange2019-025.png)
 ## Zertifikat
-4. In meinem Fall erstelle ich ein neues Zertifikat für den Webserver da es kurz vor dem Ablauf ist, ansonsten das bisherige am neuen Server importieren. Wie ein Zertifikat am Exchange erstellt wird steht zwar überall, aber hiermit habe ich es einmal mit Bildern festgehalten.
-4.1. Auf das Plus bei den Zertifikaten klicken
+1. In meinem Fall erstelle ich ein neues Zertifikat für den Webserver da es kurz vor dem Ablauf ist, ansonsten das bisherige am neuen Server importieren. Wie ein Zertifikat am Exchange erstellt wird steht zwar überall, aber hiermit habe ich es einmal mit Bildern festgehalten.
+1.1. Auf das Plus bei den Zertifikaten klicken
 ![exchange2019-012.png](/media/exchange2019-012.png)
-4.2. Anforderung an Zertifizierungstelle erstellen
+1.2. Anforderung an Zertifizierungstelle erstellen
 ![exchange2019-013.png](/media/exchange2019-013.png)
-4.3. Den Anzeigenamen festlegen, ich wähle den bisherigen.
+1.3. Den Anzeigenamen festlegen, ich wähle den bisherigen.
 ![exchange2019-014.png](/media/exchange2019-014.png)
-4.4. Bei mir wird es kein Platzhalterzertifikat, somit auf Weiter klicken.
+1.4. Bei mir wird es kein Platzhalterzertifikat, somit auf Weiter klicken.
 ![exchange2019-015.png](/media/exchange2019-015.png)
-4.5. Speicherort auf dem Server auswählen, der CSR wird direkt auf dem Exchange abgelegt und nicht unbedingt dort wo die Konsole geöffnet wurde. Im Beispiel bin ich auf Durchsuchen gegangen und habe den neuen Exchange Server **EIDEX02** ausgewählt.
+1.5. Speicherort auf dem Server auswählen, der CSR wird direkt auf dem Exchange abgelegt und nicht unbedingt dort wo die Konsole geöffnet wurde. Im Beispiel bin ich auf Durchsuchen gegangen und habe den neuen Exchange Server **EIDEX02** ausgewählt.
 Nachtrag: Der Download der Request Datei ist neuerdings nicht ausschließlich auf dem Server sondern wird abschließend in der geöffneten Browsersitzung initiert. 
 ![exchange2019-016.png](/media/exchange2019-016.png)
-4.6. Bei der Bearbeitung der alternativen Antragstellernamen habe ich es wie das bisherig eingestellt, in meinem Fall, durch Split-DNS alles nur auf die externen Namen.
+1.6. Bei der Bearbeitung der alternativen Antragstellernamen habe ich es wie das bisherig eingestellt, in meinem Fall, durch Split-DNS alles nur auf die externen Namen.
 ![exchange2019-017.png](/media/exchange2019-017.png)
 ![exchange2019-018.png](/media/exchange2019-018.png)
-4.7. Organisationsdaten des Zertifikats angeben.
+1.7. Organisationsdaten des Zertifikats angeben.
 ![exchange2019-019.png](/media/exchange2019-019.png)
-4.8. Abschließender Hinweis das es sich nur um einen CSR handelt und man diesen an eine CA einreichen muss. Mit dem abschließenden **Fertig stellen** startet der Browser Download der **.req** Datei
+1.8. Abschließender Hinweis das es sich nur um einen CSR handelt und man diesen an eine CA einreichen muss. Mit dem abschließenden **Fertig stellen** startet der Browser Download der **.req** Datei
 ![exchange2019-020.png](/media/exchange2019-020.png)
-5. Request Datei bei der CA einreichen und die nötigen Zertifikate ausstellen (Die Beschreibung dazu überspringe ich)
-6. Die Ausstehende Anforderung abschließen mit dem ausgestellten Zertifikat.
+2. Request Datei bei der CA einreichen und die nötigen Zertifikate ausstellen (Die Beschreibung dazu überspringe ich)
+3. Die Ausstehende Anforderung abschließen mit dem ausgestellten Zertifikat.
 ![exchange2019-021.png](/media/exchange2019-021.png)
 ![exchange2019-022.png](/media/exchange2019-022.png)
-7. Danach kann man dem Zertifikat den IIS Dienst zuweisen.
+4. Danach kann man dem Zertifikat den IIS Dienst zuweisen.
 ![exchange2019-023.png](/media/exchange2019-023.png)
 ![exchange2019-024.png](/media/exchange2019-024.png)
-
+## Log Pfade
+1. Unter Servereinstellungen (Server > Server > ExchangeNameNeu > bearbeiten)
+2. Bei **Transportprotokolle** die Pfade auf die Log Festplatte ändern
+![exchange2019-026.png](/media/exchange2019-026.png)
