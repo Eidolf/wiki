@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-11-03T17:12:17.679Z
+date: 2025-11-17T13:35:16.367Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -136,3 +136,15 @@ Nachtrag: Der Download der Request Datei ist neuerdings nicht ausschließlich au
 1. Unter Servereinstellungen (Server > Server > ExchangeNameNeu > bearbeiten)
 2. Bei **Transportprotokolle** die Pfade auf die Log Festplatte ändern
 ![exchange2019-026.png](/media/exchange2019-026.png)
+## Sendeconnector / Outbound Connector
+Der neue Server muss bei den Sendeconnectoren hinterlegt werden, in meinem Beispiel für die O365 Verbindung.
+
+1. Sendeconnector bearbeiten
+2. Unter Bereichsdefinition > Quellserver auf hinzufügen drücken.
+![exchange2019-027.png](/media/exchange2019-027.png)
+3. Den neuen Server hinzufügen
+4. Ab jetzt sollten zwei Server vorhanden sein.
+![exchange2019-028.png](/media/exchange2019-028.png)
+> Neuen Server nicht an der Firewall vergessen für ein und ausgehenden SMTP Verkehr!
+{.is-warning}
+
