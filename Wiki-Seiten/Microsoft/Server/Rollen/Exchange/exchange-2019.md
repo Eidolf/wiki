@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-11-17T13:35:16.367Z
+date: 2025-11-18T17:21:10.981Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -147,4 +147,12 @@ Der neue Server muss bei den Sendeconnectoren hinterlegt werden, in meinem Beisp
 ![exchange2019-028.png](/media/exchange2019-028.png)
 > Neuen Server nicht an der Firewall vergessen für ein und ausgehenden SMTP Verkehr!
 {.is-warning}
-
+## Erstellen und Abgleichen
+Für Folgende Punkte habe ich ein Migrations Skript erstellt welches darunter zu finden ist. (Fehler können enthalten sein, aber bei mir hat es funktioniert)
+### Datenbanken
+Datenbanken sollten vor dem Verschieben auf dem neuen Server vorhanden sein um die Postfächer an die richtige stelle schieben zu können. Im Script werden sie vom ausgehenden Server ausgelesen und jeweils mit einer 1 Addiert auf dem neuen Server angelegt.
+### CAS URLs
+Bei mir sind die URLs wie schon erwähnt, Intern wie Extern, gleichlautend mit dem externen Namen.
+Das Skript schreibt diesen Namen auf den neuen Server falls nicht der Servername im FQDN enthalten ist (OAB war bei mir noch auf dem Servernamen, da es eigentlich nicht nötig ist den auf eine externe URL zu stellen)
+### Skript Download
+[Exchange-Migration-Script.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange_Migration_Script.ps1)
