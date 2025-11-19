@@ -2,7 +2,7 @@
 title: AD Anheben des Domain Function Levels
 description: 
 published: true
-date: 2025-11-19T11:30:52.056Z
+date: 2025-11-19T11:31:04.045Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:31:03.977Z
@@ -15,7 +15,7 @@ Das Forest und Domain Level sollte bestmöglich auf dem höchsten Stand gehalten
 # Hinweis
 
 Falls zuvor das Forest Level angehoben wurde kann das Domain Function Level nicht niedriger sein und ist somit gleichzeit angehoben worden.  
-[![Forest-005.png](https://wiki.eidolf.de/images/2/27/Forest-005.png)](https://wiki.eidolf.de/index.php/Datei:Forest-005.png)
+![Forest-005.png](/media/Forest-005.png)
 
 # Durchführung
 
