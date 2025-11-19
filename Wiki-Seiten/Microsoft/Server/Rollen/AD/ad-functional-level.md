@@ -2,7 +2,7 @@
 title: AD Funktionsebene / Functional Level
 description: 
 published: true
-date: 2025-11-19T12:54:56.687Z
+date: 2025-11-19T13:55:44.968Z
 tags: domain, ad, active directory, forest
 editor: markdown
 dateCreated: 2025-11-19T12:54:56.687Z
@@ -16,7 +16,7 @@ Beispiel: Für Windows Server 2016 Functional Level müssen alle DCs mindestens 
 2. Gesundheitscheck der AD-Umgebung
 `dcdiag /v` → Diagnose aller DCs.
 `repadmin /replsummary` → Replikationsstatus prüfen.
-DNS-Integrität sicherstellen.
+`dcdiag /test:dns /v` → DNS-Integrität sicherstellen.
 3. Backup erstellen
 System State Backup aller DCs.
 Optional: VM-Snapshots für schnelle Wiederherstellung.
