@@ -2,7 +2,7 @@
 title: AD Anheben des Domain Function Levels
 description: 
 published: true
-date: 2025-11-19T16:37:35.760Z
+date: 2025-11-19T16:49:54.341Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:31:03.977Z
@@ -37,7 +37,8 @@ Falls zuvor das Forest Level angehoben wurde kann das Domain Function Level nich
 # Nacharbeiten
 Ich führe folgende Befehle nach jeder Domäne aus und warte zusätzlich eine Zeit ab.
 
-1. Synchronisierung anstoßen > `repadmin /syncall /AdeP`
-2. Prüfen der Replizierung > `repadmin /showrepl`
-3. Prüfen des ***"Directory Service Logs"***
-4. Allgemeine Funktionsprüfung: ***Anmeldung, Kerberos, GPOs, DNS.***
+1. Prüfen des Domain Level mit PowerShell `Get-ADDomain | Select DomainMode`
+2. Synchronisierung anstoßen > `repadmin /syncall /AdeP`
+3. Prüfen der Replizierung > `repadmin /showrepl`
+4. Prüfen des ***"Directory Service Logs"***
+5. Allgemeine Funktionsprüfung: ***Anmeldung, Kerberos, GPOs, DNS.***
