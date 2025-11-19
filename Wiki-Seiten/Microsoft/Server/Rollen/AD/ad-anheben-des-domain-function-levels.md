@@ -2,7 +2,7 @@
 title: AD Anheben des Domain Function Levels
 description: 
 published: true
-date: 2025-11-19T16:27:51.654Z
+date: 2025-11-19T16:28:52.787Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:31:03.977Z
@@ -23,6 +23,6 @@ Falls zuvor das Forest Level angehoben wurde kann das Domain Function Level nich
 # Durchführung
 
 1. Active Directory Domains and Trusts (Domänen und Vertrauenstellung) öffnen 
-![Forest-001.png](/media/Forest-001.png)
-2. Auf die Domäne mit einem Rechtsklick klicken > Raise Domain Function Level  
+![forest-001.png](/media/forest-001.png)
+2. Auf die Domäne mit einem Rechtsklick klicken > Raise Domain Function Level 
 ![forest-004.png](/media/forest-004.png)
