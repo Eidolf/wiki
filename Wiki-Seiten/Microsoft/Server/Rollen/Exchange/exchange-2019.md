@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-11-18T17:21:10.981Z
+date: 2025-11-25T16:42:25.797Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -156,3 +156,18 @@ Bei mir sind die URLs wie schon erwähnt, Intern wie Extern, gleichlautend mit d
 Das Skript schreibt diesen Namen auf den neuen Server falls nicht der Servername im FQDN enthalten ist (OAB war bei mir noch auf dem Servernamen, da es eigentlich nicht nötig ist den auf eine externe URL zu stellen)
 ### Skript Download
 [Exchange-Migration-Script.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange_Migration_Script.ps1)
+### Wichtigste Befehle kurz und knapp 
+- Übersicht der Hilfe
+`Get-Help .\Exchange_Migration_Script.ps1`
+- Übersicht der Datenbank und ob sie auf dem zweiten Server vorhanden sind
+`.\Exchange_Migration_Script.ps1`
+- Anlegen der Ordner und erstellen der Datenbanken
+`.\Exchange_Migration_Script.ps1 -PrepareFolders -CreateDatabases -Approve`
+- Einstellungen der Datenbanken vergleichen
+`.\Exchange_Migration_Script.ps1 -CompareSettings`
+- Einstellungen der Quelldatenbanken auf Zieldatenbanken übertragen und den bisherigen Unterschied in eine CSV Datei schreiben.
+`.\Exchange_Migration_Script.ps1 -CompareSettings -ApplySettings -Approve -ExportDiffs C:\Temp\DbDiffs.csv` 
+- CAS URLs vergleichen
+`.\Exchange_Migration_Script.ps1 -CompareCasUrls -CasShowAll`
+- CAS URLs von Quellserver auf Zielserver schreiben
+`.\Exchange_Migration_Script.ps1 -CompareCasUrls -ApplyCasUrls -Approve`
