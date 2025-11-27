@@ -2,7 +2,7 @@
 title: Net-App CLI
 description: Nützliche Befehle um Net-App Speicher über die Command Line zu verwalten
 published: true
-date: 2025-11-27T20:34:43.529Z
+date: 2025-11-27T20:35:00.358Z
 tags: net-app, speicher, storage, cli
 editor: markdown
 dateCreated: 2025-09-15T08:14:47.149Z
@@ -25,5 +25,5 @@ dateCreated: 2025-09-15T08:14:47.149Z
 ## Herunterfahren
 1. Befehl eingeben
 `system node halt -node * -ignore-quorum-warnings true - inhibit-takeover true`
-2. An Komsole sieht man das sie heunterfahren, Anzeige "Loader A"
+2. An Komsole sieht man das sie heunterfahren, Anzeige "Loader-A"
 3. Kippschalter umstellen (optional)
