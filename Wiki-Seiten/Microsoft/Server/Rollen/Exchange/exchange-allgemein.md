@@ -2,7 +2,7 @@
 title: Exchange Allgemein
 description: 
 published: true
-date: 2025-10-24T15:45:58.868Z
+date: 2025-11-28T12:44:38.991Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:03.680Z
@@ -149,10 +149,15 @@ https://blogs.technet.microsoft.com/pfemsgil/2012/08/01/changing-dag-dag-members
 
 # Exchange Datenbank Index "Failed and Suspended"
 
-1. Überprüfen aller Datenbanken mit folgendem Befehl <dl><dd>`Get-MailboxDatabaseCopyStatus * | ft -auto`</dd></dl>
-2. Dienste beenden <dl><dd>`stop-service MSExchangeFastSearch`</dd><dd>`stop-service HostControllerService`</dd></dl>
+1. Überprüfen aller Datenbanken mit folgendem Befehl
+`Get-MailboxDatabaseCopyStatus * | ft -auto`
+2. Dienste beenden 
+`stop-service MSExchangeFastSearch`
+`stop-service HostControllerService`
 3. Im Datenbankpfad nach "GUID.Single" Ordnern suchen und diese löschen
-4. Dienste starten <dl><dd>`start-service MSExchangeFastSearch`</dd><dd>`start-service HostControllerService`</dd></dl>
+4. Dienste starten 
+`start-service MSExchangeFastSearch`
+`start-service HostControllerService`
 
 Ich habe festgestellt das es mit dieser Behebung leider nicht getan ist, bei mir hat er erst wieder richtig funktioniert nachdem ich einen Neustart durchgeführt habe.
 
@@ -217,6 +222,13 @@ Set-ReceiveConnector "EXServer\Client Frontend Connector" -TlsCertificateName $t
 ### Quelle:
 
 https://practical365.com/exchange-server/configuring-the-tls-certificate-name-for-exchange-server-receive-connectors/
+
+## Exchange Standard / Default Zertifikat herausfinden
+Das Standard SMTP Zertifikat sollte eigentlich auf dem belassen werden, welches der Exchange selbst ausstellt.
+Falls es doch getauscht wurde und man überprüfen möchte welches Zertifikat als Standard hinterlegt ist habe ich folgendes Skript erstellt.
+
+Link:
+[Exchange-GetDefaultSMTP.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange-GetDefaultSMTP.ps1){target=_blank}
 
 ## Exchange Delegation Federation Zertifikat erneuern
 
