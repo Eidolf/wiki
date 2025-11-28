@@ -2,7 +2,7 @@
 title: README
 description: 
 published: true
-date: 2025-10-14T15:48:07.897Z
+date: 2025-11-28T12:58:15.906Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-09T23:59:59.248Z
@@ -39,3 +39,12 @@ Code:
 ```
 Ergebnis:
 Text <sub>Das ist ein tiefgestellter Text</sub>
+
+## Links
+### In neuem Tab öffnen
+Code:
+```
+[https://info.eidolf.de](https://info.eidolf.de/){target=_blank}
+```
+Ergebnis:
+[https://info.eidolf.de](https://info.eidolf.de/){target=_blank}
