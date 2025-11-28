@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-11-28T13:23:12.936Z
+date: 2025-11-28T13:24:04.594Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -134,7 +134,7 @@ Nachtrag: Der Download der Request Datei ist neuerdings nicht ausschließlich au
 ![exchange2019-024.png](/media/exchange2019-024.png)
 
 ### Bei Unsicherheit welches SMTP Zertifikat verwendet wird habe ich hier einen Eintrag
-Es kann bei der Migration vorkommen das man sich unschlüssig welches Standard SMTP Zertifikat beim bisherigen
+Es kann bei der Migration vorkommen das man sich unschlüssig ist welches Standard SMTP Zertifikat beim bisherigen
 Exchange Server verwendet wird, denn eigentlich wird das selbstausgestellte meist gelassen, doch kann es sein ein
 eigenes hinterlegt zu haben.
 [exchange-allgemein#exchange-standard-default-zertifikat-herausfinden](/de/Wiki-Seiten/Microsoft/Server/Rollen/Exchange/exchange-allgemein#exchange-standard-default-zertifikat-herausfinden){target=_blank}
