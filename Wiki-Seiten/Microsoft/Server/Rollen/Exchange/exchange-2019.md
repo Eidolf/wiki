@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-11-28T13:24:04.594Z
+date: 2025-12-03T09:47:45.164Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -178,3 +178,9 @@ Das Skript schreibt diesen Namen auf den neuen Server falls nicht der Servername
 `.\Exchange_Migration_Script.ps1 -CompareCasUrls -CasShowAll`
 - CAS URLs von Quellserver auf Zielserver schreiben
 `.\Exchange_Migration_Script.ps1 -CompareCasUrls -ApplyCasUrls -Approve`
+## DNS
+Die DNS A / AAAA / CNAME Einträge auf den neuen Server anpassen.
+- Autodiscover.domain
+- Hauptadresse.domain (Beispiel mail.domainname.de)
+> Bei Hybrid wird höchstwahrschneinlich der Autodiscover in Richtung Cloud gerichtet sein und muss nicht geändert werden.
+{.is-info}
