@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-03T09:47:45.164Z
+date: 2025-12-03T12:40:10.982Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -143,6 +143,9 @@ eigenes hinterlegt zu haben.
 1. Unter Servereinstellungen (Server > Server > ExchangeNameNeu > bearbeiten)
 2. Bei **Transportprotokolle** die Pfade auf die Log Festplatte ändern
 ![exchange2019-026.png](/media/exchange2019-026.png)
+3. Für weitere zentrale Log Pfade (z.B. IMAP und POP3 gibt es ein Skritp auf meinem Github)
+[Exchange-MoveLogs.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange-MoveLogs.ps1){target=_blank}
+
 ## Sendeconnector / Outbound Connector
 Der neue Server muss bei den Sendeconnectoren hinterlegt werden, in meinem Beispiel für die O365 Verbindung.
 
@@ -162,7 +165,8 @@ Datenbanken sollten vor dem Verschieben auf dem neuen Server vorhanden sein um d
 Bei mir sind die URLs wie schon erwähnt, Intern wie Extern, gleichlautend mit dem externen Namen.
 Das Skript schreibt diesen Namen auf den neuen Server falls nicht der Servername im FQDN enthalten ist (OAB war bei mir noch auf dem Servernamen, da es eigentlich nicht nötig ist den auf eine externe URL zu stellen)
 ### Skript Download
-[Exchange-Migration-Script.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange_Migration_Script.ps1)
+[Exchange-Migration-Script.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange_Migration_Script.ps1){target=_blank}
+
 ### Wichtigste Befehle kurz und knapp 
 - Übersicht der Hilfe
 `Get-Help .\Exchange_Migration_Script.ps1`
