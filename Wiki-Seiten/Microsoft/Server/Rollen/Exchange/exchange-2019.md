@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-03T12:40:10.982Z
+date: 2025-12-03T14:30:58.739Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -143,7 +143,7 @@ eigenes hinterlegt zu haben.
 1. Unter Servereinstellungen (Server > Server > ExchangeNameNeu > bearbeiten)
 2. Bei **Transportprotokolle** die Pfade auf die Log Festplatte ändern
 ![exchange2019-026.png](/media/exchange2019-026.png)
-3. Für weitere zentrale Log Pfade (z.B. IMAP und POP3 gibt es ein Skritp auf meinem Github)
+3. Für weitere zentrale Log Pfade (z.B. IMAP und POP3 gibt es ein Skript auf meinem Github)
 [Exchange-MoveLogs.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange-MoveLogs.ps1){target=_blank}
 
 ## Sendeconnector / Outbound Connector
