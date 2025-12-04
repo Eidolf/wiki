@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-04T13:05:15.265Z
+date: 2025-12-04T13:38:40.043Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -200,3 +200,9 @@ Im groben Ablauf:
 `.\Exchange_Migration_Script.ps1 -QueueMoves -BatchNamePrefix "mailboxmove" -BadItemLimit 10 -NotifyEmail admin@domain.com -Approve`
 
 Mit diesen zwei Befehlen werden nur Migrations Batches angelegt und nicht sofort begonnen. Weiterhin werden die restlichen Mailboxen unterteilt in einzelne Batches (Mailboxart pro Datenbank). Weitere Informationen sind direkt im Skritp zu finden.
+
+Danach überprüfen ob am alten Server noch Postfächer vorhanden sind.
+- `Get-Mailbox -PublicFolder`
+- `Get-Mailbox -Arbitration`
+- `Get-Mailbox -RecipientTypeDetails Shared, Roommailbox, EquipmentMailbox`
+- `Get-Mailbox -RecipientTypeDetails UserMailbox`
