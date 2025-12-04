@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-04T13:39:12.716Z
+date: 2025-12-04T13:40:18.663Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -202,7 +202,7 @@ Im groben Ablauf:
 Mit diesen zwei Befehlen werden nur Migrations Batches angelegt und nicht sofort begonnen. Weiterhin werden die restlichen Mailboxen unterteilt in einzelne Batches (Mailboxart pro Datenbank). Weitere Informationen sind direkt im Skript zu finden.
 
 Danach überprüfen ob am alten Server noch Postfächer vorhanden sind.
-- `Get-Mailbox -PublicFolder`
-- `Get-Mailbox -Arbitration`
-- `Get-Mailbox -RecipientTypeDetails Shared, Roommailbox, EquipmentMailbox`
-- `Get-Mailbox -RecipientTypeDetails UserMailbox`
+- `Get-Mailbox -Server AlterServerName -PublicFolder`
+- `Get-Mailbox -Server AlterServerName -Arbitration`
+- `Get-Mailbox -Server AlterServerName -RecipientTypeDetails Shared, Roommailbox, EquipmentMailbox`
+- `Get-Mailbox -Server AlterServerName -RecipientTypeDetails UserMailbox`
