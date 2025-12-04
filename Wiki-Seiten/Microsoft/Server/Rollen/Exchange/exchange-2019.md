@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-03T14:30:58.739Z
+date: 2025-12-04T13:05:15.265Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -182,9 +182,21 @@ Das Skript schreibt diesen Namen auf den neuen Server falls nicht der Servername
 `.\Exchange_Migration_Script.ps1 -CompareCasUrls -CasShowAll`
 - CAS URLs von Quellserver auf Zielserver schreiben
 `.\Exchange_Migration_Script.ps1 -CompareCasUrls -ApplyCasUrls -Approve`
+
 ## DNS
 Die DNS A / AAAA / CNAME Einträge auf den neuen Server anpassen.
 - Autodiscover.domain
 - Hauptadresse.domain (Beispiel mail.domainname.de)
 > Bei Hybrid wird höchstwahrschneinlich der Autodiscover in Richtung Cloud gerichtet sein und muss nicht geändert werden.
 {.is-info}
+
+## Postfächer migrieren
+Für diese Aufgabe kann man auch mein [Exchange-Migration-Script.ps1](https://github.com/Eidolf/Public-Scripts/blob/main/Exchange/Exchange_Migration_Script.ps1){target=_blank} Skript verwenden.
+
+Im groben Ablauf:
+1. System Mailboxen verschieben
+`.\Exchange_Migration_Script.ps1 -QueueMoves -Arbitration -BatchNamePrefix "arbitration" -BadItemLimit 10 -NotifyEmail admin@domain.com -Approve`
+2. Restliche Mailboxen verschieben
+`.\Exchange_Migration_Script.ps1 -QueueMoves -BatchNamePrefix "mailboxmove" -BadItemLimit 10 -NotifyEmail admin@domain.com -Approve`
+
+Mit diesen zwei Befehlen werden nur Migrations Batches angelegt und nicht sofort begonnen. Weiterhin werden die restlichen Mailboxen unterteilt in einzelne Batches (Mailboxart pro Datenbank). Weitere Informationen sind direkt im Skritp zu finden.
