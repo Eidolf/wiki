@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-04T13:40:18.663Z
+date: 2025-12-05T16:42:41.119Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -195,7 +195,8 @@ Für diese Aufgabe kann man auch mein [Exchange-Migration-Script.ps1](https://gi
 
 Im groben Ablauf:
 1. System Mailboxen verschieben
-`.\Exchange_Migration_Script.ps1 -QueueMoves -Arbitration -BatchNamePrefix "arbitration" -BadItemLimit 10 -NotifyEmail admin@domain.com -Approve`
+`.\Exchange_Migration_Script.ps1 -QueueSystemMailboxBatch -IncludeDiscoverySystemMailbox -SystemMailboxTargetDb TargetDB -BadItemLimit 10 -NotifyEmail admin@domain.com -Approve`
+
 2. Restliche Mailboxen verschieben
 `.\Exchange_Migration_Script.ps1 -QueueMoves -BatchNamePrefix "mailboxmove" -BadItemLimit 10 -NotifyEmail admin@domain.com -Approve`
 
