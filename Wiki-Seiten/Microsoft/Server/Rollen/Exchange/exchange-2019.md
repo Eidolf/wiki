@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-05T16:42:41.119Z
+date: 2025-12-05T16:47:38.620Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -207,3 +207,4 @@ Danach überprüfen ob am alten Server noch Postfächer vorhanden sind.
 - `Get-Mailbox -Server AlterServerName -Arbitration`
 - `Get-Mailbox -Server AlterServerName -RecipientTypeDetails Shared, Roommailbox, EquipmentMailbox`
 - `Get-Mailbox -Server AlterServerName -RecipientTypeDetails UserMailbox`
+- `Get-Mailbox -Server AlterServerName -RecipientTypeDetails DiscoveryMailbox`
