@@ -2,7 +2,7 @@
 title: Net-App CLI
 description: Nützliche Befehle um Net-App Speicher über die Command Line zu verwalten
 published: true
-date: 2025-12-07T13:34:49.359Z
+date: 2025-12-07T13:46:41.654Z
 tags: net-app, speicher, storage, cli
 editor: markdown
 dateCreated: 2025-09-15T08:14:47.149Z
@@ -32,6 +32,9 @@ dateCreated: 2025-09-15T08:14:47.149Z
 3. Kippschalter umstellen (optional)
 
 # Erweiterte Root Partitions Verteilung
+> Folgende Anleitung hat schlussendlich nicht funktioniert und wurde nach dem Cluster Wizard zerstört. Somit lasse ich diese Anleitung nur stehen, um zu sehen was ausprobiert wurde.
+{.is-danger}
+
 > Hier wird definitiv Datenverlust stattfinden, ich konnte diese Aufgabe ein paar mal durchtesten, da ich auf grüner Wiese angefangen habe.
 {.is-warning}
 ## Einleitung
