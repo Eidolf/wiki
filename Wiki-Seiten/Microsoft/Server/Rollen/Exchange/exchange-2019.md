@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-09T13:28:02.306Z
+date: 2025-12-09T13:28:50.470Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -108,6 +108,7 @@ diese Fehlerquelle möchte ich ausschließen.</span>
 > Bei der Exchange SE Installation konnte dieser Schritt nicht mit dem Setup Schlüssel durchgeführt werden.
 > Hier musste mit PowerShell folgender Befehl ausgeführt werden
 > `Set-ExchangeServer NeuerEXServername -ProductKey SetupKeyausAdminLizenzPortal`
+> Danach wie angezeigt den **Microsoft Exchange Information Store** durchstarten
 {.is-info}
 
 ## Zertifikat
