@@ -2,7 +2,7 @@
 title: Hyper-V
 description: 
 published: true
-date: 2025-12-15T18:06:52.249Z
+date: 2025-12-15T18:11:06.809Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:45.176Z
@@ -49,7 +49,7 @@ http://www.aidanfinn.com/?p=10164
 Für z.B. Docker in einer virtuellen Maschine werden virtualisierungs Dienste genutzt.
 Hyper-V schleift nicht standardmäßig diese Funktion an seine virtuellen Maschinen durch.
 Es muss für die jeweilige Maschine ein Flag gesetzt werden.
-> Voraussetzung bei der CPU muss dafür gegeben sein.
+> Die CPU muss die Voraussetzungen dafür erfüllen.
 {.is-warning}
 
 `Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true`
