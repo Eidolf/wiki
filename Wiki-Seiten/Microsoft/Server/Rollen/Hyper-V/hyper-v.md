@@ -2,7 +2,7 @@
 title: Hyper-V
 description: 
 published: true
-date: 2025-07-24T15:46:48.964Z
+date: 2025-12-15T18:06:52.249Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:45.176Z
@@ -44,6 +44,19 @@ Alles anderen Switchports = ***Standard VLAN***
 ## Quelle:
 
 http://www.aidanfinn.com/?p=10164
+
+# Verschachtelte / Nested Virtualisierung
+Für z.B. Docker in einer virtuellen Maschine werden virtualisierungs Dienste genutzt.
+Hyper-V schleift nicht standardmäßig diese Funktion an seine virtuellen Maschinen durch.
+Es muss für die jeweilige Maschine ein Flag gesetzt werden.
+> Voraussetzung bei der CPU muss dafür gegeben sein.
+{.is-warning}
+
+`Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true`
+
+## Quelle:
+https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/enable-nested-virtualization
+
 
 # DDA (Discrete Device Assignment)
 
