@@ -1,9 +1,9 @@
 ---
-title: diskpart-festplattenkonfiguration
+title: Diskpart Festplattenkonfiguration
 description: 
 published: true
-date: 2023-12-31T14:28:12.482Z
-tags: 
+date: 2025-12-15T17:38:28.310Z
+tags: partition
 editor: markdown
 dateCreated: 2023-12-31T14:28:09.453Z
 ---
@@ -12,12 +12,10 @@ dateCreated: 2023-12-31T14:28:09.453Z
 
 Um mit dem Programm "DiskPart" Festplatten zu verwalten folgende Vorgehensweise
 
-<div class="vector-body" id="bkmrk-ausf%C3%BChren-diskpart.e"><div class="mw-body-content mw-content-ltr" dir="ltr" id="bkmrk-ausf%C3%BChren-diskpart.e-1" lang="de"><div class="mw-parser-output">1. Ausführen
+1. Ausführen
 2. DiskPart.exe
 3. Festplatten auflisten mit Befehl " list disk "
 4. Festplatte auswählen mit Befehl " select disk (disknummer) "
 5. Festplattenpartitionen auflisten " list partition "
 6. Festplattenpartition auswählen " select partition (partitionnummer) "
 7. Festplatte erweitern um nicht verwendeten Speicherplatz " extend "
-
-</div></div></div>
