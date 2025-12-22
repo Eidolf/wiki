@@ -1,60 +1,87 @@
 ---
-title: docker
-description: 
+title: Docker
+description: Docker Befehle und Anleitungen
 published: true
-date: 2023-12-31T13:36:36.836Z
-tags: 
+date: 2025-12-22T18:03:05.562Z
+tags: docker, container, docker compose
 editor: markdown
 dateCreated: 2023-12-31T13:36:33.797Z
 ---
 
-# Docker
-
-# <span class="mw-headline" id="bkmrk-beschreibung-1">Beschreibung</span>
+# Beschreibung
 
 Systemunabhängige Container Software
 
-# <span id="bkmrk-"></span><span class="mw-headline" id="bkmrk-n%C3%BCtzliche-befehle-1">Nützliche Befehle</span>
+# Nützliche Befehle
 
-## <span class="mw-headline" id="bkmrk-auflisten-von-docker-1">Auflisten von Docker Container</span>
+## Auflisten von Docker Container
 
 `docker ps`
 
-## <span class="mw-headline" id="bkmrk-auflisten-von-docker-3">Auflisten von Docker Images</span>
+## Auflisten von Docker Images
 
 `docker images`
 
-## <span class="mw-headline" id="bkmrk-verbindung-zu-einem--1">Verbindung zu einem laufenden Container herstellen</span>
+## Verbindung zu einem laufenden Container herstellen
 
 `sudo docker exec -it [Container-ID oder Name] bash`
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
+### Quelle:
 
-```
-<a class="external free" href="https://www.ionos.de/community/server-cloud-infrastructure/docker/docker-schnellstartanleitung-arbeiten-mit-images-und-containern/" rel="nofollow">https://www.ionos.de/community/server-cloud-infrastructure/docker/docker-schnellstartanleitung-arbeiten-mit-images-und-containern/</a>
-```
+https://www.ionos.de/community/server-cloud-infrastructure/docker/docker-schnellstartanleitung-arbeiten-mit-images-und-containern/
 
-## <span class="mw-headline" id="bkmrk-log-datei-von-contai-1">Log Datei von Container abrufen</span>
+## Log Datei von Container abrufen
 
 `docker logs --tail 50 --follow --timestamps Container_Name`
 
-## <span class="mw-headline" id="bkmrk-dateien-zwischen-hos-1">Dateien zwischen Host und Docker kopieren</span>
+## Dateien zwischen Host und Docker kopieren
 
 Mit folgendem Befehl wird der **db** Ordner aus dem Docker zum **db** Ordnerpfad auf dem Host kopiert.  
 `docker cp dbdocker:/data/db /hostfolder/db`
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-3">Quelle:</span>
+### Quelle:
 
-```
-<a class="external free" href="https://www.baeldung.com/ops/docker-copying-files" rel="nofollow">https://www.baeldung.com/ops/docker-copying-files</a>
-```
+https://www.baeldung.com/ops/docker-copying-files
 
-# <span class="mw-headline" id="bkmrk-erweiterte-aufgaben-1">Erweiterte Aufgaben</span>
+# Erweiterte Aufgaben
 
-## <span class="mw-headline" id="bkmrk-upgrade-einer-postgr-1">Upgrade einer Postgres Datenbank</span>
+## Upgrade einer Postgres Datenbank
 
-### <span class="mw-headline" id="bkmrk-quelle%3A-5">Quelle:</span>
+### Quelle:
 
-```
-<a class="external free" href="https://josepostiga.com/how-to-upgrade-postgresql-version-and-transfer-your-old-data-using-docker/" rel="nofollow">https://josepostiga.com/how-to-upgrade-postgresql-version-and-transfer-your-old-data-using-docker/</a>
-```
+https://josepostiga.com/how-to-upgrade-postgresql-version-and-transfer-your-old-data-using-docker/
+
+# Docker auf Windows
+
+## WSL Virtual Disk verkleinern
+Bei Windows Subsystem für Linux (WSL) wurde bei mir die Virtuelle Festplatte leider immer größer obwohl ich meine Docker Versuche bereinigt habe.
+Scheinbar ist das nicht ungewöhnlich und man muss sich mit diskpart behelfen um die VHDX zu komprimieren.
+
+### Schritte
+
+1. Alle WSL-Instanzen herunterfahren
+Öffne ein Administrator-Kommando-Fenster und gib ein:
+`wsl --shutdown`
+
+- Überprüfe, ob alles gestoppt ist:
+`wsl.exe --list --verbose`
+
+2. DiskPart starten
+PowerShell oder CMD öffnen, danach
+`diskpart`
+
+3. Virtuelle Festplatte auswählen
+Innerhalb von DiskPart:
+`select vdisk file="<Pfad zur VHDX-Datei>"`
+
+- Beispiel:
+`select vdisk file="C:\Users\user\AppData\Local\Packages\Docker-Image.vhdx"`
+Es sollte die Meldung erscheinen, dass die virtuelle Festplatte erfolgreich ausgewählt wurde.
+
+
+4. Verkleinern
+Führe den Befehl aus:
+`compact vdisk`
+
+### Quelle:
+https://stackoverflow.com/questions/70946140/docker-desktop-wsl-ext4-vhdx-too-large
