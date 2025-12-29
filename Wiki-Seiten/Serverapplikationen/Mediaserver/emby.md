@@ -1,24 +1,22 @@
 ---
-title: emby
+title: Emby
 description: 
 published: true
-date: 2023-12-31T13:36:47.577Z
-tags: 
+date: 2025-12-29T16:24:10.007Z
+tags: medien, media, video, musik, music, film, bilder, pictures
 editor: markdown
 dateCreated: 2023-12-31T13:36:42.903Z
 ---
 
-# Emby
+# Zertifikate
 
-# <span class="mw-headline" id="bkmrk-zertifikate-1">Zertifikate</span>
+## LetsEncrypt
 
-## <span class="mw-headline" id="bkmrk-letsencrypt-1">LetsEncrypt</span>
-
-### <span class="mw-headline" id="bkmrk-erstes-zertifikat-au-1">Erstes Zertifikat ausstellen</span>
+### Erstes Zertifikat ausstellen
 
 Dieses Beispiel wird an einem Ubuntu 16.04 Server durchgeführt.
 
-<div class="vector-body" id="bkmrk-installation-von-cer"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Installation von Certbot siehe [Certbot Website](https://certbot.eff.org/#ubuntuxenial-other)
+1. Installation von Certbot siehe [Certbot Website](https://certbot.eff.org/#ubuntuxenial-other)
 2. Port 80 an Emby Server freischalten bzw. über Firewall weiterleiten
 3. `letsencrypt certonly --standalone -d beispiel.domain.de`
 4. Wechseln zum Ordner in dem das Zertifikat ausgestellt wurde **/etc/letsencrypt/live/beispiel.domain.de/**
@@ -27,20 +25,18 @@ Dieses Beispiel wird an einem Ubuntu 16.04 Server durchgeführt.
 7. In der Emby Server Verwaltung das erstellte Zertifikat auswählen.
 8. Emby Server neu starten.
 
-</div></div></div>#### <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
+#### Quelle:
 
-```
-<a class="external free" href="https://emby.media/community/index.php?/topic/42315-creating-a-letsencrypt-ssl-certificate-for-emby/" rel="nofollow">https://emby.media/community/index.php?/topic/42315-creating-a-letsencrypt-ssl-certificate-for-emby/</a>
-```
+https://emby.media/community/index.php?/topic/42315-creating-a-letsencrypt-ssl-certificate-for-emby/
 
-### <span class="mw-headline" id="bkmrk-automatisch-update-s-1">Automatisch Update Script</span>
+### Automatisch Update Script
 
 Da das Script in der Quelle nicht mehr zu finden ist poste ich es hier komplett rein, es ist nicht mein Werk und falls der Urheber das Posten anmerkt werde ich es komplett löschen.
 
-<div class="vector-body" id="bkmrk-installation-von-bc%C2%A0"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. Installation von bc `apt-get install bc`
+1. Installation von bc `apt-get install bc`
 2. Script
 
-</div></div></div>```
+```
 #!/bin/bash
 
 SSLPORT="8920"
@@ -95,11 +91,9 @@ fi
 
 Weiterhin sollte ein Crontab zum täglichen durchführen eingerichtet werden.
 
-<div class="vector-body" id="bkmrk-crontab--e-folgendes"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">1. `crontab -e`
+1. `crontab -e`
 2. Folgendes ganz unten einfügen und speichern `0 3 * * * /home/Scriptordner/Scriptname.sh` um täglich um 3 Uhr in der Früh das Script auszuführen.
 
-</div></div></div>#### <span class="mw-headline" id="bkmrk-quelle%3A-3">Quelle:</span>
+#### Quelle:
 
-```
-<a class="external free" href="https://github.com/shrom59/letsencryptemby/blob/master/renewvod" rel="nofollow">https://github.com/shrom59/letsencryptemby/blob/master/renewvod</a>
-```
+https://github.com/shrom59/letsencryptemby/blob/master/renewvod
