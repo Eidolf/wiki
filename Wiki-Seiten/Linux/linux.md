@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2025-08-21T13:48:28.636Z
+date: 2025-12-30T13:44:20.725Z
 tags: 
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
@@ -39,6 +39,9 @@ As a bones, if you ever removed a program which has a running instance you can e
 sudo cp /proc/$$/exe /bin/bash
 
 ## Berechtigung
+
+### UID und GID auslesen
+`id username`
 
 ### Berechtigung auslesen
 
