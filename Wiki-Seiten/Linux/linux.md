@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2025-12-30T13:44:20.725Z
+date: 2025-12-31T02:58:48.622Z
 tags: 
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
@@ -174,7 +174,8 @@ Dann folgendermaßen um es in einen bestimmten Ordner zu entpacken:
 
 #### DNS Server auslesen
 
-`systemd-resolve --status`
+`resolvectl status` Neu
+~~`systemd-resolve --status`~~ Alt
 
 #### Ping zu internen Adressen schlägt fehl
 
