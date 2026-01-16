@@ -2,7 +2,7 @@
 title: Werkzeuge
 description: 
 published: true
-date: 2026-01-16T17:00:28.373Z
+date: 2026-01-16T17:05:47.469Z
 tags: 
 editor: markdown
 dateCreated: 2026-01-16T17:00:28.373Z
@@ -12,8 +12,8 @@ dateCreated: 2026-01-16T17:00:28.373Z
 
 | Bereich     | Beschreibung                                                | Link                  |
 |------------|-------------------------------------------------------------|-----------------------|
-| Backup     | z. B. **Symantec‑Backup‑Lizenzen**                          | [Öffnen](./Backup)    |
-| Bildschirm | z. B. **EDID / DisplayID Writer**                           | [Öffnen](./Bildschirm)|
-| Disclaimer | z. B. **Exclaimer Mail Disclaimer**                         | [Öffnen](./Disclaimer)|
-| Zeiterfassung | z. B. **ZEUS – Verbinden über Desktop‑Link**             | [Öffnen](./Zeiterfassung) |
-| Zertifikate| z. B. **Let’s Encrypt**, **OpenSSL**, **Webserver‑Zertifikat mit Windows‑CA** | [Öffnen](./Zertifikate) |
+| Backup     | z. B. **Symantec‑Backup‑Lizenzen**                          | [Öffnen](./Werkzeuge/Backup)    |
+| Bildschirm | z. B. **EDID / DisplayID Writer**                           | [Öffnen](./Werkzeuge/Bildschirm)|
+| Disclaimer | z. B. **Exclaimer Mail Disclaimer**                         | [Öffnen](./Werkzeuge/Disclaimer)|
+| Zeiterfassung | z. B. **ZEUS – Verbinden über Desktop‑Link**             | [Öffnen](./Werkzeuge/Zeiterfassung) |
+| Zertifikate| z. B. **Let’s Encrypt**, **OpenSSL**, **Webserver‑Zertifikat mit Windows‑CA** | [Öffnen](./Werkzeuge/Zertifikate) |
