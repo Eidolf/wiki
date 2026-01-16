@@ -2,7 +2,7 @@
 title: Datenbanken
 description: 
 published: true
-date: 2026-01-16T16:56:29.814Z
+date: 2026-01-16T17:02:46.317Z
 tags: 
 editor: markdown
 dateCreated: 2026-01-16T16:56:29.814Z
@@ -12,4 +12,4 @@ dateCreated: 2026-01-16T16:56:29.814Z
 
 | Bereich | Beschreibung           | Link            |
 |--------|------------------------|-----------------|
-| MariaDB| z. B. **maria‑db**     | [Öffnen](./MariaDB) |
+| MariaDB| z. B. **maria‑db**     | [Öffnen](./Datenbanken/MariaDB) |
