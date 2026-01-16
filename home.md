@@ -2,28 +2,51 @@
 title: ER-Wiki-Startseite
 description: 
 published: true
-date: 2025-08-14T10:48:25.293Z
+date: 2026-01-16T16:35:49.899Z
 tags: home, start, wiki
 editor: markdown
 dateCreated: 2023-12-10T00:06:10.872Z
 ---
 
-|     |     |     |     |
-| --- | --- | --- | --- |
-| ![internet1.png](/media/internet1.png) | ![Messages.png](/media/messages.png) | ![Multimedia1.png](/media/multimedia1.png) | ![LocalContact.png](/media/localcontact.png) |
-| [Netzwerk](https://wiki.eidolf.de/index.php/Netzwerk) | [Messanger](https://wiki.eidolf.de/index.php/Messanger) | [Multimedia](https://wiki.eidolf.de/index.php/Multimedia) | [Telekomunikation](https://wiki.eidolf.de/index.php/Telekomunikation) |
 
-|     |     |     |     |
-| --- | --- | --- | --- |
-| ![Security1.png](/media/security1.png) | ![Datenbank.png](/media/datenbank.png) | ![Geraete.png](/media/geraete.png) | ![Spiele.png](/media/spiele.png) |
-| [Sicherheit](https://wiki.eidolf.de/index.php/Sicherheit) | [Datenbank](https://wiki.eidolf.de/index.php/Datenbank) | [Hardware](https://wiki.eidolf.de/index.php/Hardware) | [Spiele](https://wiki.eidolf.de/index.php?title=Spiele&action=edit&redlink=1) |
+# 🏠 Willkommen im Eidolf‑Wiki
 
-|     |     |     |     |
-| --- | --- | --- | --- |
-| ![Windows-Server.png](/media/windows-server.png) | ![Windows-icon.png](/media/windows-icon.png) | ![Applications-icon.png](/media/applications-icon.png) | ![Windows-Client.png](/media/windows-client.png) |
-| [Windows Server](https://wiki.eidolf.de/index.php/Windows_Server) | [Windows](https://wiki.eidolf.de/index.php/Windows) | [Software](https://wiki.eidolf.de/index.php/Software) | [Windows Client](https://wiki.eidolf.de/index.php/Windows_Client) |
+**Herzlich willkommen!**  
+Dieses Wiki dient als zentrale Anlaufstelle für **Anleitungen**, **Dokumentationen** und **Projekte**.  
+Nutze die Navigation unten oder die Suchfunktion, um schnell die gewünschten Inhalte zu finden.
 
-|     |     |     |     |
-| --- | --- | --- | --- |
-|     |     | ![](/media/O365-logo.png/) |     |
-|     |     | [Office 365](https://wiki.eidolf.de/index.php/Office_365) |     |
+## 🔍 Schnellsuche
+Nutze die **Suchleiste oben**, um direkt nach **Themen** oder **Stichwörtern** zu suchen.
+
+## 🏷️ Nützliche Funktionen
+Dieses Wiki unterstützt zusätzliche Werkzeuge, die dir das Auffinden von Informationen erleichtern:
+
+### **Tags**
+Viele Seiten sind mit aussagekräftigen **Schlagwörtern** versehen.  
+Über die **Tag‑Ansicht** kannst du thematisch verwandte Inhalte schnell bündeln.
+
+### **Automatische Inhaltsverzeichnisse**
+Jede Seite zeigt **links (oder oben, je nach Layout)** ein dynamisches Inhaltsverzeichnis an, sodass du sofort zu **Unterkapiteln** springen kannst.
+
+### **Breadcrumb‑Navigation**
+Am oberen Seitenrand kannst du jederzeit erkennen, **wo du dich im Wiki befindest** und schnell zu höheren Kategorien zurückkehren.
+
+### **Interne Verlinkungen**
+Verweislinks innerhalb der Seiten helfen dir, thematisch passende Inhalte **ohne langes Suchen** zu erreichen.
+
+
+
+# Übersicht
+
+| Kategorie | Beschreibung | Link |
+|----------|--------------|------|
+| Allgemein | Grundwissen, Tools, Notizen | [Öffnen](./Wiki-Seiten/Allgemein) |
+| Cloud | Cloud-Dienste & Automatisierung | [Öffnen](./Wiki-Seiten/Cloud) |
+| Datenbanken | SQL, Backups, Datenbanktools | [Öffnen](./Wiki-Seiten/Datenbanken) |
+| Linux | Administration, Shell, Troubleshooting | [Öffnen](./Wiki-Seiten/Linux) |
+| Microsoft | Windows, AD, PowerShell, Exchange | [Öffnen](./Wiki-Seiten/Microsoft) |
+| Netzwerk | Firewall, VLAN, VPN, Routing | [Öffnen](./Wiki-Seiten/Netzwerk) |
+| Serverapplikationen | Serverdienste & Services | [Öffnen](./Wiki-Seiten/Serverapplikationen) |
+| Werkzeuge | Tools, Skripte & Programme | [Öffnen](./Wiki-Seiten/Werkzeuge) |
+
+
