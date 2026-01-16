@@ -2,8 +2,8 @@
 title: linux
 description: 
 published: true
-date: 2025-12-31T02:58:48.622Z
-tags: 
+date: 2026-01-16T15:50:19.691Z
+tags: linux, cronjob, dns, bash, berechtigung, rights management, festplatte, disk, netzwerk, network
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
 ---
