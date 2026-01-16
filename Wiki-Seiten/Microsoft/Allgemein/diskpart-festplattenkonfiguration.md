@@ -2,13 +2,13 @@
 title: Diskpart Festplattenkonfiguration
 description: 
 published: true
-date: 2025-12-15T17:38:28.310Z
+date: 2026-01-16T18:09:03.434Z
 tags: partition
 editor: markdown
 dateCreated: 2023-12-31T14:28:09.453Z
 ---
 
-# DiskPart Festplattenkonfiguration
+# Erweitern der Partition
 
 Um mit dem Programm "DiskPart" Festplatten zu verwalten folgende Vorgehensweise
 
