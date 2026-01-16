@@ -2,7 +2,7 @@
 title: Systemvariablen
 description: Informationen zu den Windows Systemvariablen
 published: true
-date: 2026-01-16T15:45:09.811Z
+date: 2026-01-16T15:46:37.741Z
 tags: windows client, windows server, systemvariablen, system variables
 editor: markdown
 dateCreated: 2026-01-16T15:45:09.811Z
@@ -59,7 +59,9 @@ $newPath = "C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\S
 - Nach dem Setzen einer Systemvariablen muss die Sitzung ggf. neu gestartet werden, damit die Änderungen wirksam werden.
 
 ---
-**Tipp:** Wenn du den bestehenden Wert erweitern möchtest, kannst du den aktuellen Wert auslesen und an den neuen Wert anhängen:
+> **Tipp:** Wenn du den bestehenden Wert erweitern möchtest, kannst du den aktuellen Wert auslesen und an den neuen Wert anhängen:
+{.is-info}
+
 
 ```powershell
 $currentPath = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
