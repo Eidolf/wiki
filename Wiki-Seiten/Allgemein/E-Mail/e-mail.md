@@ -2,7 +2,7 @@
 title: E-Mail
 description: 
 published: true
-date: 2026-01-20T16:27:20.506Z
+date: 2026-01-20T16:36:33.653Z
 tags: spf, dkim, dmarc
 editor: markdown
 dateCreated: 2023-12-31T13:27:07.358Z
@@ -79,4 +79,72 @@ In folgendem Beispiel wollen wir für **subdomain.de** den Bericht an **postmast
 ### Quelle:
 https://www.msxfaq.de/spam/dmarc.htm
 https://de.wikipedia.org/wiki/DMARC
+
+
+# Anleitung: E-Mail-Versand mit Telnet
+Diese Anleitung zeigt, wie man eine E-Mail über **Telnet** an einen SMTP-Server sendet. Telnet ist ein einfaches Protokoll, das zur Kommunikation mit Servern verwendet wird.
+
+## Voraussetzungen
+- Ein funktionierender SMTP-Server (z. B. `mail.example.com`)
+- Telnet auf Ihrem System installiert
+- Zugangsdaten für den SMTP-Server (falls erforderlich)
+
+## Schritte zum Versenden einer E-Mail mit Telnet
+
+1. **Telnet-Verbindung zum SMTP-Server herstellen**
+`telnet mail.example.com 25`
+	- `mail.example.com` ist der Hostname des SMTP-Servers.
+	- `25` ist der Standardport für SMTP.
+2. **Begrüßung senden (HELO oder EHLO)**
+`HELO meinserver.example.com`
+	- `meinserver.example.com` ist der Name Ihres Rechners.
+3. **Absenderadresse angeben**
+`MAIL FROM:<absender@example.com>`
+4. **Empfängeradresse angeben**
+`RCPT TO:<empfaenger@example.com>`
+5. **Datenübertragung starten**
+`DATA`
+Danach geben Sie den Inhalt der E-Mail ein:
+   ```bash
+   Subject: Testmail
+   From: absender@example.com (Optional)
+   To: empfaenger@example.com (Optional)
+
+   Dies ist eine Testnachricht, die über Telnet gesendet wurde. (Optional)
+   ```
+   Beenden Sie die Nachricht mit einem Punkt (`.`) in einer eigenen Zeile:
+   ```
+   .
+   ```
+6. **Verbindung beenden**
+`QUIT`
+
+## Hinweise
+
+- Manche SMTP-Server erfordern Authentifizierung. In diesem Fall müssen Sie den Befehl `AUTH LOGIN` verwenden und die Zugangsdaten Base64-kodiert senden.
+- Telnet ist nicht verschlüsselt. Für sichere Verbindungen wird **STARTTLS** oder ein anderes verschlüsseltes Protokoll empfohlen.
+
+### Beispiel für eine vollständige Sitzung:
+
+```bash
+telnet mail.example.com 25
+220 mail.example.com ESMTP Postfix
+HELO meinserver.example.com
+250 mail.example.com
+MAIL FROM:<absender@example.com>
+250 2.1.0 Ok
+RCPT TO:<empfaenger@example.com>
+250 2.1.5 Ok
+DATA
+354 End data with <CR><LF>.<CR><LF>
+Subject: Testmail
+From: absender@example.com
+To: empfaenger@example.com
+
+Dies ist eine Testnachricht.
+.
+250 2.0.0 Ok: queued as 12345
+QUIT
+221 2.0.0 Bye
+```
 
