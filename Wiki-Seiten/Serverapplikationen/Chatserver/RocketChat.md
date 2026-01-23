@@ -2,7 +2,7 @@
 title: RocketChat
 description: Chatserver
 published: true
-date: 2026-01-23T11:28:09.563Z
+date: 2026-01-23T11:29:04.391Z
 tags: docker, docker compose
 editor: markdown
 dateCreated: 2026-01-23T11:27:39.887Z
@@ -21,9 +21,9 @@ Beim Update von MongoDB in Docker – beispielsweise von Version **6.0** auf **7
 6. FCV setzen  
 7. Erneut prüfen
 
-# Schritte im Detail
+## Schritte im Detail
 
-## 1. Docker-Konfiguration anpassen
+### 1. Docker-Konfiguration anpassen
 
 Erhöhe die verwendete MongoDB‑Version in deiner `docker-compose.yml` oder deinem Docker‑Setup, z. B.:
 
@@ -31,32 +31,32 @@ Erhöhe die verwendete MongoDB‑Version in deiner `docker-compose.yml` oder dei
 image: mongo:7.0
 ```
 
-## 2. Container neu starten
+### 2. Container neu starten
 
 ```bash
 docker-compose down
 docker-compose up -d
 ```
 
-## 3. In den laufenden Container verbinden
+### 3. In den laufenden Container verbinden
 
 ```bash
 docker exec -it <containername> bash
 ```
 
-## 4. `mongosh` starten
+### 4. `mongosh` starten
 
 ```bash
 mongosh
 ```
 
-## 5. Aktuelle Feature Compatibility Version auslesen
+### 5. Aktuelle Feature Compatibility Version auslesen
 
 ```javascript
 db.adminCommand({ getParameter: 1, featureCompatibilityVersion: 1 })
 ```
 
-## 6. Feature Compatibility Version setzen
+### 6. Feature Compatibility Version setzen
 
 > Ersetze `7.0` mit der Ziel‑Version, die deinem MongoDB‑Update entspricht.
 
@@ -64,13 +64,13 @@ db.adminCommand({ getParameter: 1, featureCompatibilityVersion: 1 })
 db.adminCommand({ setFeatureCompatibilityVersion: "7.0" })
 ```
 
-## 7. Erneut prüfen
+### 7. Erneut prüfen
 
 ```javascript
 db.adminCommand({ getParameter: 1, featureCompatibilityVersion: 1 })
 ```
 
-# Referenz
+## Referenz
 
 Offizielle Dokumentation zu `setFeatureCompatibilityVersion`:  
 https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/
