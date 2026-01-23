@@ -2,14 +2,14 @@
 title: RocketChat
 description: Chatserver
 published: true
-date: 2026-01-23T11:27:39.887Z
+date: 2026-01-23T11:28:09.563Z
 tags: docker, docker compose
 editor: markdown
 dateCreated: 2026-01-23T11:27:39.887Z
 ---
 
 
-# Übersicht
+# Übersicht - MongoDB Update
 
 Beim Update von MongoDB in Docker – beispielsweise von Version **6.0** auf **7.0** – sind folgende Schritte erforderlich:
 
