@@ -2,7 +2,7 @@
 title: Net-App CLI
 description: Nützliche Befehle um Net-App Speicher über die Command Line zu verwalten
 published: true
-date: 2025-12-07T13:46:41.654Z
+date: 2026-01-25T15:24:49.494Z
 tags: net-app, speicher, storage, cli
 editor: markdown
 dateCreated: 2025-09-15T08:14:47.149Z
@@ -101,3 +101,181 @@ dort rein um danach einen
 14. `boot_ontap`
 
 15. Entweder nochmal prüfen ob die Root Partition nur auf den kleinen Disks liegt (bei mir war es der Fall) oder gleich den Cluster Wizard durchlaufen.
+
+
+# ONTAP 9.8P21 – CIFS über LAG (ifgrp) einrichten und LIF sauber migrieren
+Ziel
+Ich möchte eine CIFS‑LIF auf eine LACP‑Bündelung (ifgrp, z. B. a0a) legen.
+Weil die ONTAP 9.8‑GUI Broadcast Domains nicht vollständig bearbeiten kann, nutze ich GUI + CLI:
+
+GUI: ifgrp (LAG) anlegen/prüfen, LIF migrieren  
+CLI: Ports zur Broadcast Domain hinzufügen (Pflicht, sonst Fehlermeldung „An eligible port was not found“)
+
+## 1. ifgrp (LAG) am Node anlegen/prüfen (GUI)
+
+System Manager öffnen.  
+Network → Ethernet Ports (oder Settings → Network je nach 9.8‑Build).  
+Interface Groups / LAGs anzeigen.  
+Eine neue ifgrp erstellen oder prüfen (z. B. a0a):
+
+Mode: LACP (active)  
+Member Ports: meine gewünschten physischen Ports (z. B. e0c, e0d oder 10 GbE‑Ports)  
+Load Distribution/Hash: IP oder MAC+IP (für SMB i. d. R. optimal)
+
+Sicherstellen, dass die ifgrp up ist.
+
+Hinweis: Ich lege pro Node eine eigene a0a an (Node‑lokal, LAGs sind nicht node‑übergreifend).
+
+## 2. a0a der richtigen Broadcast Domain zuordnen (CLI)
+Die GUI von ONTAP 9.8 kann das nicht zuverlässig – deshalb CLI.
+
+2.1 LIF‑Kontext prüfen (Name der Broadcast Domain herausfinden)
+
+```
+network interface show -vserver <SVMNAME> -lif <LIFNAME> -fields ipspace,broadcast-domain,home-node,home-port,address
+```
+
+Ich merke mir IpSpace und Broadcast‑Domain der LIF (z. B. Default / Data).
+
+2.2 Prüfen, ob a0a sichtbar ist
+
+```
+network port show -node <NODE2> -port a0a
+```
+
+2.3 a0a zur Broadcast Domain hinzufügen  
+Wichtig: Ich nutze genau den IpSpace und die Broadcast Domain der LIF aus 2.1.
+
+```
+network port broadcast-domain add-ports \
+  -ipspace <IPSPACE> \
+  -broadcast-domain <BDOM> \
+  -ports <NODE2>:a0a
+```
+
+Beispiel:
+
+```
+network port broadcast-domain add-ports \
+  -ipspace Default \
+  -broadcast-domain Data \
+  -ports eidnas02:a0a
+```
+
+2.4 Verifizieren
+
+```
+network port broadcast-domain show -ipspace <IPSPACE> -broadcast-domain <BDOM>
+```
+
+Jetzt sehe ich node2:a0a in der Port‑Liste dieser Domain.
+
+Ohne diesen Schritt bekommt die LIF‑Migration den Fehler „An eligible port was not found“.
+
+## 3. (Optional) Failover‑Group passend setzen (GUI oder CLI)  
+Ich möchte, dass meine CIFS‑LIF nur auf die passenden Ports (beider Nodes) failovern darf.
+
+GUI:  
+Network → Failover Groups → Gruppe öffnen oder erstellen → a0a von node1 und node2 hinzufügen → Save.
+
+CLI:
+
+```
+# Gruppe erstellen (falls nicht vorhanden)
+network interface failover-groups create -vserver <SVMNAME> -failover-group cifs_fg
+
+# Ports hinzufügen
+network interface failover-groups add-ports \
+  -vserver <SVMNAME> -failover-group cifs_fg \
+  -ports <NODE1>:a0a,<NODE2>:a0a
+
+# LIF der Failover Group zuweisen
+network interface modify -vserver <SVMNAME> -lif <LIFNAME> -failover-group cifs_fg
+```
+
+## 4. LIF auf a0a migrieren und Home‑Port setzen (GUI oder CLI)
+
+4.1 Live‑Migration (ohne Downtime für SMB3)
+
+GUI:  
+SVM → Network Interfaces → LIF auswählen → Migrate →  
+Destination Node auswählen → Destination Port: a0a → Apply
+
+CLI:
+
+```
+network interface migrate \
+  -vserver <SVMNAME> \
+  -lif <LIFNAME> \
+  -destination-node <NODE2> \
+  -destination-port a0a
+```
+
+4.2 Home‑Port anpassen
+
+GUI:  
+LIF Edit → Home Node/Port auf <NODE2>/a0a stellen.
+
+CLI:
+
+```
+network interface modify \
+  -vserver <SVMNAME> \
+  -lif <LIFNAME> \
+  -home-node <NODE2> \
+  -home-port a0a
+```
+
+Tipp:  
+Mit
+
+```
+network interface show -failover -vserver <SVMNAME> -lif <LIFNAME>
+```
+
+sehe ich alle eligible Failover Targets.
+
+## 5. LACP/SMB‑Optimierung (Best Practices)
+
+- LACP Mode: active (Switch‑seitig active/active)
+- Hash/Distribution: IP oder MAC+IP
+- SMB Multichannel aktiv
+- MTU konsistent (1500 oder 9000)
+- Mindestens 1–2 CIFS‑LIFs pro Node
+
+## 6. Typische Fehler & schnelle Checks
+
+Fehler: *An eligible port was not found*  
+Ursache: a0a ist nicht in der richtigen Broadcast Domain / IpSpace / Failover‑Group.
+
+Checkliste:
+
+```
+network interface show -vserver <SVM> -lif <LIF> -fields ipspace,broadcast-domain,home-node,home-port,address
+network port show -node <NODE> -port a0a
+network port broadcast-domain show -ipspace <IPSPACE> -broadcast-domain <BDOM>
+network interface show -failover -vserver <SVM> -lif <LIF>
+```
+
+## 7. Rollback
+
+```
+network interface migrate -vserver <SVM> -lif <LIF> -destination-node <ALT_NODE> -destination-port <ALT_PORT>
+network interface modify -vserver <SVM> -lif <LIF> -home-node <ALT_NODE> -home-port <ALT_PORT>
+network port broadcast-domain remove-ports \
+  -ipspace <IPSPACE> \
+  -broadcast-domain <BDOM> \
+  -ports <NODE2>:a0a
+```
+
+## 8. Plattform‑Hinweise (FAS2554)
+
+- ifgrp/LACP ist pro Node separat  
+- HA erfolgt über LIF‑Failover  
+- SMB profitiert von Multichannel & Transparent Failover
+
+Kurzfazit:
+
+- GUI: ifgrp/LAG anlegen, LIF migrieren, Failover Group setzen  
+- CLI: a0a der Broadcast Domain hinzufügen  
+- Danach keine „eligible port“‑Fehler mehr.
