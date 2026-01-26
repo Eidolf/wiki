@@ -2,7 +2,7 @@
 title: Net-App CLI
 description: Nützliche Befehle um Net-App Speicher über die Command Line zu verwalten
 published: true
-date: 2026-01-25T15:24:49.494Z
+date: 2026-01-26T14:59:36.919Z
 tags: net-app, speicher, storage, cli
 editor: markdown
 dateCreated: 2025-09-15T08:14:47.149Z
@@ -214,7 +214,7 @@ network interface migrate \
 4.2 Home‑Port anpassen
 
 GUI:  
-LIF Edit → Home Node/Port auf <NODE2>/a0a stellen.
+LIF Edit → Home `Node/Port` auf `<NODE2>/a0a` stellen.
 
 CLI:
 
@@ -279,3 +279,69 @@ Kurzfazit:
 - GUI: ifgrp/LAG anlegen, LIF migrieren, Failover Group setzen  
 - CLI: a0a der Broadcast Domain hinzufügen  
 - Danach keine „eligible port“‑Fehler mehr.
+
+# Volume unterbrechungsfrei in ein anderes Aggregat verschieben (ONTAP Volume Move)
+Diese Anleitung gilt für alle ONTAP‑Systeme mit FlexVol Volumes.
+
+## 1. Ausgangslage prüfen
+Bevor ein Volume verschoben wird, müssen folgende Daten geprüft werden:
+1.1 Welches Volume soll verschoben werden?
+`volume show -volume <VOLUME_NAME> -fields aggregate,state,tiering-policy`
+1.2 Größe und Nutzung des Volumes prüfen
+`volume show -volume <VOLUME_NAME> -fields size,used,available`
+1.3 Welches Aggregat ist das neue Ziel?
+Kapazität prüfen:
+`aggr show -aggregate <ZIEL_AGGR> -fields size,available,state`
+
+## 2. Platz im Zielaggregat sicherstellen
+Wenn das Zielaggregat zu wenig Platz hat, müssen alte oder ungenutzte Volumes gelöscht oder verschoben werden.
+2.1 Volumes im Zielaggregat anzeigen
+`volume show -aggregate <ZIEL_AGGR> -fields volume,size,used`
+2.2 Nicht benötigtes Volume löschen
+(Nur wenn sicher!)
+```
+volume offline -vserver <SVM> -volume <VOLUME>
+volume delete -vserver <SVM> -volume <VOLUME>
+```
+2.3 Alternativ: Volume in anderes Aggregat verschieben
+`volume move start -vserver <SVM> -volume <VOLUME> -destination-aggregate <ANDERES_AGGR>`
+
+## 3. Unterbrechungsfreien Volume‑Move starten
+Wenn genug Platz vorhanden ist, kann das Volume „live“ verschoben werden.
+Volume Move starten
+`volume move start -vserver <SVM> -volume <VOLUME> -destination-aggregate <ZIEL_AGGR>`
+
+ONTAP führt dabei:
+- Block‑Copy im Hintergrund
+- anschließenden „Cutover“ mit typischer Unterbrechung < 10 Sekunden durch.
+
+Hyper‑V, VMware, LUN‑basiert, NFS, SMB → alles bleibt online.
+
+## 4. Status des Volume‑Moves überwachen
+Status prüfen
+`volume move show`
+
+Detaillierter Status
+`volume move show-details`
+
+## 5. Abschlussphase: Cutover
+ONTAP führt einen kurzen „Cutover“ durch, bei dem das Volume final umgeschwenkt wird.
+Falls manuell erforderlich:
+`volume move trigger-cutover -vserver <SVM> -volume <VOLUME>`
+Dies passiert normalerweise automatisch.
+
+## 6. Nachkontrolle
+6.1 Prüfen, ob Volume im neuen Aggregat liegt
+`volume show -volume <VOLUME> -fields aggregate`
+6.2 LUN‑Mappings prüfen (optional)
+LUNs werden automatisch korrekt übernommen:
+`lun show -fields path,mapped`
+6.3 Eventuelle SnapMirror/SnapVault Beziehungen
+`snapmirror show`
+
+Hinweise & Best Practices
+- Volume Move ist vollständig online und für Produktions‑VMs geeignet
+- Vorher immer Platz im Zielaggregat prüfen
+- Aggregate müssen vom selben HA‑Pair sein
+- FlexVols bis mehrere hundert TB → problemlos
+- Volume Move erzeugt Last → am besten nicht während Backup‑Fenstern
