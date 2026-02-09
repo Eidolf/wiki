@@ -2,8 +2,8 @@
 title: Docker Linux
 description: Alles rund um Docker und Docker Compose auf Linux
 published: true
-date: 2026-02-09T14:40:20.720Z
-tags: linux, docker, container, docker compose
+date: 2026-02-09T14:42:25.641Z
+tags: 
 editor: markdown
 dateCreated: 2025-11-01T15:30:26.921Z
 ---
