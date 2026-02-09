@@ -2,7 +2,7 @@
 title: Docker Linux
 description: Alles rund um Docker und Docker Compose auf Linux
 published: true
-date: 2025-11-01T15:30:26.921Z
+date: 2026-02-09T14:02:46.379Z
 tags: linux, docker, container, docker compose
 editor: markdown
 dateCreated: 2025-11-01T15:30:26.921Z
@@ -14,6 +14,11 @@ Hier wird bewusst nichts einfach gestaltet oder sich an Standard Repositories ge
 Seit es WinGet auf Windows gibt, wird der Frust immer noch größer wenn ich sehe das man erst sich Repositorys zusammensuchen muss um Software zu installieren, in diesem Fall sowas großes wie Docker.
 Aber jetzt zum Thema, ich gestalte es wieder einfach für Windows Nutzer.
 Befehl nach Befehl, keine große Erklärung welchen RFC man wieder beachten muss um überhaupt was eingeben zu dürfen.
+
+## Docker und Docker Compose
+Hier wieder eine super einfach Version die scheinbar ausreichend ist um beides installiert zu bekommen.
+Folgendes hat bei Debian ausgereicht und ich hoffe für Ubuntu klappt das ebenfalls, wenn nicht siehe die nächsten Punkte.
+`sudo apt-get install docker-compose`
 
 ## Docker
 1. `sudo apt-get update`
