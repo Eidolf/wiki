@@ -2,7 +2,7 @@
 title: Exchange Allgemein
 description: 
 published: true
-date: 2025-11-28T12:44:38.991Z
+date: 2026-02-14T01:50:47.741Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:03.680Z
@@ -211,6 +211,10 @@ https://www.frankysweb.de/exchange-2016-kostenlose-zertifikate-von-lets-encrypt/
 Get-ExchangeCertificate
 
 $cert = Get-ExchangeCertificate -Thumbprint Thumprint-des-Zertifikats
+
+	Optional, wenn Zertifikat noch nicht aktiviert wurde:
+  Enable-ExchangeCertificate -Thumbprint $cert.Thumbprint -Services SMTP
+	Nicht das Default ersetzen
 
 $tlscertificatename = "<i>$($cert.Issuer)<s>$($cert.Subject)"
 
