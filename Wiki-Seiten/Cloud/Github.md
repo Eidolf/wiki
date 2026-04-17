@@ -2,7 +2,7 @@
 title: Github
 description: Git Befehle für die Verwaltung von Github
 published: true
-date: 2026-04-17T11:56:33.272Z
+date: 2026-04-17T12:51:10.238Z
 tags: git, development
 editor: markdown
 dateCreated: 2026-04-15T00:57:18.294Z
@@ -36,3 +36,25 @@ Bei Commits kann es passieren das ausversehen ein falscher Name in den Einstellu
 `git commit --amend --reset-author`
 Nach diesem Befehl muss ein Erzwungener Push durchgeführt werden
 `git push -f`
+
+## Git History bereinigen
+
+1. Checkout/Erstellen eines Orphan-Branches (dieser Branch erscheint nicht im git branch‑Befehl):
+`git checkout --orphan latest_branch`
+
+2. Alle Dateien zum neu erstellten Branch hinzufügen:
+`git add -A`
+
+3. Änderungen committen:
+`git commit -am "commit message"`
+
+4. Hauptbranch (Standardbranch) löschen (dieser Schritt ist dauerhaft):
+`git branch -D main`
+
+5. Aktuellen Branch in main umbenennen:
+`git branch -m main`
+
+6. Abschließend: Alle Änderungen sind lokal abgeschlossen, jetzt das Remote‑Repository zwangsweise aktualisieren:
+`git push -f origin main`
+### Quelle
+https://stackoverflow.com/questions/13716658/how-to-delete-all-commit-history-in-github
