@@ -2,7 +2,7 @@
 title: Github
 description: Git Befehle für die Verwaltung von Github
 published: true
-date: 2026-04-15T01:02:01.946Z
+date: 2026-04-17T11:56:33.272Z
 tags: git, development
 editor: markdown
 dateCreated: 2026-04-15T00:57:18.294Z
@@ -21,6 +21,15 @@ Um Commits mit der richtigen Person zu erstellen sollte man die Globale Konfigur
 # Standard Aufgaben
 ## Pull (Daten von github ziehen)
 `git pull`
+
+### Rebase
+Wenn der lokale Stand noch nicht aktualisiert wurde mit neueren Daten auf github, man dennoch Änderungen lokal durchgeführt hat, kann man keinen normalen Pull oder Sync durchführen.
+Hier müssen die Cloud Daten neu einsortiert werden, das geht mit **--rebase**
+`git pull --rebase`
+
+## Push (Daten nach github schieben)
+`git push`
+
 # Erweiterte Aufgaben
 ## Autor des letzten Commits ändern
 Bei Commits kann es passieren das ausversehen ein falscher Name in den Einstellungen hinterlegt ist und man diesen falschen Author zurückändern möchte, da ansonsten die Commit History unsauber aussieht.
