@@ -2,7 +2,7 @@
 title: Docker Linux
 description: Alles rund um Docker und Docker Compose auf Linux
 published: true
-date: 2026-02-09T14:42:25.641Z
+date: 2026-04-22T08:39:41.387Z
 tags: 
 editor: markdown
 dateCreated: 2025-11-01T15:30:26.921Z
@@ -15,10 +15,10 @@ Seit es WinGet auf Windows gibt, wird der Frust immer noch größer wenn ich seh
 Aber jetzt zum Thema, ich gestalte es wieder einfach für Windows Nutzer.
 Befehl nach Befehl, keine große Erklärung welchen RFC man wieder beachten muss um überhaupt was eingeben zu dürfen.
 
-## Docker
+## Docker (Ubuntu)
 1. `sudo apt-get update`
 2. `sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release`
-3. `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
+3. `sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
 4. `echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
 $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null`
 5. `sudo apt-get update`
@@ -33,3 +33,16 @@ Auch hier musste ich erst wieder ewig umständliche Befehle anschauen bis mir di
 1. `sudo apt-get update`
 2. `sudo apt-get install docker-compose-plugin`
 3. `docker compose version`
+
+## Docker (Debian)
+Bei Ubuntu sind die Befehle aufgeteilt zwischen Docker selbst und Docker Compose. Bei Debian gebe ich alles gemeinsam an.
+1. `sudo apt update`
+2. `sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
+3. **(Optional)** falls die aus Punkt 2 verwendeten Pakete nicht auffindbar sind.
+```
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+$(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
