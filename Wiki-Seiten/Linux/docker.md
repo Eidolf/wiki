@@ -2,7 +2,7 @@
 title: Docker Linux
 description: Alles rund um Docker und Docker Compose auf Linux
 published: true
-date: 2026-04-22T08:39:41.387Z
+date: 2026-04-22T08:44:55.377Z
 tags: 
 editor: markdown
 dateCreated: 2025-11-01T15:30:26.921Z
@@ -18,7 +18,7 @@ Befehl nach Befehl, keine große Erklärung welchen RFC man wieder beachten muss
 ## Docker (Ubuntu)
 1. `sudo apt-get update`
 2. `sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release`
-3. `sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
+3. `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
 4. `echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
 $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null`
 5. `sudo apt-get update`
