@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2026-04-27T14:46:11.349Z
+date: 2026-04-27T15:48:45.442Z
 tags: linux, cronjob, dns, bash, berechtigung, rights management, festplatte, disk, netzwerk, network
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
@@ -136,6 +136,82 @@ Falls mit diesem Befehl festgestellt wurde, dass die über dem LVM liegende Disk
 
 Quelle für Punkt 7:  
 [https://unix.stackexchange.com/questions/664486/lvm-root-partition-only-uses-half-the-volume-size](https://unix.stackexchange.com/questions/664486/lvm-root-partition-only-uses-half-the-volume-size)
+
+## Disk hinzufügen
+Als Beispiel für das hinzufügen einer neuen Festplatte hatte ich folgendes Szenario
+**Azure Data Disk unter Debian einrichten (Docker-Server)**
+Manche Schritte müssen für ein anderes Szenario angesst werden, aber als grobe Übersicht sollte die Anleitung funktionieren.
+
+### 1. Neue Disk prüfen (vor dem Formatieren)
+
+#### Sichtbare, eingehängte Dateisysteme anzeigen
+`df -h`
+- Zeigt nur formatierte und gemountete Partitionen.  
+- Neue Azure-Disk erscheint hier noch nicht.
+
+#### Alle Blockgeräte anzeigen
+`lsblk -o NAME,HCTL,SIZE,FSTYPE,MOUNTPOINT`
+- Neue Disk erscheint z. B. als `sdb`  
+- LUN-Nummer erkennbar über HCTL (letzte Ziffer = LUN)
+
+#### Azure-spezifischen Pfad prüfen
+`ls -l /dev/disk/azure/scsi1/`
+- `lun0 → ../../sdb` bestätigt, dass die Disk korrekt angebunden ist.
+
+### 2. Partition anlegen (MBR, eine Partition)
+`sudo fdisk /dev/sdb`
+
+#### In `fdisk`:
+```
+n     → neue Partition
+p     → primary
+1     → Partition 1
+Enter → Startsektor
+Enter → Endsektor (ganze Disk)
+w     → speichern
+```
+Ergebnis: `/dev/sdb1`
+
+### 3. Dateisystem erstellen (ext4)
+`sudo mkfs.ext4 /dev/sdb1`
+
+#### Prüfen:
+`lsblk -f`
+- zeigt UUID der neuen Partition.
+
+### 4. Mountpoint erstellen
+`sudo mkdir -p /mnt/docker-data`
+
+### 5. Partition mounten
+`sudo mount /dev/sdb1 /mnt/docker-data`
+
+#### Prüfen:
+`df -h`
+
+### 6. Persistentes Mounten über `/etc/fstab`
+UUID aus `lsblk -f` eintragen:
+`UUID=<DEINE-UUID>  /mnt/docker-data  ext4  defaults,nofail  1 2`
+
+#### Testen:
+`sudo mount -a`
+
+### 📘 Kurzinfo: UUID vs. PARTUUID
+
+#### UUID
+- Identifiziert das Dateisystem  
+- Wird beim Formatieren erzeugt  
+- Ideal für Datenplatten  
+- Empfehlung für Azure-Data-Disks  
+
+#### PARTUUID
+- Identifiziert die Partition  
+- Wird vom Installer für Systempartitionen genutzt  
+- Stabil auch ohne Dateisystem  
+
+#### Empfehlung
+- Systempartitionen → PARTUUID  
+- Datenpartitionen → UUID  
+
 
 ## Entpacken
 
