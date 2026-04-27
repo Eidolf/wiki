@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2026-01-16T15:50:19.691Z
+date: 2026-04-27T14:46:11.349Z
 tags: linux, cronjob, dns, bash, berechtigung, rights management, festplatte, disk, netzwerk, network
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
@@ -114,7 +114,8 @@ Um z.B. für einen Ordner die Gesamtgröße herauszufinden
 Ich habe leider meine Disk immer mit LVM angelegt und wenn es um eine größere Disk ging bisher immer die komplette Maschine neu aufgesetzt.  
 Wenn man nicht der Linuxprofi ist und weiterhin das einfache erweitern einer virtuellen Disk in Windows gewohnt ist, würde man am liebsten bei den ganzen verschiedenen Anleitungen und Befehlen das Internet sprengen.  
 Mein Weg, der jedenfalls bei mir mit Ubuntu 18.04 funktioniert hat und relativ einfach war ist folgender.  
-Eine Vorprüfung der Festplattenstruktur kann mit folgendem Befehl durchgeführt werden `sudo lsblk`  
+Eine Vorprüfung der Festplattenstruktur kann mit folgendem Befehl durchgeführt werden `sudo lsblk`
+Etwas genauer kann man folgenden Befehl ausführen `sudo lsblk -o NAME,HCTL,SIZE,MOUNTPOINT`
 Falls mit diesem Befehl festgestellt wurde, dass die über dem LVM liegende Disk schon erweitert wurde, kann man alle Punkte bis Punkt 7 überspringen.
 
 1.  Virtuelle Disk im Hyper-V erweitert.
