@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2025-08-14T10:32:16.771Z
+date: 2026-04-29T10:22:06.041Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:29:12.851Z
@@ -90,3 +90,15 @@ Exit
 ## Quelle:
 https://www.thomasmaurer.ch/2019/03/how-to-install-and-update-powershell-6/
 https://www.thomasmaurer.ch/2019/02/update-powershellget-and-packagemanagement/
+
+# Mail versenden
+Das PowerShell Modul ist abgekündigt aber ausreichend um intern gegen einen Mailserver Tests durchzuführen.
+## Senden über Port 25 unverschlüsselt
+```
+Send-MailMessage `
+  -From "test@domain.local" `
+  -To "user1@domain.local","user2@domain.local","user3@domain.local" `
+  -Subject "SMTP Test" `
+  -Body "Testmail via PowerShell" `
+  -SmtpServer "exchange-server.domain.local"
+```
