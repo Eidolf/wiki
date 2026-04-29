@@ -2,7 +2,7 @@
 title: E-Mail
 description: 
 published: true
-date: 2026-01-20T16:36:33.653Z
+date: 2026-04-29T10:24:31.269Z
 tags: spf, dkim, dmarc
 editor: markdown
 dateCreated: 2023-12-31T13:27:07.358Z
@@ -83,6 +83,8 @@ https://de.wikipedia.org/wiki/DMARC
 
 # Anleitung: E-Mail-Versand mit Telnet
 Diese Anleitung zeigt, wie man eine E-Mail über **Telnet** an einen SMTP-Server sendet. Telnet ist ein einfaches Protokoll, das zur Kommunikation mit Servern verwendet wird.
+
+Falls kein Telnet installiert wurde kann man auch mit PowerShell E-Mails versenden > [powershell#mail-versenden](/de/Wiki-Seiten/Microsoft/Allgemein/powershell#mail-versenden)
 
 ## Voraussetzungen
 - Ein funktionierender SMTP-Server (z. B. `mail.example.com`)
