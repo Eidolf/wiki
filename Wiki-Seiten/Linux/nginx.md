@@ -2,7 +2,7 @@
 title: nginx
 description: Konfiguration für nginx Reverse Proxy
 published: true
-date: 2026-05-06T14:06:05.357Z
+date: 2026-05-06T14:34:51.484Z
 tags: linux, proxy, cli, reverse proxy, firewall
 editor: markdown
 dateCreated: 2026-05-04T15:37:13.516Z
@@ -93,7 +93,11 @@ Alternativ gezielt nach `--with-stream` suchen:
 
 `nginx -V 2>&1 | grep stream`
 
-✅ Ausgabe enthält `--with-stream` oder `--with-stream=dynamic`  
+✅ Ausgabe enthält `--with-stream` oder `--with-stream=dynamic`
+Hier ist aber wichtig zu beachten das
+- with-stream schon vollständig ist
+- with-stream=dynamic immer noch voraussetzt das Modul sauber zu laden, siehe
+
 ❌ Keine Ausgabe → stream‑Modul ist nicht vorhanden
 
 ### Installation des stream‑Moduls (Debian / Ubuntu)
