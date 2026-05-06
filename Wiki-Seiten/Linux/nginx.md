@@ -2,7 +2,7 @@
 title: nginx
 description: Konfiguration für nginx Reverse Proxy
 published: true
-date: 2026-05-06T14:44:11.831Z
+date: 2026-05-06T14:54:52.009Z
 tags: linux, proxy, cli, reverse proxy, firewall
 editor: markdown
 dateCreated: 2026-05-04T15:37:13.516Z
@@ -91,7 +91,7 @@ certbot passt die nginx-Konfiguration automatisch an und aktiviert HTTPS auf Por
 
 Alternativ gezielt nach `--with-stream` suchen:
 
-`nginx -V 2>&1 | grep stream`
+`nginx -V 2>&1 | grep -- --with-stream`
 
 ✅ Ausgabe enthält `--with-stream` oder `--with-stream=dynamic`
 Hier ist aber wichtig zu beachten das
@@ -116,11 +116,19 @@ Diese Variante enthält das stream‑Modul standardmäßig.
 
 Danach Modul aktivieren (falls nicht automatisch geladen):
 
-In `/etc/nginx/nginx.conf` **ganz oben**:
+> Beim automatisch laden wird das Modul in
+> `/etc/nginx/modules-enabled/50-mod-stream.conf`
+> geschrieben
+> Aber erst ausprobieren ob es direkt nach der Installation funktioniert
+{.is-info}
 
-```
-load_module modules/ngx_stream_module.so;
-```
+
+> Dies hier wirklich nur Optional durchführen!
+> In `/etc/nginx/nginx.conf` **ganz oben**:
+> 
+> `load_module modules/ngx_stream_module.so;`
+{.is-warning}
+
 
 ### Konfiguration testen
 
