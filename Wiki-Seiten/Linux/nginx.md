@@ -2,7 +2,7 @@
 title: nginx
 description: Konfiguration für nginx Reverse Proxy
 published: true
-date: 2026-05-06T13:50:36.669Z
+date: 2026-05-06T14:06:05.357Z
 tags: linux, proxy, cli, reverse proxy, firewall
 editor: markdown
 dateCreated: 2026-05-04T15:37:13.516Z
@@ -88,8 +88,6 @@ certbot passt die nginx-Konfiguration automatisch an und aktiviert HTTPS auf Por
 ## nginx **stream‑Modul** – prüfen und installieren
 
 ### Prüfen, ob das stream‑Modul verfügbar ist
-
-`nginx -V 2>&1 | grep --with-http_ssl_module stream`
 
 Alternativ gezielt nach `--with-stream` suchen:
 
