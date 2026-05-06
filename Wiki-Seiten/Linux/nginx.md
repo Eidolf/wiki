@@ -2,7 +2,7 @@
 title: nginx
 description: Konfiguration für nginx Reverse Proxy
 published: true
-date: 2026-05-06T14:34:51.484Z
+date: 2026-05-06T14:35:58.842Z
 tags: linux, proxy, cli, reverse proxy, firewall
 editor: markdown
 dateCreated: 2026-05-04T15:37:13.516Z
@@ -96,7 +96,7 @@ Alternativ gezielt nach `--with-stream` suchen:
 ✅ Ausgabe enthält `--with-stream` oder `--with-stream=dynamic`
 Hier ist aber wichtig zu beachten das
 - with-stream schon vollständig ist
-- with-stream=dynamic immer noch voraussetzt das Modul sauber zu laden, siehe
+- with-stream=dynamic immer noch voraussetzt das Modul sauber zu laden, siehe [nginx#alternative-streammodul-als-dynamisches-modul](/de/Wiki-Seiten/Linux/nginx#alternative-streammodul-als-dynamisches-modul)
 
 ❌ Keine Ausgabe → stream‑Modul ist nicht vorhanden
 
