@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2026-05-06T13:27:05.393Z
+date: 2026-05-06T13:27:40.718Z
 tags: linux, cronjob, dns, bash, berechtigung, rights management, festplatte, disk, netzwerk, network
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
@@ -448,7 +448,7 @@ Für ein Server Upgrade das nicht auf eine Grafische Oberfläche umgestellt werd
 
 [https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/](https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/)
 
-# Anleitung zur Firewallverwaltung mit **ufw** unter Linux
+# Firewallverwaltung mit **ufw** unter Linux
 
 ## Überblick
 
