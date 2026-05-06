@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2026-04-27T15:48:45.442Z
+date: 2026-05-06T13:27:05.393Z
 tags: linux, cronjob, dns, bash, berechtigung, rights management, festplatte, disk, netzwerk, network
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
@@ -447,3 +447,261 @@ Für ein Server Upgrade das nicht auf eine Grafische Oberfläche umgestellt werd
 ### Quelle:
 
 [https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/](https://helgeklein.com/blog/2018/12/upgrading-ubuntu-16-04-to-18-04-php-7-0-to-7-2-for-wordpress/)
+
+# Anleitung zur Firewallverwaltung mit **ufw** unter Linux
+
+## Überblick
+
+**ufw** (*Uncomplicated Firewall*) ist ein einfach zu bedienendes Frontend für **iptables** bzw. **nftables** und wird häufig auf Ubuntu- und Debian-basierten Systemen eingesetzt. Ziel ist eine leicht verständliche und sichere Firewall-Konfiguration.
+
+---
+
+## Installation von ufw
+
+Auf Debian/Ubuntu und Derivaten:
+
+```
+sudo apt update
+sudo apt install ufw
+```
+
+Überprüfen, ob ufw installiert ist:
+
+`ufw --version`
+
+## Grundlegende Befehle
+
+### Status anzeigen
+
+`sudo ufw status`
+
+Ausführlicher Status:
+
+`sudo ufw status verbose`
+
+## Firewall aktivieren und deaktivieren
+
+### Aktivieren
+
+`sudo ufw enable`
+
+> **Hinweis:** Stelle sicher, dass SSH erlaubt ist, bevor du ufw aktivierst, wenn du remote arbeitest.
+{.is-warning}
+
+### Deaktivieren
+
+`sudo ufw disable`
+
+## Standardregeln festlegen
+
+### Eingehende Verbindungen blockieren, ausgehende erlauben
+
+```
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+```
+
+## Dienste und Ports erlauben
+
+### SSH erlauben (empfohlen vor Aktivierung)
+
+`sudo ufw allow ssh`
+
+Oder explizit Port 22:
+
+`sudo ufw allow 22`
+
+### HTTP und HTTPS erlauben
+
+```
+sudo ufw allow 80
+sudo ufw allow 443
+```
+
+Oder per Dienstnamen:
+
+```
+sudo ufw allow http
+sudo ufw allow https
+```
+
+### Bestimmten Port und Protokoll erlauben
+
+```
+sudo ufw allow 8080/tcp
+sudo ufw allow 53/udp
+```
+
+## Regeln einschränken
+
+### Zugriff nur von einer bestimmten IP erlauben
+
+`sudo ufw allow from 192.168.1.100`
+
+### Zugriff von IP auf bestimmten Port beschränken
+
+`sudo ufw allow from 192.168.1.100 to any port 22`
+
+## Regeln verweigern (deny / reject)
+
+### Port blockieren
+
+`sudo ufw deny 25`
+
+### Verbindung aktiv zurückweisen (reject)
+
+`sudo ufw reject 25`
+
+## **Rate-Limiting mit `ufw limit` (Schutz vor Brute-Force-Angriffen)**
+
+### Was macht `ufw limit`?
+
+Die Aktion **`limit`** erlaubt Verbindungen grundsätzlich, begrenzt jedoch die Anzahl neuer Verbindungsversuche pro IP-Adresse innerhalb eines bestimmten Zeitfensters.  
+Dies ist besonders effektiv gegen:
+
+- Brute-Force-Angriffe (z. B. auf SSH)
+- Port-Scanning
+- Übermäßige Verbindungsversuche einzelner Clients
+
+Intern verwendet ufw dafür das iptables-**recent**-Modul.
+
+### Syntax von `ufw limit`
+
+`sudo ufw limit <port>/<protokoll>`
+
+Oder mit Dienstnamen:
+
+`sudo ufw limit ssh`
+
+### Beispiel: SSH mit Rate-Limit absichern
+
+`sudo ufw limit ssh`
+
+Bedeutung:
+- SSH ist erlaubt
+- Mehr als **6 neue Verbindungen innerhalb von 30 Sekunden** von derselben IP werden temporär blockiert
+
+### Beispiel: Rate-Limit für einen Webdienst
+
+`sudo ufw limit 443/tcp`
+
+Geeignet für:
+- Admin-Interfaces
+- APIs
+- Login-Endpunkte
+
+### Rate-Limit mit Quell-IP kombinieren
+
+`sudo ufw limit from 192.168.1.0/24 to any port 22`
+
+### Unterschied: `allow` vs. `limit`
+
+| Aktion | Verhalten |
+|------|-----------|
+| `allow` | Erlaubt unbegrenzt viele Verbindungen |
+| `limit` | Erlaubt Verbindungen, blockiert bei zu vielen Versuchen |
+| `deny` | Blockiert still |
+| `reject` | Blockiert mit Antwort |
+
+### Typische Einsatzszenarien für `limit`
+
+- SSH-Zugänge auf Servern
+- VPN-Endpunkte
+- Mailserver (Submission-Port 587)
+- Admin-Weboberflächen
+
+### Regeln mit `limit` anzeigen
+
+`sudo ufw status verbose`
+
+Beispielausgabe:
+
+```
+22/tcp                     LIMIT       Anywhere
+```
+
+### `limit`-Regel entfernen
+
+`sudo ufw delete limit ssh`
+
+Oder per Nummer:
+
+```
+sudo ufw status numbered
+sudo ufw delete 3
+```
+
+## Logging
+
+### Logging aktivieren
+
+`sudo ufw logging on`
+
+### Log-Level setzen
+
+```
+sudo ufw logging low
+sudo ufw logging medium
+sudo ufw logging high
+```
+
+Logdatei (abhängig vom System):
+
+```
+/var/log/ufw.log
+```
+
+## IPv6-Unterstützung
+
+IPv6 wird standardmäßig unterstützt. Konfiguration in:
+
+```
+/etc/default/ufw
+```
+
+Wichtige Option:
+
+```text
+IPV6=yes
+```
+
+Nach Änderungen neu laden:
+
+`sudo ufw reload`
+
+## Firewall neu laden und zurücksetzen
+
+### Regeln neu laden
+
+`sudo ufw reload`
+
+### ufw komplett zurücksetzen
+
+`sudo ufw reset`
+
+> **Achtung:** Alle Regeln werden gelöscht und ufw deaktiviert.
+{.is-warning}
+
+## Empfohlene Minimal-Konfiguration mit Rate-Limit (Server)
+
+```
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw limit ssh
+sudo ufw enable
+```
+
+## Hilfe und Dokumentation
+
+`man ufw`
+
+Kurzreferenz:
+
+`ufw --help`
+
+## Zusammenfassung
+
+- `ufw limit` schützt effektiv vor Brute-Force- und Flooding-Angriffen  
+- Ideal für SSH und sicherheitskritische Dienste  
+- Einfacher Ersatz für komplexe iptables-Regeln  
+- Sehr gut kombin
