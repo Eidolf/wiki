@@ -2,7 +2,7 @@
 title: nginx
 description: Konfiguration für nginx Reverse Proxy
 published: true
-date: 2026-05-04T15:37:13.516Z
+date: 2026-05-06T13:50:36.669Z
 tags: linux, proxy, cli, reverse proxy, firewall
 editor: markdown
 dateCreated: 2026-05-04T15:37:13.516Z
@@ -76,3 +76,109 @@ certbot passt die nginx-Konfiguration automatisch an und aktiviert HTTPS auf Por
 - Anwendung läuft intern auf `http://localhost:13060`
 - Extern erreichbar über `https://beispielanwendung.domain.de`
 - TLS-Zertifikat wird automatisch von certbot verwaltet
+
+
+# SMTP (Port 25) umleiten oder separat konfigurieren
+
+> **Hinweis:** SMTP (Port 25) ist **kein HTTP/HTTPS** und kann **nicht** über einen normalen `server {}`‑Block verarbeitet werden.  
+> Dafür wird der **nginx stream‑Block** benötigt (TCP‑Proxy).
+{.is-info}
+
+
+## nginx **stream‑Modul** – prüfen und installieren
+
+### Prüfen, ob das stream‑Modul verfügbar ist
+
+`nginx -V 2>&1 | grep --with-http_ssl_module stream`
+
+Alternativ gezielt nach `--with-stream` suchen:
+
+`nginx -V 2>&1 | grep stream`
+
+✅ Ausgabe enthält `--with-stream` oder `--with-stream=dynamic`  
+❌ Keine Ausgabe → stream‑Modul ist nicht vorhanden
+
+### Installation des stream‑Moduls (Debian / Ubuntu)
+
+#### Empfohlene Variante: nginx‑full installieren
+
+```
+apt update
+apt install nginx-full
+```
+Diese Variante enthält das stream‑Modul standardmäßig.
+
+#### Alternative: stream‑Modul als dynamisches Modul
+
+`apt install libnginx-mod-stream`
+
+Danach Modul aktivieren (falls nicht automatisch geladen):
+
+In `/etc/nginx/nginx.conf` **ganz oben**:
+
+```
+load_module modules/ngx_stream_module.so;
+```
+
+### Konfiguration testen
+
+`nginx -t`
+
+## Variante A: Port 25 auf einen internen SMTP‑Port umleiten
+
+Beispiel: Weiterleitung von **Port 25 → Port 2525** auf dem gleichen Server.
+
+### Voraussetzung
+
+- nginx mit **stream‑Modul** (`nginx-full` oder entsprechendes Paket)
+- Ziel‑SMTP‑Dienst läuft auf `127.0.0.1:2525`
+
+
+### Konfiguration (separat, z. B. `/etc/nginx/stream.d/smtp.conf`)
+
+```
+stream {
+    upstream smtp_backend {
+        server 127.0.0.1:2525;
+    }
+
+    server {
+        listen 25;
+        proxy_pass smtp_backend;
+        proxy_timeout 1h;
+        proxy_connect_timeout 30s;
+    }
+}
+```
+
+### stream‑Konfiguration einbinden (falls noch nicht vorhanden)
+
+In `/etc/nginx/nginx.conf`:
+
+`include /etc/nginx/stream.d/*.conf;`
+
+### nginx testen und neu laden
+
+```
+nginx -t
+systemctl reload nginx
+```
+
+## Variante B: Zusätzlichen SMTP‑Port offenlegen (ohne Umleitung)
+
+Beispiel: SMTP‑Dienst direkt auf Port 25 verfügbar machen:
+
+```
+stream {
+    server {
+        listen 25;
+        proxy_pass 127.0.0.1:25;
+    }
+}
+```
+
+## Ergebnis
+
+- SMTP‑Traffic läuft **unabhängig von HTTPS/nginx HTTP‑Server‑Blöcken**
+- Port 25 kann **umgeleitet** oder **separat exponiert** werden
+- Geeignet für Postfix, Exim, Sendmail, Mailcow, etc.
