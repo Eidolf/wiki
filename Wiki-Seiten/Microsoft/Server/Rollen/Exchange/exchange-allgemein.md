@@ -2,7 +2,7 @@
 title: Exchange Allgemein
 description: 
 published: true
-date: 2026-02-14T01:50:47.741Z
+date: 2026-05-11T18:43:44.287Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:03.680Z
@@ -291,3 +291,12 @@ https://www.stephenwagner.com/2017/11/06/offline-address-book-missing-exchange-2
 ## Global Address List
 
 [outlook-zeigt-nicht-die-aktuelle-global-adress-list-gal-an](/de/Wiki-Seiten/Microsoft/Office/Outlook/outlook-zeigt-nicht-die-aktuelle-global-adress-list-gal-an)
+
+## Exchange Dienste
+Um alle Exchange Dienste gleichzeitig zu stoppen und auf deaktiviert zu setzen muss man folgende PowerShell Befehle ausführen
+
+- `Get-Service | Where-Object {$_.DisplayName -like "Microsoft Exchange*"} | Stop-Service -Force`
+Stoppt alle Dienste
+-  `Get-Service | Where-Object {$_.DisplayName -like "Microsoft Exchange*"} | Set-Service -StartupType Disabled
+`
+Deaktivier alle Dienste
