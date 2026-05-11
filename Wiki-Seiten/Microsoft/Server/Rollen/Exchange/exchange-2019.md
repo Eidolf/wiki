@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2026-05-11T18:23:39.787Z
+date: 2026-05-11T18:34:11.253Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -230,3 +230,11 @@ Löschen mit
 `Get-MoveRequest | Remove-MoveRequest`
 auch hier **Optional** mit Domaincontroller
 `Get-MoveRequest -DomainController DC.top.domain | Remove-MoveRequest -DomainController DC.top.domain`
+
+## Alten Server vom Sendeconnector entfernen
+Auf der ECP Seite unter
+*Sendeconnctors*
+Jeden potentiellen Connector öffnen welcher den alten Server beinhaltet und unter
+*Bereichsdefinition* > *Quellserver*
+den alte Server entfernen.
+
