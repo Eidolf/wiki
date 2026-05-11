@@ -2,7 +2,7 @@
 title: Allgemein
 description: 
 published: true
-date: 2026-01-16T17:51:45.171Z
+date: 2026-05-11T16:06:38.125Z
 tags: 
 editor: markdown
 dateCreated: 2026-01-16T17:51:45.171Z
@@ -54,5 +54,6 @@ dateCreated: 2026-01-16T17:51:45.171Z
 | windows-system                          | System                           | [Öffnen](./Allgemein/windows-system) |
 | windows-update                          | Updates                          | [Öffnen](./Allgemein/windows-update) |
 | windows-usb-bootstick                   | USB‑Install                      | [Öffnen](./Allgemein/windows-usb-bootstick) |
+| winget                  | Winget Paket Manager für Befehlszeile                   | [Öffnen](./Allgemein/winget) |
 | zeitdienstprobleme                      | Zeitdienst                       | [Öffnen](./Allgemein/zeitdienstprobleme) |
 | zeitsynchronisierung                    | NTP/Sync                         | [Öffnen](./Allgemein/zeitsynchronisierung) |
