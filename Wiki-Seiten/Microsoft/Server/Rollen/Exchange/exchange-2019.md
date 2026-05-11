@@ -2,7 +2,7 @@
 title: Exchange 2019
 description: Alles rund um den Exchange Server 2019
 published: true
-date: 2025-12-09T13:28:50.470Z
+date: 2026-05-11T18:08:47.443Z
 tags: microsoft, exchange, office365, e-mail
 editor: markdown
 dateCreated: 2025-07-18T16:21:56.178Z
@@ -214,3 +214,7 @@ Danach überprüfen ob am alten Server noch Postfächer vorhanden sind.
 - `Get-Mailbox -Server AlterServerName -RecipientTypeDetails Shared, Roommailbox, EquipmentMailbox`
 - `Get-Mailbox -Server AlterServerName -RecipientTypeDetails UserMailbox`
 - `Get-Mailbox -Server AlterServerName -RecipientTypeDetails DiscoveryMailbox`
+- `Get-Mailbox -Server AlterServerName -AuditLog | select Name,Servername,Database`
+
+Bei einem Exchange in einer anderen Domäne muss man den entsprechenden Domaincontroller angeben, hier ein Beispiel für das Audit Log
+`Get-Mailbox -Server AlterServerName -AuditLog -Domaincontroler DC.top.domain | select Name,Servername,Database`
