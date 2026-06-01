@@ -2,7 +2,7 @@
 title: Nextcloud
 description: 
 published: true
-date: 2026-06-01T13:04:14.348Z
+date: 2026-06-01T13:13:01.669Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -38,7 +38,7 @@ Das **--no-interaction** bewirkt nicht noch nachträglich den **occ upgrade** au
 `sudo -u www-data php occ maintenance:mode --off`
 
 ## MIME Migration
-Wenn das gefordert ist kommt es auf der Systemkonfigurationsseite, aber ich schreibe es trotzdem hier auf.
+Wenn das gefordert wird kommt es auf der Systemkonfigurationsseite, aber ich schreibe es trotzdem hier auf.
 `sudo -u www-data php occ maintenance:repair --include-expensive`
 
 # LDAP Verbindung
