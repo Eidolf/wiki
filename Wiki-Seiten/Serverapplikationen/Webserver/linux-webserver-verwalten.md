@@ -2,7 +2,7 @@
 title: linux-webserver-verwalten
 description: 
 published: true
-date: 2025-10-20T14:36:02.111Z
+date: 2026-06-01T09:48:28.749Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:59.517Z
@@ -134,26 +134,181 @@ sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-### Installieren der neuen PHP Version
+### Aktives Apache‑PHP‑Modul automatisch ermitteln
 
-1. Installieren: `sudo apt -y install php7.4`
-2. Prüfen: `php -v`
-2.1. (Optional) Bestimmte Version prüfen: `php7.2 -v`
+**Befehl**
+``` 
+apache2ctl -M | grep php
+```
 
-### PHP Module installieren
+Zeigt z.B. folgendes an:
+`php7_module (shared)`
 
-`sudo apt-get install -y php7.4-{bcmath,bz2,intl,gd,mbstring,mysql,zip,common}`  
-Module sollten jeweils zur jeweiligen Anwendung gewählt werden.
+Hier kann es noch etwas umständlich werden, da Module auch manuell in Library Dateien hinterlegt sein können.
+Diese können folgendermaßen angezeigt werden.
+```
+ls -l /usr/lib/apache2/modules/ | grep php
+```
+Etwas genauer um die Dateien zu sehen.
+```
+grep -R "libphp" /etc/apache2
+```
+Diese Datei mit nano bearbeiten, also in folgendem Beispiel die Datei.
+Hier einfach die Zeile auskommentieren.
+```
+sudo nano /etc/apache2/mods-available/php7.4.load
+```
 
-### PHP Version von LAMP wechseln
+Das wird später automatisch deaktiviert.
 
-1. Alte Version deaktivieren: `a2dismod php7.2`
-2. Neue Version aktivieren: `a2enmod php7.2`
-3. Apache durchstarten: `service apache2 restart`
+### Installierte PHP‑Versionen anzeigen
 
-### Quelle:
+**Befehl**
+```
+update-alternatives --list php
+```
 
-https://computingforgeeks.com/how-to-install-php-on-ubuntu/
+Zeigt z.B. folgendes an:
+
+```
+/usr/bin/php7.4
+/usr/bin/php8.1
+/usr/bin/php8.5
+```
+
+### Installierte Module der alten Version automatisch ermitteln
+
+Wenn man von **8.1 → 8.5** upgraden möchte.
+
+Liste der installierten **8.1‑Module**:
+
+**Befehl**
+```
+dpkg -l | grep php8.1
+```
+
+### Automatisch dieselben Module für PHP 8.5 installieren
+
+Das ist der wichtigste Schritt — und der sauberste.
+
+**Befehl**
+```
+dpkg -l | grep php8.1 | awk '{print $2}' | sed 's/8.1/8.5/' | xargs sudo apt install -y
+```
+
+Damit werden alle Module **1:1 übernommen**, ohne selbständig die einzelnen Module angeben zu müssen.
+
+
+### Apache‑PHP‑Modul automatisch deaktivieren
+
+**Befehl**
+```
+sudo a2dismod $(apache2ctl -M | grep -oP 'php[0-9]+' | head -n1)
+```
+
+Das deaktiviert automatisch:
+
+**Code**
+```
+php7
+```
+
+### Neues Apache‑PHP‑Modul aktivieren (8.5)
+
+Vorher prüfen:
+
+**Code**
+```
+ls /etc/apache2/mods-available/ | grep php
+```
+
+Dann aktivieren:
+
+**Code**
+```
+sudo a2enmod php8.5
+sudo systemctl restart apache2
+```
+
+### CLI‑PHP auf 8.5 umstellen
+
+**Code**
+```
+sudo update-alternatives --set php /usr/bin/php8.5
+```
+
+Prüfen:
+
+**Code**
+```
+php -v
+```
+
+### Nextcloud auf neue PHP‑Version umstellen
+> Nextcloud läuft zum Stand 06.2026 nur mit php Version 8.4
+{.is-warning}
+
+
+Nextcloud nutzt entweder **Apache‑mod_php** oder **PHP‑FPM**.
+
+Prüfen, ob FPM läuft:
+
+**Code**
+```
+systemctl status php8.1-fpm
+```
+
+Wenn FPM aktiv ist, musst du auch **8.5‑FPM** aktivieren:
+**Installieren**
+```
+sudo apt install php8.5-fpm
+```
+
+**Konfigurieren**
+```
+sudo a2enmod proxy_fcgi setenvif
+sudo a2enconf php8.5-fpm
+```
+
+**Aktivieren**
+```
+sudo systemctl enable --now php8.5-fpm
+sudo systemctl disable --now php8.1-fpm
+```
+
+Apache‑Konfiguration prüfen:
+
+**Code**
+```
+ls /etc/apache2/sites-enabled/ | xargs grep -R "php8"
+```
+
+Falls du FPM nutzt, musst du den Socket anpassen:
+
+**Code**
+```
+/run/php/php8.5-fpm.sock
+```
+
+### Apache neu starten
+
+**Code**
+```
+sudo systemctl restart apache2
+```
+
+### Nextcloud PHP‑Version prüfen
+
+Im Webinterface unter:
+
+**Administration → System**
+
+Oder per CLI:
+
+**Code**
+```
+sudo -u www-data php8.5 /var/www/nextcloud/occ status
+```
 
 # Webdienst neu starten
 
