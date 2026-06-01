@@ -2,7 +2,7 @@
 title: Nextcloud
 description: 
 published: true
-date: 2026-06-01T13:13:01.669Z
+date: 2026-06-01T14:59:14.993Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -86,6 +86,26 @@ Hiermit hat sich mein Vorgehen etwas geändert, die Alte Version lasse ich als A
 1. `nano /var/www/nextcloud/.htaccess`
 2. *Hinzufügen folgender Zeile bei den PHP Einstellungen* `php_value memory_limit 512M`
 3. *Speichern*
+
+## MySQL-Zeilenformat
+
+Für das Ändern der gesamten Tabellen auf Dynamic in einem Rutsch muss man folgendermaßen vorgehen.
+1. Auslesen welche Tabellen nicht dynamisch sind (Optional)
+`sudo mysql -e "SELECT TABLE_NAME, ROW_FORMAT FROM information_schema.tables WHERE table_schema='nextcloud';"`
+2. Strikten Modus ausschalten um jede Tabelle ändern zu dürfen
+`sudo mysql nextcloud -e "SET SESSION innodb_strict_mode=OFF;"`
+3. Skript erstellen für alle Tabellen zum ändern
+```
+sudo mysql -N -e "SELECT CONCAT('ALTER TABLE \`', table_name, '\` ROW_FORMAT=DYNAMIC;') 
+FROM information_schema.tables 
+WHERE table_schema='nextcloud' AND row_format!='Dynamic';" > /tmp/fix_rowformat.sql
+```
+4. Skript ausführen
+`sudo mysql nextcloud < /tmp/fix_rowformat.sql`
+5. Skript löschen
+`rm /tmp/fix_rowformat.sql`
+6. Strikten Modus wieder aktivieren
+`sudo mysql nextcloud -e "SET SESSION innodb_strict_mode=ON;"`
 
 ## Update Vorgang bleibt stehen
 ### Bei Punkt 3
