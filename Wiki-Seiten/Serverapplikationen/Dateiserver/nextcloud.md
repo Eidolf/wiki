@@ -2,7 +2,7 @@
 title: Nextcloud
 description: 
 published: true
-date: 2026-06-01T14:59:14.993Z
+date: 2026-06-01T15:17:23.397Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -106,6 +106,21 @@ WHERE table_schema='nextcloud' AND row_format!='Dynamic';" > /tmp/fix_rowformat.
 `rm /tmp/fix_rowformat.sql`
 6. Strikten Modus wieder aktivieren
 `sudo mysql nextcloud -e "SET SESSION innodb_strict_mode=ON;"`
+
+## HTTP-Header Strict-Transport-Security
+Um diesen Fehler zu beheben muss man folgendes durchführen.
+1. Die SSL Config öffnen, bei mir ist es die DefaultSSL
+`sudo nano /etc/apache2/sites-available/default-ssl.conf`
+2. Am Ende der Config über `</VirtualHost>` folgendes einfügen.
+```
+<IfModule mod_headers.c>
+				Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains; preload"
+</IfModule>
+```
+3. Apache neu laden
+`sudo systemctl reload apache2`
+4. Prüfen entweder mit folgendem Befehl oder auf der Systemseite
+`curl -I https://deinedomain.tld | grep -i strict`
 
 ## Update Vorgang bleibt stehen
 ### Bei Punkt 3
