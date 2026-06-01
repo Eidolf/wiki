@@ -2,7 +2,7 @@
 title: Nextcloud
 description: 
 published: true
-date: 2026-06-01T12:57:01.499Z
+date: 2026-06-01T12:57:59.858Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -115,7 +115,7 @@ bcmath muss evtl. mit folgendem Befehl extra installiert werden &gt; `sudo apt i
 # PHP Upgrade
 Wie man ein Upgrade durchführt ist hier zu finden >
 [linux-webserver-verwalten#php-upgrade](/de/Wiki-Seiten/Serverapplikationen/Webserver/linux-webserver-verwalten#php-upgrade)
-Es kann sei das nach dem Upgrade ein 503 Fehler kommt, bei mir war es das fehlen vom FPM Handlers im der nextcloud Config
+Es kann sein das nach dem Upgrade ein 503 Fehler kommt, bei mir war es das Fehlen vom FPM Handler in der nextcloud Config
 So fügt man es hinzu:
 1. Folgende Datei öffnen 
 `sudo nano /etc/apache2/sites-available/nextcloud.conf`
