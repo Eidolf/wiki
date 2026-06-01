@@ -2,7 +2,7 @@
 title: Nextcloud
 description: 
 published: true
-date: 2025-10-29T16:45:28.488Z
+date: 2026-06-01T12:57:01.499Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:29.130Z
@@ -111,6 +111,24 @@ Nicht für jede Installation!
 Folgende Modulkette kann mit einem Befehl der unter dem Linux Eintrag zu finden ist, installiert werden.  
 `{bcmath,curl,dom,gd,gmp,imagick,intl,ldap,mbstring,mysqli,mysqlnd,SimpleXML,smbclient,xml,xmlreader,xmlwriter,xsl,zip}`  
 bcmath muss evtl. mit folgendem Befehl extra installiert werden &gt; `sudo apt install php7.4-bcmath`
+
+# PHP Upgrade
+Wie man ein Upgrade durchführt ist hier zu finden >
+[linux-webserver-verwalten#php-upgrade](/de/Wiki-Seiten/Serverapplikationen/Webserver/linux-webserver-verwalten#php-upgrade)
+Es kann sei das nach dem Upgrade ein 503 Fehler kommt, bei mir war es das fehlen vom FPM Handlers im der nextcloud Config
+So fügt man es hinzu:
+1. Folgende Datei öffnen 
+`sudo nano /etc/apache2/sites-available/nextcloud.conf`
+2. Innerhalb des `<Directory>` ‑ Blocks fügt man direkt nach Options folgendes ein: 
+```
+<FilesMatch "\.php$">
+	SetHandler "proxy:unix:/run/php/php8.4-fpm.sock|fcgi://localhost/"
+</FilesMatch>
+```
+3. Apache neu laden
+`sudo systemctl reload apache2`
+
+
 
 # Sicherheits Verbesserungen
 ## Nextcloud: PHP OPcache – Warnung „interned strings buffer fast voll“ beheben
