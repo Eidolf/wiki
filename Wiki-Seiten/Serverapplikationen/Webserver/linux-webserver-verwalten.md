@@ -2,7 +2,7 @@
 title: linux-webserver-verwalten
 description: 
 published: true
-date: 2026-06-01T09:48:28.749Z
+date: 2026-06-01T12:16:55.976Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:59.517Z
@@ -208,10 +208,7 @@ sudo a2dismod $(apache2ctl -M | grep -oP 'php[0-9]+' | head -n1)
 
 Das deaktiviert automatisch:
 
-**Code**
-```
-php7
-```
+`php7`
 
 ### Neues Apache‑PHP‑Modul aktivieren (8.5)
 
