@@ -2,7 +2,7 @@
 title: webdav-einrichten
 description: 
 published: true
-date: 2026-06-24T17:35:05.255Z
+date: 2026-06-24T17:37:55.609Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T14:37:31.939Z
@@ -225,6 +225,15 @@ Nach der Konfiguration kann sich der Serviceaccount anmelden und:
 - Logging im IIS aktivieren
 - Zugriff auf bestimmte IPs einschränken
 - Serviceaccount mit minimalen Rechten betreiben
+
+## Prüfung mit curl
+`curl -i -u domain\username http://localhost:8080 -X OPTIONS`
+
+Erwartete Ausgabe mit mindestens diesem Inhalt
+```
+HTTP/1.1 200 OK
+DAV: 1,2
+```
 
 ## Verbinden mit NetUse
 Beim Verbinden mit den Windows Netzlaufwerk Tools ist zu beachten wie Adresse auszusehen hat.
