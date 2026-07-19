@@ -1,14 +1,27 @@
 ---
-title: home-assistant
+title: Home Assistant
 description: 
 published: true
-date: 2026-07-15T14:45:07.763Z
+date: 2026-07-19T12:21:50.751Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:38.302Z
 ---
 
-# Home Assistant
+# Konfiguration
+## HA auf Port 443
+Es gibt verschiedensete Anleitung für NGINX, Caddy usw., wie man den HA auf Port 443 mit Zertifikaten ausstattet und sicher nach extern veröffentlicht. Aber es gab fast keine die Zielgerichtet erklärt wie man den Port **8123** zu **443** abändert.
+Ein Eintrag von Marcel Bootsman in seinem Blog hat hier Licht ins dunkle gebracht.
+Einfach in der **configuration.yaml** einen **server_port** Eintrag hinzufügen
+```
+http:
+  ssl_certificate: /ssl/homeassistant.crt
+  ssl_key: /ssl/homeassistant.key
+  server_port: 443
+```
+
+### Quelle:
+https://marcelbootsman.nl/notes/make-home-assistant-listen-on-443/
 
 # Datenbank
 
