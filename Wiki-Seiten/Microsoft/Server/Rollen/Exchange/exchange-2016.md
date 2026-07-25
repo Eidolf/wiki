@@ -2,7 +2,7 @@
 title: Exchange 2016
 description: 
 published: true
-date: 2025-10-24T15:40:07.658Z
+date: 2026-07-25T12:17:51.065Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:32:54.175Z
@@ -114,3 +114,8 @@ In der Ereignisanzeige am Server erscheint unter dem **Anwendungs** Event Log **
 
 ### Quelle:
 https://infosham.com/BLOG/exchange-server-2016-fast-search-errors
+
+## Der Exchange Deinstallations Wizard bleibt hängen wegen dem Webverwaltungdienst
+Wenn man versucht den Exchange zu deinstallieren bleibt der Wizard relativ früh stehen mit einer Fehlermeldung, ein PowerShell Script, welches den Webverwaltungsdienst steuert, nicht ausführen zu können.
+In meinem Fall konnte der Dienst nicht gestartet werden, da ein Zertifikat gefehlt hat.
+Eine Lösung habe ich hier > [iis#webverwaltungsdienst-kann-nicht-gestartet-werden](/de/Wiki-Seiten/Microsoft/Server/Rollen/IIS/iis#webverwaltungsdienst-kann-nicht-gestartet-werden) 
