@@ -2,7 +2,7 @@
 title: Home Assistant
 description: 
 published: true
-date: 2026-07-19T12:21:50.751Z
+date: 2026-08-03T23:59:31.245Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:38.302Z
@@ -180,6 +180,12 @@ In diesem Fall muss der Patch erneut angewendet werden, solange das Add-on das O
 ## Quelle:
 
 https://www.youtube.com/watch?v=hhv-WqGUy_o
+
+# Kiosk Mode
+## Temporäres deaktivieren des Kiosk Mode
+Hinter die Dashboard URL `?disable_km` hängen
+Somit im Gesamten wie folgt:
+`https://homeassistant.domain.de/dashboard/home?disable_km`
 
 # Windows HA
 
