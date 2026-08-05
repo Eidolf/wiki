@@ -2,7 +2,7 @@
 title: Home Assistant
 description: 
 published: true
-date: 2026-08-05T00:16:52.033Z
+date: 2026-08-05T00:17:20.413Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:38.302Z
