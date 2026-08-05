@@ -2,7 +2,7 @@
 title: Home Assistant
 description: 
 published: true
-date: 2026-08-03T23:59:31.245Z
+date: 2026-08-05T00:16:52.033Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:38.302Z
@@ -174,6 +174,16 @@ Wichtiger Hinweis zur Dauerhaftigkeit
 Dieser Fix ist ein Runtime-Hack im laufenden Add-on-Container.
 Bei einem vollständigen Add-on-Neustart, Add-on-Update, Container-Recreate oder Home-Assistant-OS-Neustart kann die Änderung wieder verloren gehen.
 In diesem Fall muss der Patch erneut angewendet werden, solange das Add-on das Open-File-Limit nicht selbst dauerhaft beim Start erhöht.
+
+# Apps / AddOns
+## Zugriff auf Dateien
+Mit dem Advanced SSH AddOn kann man folgenden Befehl ausführen um die Dockerdateien zu finden.
+
+`docker exec -it hassio_supervisor /bin/bash`
+
+Bei mir sind die Apps nach der Verbindung unter folgendem Pfad zu finden.
+
+`/data/apps/data/`
 
 # Konfiguration automatisch zu GitHub hochladen
 
