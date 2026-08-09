@@ -2,7 +2,7 @@
 title: Home Assistant
 description: 
 published: true
-date: 2026-08-05T00:17:20.413Z
+date: 2026-08-09T13:31:14.777Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:38.302Z
@@ -214,3 +214,82 @@ Hiermit können Werte von Windows an Homeassistant übergeben werden.
 ### Quelle:
 
 https://github.com/sleevezipper/hass-workstation-service
+
+# Integrationen und Apps
+## Zendure
+### Verbindungsprobleme zu Geräten
+> Folgendes ist primär wegen einem SF 2400AC durchgeführt worden und somit keine Garantie bei anderen Geräten.
+{.is-warning}
+#### Ausgangslage
+Ich habe einen dritten SF 2400AC organisiert und versucht diesen zu meinen bestehen, funktionierenden zwei hinzuzufügen.
+Da an der Stelle wo er aufgestellt werden sollte nur eine Steckdose zur Verfügung war, sind alle Komponenten, welche an der Steckdose hangen auf die Offgrid gelegt worden.
+
+Problem an der Konstellation, der dort vorhanden Repeater war für die Einrichtung somit deaktiviert.
+Der SF 2400AC hat zwar die SSID's gefunden aber eine vollständige Verbindung konnte nicht aufgebaut werden.
+Daher habe ich diesen Kopf mit Bluetooth eingerichtet, die OffGrid aktiviert und danach das Netzwerk hinzugefügt.
+Hier war scheinbar der Fehler der zu folgendem Bild geführt hat
+#### Problematik
+Wenn man ein Gerät über Bluetooth hinzufügt, wir höchstwahrscheinlich ein temporäres Netz im 192.168.0.0/24 Bereich angelegt, ich sage höchstwahrscheinlich, da ich dieses Netz nicht verwende und maximal das telefon selbst diesen Bereich für WiFi Direct oder Hotspot anbietet.
+Wie auch immer, ich kann es mir eigentlich immer noch nicht zu 100% erkären.
+
+Diese Problematik konnte ich erst nach einer längeren Troubleshooting Sitzung mit KI analysieren und dabei kam ein gutes Script heraus, welches die hinzugefügten Geräte, mit IP Adresse, aus der Cloud ausliest. Weiterhin eine Anpassung bei der Integration um einen Debugfehler genauer im Homeassistant Log zu sehen.
+
+Zusätzlich ein Tipp um das Gerät mit seiner, eigentlich im Netz vorhandenen, IP zu verbinden.
+Denn genau hier war auch das Problem.
+Das Gerät hatte eine IP, alle Tests gegen diese IP waren erfolgreich, doch die Zendure Integration hat für die Steuerung aus der Cloud eine andere bekommen und konnte somit keine **HTTPGET** und **HTTPPOST** Befehle senden.
+#### Scripte
+> Alle Scripte wurden über das Terminal AddOn (App) ausgeführt.
+{.is-info}
+
+1. Script für das auslesen der Zendure API und seiner Geräte
+[zendure_device_list_check.py](https://github.com/Eidolf/Public-Scripts/blob/main/HomeAssistant/zendure_device_list_check.py){target=_blank}
+2. Debug Log über `device.py` erweitern
+2.1. Backup der Datei
+    ```
+    cp /config/custom_components/zendure_ha/device.py /config/custom_components/zendure_ha/device.py.bak
+    ```
+    2.2. `device.py` anpassen
+    Am einfachsten mit Visual Studio Code und dort mit **Strg+H** (Ersetzen)
+    2.2.1. httpGet
+    Suchen nach
+    ```
+    _LOGGER.error("%s for %s during httpGet%s", type(e).__name__, self.name, f": {e}" if str(e) else "!")
+    ```
+    Ersetzen durch
+    ```
+    _LOGGER.error(
+        "%s for %s during httpGet url=%s ip=%s sn_end=%s timeout=%s err=%r",
+        type(e).__name__,
+        self.name,
+        url,
+        self.ipAddress,
+        self.snNumber[-4:] if self.snNumber else None,
+        CONST_TIMEOUT,
+        e,
+    )
+    ```
+    2.2.2. httpPost
+    Suchen nach
+    ```
+    _LOGGER.error("%s for %s during httpPost%s", type(e).__name__, self.name, f": {e}" if str(e) else "!")
+    ```
+    Ersetzen durch
+    ```
+    _LOGGER.error(
+        "%s for %s during httpPost url=%s ip=%s sn_end=%s timeout=%s command_keys=%s err=%r",
+        type(e).__name__,
+        self.name,
+        url,
+        self.ipAddress,
+        self.snNumber[-4:] if self.snNumber else None,
+        CONST_TIMEOUT,
+        list(command.keys()) if isinstance(command, dict) else type(command).__name__,
+        e,
+    )
+    ```
+    2.3. HA neu starten
+    2.4. Log überprüfen
+    Es sollten die generischen **httpGet** und **httpPost** Fehler danach ausführlicher erscheinen, wie z.B.
+    ```
+    TimeoutError for SolarFlow 2400 AC during httpGet url=http://192.168.0.10/properties/report ip=192.168.0.10 sn_end=9999 timeout=...
+    ```
