@@ -2,7 +2,7 @@
 title: README
 description: 
 published: true
-date: 2025-11-28T12:58:15.906Z
+date: 2026-08-09T13:38:16.246Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-09T23:59:59.248Z
@@ -48,3 +48,34 @@ Code:
 ```
 Ergebnis:
 [https://info.eidolf.de](https://info.eidolf.de/){target=_blank}
+
+## Codeblock
+### Einrücken bei Liste
+Code:
+```
+1. Erster Punkt
+Text
+2. Zweiter Punkt
+2.1. Zwei Punkt Eins
+    ```
+    Das ist der Code
+    ```
+    2.2. Zwei Punkt Zwei
+      ```
+      Das ist wieder Code
+      ```
+    2.3 Zwei Punkt Drei
+```
+Ergebnis:
+1. Erster Punkt
+Text
+2. Zweiter Punkt
+2.1. Zwei Punkt Eins
+    ```
+    Das ist der Code
+    ```
+    2.2. Zwei Punkt Zwei
+      ```
+      Das ist wieder Code
+      ```
+    2.3 Zwei Punkt Drei
