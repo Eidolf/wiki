@@ -2,7 +2,7 @@
 title: Hyper-V
 description: 
 published: true
-date: 2025-12-15T18:11:06.809Z
+date: 2026-08-10T21:16:40.798Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:45.176Z
@@ -12,6 +12,18 @@ dateCreated: 2023-12-31T13:33:45.176Z
 
 ## ISO Mount
 [Hyper-V ISO Mount von Netzwerkfreigabe](/de/Wiki-Seiten/Microsoft/Server/Rollen/Hyper-V/hyperv-iso-mount-von-netzwerkfreigabe)
+
+## Erzwungenes Stoppen einer VM
+Die VM ist in einem Zustand welcher z.B. beim Herunterfahren die VM nicht herunterfährt und somit auch kein nachträgliches Stoppen möglich ist.
+Auch folgender PowerShell Befehl funktoniert nicht.
+`Stop-VM -Computername "VMName" -Force -TurnOff`
+
+Dann kann man mit folgendem Skript, bzw. drei Befehlen die Maschine definitiv abschießen.
+```
+$VmGUID = (Get-VM 'VMName').id
+$VMWMProc = (Get-WMIObject Win32_Process | ? {$_.Name -match 'VMWP' -and $_.CommandLine -match $VmGUID})
+Stop-Process ($VMWMProc.ProcessId) -Force
+```
 
 # Netzwerk
 
