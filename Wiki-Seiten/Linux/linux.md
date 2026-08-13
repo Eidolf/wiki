@@ -2,7 +2,7 @@
 title: linux
 description: 
 published: true
-date: 2026-05-06T13:27:40.718Z
+date: 2026-08-13T10:51:49.867Z
 tags: linux, cronjob, dns, bash, berechtigung, rights management, festplatte, disk, netzwerk, network
 editor: markdown
 dateCreated: 2024-01-03T09:53:02.649Z
@@ -482,11 +482,10 @@ Ausführlicher Status:
 ## Firewall aktivieren und deaktivieren
 
 ### Aktivieren
-
-`sudo ufw enable`
-
 > **Hinweis:** Stelle sicher, dass SSH erlaubt ist, bevor du ufw aktivierst, wenn du remote arbeitest.
 {.is-warning}
+
+`sudo ufw enable`
 
 ### Deaktivieren
 
