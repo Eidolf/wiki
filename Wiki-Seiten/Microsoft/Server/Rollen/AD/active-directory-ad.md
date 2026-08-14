@@ -1,8 +1,8 @@
 ---
-title: active-directory-ad
+title: Active Directory AD
 description: 
 published: true
-date: 2023-12-31T13:30:52.698Z
+date: 2026-08-14T09:09:31.093Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:30:49.568Z
