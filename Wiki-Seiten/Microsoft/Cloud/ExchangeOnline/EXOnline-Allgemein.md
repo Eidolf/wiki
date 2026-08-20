@@ -2,7 +2,7 @@
 title: Exchange Online Allgemein
 description: Informationen zu Exchange Online
 published: true
-date: 2026-08-06T16:01:29.322Z
+date: 2026-08-20T16:42:51.400Z
 tags: exchange, office365, e-mail
 editor: markdown
 dateCreated: 2024-05-28T15:58:01.363Z
@@ -56,3 +56,116 @@ Bei Office 365 SMTP bin ich leider erstmal auch auf die Sicherheitsrichtlinien g
 10. Ab dem Zeitpunkt konnte ich von meiner Fritzbox E-Mails mit der angegebenen Mailbox versenden.
 ## Quelle:
 https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission
+
+# Hybrid Migration Endpoint
+## Kann nicht neu eingerichtet werden bzw. bestehende laufen auf Fehler
+
+### Fehlerbild
+
+Beim Test eines Exchange-Hybrid-Migration-Endpoints treten nacheinander folgende Fehler auf:
+
+```
+The connection to the server could not be completed.
+```
+
+Beim direkten Aufruf des MRS-Proxy-Endpunkts:
+```
+HTTP 500 Internal Server Error
+Missing signing certificate.
+```
+
+Nach Behebung des Zertifikatsfehlers:
+```
+The HTTP request is unauthorized with client authentication scheme 'Negotiate'.
+The authentication header received from the server was 'NTLM, Negotiate'.
+```
+
+Betroffener Endpunkt:
+```
+https://<Exchange-FQDN>/EWS/mrsproxy.svc
+```
+
+### Ursache
+
+Es lagen zwei unabhängige Zertifikatsprobleme vor:
+
+1. Das in Get-AuthConfig eingetragene aktuelle Exchange Auth Certificate war auf dem Exchange Server nicht mehr vorhanden. Ein gültiges Zertifikat war bereits als NextCertificateThumbprint hinterlegt, jedoch noch nicht veröffentlicht.
+
+2. Der vorgeschaltete Reverse Proxy und der Exchange-IIS verwendeten unterschiedliche TLS-Zertifikate. Bei aktivierter Extended Protection führte das SSL Bridging dadurch zu einer fehlerhaften Channel-Binding-Prüfung und zur Ablehnung der NTLM-/Negotiate-Authentifizierung.
+
+### Lösung
+1. **Exchange Auth Certificate veröffentlichen**
+    Konfiguration prüfen:
+    
+    ```powershell
+    Get-AuthConfig |
+        Format-List CurrentCertificateThumbprint,
+                    PreviousCertificateThumbprint,
+                    NextCertificateThumbprint
+    ```
+    
+    Das unter NextCertificateThumbprint hinterlegte Zertifikat prüfen:
+
+    ```powershell
+    \$Thumbprint = (Get-AuthConfig).NextCertificateThumbprint
+
+    Get-ExchangeCertificate -Thumbprint \$Thumbprint |
+        Format-List Thumbprint,NotAfter,Status,HasPrivateKey
+    ```
+    
+    Wenn das Zertifikat gültig ist und einen privaten Schlüssel besitzt:
+    
+    ```powershell
+    Set-AuthConfig -PublishCertificate
+    Restart-Service MSExchangeServiceHost
+    Restart-WebAppPool MSExchangeServicesAppPool
+    ```
+
+2. **MRS Proxy aktivieren**
+    ```powershell
+    Get-WebServicesVirtualDirectory |
+        Set-WebServicesVirtualDirectory -MRSProxyEnabled $true
+
+    Restart-WebAppPool MSExchangeServicesAppPool
+    ```
+
+3. **Identisches TLS-Zertifikat verwenden**
+    Bei HTTPS SSL Bridging muss der Reverse Proxy dasselbe Zertifikat präsentieren, das auch am Exchange-IIS gebunden ist.
+    
+    Das extern verwendete Zertifikat auf dem Exchange Server für IIS aktivieren:
+    ```powershell
+    Enable-ExchangeCertificate `
+        -Thumbprint "<Zertifikatthumbprint>" `
+        -Services IIS
+    ```
+    Extended Protection anschließend auf dem EWS Virtual Directory aktiv lassen:
+    ```powershell
+    Set-WebServicesVirtualDirectory `
+        -Identity "<Server>\EWS (Default Web Site)" `
+        -ExtendedProtectionTokenChecking Allow
+
+    Restart-WebAppPool MSExchangeServicesAppPool
+    ```
+
+4. **Verbindung aus Exchange Online testen**
+    ```powershell
+    $Credential = Get-Credential
+
+    Test-MigrationServerAvailability `
+        -ExchangeRemoteMove `
+        -RemoteServer "<Exchange-FQDN>" `
+        -Credentials $Credential
+    ```
+
+Erwartetes Ergebnis:
+```
+Result : Success
+```
+
+### Ergebnis
+
+Der vorhandene Migration Endpoint kann weiterverwendet werden. Ein erneuter Lauf des Hybrid Configuration Wizard oder die dauerhafte Deaktivierung von Extended Protection ist nicht erforderlich.
+
+#### Technische Kernaussage
+
+Bei einem Reverse Proxy mit HTTPS SSL Bridging müssen Proxy und Exchange-IIS dasselbe TLS-Zertifikat verwenden, damit die Channel-Binding-Prüfung von Extended Protection bei NTLM-/Negotiate-Authentifizierung erfolgreich ist.
