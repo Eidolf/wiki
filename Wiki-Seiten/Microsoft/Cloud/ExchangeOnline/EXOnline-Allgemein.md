@@ -2,7 +2,7 @@
 title: Exchange Online Allgemein
 description: Informationen zu Exchange Online
 published: true
-date: 2026-08-20T16:42:51.400Z
+date: 2026-08-20T16:43:40.456Z
 tags: exchange, office365, e-mail
 editor: markdown
 dateCreated: 2024-05-28T15:58:01.363Z
@@ -58,7 +58,7 @@ Bei Office 365 SMTP bin ich leider erstmal auch auf die Sicherheitsrichtlinien g
 https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission
 
 # Hybrid Migration Endpoint
-## Kann nicht neu eingerichtet werden bzw. bestehende laufen auf Fehler
+## Kann nicht neu eingerichtet werden bzw. der vorhandene läuft auf einen Fehler
 
 ### Fehlerbild
 
