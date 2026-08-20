@@ -2,7 +2,7 @@
 title: README
 description: 
 published: true
-date: 2026-08-09T13:38:16.246Z
+date: 2026-08-20T16:38:28.221Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-09T23:59:59.248Z
@@ -50,6 +50,52 @@ Ergebnis:
 [https://info.eidolf.de](https://info.eidolf.de/){target=_blank}
 
 ## Codeblock
+## Liste
+> Bei einer Aufzählung mit jeweils Code Blöcken unter jeder Schriftzeile muss mit 4 Leerschritten gearbeitet werden, es dürfen keine Tabulator eingaben gemacht werden.
+> {.is-info}
+
+
+Code:
+```
+1. **Überschrift1**
+    Beschreibungstext1 für Codeblock1
+    
+    ```
+    Codeblock1
+    ```
+    
+    Beschreibungstext2 für Codeblock2
+    
+    ```
+    Codeblock2
+    ```
+    
+2. **Überschrift2**
+    Beschreibungstext3 für Codeblock3 usw.
+    ```
+    Codeblock3
+    ```
+```
+Ergebnis:
+1. **Überschrift1**
+    Beschreibungstext1 für Codeblock1
+    
+    ```
+    Codeblock1
+    ```
+    
+    Beschreibungstext2 für Codeblock2
+    
+    ```
+    Codeblock2
+    ```
+    
+2. **Überschrift2**
+    Beschreibungstext3 für Codeblock3 usw.
+    ```
+    Codeblock3
+    ```
+
 ### Einrücken bei Liste
 Code:
 ```
