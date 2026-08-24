@@ -2,7 +2,7 @@
 title: nginx
 description: Konfiguration für nginx Reverse Proxy
 published: true
-date: 2026-05-06T14:54:52.009Z
+date: 2026-08-24T21:14:17.975Z
 tags: linux, proxy, cli, reverse proxy, firewall
 editor: markdown
 dateCreated: 2026-05-04T15:37:13.516Z
@@ -77,6 +77,56 @@ certbot passt die nginx-Konfiguration automatisch an und aktiviert HTTPS auf Por
 - Extern erreichbar über `https://beispielanwendung.domain.de`
 - TLS-Zertifikat wird automatisch von certbot verwaltet
 
+# WebSocket-Unterstützung aktivieren
+
+Einige Webanwendungen verwenden WebSockets für interaktive Funktionen. Bei Portainer betrifft dies beispielsweise die Container-Konsole.
+
+Funktioniert die normale Weboberfläche, aber die interaktive Konsole nicht, müssen im NGINX Reverse Proxy die WebSocket-Header ergänzt werden.
+
+## NGINX-Konfiguration erweitern
+
+Den vorhandenen location /-Block wie folgt ergänzen:
+```bash
+location / {
+    proxy_pass http://localhost:9000;
+
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    proxy_read_timeout 3600s;
+    proxy_send_timeout 3600s;
+}
+```
+
+Die folgenden Anweisungen ermöglichen das Upgrade der HTTP-Verbindung auf eine WebSocket-Verbindung:
+```bash
+proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection "upgrade";
+```
+
+Die erhöhten Timeouts verhindern, dass länger geöffnete Konsolensitzungen vorzeitig durch NGINX beendet werden:
+```bash
+proxy_read_timeout 3600s;
+proxy_send_timeout 3600s;
+```
+
+## Konfiguration prüfen und übernehmen
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+Anschließend die Webseite vollständig neu laden und die WebSocket-Funktion erneut testen.
+
+> **Hinweis:** Wenn die Portainer-Konsole weiterhin nicht startet, testweise /bin/sh anstelle von /bin/bash verwenden. Nicht jedes Container-Image enthält Bash.
+{.is-info}
 
 # SMTP (Port 25) umleiten oder separat konfigurieren
 
