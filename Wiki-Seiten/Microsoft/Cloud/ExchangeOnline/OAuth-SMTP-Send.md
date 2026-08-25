@@ -1,8 +1,8 @@
 ---
 title: OAuth SMTP Send
 description: SMTP senden über eine Entra App die Exchange API Berechtigung hat
-published: false
-date: 2026-08-25T17:20:08.148Z
+published: true
+date: 2026-08-25T17:26:42.433Z
 tags: exchange, office365, e-mail, oauth, passwordless
 editor: markdown
 dateCreated: 2026-08-25T17:20:08.148Z
@@ -39,20 +39,21 @@ Global Admin, Privileged Role Admin oder passende Entra-Rechte für App Registra
 
 Exchange Online PowerShell Modul auf deinem Admin-PC.
 SAP muss OAuth2ClientCredentials wirklich können, inklusive Token-Anforderung und XOAUTH2 SMTP-Authentifizierung. Microsoft verlangt für SMTP OAuth die Verwendung von XOAUTH2 am SMTP-Protokoll.
-
+# Durchführung
 ## Teil 1: App Registration grafisch anlegen
 1. Entra Admin Center öffnen
-Öffne:
-  [https://entra.microsoft.com](https://entra.microsoft.com){target=_blank}<br>
-Gehe zu:
-  Identity > Applications > App registrations > New registration
->  Microsoft verlangt für OAuth mit IMAP, POP oder SMTP eine registrierte Microsoft-Entra-Anwendung.
+  Öffne:
+    - [https://entra.microsoft.com](https://entra.microsoft.com){target=_blank}<br>
+    Gehe zu: Identity > Applications > App registrations > New registration
+    >  Microsoft verlangt für OAuth mit IMAP, POP oder SMTP eine registrierte Microsoft-Entra-Anwendung.
   {.is-info}
+  
+    ---
 
 2. Neue App registrieren
   Empfohlene Werte:
     - Name: SAP SMTP OAuth Send
-    - Supported account types: Accounts in this organizational directory only <br>
+    - Supported account types: Accounts in this organizational directory only<br>
     Redirect URI: leer lassen
     >  Für Client Credentials brauchst du normalerweise keine Redirect URI, weil kein interaktiver Benutzer-Login erfolgt.
   {.is-info}
