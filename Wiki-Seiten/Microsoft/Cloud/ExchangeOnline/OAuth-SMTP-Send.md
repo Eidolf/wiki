@@ -2,7 +2,7 @@
 title: OAuth SMTP Send
 description: SMTP senden über eine Entra App die Exchange API Berechtigung hat
 published: true
-date: 2026-08-25T17:26:42.433Z
+date: 2026-08-25T17:27:15.951Z
 tags: exchange, office365, e-mail, oauth, passwordless
 editor: markdown
 dateCreated: 2026-08-25T17:20:08.148Z
@@ -12,7 +12,7 @@ dateCreated: 2026-08-25T17:20:08.148Z
 Folgende Herausforderung hatte ich in der Arbeit, es sollte möglich sein ohne Lizenzen zu verschwenden, E-Mails über SMTP
 zu versenden und das ohne die Möglichkeit ein Connector zu verwenden oder direkt mit Graph zu arbeiten.
 
-Bei uns war es nötig für SAP-Submodul welches danach ungefähr so konfiguriert werden sollte:
+Bei uns war es nötig für ein SAP-Submodul, welches danach ungefähr so konfiguriert werden sollte:
 
 SMTP Server: smtp.office365.com
 Port: 587
