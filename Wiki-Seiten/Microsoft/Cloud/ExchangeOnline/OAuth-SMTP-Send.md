@@ -2,7 +2,7 @@
 title: OAuth SMTP Send
 description: SMTP senden über eine Entra App die Exchange API Berechtigung hat
 published: true
-date: 2026-08-25T17:27:33.808Z
+date: 2026-08-25T17:29:07.840Z
 tags: exchange, office365, e-mail, oauth, passwordless
 editor: markdown
 dateCreated: 2026-08-25T17:20:08.148Z
@@ -77,10 +77,10 @@ Wenn SAP nur Secret unterstützt: Client Secret verwenden, aber Ablaufdatum doku
 - Variante A: Client Secret
   In der App Registration öffnen:
   Certificates & secrets > Client secrets > New client secret<br>
-  Beschreibung setzen, zum Beispiel: SAP SMTP OAuth Secret <br>
-  Ablaufzeit wählen.<br>
-  Secret erstellen.<br>
-  Value sofort kopieren, nicht nur die Secret ID.
+  Beschreibung setzen, zum Beispiel: SAP SMTP OAuth Secret
+  Ablaufzeit wählen.
+  Secret erstellen.
+  Value **sofort** kopieren, nicht nur die Secret ID.
 
 > Wichtig: Der Secret Value wird später nicht erneut vollständig angezeigt.
 {.is-warning}
