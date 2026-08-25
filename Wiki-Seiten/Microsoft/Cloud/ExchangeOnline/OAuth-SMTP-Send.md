@@ -2,7 +2,7 @@
 title: OAuth SMTP Send
 description: SMTP senden über eine Entra App die Exchange API Berechtigung hat
 published: true
-date: 2026-08-25T17:27:15.951Z
+date: 2026-08-25T17:27:33.808Z
 tags: exchange, office365, e-mail, oauth, passwordless
 editor: markdown
 dateCreated: 2026-08-25T17:20:08.148Z
@@ -25,7 +25,9 @@ Scope: https://outlook.office365.com/.default
 Username / Sender / Shared-Mailbox: sap-smtp@deine-domain.de
 
 
-Wichtig ist: Bei OAuth2ClientCredentials meldet sich keine Benutzerperson mit Passwort an. Die App holt ein Token über client_id und client_secret oder Zertifikat. Für SMTP muss das Token dann per SASL XOAUTH2 verwendet werden. Microsoft beschreibt für SMTP den Befehl AUTH XOAUTH2 mit einem Base64-kodierten String aus Benutzername und Bearer Token.
+> Wichtig ist: Bei OAuth2ClientCredentials meldet sich keine Benutzerperson mit Passwort an. Die App holt ein Token über client_id und client_secret oder Zertifikat. Für SMTP muss das Token dann per SASL XOAUTH2 verwendet werden. Microsoft beschreibt für SMTP den Befehl AUTH XOAUTH2 mit einem Base64-kodierten String aus Benutzername und Bearer Token.
+{.is-success}
+
 
 # Voraussetzungen
 
