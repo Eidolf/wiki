@@ -2,7 +2,7 @@
 title: Exchange neue Verteilergruppen authentifizieren
 description: 
 published: true
-date: 2026-08-26T12:53:03.678Z
+date: 2026-08-26T12:53:38.892Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:33:22.292Z
@@ -14,18 +14,16 @@ Unter Exchange 2007 und 2010 sind neu angelegte Verteilerlisten standardmäßig 
 
 Eine einzelne Verteilerliste wird mit folgendem Befehl für den Empfang von E-Mails von außerhalb der Organisation mit folgendem Befehl aktiviert:
 
-```
+```powershell
 set-DistributionGroup -identity "NeueVerteilergruppe" -RequireSenderAuthenticationEnabled $false
 ```
 
   
 Will man alle bestehenden Verteilerlisten in einem Befehl bearbeiten, geht das selbstverständlich auch:
 
-```
+```powershell
 Get-DistributionGroup | set-DistributionGroup -RequireSenderAuthenticationEnabled $false
 ```
-
-<div class="vector-body" id="bkmrk--2"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"><div class="mw-parser-output">---
 
 # Quelle:
 http://www.roland-ehle.de/archives/589
