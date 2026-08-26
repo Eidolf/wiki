@@ -2,8 +2,8 @@
 title: RDS - VDI
 description: Remote Services from Microsoft, Session Based or complete Desktop
 published: true
-date: 2026-08-26T19:05:56.369Z
-tags: rdp, rds, remote
+date: 2026-08-26T19:06:28.550Z
+tags: rdp, vdi, rds, remote
 editor: markdown
 dateCreated: 2026-08-26T18:59:19.204Z
 ---
