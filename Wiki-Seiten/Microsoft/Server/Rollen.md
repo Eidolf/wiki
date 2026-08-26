@@ -2,7 +2,7 @@
 title: Rollen
 description: 
 published: true
-date: 2026-08-14T09:14:45.409Z
+date: 2026-08-26T18:49:57.856Z
 tags: 
 editor: markdown
 dateCreated: 2026-08-14T09:05:23.955Z
@@ -18,3 +18,4 @@ dateCreated: 2026-08-14T09:05:23.955Z
 | DHCP    | Dynamic Host Configuration Protocol                | [Öffnen](./Rollen/DHCP) |
 | DPM    | Data Protection Manager                | [Öffnen](./Rollen/DPM) |
 | Exchange    | Exchange SMTP Server                    | [Öffnen](./Rollen/Exchange) |
+| RDS / VDI    | Remote Desktop Services / Virtual Desktop Infrastructure  | [Öffnen](./Rollen/RDS-VDI) |
