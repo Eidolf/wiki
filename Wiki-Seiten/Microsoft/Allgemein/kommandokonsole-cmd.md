@@ -2,7 +2,7 @@
 title: Kommandokonsole - CMD
 description: 
 published: true
-date: 2025-08-14T09:48:03.055Z
+date: 2026-09-02T11:56:49.115Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:28:44.725Z
@@ -203,3 +203,21 @@ https://www.ubackup.com/backup-restore/xcopy-command-to-copy-folders-and-subfold
 ## Produktschlüssel ( Key ) aus dem BIOS auslesen
 
 `wmic path softwarelicensingservice get OA3xOriginalProductKey`
+
+# Terminal / RDS - Server
+## Installationsmodus für Software aktivieren
+### Installieren
+```bash
+change user /install
+
+```
+### Anwendungsmodus
+```bash
+change user /execute
+
+```
+### Prüfen
+```bash
+change user /query
+
+```
