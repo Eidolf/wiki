@@ -2,7 +2,7 @@
 title: Kommandokonsole - CMD
 description: 
 published: true
-date: 2026-09-02T11:56:49.115Z
+date: 2026-09-02T12:02:17.932Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:28:44.725Z
@@ -207,16 +207,19 @@ https://www.ubackup.com/backup-restore/xcopy-command-to-copy-folders-and-subfold
 # Terminal / RDS - Server
 ## Installationsmodus für Software aktivieren
 ### Installieren
+In diesem Modus kann man Software installieren
 ```bash
 change user /install
 
 ```
 ### Anwendungsmodus
+Damit wird der normale Ausführungsmodus aktiviert, sollte auch mit einen Neustart der Standardmodus sein.
 ```bash
 change user /execute
 
 ```
 ### Prüfen
+Hiermit kann man prüfen welcher Modus gerade im Moment aktiviert ist.
 ```bash
 change user /query
 
