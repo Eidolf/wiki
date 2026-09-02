@@ -2,7 +2,7 @@
 title: RDS - VDI
 description: Remote Services von Microsoft Session basiert oder ein kompletter Desktop
 published: true
-date: 2026-09-02T11:59:40.881Z
+date: 2026-09-02T12:00:23.389Z
 tags: rdp, vdi, rds, remote, terminal
 editor: markdown
 dateCreated: 2026-08-26T18:55:30.049Z
@@ -28,4 +28,4 @@ In der Ausgabe sollte nun der konfigurierte Lizenzserver angezeigt werden.
 # Installations Modus bei Multi Session
 Wenn Software für alle Benutzer installiert wird, sollte man den Terminal Server in einen Installationsmodus versetzen.
 
-Die Befehle sind hier zu finden > [kommandokonsole-cmd#installationsmodus-f%C3%BCr-software-aktivieren](/de/Wiki-Seiten/Microsoft/Allgemein/kommandokonsole-cmd#installationsmodus-f%C3%BCr-software-aktivieren)
+Die Befehle sind hier zu finden > [Installationsmodus-für-software-aktivieren](/de/Wiki-Seiten/Microsoft/Allgemein/kommandokonsole-cmd#installationsmodus-f%C3%BCr-software-aktivieren)
