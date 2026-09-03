@@ -2,7 +2,7 @@
 title: Defekten Domänencontroller aus AD entfernen
 description: Anleitung zum entfernen eines defekten Domänencontrollers aus dem Active Directory
 published: true
-date: 2026-09-03T15:33:43.939Z
+date: 2026-09-03T16:08:03.054Z
 tags: ad, dc, domain controller, korrupt, defekt
 editor: markdown
 dateCreated: 2026-09-03T15:23:16.739Z
@@ -163,7 +163,9 @@ Get-ADDomainController -Filter * |
     Select-Object HostName, IsGlobalCatalog, Site
 ```
 
-In jedem Standort sollte nach Möglichkeit ein erreichbarer globaler Katalog vorhanden sein. Falls erforderlich, kann ein verbleibender Domänencontroller über **Active Directory-Standorte und -Dienste** als globaler Katalog konfiguriert werden:
+In jedem Standort sollte nach Möglichkeit ein erreichbarer globaler Katalog vorhanden sein. Dieser muss sich jedoch nicht zwingend in derselben Site befinden. Ein Domänencontroller gehört immer genau zu der Site, in der sich sein Serverobjekt befindet, und sollte nicht zur Abdeckung einer anderen Site verschoben oder mehrfach zugewiesen werden.
+
+Falls erforderlich, kann ein verbleibender Domänencontroller als globaler Katalog konfiguriert werden:
 
 1. Öffnen Sie `dssite.msc`.
 2. Navigieren Sie zu **Standorte**.
@@ -172,6 +174,24 @@ In jedem Standort sollte nach Möglichkeit ein erreichbarer globaler Katalog vor
 5. Klicken Sie mit der rechten Maustaste auf **NTDS Settings**.
 6. Wählen Sie **Eigenschaften**.
 7. Aktivieren Sie **Globaler Katalog**.
+
+Besitzt eine Site keinen eigenen Domänencontroller beziehungsweise globalen Katalog, verwenden die Clients automatisch einen erreichbaren Server aus einer anderen Site. Prüfen in diesem Fall:
+
+- Das Client-IP-Netz ist unter **Subnets** der richtigen Site zugeordnet.
+- Die Site ist über einen geeigneten **Site Link** angebunden.
+- Die Site-Link-Kosten bevorzugen den gewünschten Standort.
+- Der erreichbare Domänencontroller ist als globaler Katalog konfiguriert.
+
+Die Auswahl kann auf einem Client der betroffenen Site geprüft werden:
+
+```cmd
+nltest /dsgetsite
+nltest /dsgetdc:deinedomaene.local /force
+nltest /dsgetdc:deinedomaene.local /GC /force
+```
+
+**Kurz gesagt:** Den Domänencontroller nicht verschieben oder doppelt zuweisen, sondern Subnetze, Site Links und deren Kosten korrekt konfigurieren.
+
 
 # 5. Metadaten über Active Directory-Benutzer und -Computer entfernen
 
