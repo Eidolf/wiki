@@ -2,7 +2,7 @@
 title: Defekten Domänencontroller aus AD entfernen
 description: Anleitung zum entfernen eines defekten Domänencontrollers aus dem Active Directory
 published: false
-date: 2026-09-03T15:23:16.739Z
+date: 2026-09-03T15:25:56.789Z
 tags: ad, dc, domain controller, korrupt, defekt
 editor: markdown
 dateCreated: 2026-09-03T15:23:16.739Z
@@ -16,7 +16,7 @@ Diese Anleitung beschreibt das sichere Entfernen eines Domänencontrollers, der 
 {.is-warning}
 
 
-## 1. Voraussetzungen und wichtige Sicherheitsprüfung
+# 1. Voraussetzungen und wichtige Sicherheitsprüfung
 
 Für die Arbeiten benötigen Sie normalerweise:
 
@@ -26,13 +26,13 @@ Für die Arbeiten benötigen Sie normalerweise:
 - Die Active-Directory-Verwaltungstools beziehungsweise RSAT
 - Eine administrative PowerShell oder Eingabeaufforderung
 
-### Entscheidend: Existiert noch ein funktionierender Domänencontroller?
+## Entscheidend: Existiert noch ein funktionierender Domänencontroller?
 
 Führen Sie die Metadatenbereinigung nur aus, wenn mindestens ein anderer Domänencontroller der Domäne ordnungsgemäß funktioniert.
 
 Falls der ausgefallene Server der **einzige Domänencontroller** der Domäne war, darf er nicht einfach aus Active Directory entfernt werden. In diesem Fall benötigen Sie eine Wiederherstellung des Domänencontrollers beziehungsweise der Gesamtstruktur aus einer geeigneten Systemstatussicherung.
 
-### Vorhandene Domänencontroller anzeigen
+## Vorhandene Domänencontroller anzeigen
 
 Auf einem funktionierenden Domänencontroller oder einem Verwaltungsrechner mit installiertem Active-Directory-Modul:
 
@@ -48,7 +48,7 @@ Get-ADDomain
 Get-ADForest
 ```
 
-## 2. Zustand der Replikation prüfen
+# 2. Zustand der Replikation prüfen
 
 Öffnen Sie eine Eingabeaufforderung oder PowerShell als Administrator:
 
@@ -84,7 +84,7 @@ dcdiag /test:dns /e /v
 
 > Es ist nicht notwendig, dass alle Tests bezüglich des bereits ausgefallenen Domänencontrollers erfolgreich sind. Fehler zwischen den verbleibenden Domänencontrollern müssen jedoch vor oder unmittelbar nach der Bereinigung untersucht werden.
 
-## 3. FSMO-Rollen prüfen
+# 3. FSMO-Rollen prüfen
 
 Ermitteln Sie, welche Domänencontroller aktuell die FSMO-Rollen besitzen:
 
@@ -107,7 +107,7 @@ Die fünf FSMO-Rollen sind:
 - RID-Master
 - Infrastrukturmaster
 
-### Falls der ausgefallene Domänencontroller FSMO-Rollen besitzt
+## Falls der ausgefallene Domänencontroller FSMO-Rollen besitzt
 
 Wenn der alte Domänencontroller definitiv nicht zurückkehren wird, müssen die betroffenen Rollen auf einen funktionierenden Domänencontroller **erzwungen übertragen**, also übernommen, werden.
 
@@ -139,7 +139,7 @@ netdom query fsmo
 
 > Eine mit `-Force` übernommene FSMO-Rolle darf nicht wieder gleichzeitig vom alten Domänencontroller angeboten werden. Der alte Domänencontroller muss dauerhaft offline bleiben oder vor einer erneuten Verwendung vollständig neu installiert werden.
 
-## 4. Prüfen, ob der ausgefallene Server zusätzliche Rollen hatte
+# 4. Prüfen, ob der ausgefallene Server zusätzliche Rollen hatte
 
 Vor der Entfernung sollten Sie feststellen, ob der Server neben Active Directory weitere wichtige Aufgaben erfüllte:
 
@@ -156,7 +156,7 @@ Vor der Entfernung sollten Sie feststellen, ob der Server neben Active Directory
 - Anwendungen mit fest eingetragenem LDAP-Server
 - Backup-, Monitoring- oder Verwaltungsserver
 
-### Globalen Katalog prüfen
+## Globalen Katalog prüfen
 
 ```powershell
 Get-ADDomainController -Filter * |
@@ -173,7 +173,7 @@ In jedem Standort sollte nach Möglichkeit ein erreichbarer globaler Katalog vor
 6. Wählen Sie **Eigenschaften**.
 7. Aktivieren Sie **Globaler Katalog**.
 
-## 5. Metadaten über Active Directory-Benutzer und -Computer entfernen
+# 5. Metadaten über Active Directory-Benutzer und -Computer entfernen
 
 Dies ist bei aktuellen Windows-Server-Versionen der bevorzugte Weg.
 
@@ -197,7 +197,7 @@ dsa.msc
 
 Bei unterstützten Verwaltungstools entfernt dieser Vorgang normalerweise gleichzeitig die zugehörigen Domänencontroller-Metadaten einschließlich des NTDS-Settings-Objekts.
 
-## 6. Einträge in Active Directory-Standorte und -Dienste kontrollieren
+# 6. Einträge in Active Directory-Standorte und -Dienste kontrollieren
 
 Öffnen Sie:
 
@@ -216,7 +216,7 @@ Standorte
 
 Prüfen Sie, ob der alte Server noch vorhanden ist.
 
-### Falls noch ein NTDS-Settings-Objekt vorhanden ist
+## Falls noch ein NTDS-Settings-Objekt vorhanden ist
 
 1. Klicken Sie mit der rechten Maustaste auf **NTDS Settings**.
 2. Wählen Sie **Löschen**.
@@ -225,7 +225,7 @@ Prüfen Sie, ob der alte Server noch vorhanden ist.
 
 > Löschen Sie nicht unüberlegt manuell einzelne Replikationsverbindungen. Entfernen Sie zuerst das NTDS-Settings-Objekt und danach das Serverobjekt des ausgefallenen Domänencontrollers.
 
-## 7. Alternative Metadatenbereinigung mit `ntdsutil`
+# 7. Alternative Metadatenbereinigung mit `ntdsutil`
 
 Verwenden Sie diese Methode, wenn die grafische Bereinigung nicht möglich ist oder verwaiste Metadaten verbleiben.
 
@@ -279,7 +279,7 @@ quit
 
 > Verwenden Sie `remove selected server` niemals, bevor Sie anhand der angezeigten Auswahl geprüft haben, dass wirklich der richtige Domänencontroller ausgewählt ist.
 
-## 8. DNS-Einträge bereinigen
+# 8. DNS-Einträge bereinigen
 
 Ein ausgefallener Domänencontroller hinterlässt häufig DNS-Einträge. Öffnen Sie den DNS-Manager:
 
@@ -289,7 +289,7 @@ dnsmgmt.msc
 
 Prüfen Sie die folgenden Bereiche.
 
-### Hosteinträge
+## Hosteinträge
 
 Entfernen Sie veraltete Einträge des ausgefallenen Servers:
 
@@ -297,7 +297,7 @@ Entfernen Sie veraltete Einträge des ausgefallenen Servers:
 - AAAA-Eintrag
 - Veraltete PTR-Einträge in Reverse-Lookupzonen
 
-### SRV-Einträge
+## SRV-Einträge
 
 Kontrollieren Sie insbesondere die Ordner:
 
@@ -320,11 +320,11 @@ _msdcs.<ihre-gesamtstruktur>
 
 Entfernen Sie nur SRV-Einträge, die eindeutig auf den ausgefallenen Domänencontroller verweisen.
 
-### CNAME-Eintrag in `_msdcs`
+## CNAME-Eintrag in `_msdcs`
 
 In der Zone `_msdcs.<Gesamtstruktur-Stammdomäne>` kann ein CNAME-Eintrag mit der DSA-GUID des alten Domänencontrollers existieren. Dieser verweist auf den vollständigen DNS-Namen des ausgefallenen Servers und sollte entfernt werden.
 
-### Nameserver-Einträge
+## Nameserver-Einträge
 
 Falls der alte Domänencontroller auch DNS-Server war:
 
@@ -334,7 +334,7 @@ Falls der alte Domänencontroller auch DNS-Server war:
 4. Prüfen Sie Delegierungen in übergeordneten Zonen.
 5. Prüfen Sie DNS-Weiterleitungen und bedingte Weiterleitungen.
 
-### DNS-Konfiguration der Clients und Server
+## DNS-Konfiguration der Clients und Server
 
 Prüfen Sie, ob der ausgefallene DNS-Server noch verteilt oder statisch verwendet wird:
 
@@ -371,7 +371,7 @@ Zusätzlich kann der Netlogon-Dienst zur erneuten Registrierung der domänenspez
 Restart-Service Netlogon
 ```
 
-## 9. Computerobjekt und weitere verwaiste Objekte kontrollieren
+# 9. Computerobjekt und weitere verwaiste Objekte kontrollieren
 
 Prüfen Sie in **Active Directory-Benutzer und -Computer**, ob das Computerkonto des alten Domänencontrollers vollständig entfernt wurde.
 
@@ -391,7 +391,7 @@ Get-ADDomainController -Identity "DC01"
 
 Ersetzen Sie `DC01` durch den Namen des ausgefallenen Servers.
 
-## 10. Replikation nach der Bereinigung anstoßen
+# 10. Replikation nach der Bereinigung anstoßen
 
 Stoßen Sie die Replikation auf den verbleibenden Domänencontrollern an:
 
@@ -420,7 +420,7 @@ repadmin /showrepl *
 
 Wenn nur noch ein Domänencontroller vorhanden ist, gibt es keinen Replikationspartner. In diesem Fall darf `repadmin` keine erfolgreiche Replikation zu einem zweiten Server erwarten lassen. Es sollten aber keine aktiven Verweise auf den entfernten Server bestehen bleiben.
 
-## 11. Active Directory diagnostizieren
+# 11. Active Directory diagnostizieren
 
 Führen Sie nach der Bereinigung eine Gesamtprüfung aus:
 
@@ -453,7 +453,7 @@ Prüfen Sie außerdem den SYSVOL-Replikationsstatus:
 dcdiag /test:sysvolcheck /test:advertising
 ```
 
-## 12. Ereignisprotokolle kontrollieren
+# 12. Ereignisprotokolle kontrollieren
 
 Öffnen Sie die Ereignisanzeige:
 
@@ -473,7 +473,7 @@ Achten Sie auf wiederkehrende Meldungen, die weiterhin den entfernten Domänenco
 
 Einzelne ältere Ereignisse sind nach der Bereinigung nicht automatisch problematisch. Entscheidend ist, ob neue Fehler weiterhin auftreten.
 
-## 13. Zeitdienst kontrollieren
+# 13. Zeitdienst kontrollieren
 
 Wenn der ausgefallene Domänencontroller der PDC-Emulator oder die externe Zeitquelle war, muss die Zeitkonfiguration geprüft werden.
 
@@ -497,7 +497,7 @@ w32tm /query /source
 
 Der PDC-Emulator der Gesamtstruktur-Stammdomäne sollte gegen eine zuverlässige externe Zeitquelle synchronisieren. Andere Domänenmitglieder folgen normalerweise der Active-Directory-Zeithierarchie.
 
-## 14. DHCP kontrollieren
+# 14. DHCP kontrollieren
 
 Falls der ausgefallene Server DHCP ausführte:
 
@@ -521,7 +521,7 @@ Remove-DhcpServerInDC -DnsName "DC01.contoso.local" -IPAddress 192.0.2.10
 
 Ersetzen Sie Beispielname und Beispieladresse durch die tatsächlichen Werte.
 
-## 15. Verweise in Gruppenrichtlinien und Skripten prüfen
+# 15. Verweise in Gruppenrichtlinien und Skripten prüfen
 
 Suchen Sie nach festen Verweisen auf den alten Server, zum Beispiel:
 
@@ -548,7 +548,7 @@ Prüfen Sie insbesondere:
 
 Verwenden Sie für Dienste möglichst den Domänennamen oder geeignete hochverfügbare Dienstnamen anstelle eines fest eingetragenen einzelnen Domänencontrollers.
 
-## 16. Besonderheit bei einer Zertifizierungsstelle
+# 16. Besonderheit bei einer Zertifizierungsstelle
 
 War auf dem ausgefallenen Domänencontroller eine Active-Directory-Zertifizierungsstelle installiert, reicht die Domänencontroller-Metadatenbereinigung nicht aus.
 
@@ -566,7 +566,7 @@ In diesem Fall müssen zusätzlich berücksichtigt werden:
 
 Löschen Sie CA-Objekte nicht pauschal, wenn noch ausgestellte Zertifikate verwendet oder geprüft werden müssen.
 
-## 17. Alten Domänencontroller niemals unverändert wieder einschalten
+# 17. Alten Domänencontroller niemals unverändert wieder einschalten
 
 Nach einer erzwungenen Entfernung und Metadatenbereinigung gilt:
 
@@ -584,7 +584,7 @@ Wenn die Hardware oder virtuelle Maschine wiederverwendet werden soll:
 5. Den Server neu in die Domäne aufnehmen.
 6. Bei Bedarf erneut ordnungsgemäß zum Domänencontroller heraufstufen.
 
-## 18. Falls der alte Server wider Erwarten wieder verfügbar wird
+# 18. Falls der alte Server wider Erwarten wieder verfügbar wird
 
 Wenn die Metadatenbereinigung bereits durchgeführt oder FSMO-Rollen erzwungen übernommen wurden, darf der alte Domänencontroller nicht normal wieder in Betrieb genommen werden.
 
@@ -596,7 +596,7 @@ Die sichere Vorgehensweise ist:
 4. Server erneut als Mitgliedsserver aufnehmen.
 5. Bei Bedarf neu zum Domänencontroller heraufstufen.
 
-## 19. Abschlusskontrolle
+# 19. Abschlusskontrolle
 
 Die Bereinigung ist erfolgreich, wenn alle folgenden Punkte erfüllt sind:
 
@@ -612,7 +612,7 @@ Die Bereinigung ist erfolgreich, wenn alle folgenden Punkte erfüllt sind:
 - Anwendungen verwenden keinen fest eingetragenen Verweis auf den entfernten Server.
 - Der alte Domänencontroller bleibt dauerhaft offline oder wird vollständig neu installiert.
 
-## 20. Kompakte Befehlsübersicht
+# 20. Kompakte Befehlsübersicht
 
 ```powershell
 # Vorhandene Domänencontroller
@@ -653,7 +653,7 @@ w32tm /query /status
 w32tm /query /source
 ```
 
-## Empfohlene Reihenfolge
+# Empfohlene Reihenfolge
 
 1. Sicherstellen, dass mindestens ein funktionierender Domänencontroller vorhanden ist.
 2. Replikation und DNS prüfen.
