@@ -1,8 +1,8 @@
 ---
 title: Defekten Domänencontroller aus AD entfernen
 description: Anleitung zum entfernen eines defekten Domänencontrollers aus dem Active Directory
-published: false
-date: 2026-09-03T15:25:56.789Z
+published: true
+date: 2026-09-03T15:33:43.939Z
 tags: ad, dc, domain controller, korrupt, defekt
 editor: markdown
 dateCreated: 2026-09-03T15:23:16.739Z
