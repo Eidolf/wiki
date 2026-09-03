@@ -2,7 +2,7 @@
 title: RDS - VDI
 description: Remote Services von Microsoft Session basiert oder ein kompletter Desktop
 published: true
-date: 2026-09-02T12:00:23.389Z
+date: 2026-09-03T14:17:31.340Z
 tags: rdp, vdi, rds, remote, terminal
 editor: markdown
 dateCreated: 2026-08-26T18:55:30.049Z
@@ -25,6 +25,12 @@ Konfigurieren Sie die Rolle Remote Desktop Session Host so, dass der lokale Remo
     
 In der Ausgabe sollte nun der konfigurierte Lizenzserver angezeigt werden.
 
+## Löschen von einem Eintrag
+Falls man den falschen Server eingetragen hat kann man es entweder überschreiben oder mit einem leeren Eintrag zurücksetzen.
+1. Erst eine Variable anlegen
+`$leereListe = [string[]]@()`
+2. Danach den Eintrag mit der leeren Liste überschreiben
+`$obj.SetSpecifiedLicenseServerList($leereListe)`
 # Installations Modus bei Multi Session
 Wenn Software für alle Benutzer installiert wird, sollte man den Terminal Server in einen Installationsmodus versetzen.
 
