@@ -2,7 +2,7 @@
 title: Defekten Domänencontroller aus AD entfernen
 description: Anleitung zum entfernen eines defekten Domänencontrollers aus dem Active Directory
 published: true
-date: 2026-09-03T16:08:03.054Z
+date: 2026-09-03T16:19:15.829Z
 tags: ad, dc, domain controller, korrupt, defekt
 editor: markdown
 dateCreated: 2026-09-03T15:23:16.739Z
@@ -188,6 +188,11 @@ Die Auswahl kann auf einem Client der betroffenen Site geprüft werden:
 nltest /dsgetsite
 nltest /dsgetdc:deinedomaene.local /force
 nltest /dsgetdc:deinedomaene.local /GC /force
+```
+
+Folgender Befehl ist für die Forest Root Domain Prüfung, die eventuell unterschiedlich ist.
+```cmd
+nltest /dsgetdc:deinerootdomaene.local /GC /force
 ```
 
 **Kurz gesagt:** Den Domänencontroller nicht verschieben oder doppelt zuweisen, sondern Subnetze, Site Links und deren Kosten korrekt konfigurieren.
