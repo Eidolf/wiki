@@ -2,7 +2,7 @@
 title: Defekten Domänencontroller aus AD entfernen
 description: Anleitung zum entfernen eines defekten Domänencontrollers aus dem Active Directory
 published: true
-date: 2026-09-04T10:38:34.417Z
+date: 2026-09-04T13:30:32.840Z
 tags: ad, dc, domain controller, korrupt, defekt
 editor: markdown
 dateCreated: 2026-09-03T15:23:16.739Z
@@ -383,7 +383,10 @@ Erfassen Sie anschließend alle für die Suche geeigneten Zonen:
 $Zones = Get-DnsServerZone -ComputerName $DnsServer |
     Where-Object {
         -not $_.IsAutoCreated -and
-        $_.ZoneName -ne "..TrustAnchors"
+        $_.ZoneName -notin @(
+            "TrustAnchors",
+            "..TrustAnchors"
+        )
     }
 ```
 
