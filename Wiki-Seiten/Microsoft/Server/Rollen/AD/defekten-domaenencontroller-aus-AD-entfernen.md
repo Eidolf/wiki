@@ -2,7 +2,7 @@
 title: Defekten Domänencontroller aus AD entfernen
 description: Anleitung zum entfernen eines defekten Domänencontrollers aus dem Active Directory
 published: true
-date: 2026-09-04T13:30:32.840Z
+date: 2026-09-04T13:33:48.769Z
 tags: ad, dc, domain controller, korrupt, defekt
 editor: markdown
 dateCreated: 2026-09-03T15:23:16.739Z
@@ -527,6 +527,14 @@ Führen Sie die Entfernung zunächst ausschließlich mit `-WhatIf` aus:
 
 ```powershell
 foreach ($Entry in $OldNsRecords) {
+    Write-Host ""
+    Write-Host "Geplante Entfernung:" -ForegroundColor Yellow
+    Write-Host "  DNS-Server : $DnsServer"
+    Write-Host "  Zone       : $($Entry.ZoneName)"
+    Write-Host "  Knoten     : $($Entry.HostName)"
+    Write-Host "  Record-Typ : NS"
+    Write-Host "  Nameserver : $($Entry.NameServer)"
+    
     Remove-DnsServerResourceRecord `
         -ComputerName $DnsServer `
         -ZoneName $Entry.ZoneName `
