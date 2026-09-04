@@ -2,7 +2,7 @@
 title: Defekten Domänencontroller aus AD entfernen
 description: Anleitung zum entfernen eines defekten Domänencontrollers aus dem Active Directory
 published: true
-date: 2026-09-04T13:35:01.074Z
+date: 2026-09-04T14:06:35.037Z
 tags: ad, dc, domain controller, korrupt, defekt
 editor: markdown
 dateCreated: 2026-09-03T15:23:16.739Z
@@ -523,9 +523,28 @@ Ein Glue-Eintrag darf erst entfernt werden, wenn sichergestellt ist, dass er nic
 
 ## 8.6 Entfernung der Nameserver-Einträge simulieren
 
-Führen Sie die Entfernung zunächst ausschließlich mit `-WhatIf` aus:
+Folgendes Script prüft welche Einträge bei Punkt 8.7 gelöscht werden.
 
 ```powershell
+# Erforderliche Variablen:
+# $DnsServer
+# $OldServerFqdn
+# $OldServerFqdnNormalized
+# $OldNsRecords
+
+if (-not $OldServerFqdnNormalized) {
+    $OldServerFqdnNormalized = $OldServerFqdn.
+        TrimEnd(".").
+        ToLowerInvariant()
+}
+
+if (-not $OldNsRecords) {
+    Write-Warning "In `$OldNsRecords befinden sich keine NS-Eintraege."
+    return
+}
+
+$ValidOldNsRecords = @()
+
 foreach ($Entry in $OldNsRecords) {
     $CurrentNameServer = $Entry.RecordObject.RecordData.NameServer.
         ToString().
@@ -533,40 +552,158 @@ foreach ($Entry in $OldNsRecords) {
         ToLowerInvariant()
 
     if ($CurrentNameServer -ne $OldServerFqdnNormalized) {
-        Write-Warning (
-            "Eintrag übersprungen: Zone='{0}', Knoten='{1}', Nameserver='{2}'" -f
-            $Entry.ZoneName,
-            $Entry.HostName,
-            $Entry.NameServer
-        )
+        $WarningText = (
+            "Eintrag uebersprungen: NS-Ziel '{0}' entspricht nicht " +
+            "dem alten Server '{1}'."
+        ) -f $Entry.NameServer, $OldServerFqdn
 
+        Write-Warning $WarningText
         continue
     }
 
-    Write-Host ""
-    Write-Host "Geplante Entfernung:" -ForegroundColor Yellow
-    Write-Host "  DNS-Server : $DnsServer"
-    Write-Host "  Zone       : $($Entry.ZoneName)"
-    Write-Host "  Knoten     : $($Entry.HostName)"
-    Write-Host "  Record-Typ : NS"
-    Write-Host "  Nameserver : $($Entry.NameServer)"
+    $ValidOldNsRecords += $Entry
 
-    Remove-DnsServerResourceRecord `
-        -ComputerName $DnsServer `
-        -ZoneName $Entry.ZoneName `
-        -InputObject $Entry.RecordObject `
-        -WhatIf
+    $PreviewText = (
+        "Vorschau: NS-Eintrag mit Ziel '{0}' am Knoten '{1}' " +
+        "in der Zone '{2}' auf DNS-Server '{3}' entfernen."
+    ) -f (
+        $Entry.NameServer,
+        $Entry.HostName,
+        $Entry.ZoneName,
+        $DnsServer
+    )
+
+    Write-Host $PreviewText -ForegroundColor Yellow
+}
+
+Write-Host ""
+
+if ($ValidOldNsRecords.Count -eq 0) {
+    $WarningText = (
+        "Es wurden keine NS-Eintraege gefunden, die eindeutig auf " +
+        "'{0}' verweisen."
+    ) -f $OldServerFqdn
+
+    Write-Warning $WarningText
+}
+
+if ($ValidOldNsRecords.Count -gt 0) {
+    $ResultText = (
+        "{0} NS-Eintrag beziehungsweise NS-Eintraege wurden geprueft " +
+        "und fuer die Entfernung vorgemerkt."
+    ) -f $ValidOldNsRecords.Count
+
+    Write-Host $ResultText -ForegroundColor Cyan
 }
 ```
 
 Kontrollieren Sie die Ausgabe vollständig. Durch die Verwendung von `-InputObject` wird genau das zuvor gefundene und geprüfte Datensatzobjekt angesprochen.
 
 ## 8.7 Veraltete Nameserver-Einträge entfernen
+Ich habe zwei unterschiedliche Scripte hier niedergeschrieben, man kann Version B nutzen wenn man richtig mutig ist.
 
-Wenn die Ausgabe von `-WhatIf` ausschließlich die erwarteten Einträge enthält, führen Sie die tatsächliche Entfernung aus:
+### Variante A: Löschen von einzelnen Einträgen nach Bestätigung
 
 ```powershell
+# Erforderliche Variablen:
+# $DnsServer
+# $OldServerFqdn
+# $OldServerFqdnNormalized
+# $OldNsRecords
+
+if (-not $OldServerFqdnNormalized) {
+    $OldServerFqdnNormalized = $OldServerFqdn.
+        TrimEnd(".").
+        ToLowerInvariant()
+}
+
+if (-not $OldNsRecords) {
+    Write-Warning "In `$OldNsRecords befinden sich keine NS-Einträge."
+    return
+}
+
+$RemoveAllRemaining = $false
+$RemovedCount = 0
+$SkippedCount = 0
+$ErrorCount = 0
+
 foreach ($Entry in $OldNsRecords) {
+    $CurrentNameServer = $Entry.RecordObject.RecordData.NameServer.
+        ToString().
+        TrimEnd(".").
+        ToLowerInvariant()
+
+    # Sicherheitspruefung direkt vor der Entfernung
+    if ($CurrentNameServer -ne $OldServerFqdnNormalized) {
+        $WarningText = (
+            "Eintrag uebersprungen: NS-Ziel '{0}' entspricht nicht " +
+            "dem alten Server '{1}'."
+        ) -f $Entry.NameServer, $OldServerFqdn
+
+        Write-Warning $WarningText
+        $SkippedCount++
+        continue
+    }
+
+    Write-Host ""
+    Write-Host "Zu entfernender DNS-Eintrag:" -ForegroundColor Yellow
+    Write-Host ("  DNS-Server : {0}" -f $DnsServer)
+    Write-Host ("  Zone       : {0}" -f $Entry.ZoneName)
+    Write-Host ("  Knoten     : {0}" -f $Entry.HostName)
+    Write-Host "  Record-Typ : NS"
+    Write-Host ("  NS-Ziel    : {0}" -f $Entry.NameServer)
+    Write-Host ""
+
+    $QuestionText = (
+        "NS-Eintrag mit Ziel '{0}' am Knoten '{1}' " +
+        "in der Zone '{2}' auf DNS-Server '{3}' entfernen?"
+    ) -f (
+        $Entry.NameServer,
+        $Entry.HostName,
+        $Entry.ZoneName,
+        $DnsServer
+    )
+
+    Write-Host $QuestionText -ForegroundColor Cyan
+
+    if ($RemoveAllRemaining) {
+        $Answer = "A"
+    }
+    else {
+        do {
+            $Answer = Read-Host "[J] Ja, [N] Nein, [A] Alle, [Q] Abbrechen"
+
+            if ($null -ne $Answer) {
+                $Answer = $Answer.Trim().ToUpperInvariant()
+            }
+        }
+        until ($Answer -in @("J", "Y", "N", "A", "Q"))
+    }
+
+    if ($Answer -eq "Q") {
+        Write-Warning "Die DNS-Bereinigung wurde durch den Benutzer abgebrochen."
+        break
+    }
+
+    if ($Answer -eq "N") {
+        $SkippedText = (
+            "Uebersprungen: NS-Eintrag mit Ziel '{0}' am Knoten '{1}' " +
+            "in der Zone '{2}'."
+        ) -f (
+            $Entry.NameServer,
+            $Entry.HostName,
+            $Entry.ZoneName
+        )
+
+        Write-Host $SkippedText -ForegroundColor DarkYellow
+        $SkippedCount++
+        continue
+    }
+
+    if ($Answer -eq "A") {
+        $RemoveAllRemaining = $true
+    }
+
     try {
         Remove-DnsServerResourceRecord `
             -ComputerName $DnsServer `
@@ -575,23 +712,137 @@ foreach ($Entry in $OldNsRecords) {
             -Force `
             -ErrorAction Stop
 
-        Write-Host (
-            "Entfernt: Zone '{0}', Knoten '{1}', Nameserver '{2}'" -f
-            $Entry.ZoneName,
+        $SuccessText = (
+            "Entfernt: NS-Eintrag mit Ziel '{0}' am Knoten '{1}' " +
+            "in der Zone '{2}' auf DNS-Server '{3}'."
+        ) -f (
+            $Entry.NameServer,
             $Entry.HostName,
-            $Entry.NameServer
+            $Entry.ZoneName,
+            $DnsServer
         )
+
+        Write-Host $SuccessText -ForegroundColor Green
+        $RemovedCount++
     }
     catch {
-        Write-Warning (
-            "Eintrag in Zone '{0}' konnte nicht entfernt werden: {1}" -f
+        $ErrorText = (
+            "NS-Eintrag konnte nicht entfernt werden: " +
+            "Zone='{0}', Knoten='{1}', NS-Ziel='{2}', Fehler='{3}'"
+        ) -f (
             $Entry.ZoneName,
+            $Entry.HostName,
+            $Entry.NameServer,
             $_.Exception.Message
         )
+
+        Write-Warning $ErrorText
+        $ErrorCount++
     }
 }
+
+Write-Host ""
+Write-Host "Ergebnis der NS-Bereinigung:" -ForegroundColor Cyan
+Write-Host ("  Entfernt     : {0}" -f $RemovedCount)
+Write-Host ("  Uebersprungen: {0}" -f $SkippedCount)
+Write-Host ("  Fehler       : {0}" -f $ErrorCount)
 ```
 
+### Variante B: Alle geprüften Einträge ohne Rückfrage entfernen
+```powershell
+# Erforderliche Variablen:
+# $DnsServer
+# $OldServerFqdn
+# $OldServerFqdnNormalized
+# $OldNsRecords
+
+if (-not $OldServerFqdnNormalized) {
+    $OldServerFqdnNormalized = $OldServerFqdn.
+        TrimEnd(".").
+        ToLowerInvariant()
+}
+
+if (-not $OldNsRecords) {
+    Write-Warning "In `$OldNsRecords befinden sich keine NS-Einträge."
+    return
+}
+
+$RemovedCount = 0
+$SkippedCount = 0
+$ErrorCount = 0
+
+foreach ($Entry in $OldNsRecords) {
+    $CurrentNameServer = $Entry.RecordObject.RecordData.NameServer.
+        ToString().
+        TrimEnd(".").
+        ToLowerInvariant()
+
+    # Sicherheitspruefung direkt vor der Entfernung
+    if ($CurrentNameServer -ne $OldServerFqdnNormalized) {
+        $WarningText = (
+            "Eintrag uebersprungen: NS-Ziel '{0}' entspricht nicht " +
+            "dem alten Server '{1}'."
+        ) -f $Entry.NameServer, $OldServerFqdn
+
+        Write-Warning $WarningText
+        $SkippedCount++
+        continue
+    }
+
+    $ActionText = (
+        "Entferne NS-Eintrag mit Ziel '{0}' am Knoten '{1}' " +
+        "in der Zone '{2}' auf DNS-Server '{3}'."
+    ) -f (
+        $Entry.NameServer,
+        $Entry.HostName,
+        $Entry.ZoneName,
+        $DnsServer
+    )
+
+    Write-Host $ActionText -ForegroundColor Yellow
+
+    try {
+        Remove-DnsServerResourceRecord `
+            -ComputerName $DnsServer `
+            -ZoneName $Entry.ZoneName `
+            -InputObject $Entry.RecordObject `
+            -Force `
+            -ErrorAction Stop
+
+        $SuccessText = (
+            "Erfolgreich entfernt: NS-Eintrag mit Ziel '{0}' " +
+            "aus Zone '{1}', Knoten '{2}'."
+        ) -f (
+            $Entry.NameServer,
+            $Entry.ZoneName,
+            $Entry.HostName
+        )
+
+        Write-Host $SuccessText -ForegroundColor Green
+        $RemovedCount++
+    }
+    catch {
+        $ErrorText = (
+            "NS-Eintrag konnte nicht entfernt werden: " +
+            "Zone='{0}', Knoten='{1}', NS-Ziel='{2}', Fehler='{3}'"
+        ) -f (
+            $Entry.ZoneName,
+            $Entry.HostName,
+            $Entry.NameServer,
+            $_.Exception.Message
+        )
+
+        Write-Warning $ErrorText
+        $ErrorCount++
+    }
+}
+
+Write-Host ""
+Write-Host "Ergebnis der automatischen NS-Bereinigung:" -ForegroundColor Cyan
+Write-Host ("  Entfernt     : {0}" -f $RemovedCount)
+Write-Host ("  Uebersprungen: {0}" -f $SkippedCount)
+Write-Host ("  Fehler       : {0}" -f $ErrorCount)
+```
 > **Hinweis:** Schlägt die Entfernung in einzelnen Zonen fehl, prüfen Sie, ob es sich um eine sekundäre, schreibgeschützte oder nicht lokal verwaltete Zone handelt. Führen Sie die Änderung in diesem Fall auf dem zuständigen primären beziehungsweise beschreibbaren DNS-Server aus.
 
 ## 8.8 Nameserver-Bereinigung kontrollieren
