@@ -2,7 +2,7 @@
 title: microsoft-zertifizierungsstelle-installieren
 description: 
 published: true
-date: 2023-12-31T13:31:38.874Z
+date: 2026-09-06T11:40:18.943Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:31:35.842Z
@@ -10,5 +10,5 @@ dateCreated: 2023-12-31T13:31:35.842Z
 
 # Microsoft Zertifizierungsstelle installieren
 
-<div class="vector-body" id="bkmrk-"><div class="mw-body-content mw-content-ltr" dir="ltr" lang="de"></div></div>[Root CA](https://wiki.eidolf.de/index.php/Root_CA "Root CA")  
-[Enterprise CA](https://wiki.eidolf.de/index.php/Enterprise_CA "Enterprise CA")
+[Root CA](/Wiki-Seiten/Microsoft/Server/Rollen/CA/root-ca-installieren")  
+[Enterprise CA](/Wiki-Seiten/Microsoft/Server/Rollen/CA/enterprise-ca-installieren")
