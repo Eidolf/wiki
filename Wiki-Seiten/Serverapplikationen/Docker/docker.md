@@ -2,7 +2,7 @@
 title: Docker
 description: Docker Befehle und Anleitungen
 published: true
-date: 2025-12-22T18:03:05.562Z
+date: 2026-09-07T17:20:12.182Z
 tags: docker, container, docker compose
 editor: markdown
 dateCreated: 2023-12-31T13:36:33.797Z
@@ -42,6 +42,55 @@ Mit folgendem Befehl wird der **db** Ordner aus dem Docker zum **db** Ordnerpfad
 ### Quelle:
 
 https://www.baeldung.com/ops/docker-copying-files
+
+# Netzwerk
+Standardmäßig sind Docker Netzwerke sehr groß.
+Ab **172.16.X.X** Bereich mit **/16** Netzmaske und somit effektiv maximal 16 Docker.
+
+Wenn der 172er Bereich aufgefüllt ist wird als nächstes folgender Bereich verwendet
+**192.168.X.X** mit **/20** Netzmaske, hierdurch wird dieser Bereich auch schnell aufgefüllt und ist ebenfalls bei 15 bis 16 Dockern schluss.
+
+Um also mehr als 30 bis 32 Docker auf einem Host zu haben kann man das Standardnetzwerk abändern und eine Vorgabe in der Docker Config geben.
+
+Folgende Config Datei `daemon.json` wird unter dem
+Pfad: `/etc/docker/`
+angelegt.
+
+Somit in einer Bash
+```bash
+sudo nano /etc/docker/daemon.json
+```
+und folgendes hier einfügen und speichern.
+```json
+{
+  "default-address-pools": [
+    {
+      "base": "172.18.0.0/16",
+      "size": 24
+    },
+    {
+      "base": "172.19.0.0/16",
+      "size": 24
+    },
+    {
+      "base": "192.168.0.0/16",
+      "size": 24
+    }
+  ]
+}
+```
+
+Danach den Docker Dienst durchstarten
+
+```bash
+sudo systemctl restart docker
+```
+
+Die Netze sind hiernach deutlich kleiner und man kann mehr Docker starten.
+
+> Falls das Netz schon voll ist, muss am besten ein Docker, welcher eines der gesetzten Netze blockiert, vor dem Docker Neustart beendet werden.
+{.is-info}
+
 
 # Erweiterte Aufgaben
 
