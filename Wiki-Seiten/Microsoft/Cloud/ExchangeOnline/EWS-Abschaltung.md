@@ -2,8 +2,8 @@
 title: EWS Abschaltung
 description: Hinweise und Vorbereitungen für die Abschaltung von EWS in Exchange Online
 published: true
-date: 2026-09-14T16:47:17.470Z
-tags: exchange, ews, api
+date: 2026-09-14T16:48:06.153Z
+tags: exchange, ews, api, graph
 editor: markdown
 dateCreated: 2026-09-14T16:47:17.470Z
 ---
