@@ -2,7 +2,7 @@
 title: linux-webserver-verwalten
 description: 
 published: true
-date: 2026-10-22T10:36:26.252Z
+date: 2026-10-22T10:41:06.720Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:59.517Z
@@ -90,34 +90,14 @@ sudo a2enmod headers
 
 6. Apache neu starten
 `service apache2 restart`
-
-7. Nicht mehr benötigte PHP-Versionen entfernen
-Wenn die Anwendung nach der Umstellung erfolgreich mit der neuen PHP-Version läuft, sollten alte PHP-Versionen vollständig entfernt werden.
-
-    Prüfen:
     
-    ```shell
-    php -v
-    sudo -u www-data php8.4 /var/www/nextcloud/occ status
-    ```
-
-    Alte PHP-Versionen entfernen
-    
-    ```shell
-    sudo apt purge 'php7.4*' 'php8.5*'
-    sudo apt autoremove --purge
-    ```
-
-    Hinweis:
-    Das Deaktivieren von Apache-Modulen mit a2dismod entfernt keine PHP-Pakete. Nicht mehr benötigte PHP-Versionen sollten nach erfolgreichem Test vollständig entfernt werden, um die Angriffsfläche zu reduzieren und die Systempflege zu vereinfachen.
-    
-8. Site aktivieren
+7. Site aktivieren
 `sudo a2ensite NameVirtualWebSite-ssl`
 
-9. SSL Konfiguration aktivieren
+8. SSL Konfiguration aktivieren
 `sudo a2enconf ssl-params`
 
-10. Apache Konfiguration neu laden
+9. Apache Konfiguration neu laden
 `service apache2 reload`
 
 ### Quelle:
@@ -313,6 +293,26 @@ Falls du FPM nutzt, musst du den Socket anpassen:
 ```
 sudo systemctl restart apache2
 ```
+
+### Nicht mehr benötigte PHP-Versionen entfernen
+Wenn die Anwendung nach der Umstellung erfolgreich mit der neuen PHP-Version läuft, sollten alte PHP-Versionen vollständig entfernt werden.
+
+Prüfen:
+
+```shell
+php -v
+sudo -u www-data php8.4 /var/www/nextcloud/occ status
+```
+
+Alte PHP-Versionen entfernen
+
+```shell
+sudo apt purge 'php7.4*' 'php8.5*'
+sudo apt autoremove --purge
+```
+
+Hinweis:
+Das Deaktivieren von Apache-Modulen mit a2dismod entfernt keine PHP-Pakete. Nicht mehr benötigte PHP-Versionen sollten nach erfolgreichem Test vollständig entfernt werden, um die Angriffsfläche zu reduzieren und die Systempflege zu vereinfachen.
 
 ### Nextcloud PHP‑Version prüfen
 
