@@ -1,20 +1,16 @@
 ---
-title: microsoft-365-authentifizierung
+title: Microsoft 365 Authentifizierung
 description: 
 published: true
-date: 2023-12-31T13:30:06.270Z
-tags: 
+date: 2026-11-19T10:50:48.082Z
+tags: microsoft, authentication, passwordless
 editor: markdown
 dateCreated: 2023-12-31T13:30:03.084Z
 ---
 
-# Microsoft 365 Authentifizierung
+# Passwortlose Authentifizierung</span>
 
-# <span class="mw-headline" id="bkmrk-passwortlose-authent-1">Passwortlose Authentifizierung</span>
+## Quelle:
 
-## <span class="mw-headline" id="bkmrk-quelle%3A-1">Quelle:</span>
-
-```
-<a class="external free" href="https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises" rel="nofollow">https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises</a>
-<a class="external free" href="https://www.inthecloud247.com/enable-passwordless-authentication-to-windows-10-with-feitian-security-keys/" rel="nofollow">https://www.inthecloud247.com/enable-passwordless-authentication-to-windows-10-with-feitian-security-keys/</a>
-```
+https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises
+https://www.inthecloud247.com/enable-passwordless-authentication-to-windows-10-with-feitian-security-keys/
