@@ -2,7 +2,7 @@
 title: Home Assistant
 description: 
 published: true
-date: 2026-08-09T13:31:14.777Z
+date: 2026-11-24T13:33:20.891Z
 tags: 
 editor: markdown
 dateCreated: 2023-12-31T13:36:38.302Z
@@ -243,6 +243,8 @@ Das Gerät hatte eine IP, alle Tests gegen diese IP waren erfolgreich, doch die 
 
 1. Script für das auslesen der Zendure API und seiner Geräte
 [zendure_device_list_check.py](https://github.com/Eidolf/Public-Scripts/blob/main/HomeAssistant/zendure_device_list_check.py){target=_blank}
+Einfach laden und mit `python ./zendure_device_list_check.py` starten.
+
 2. Debug Log über `device.py` erweitern
 2.1. Backup der Datei
     ```
